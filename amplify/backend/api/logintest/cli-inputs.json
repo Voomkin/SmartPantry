@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "logintest",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\Ryan Mraz\\OneDrive - West Virginia University\\Documents\\SmartPantry\\amplify\\backend\\api\\logintest\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authlogintestcc48a87b"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 7,
+        "apiKeyExpirationDate": "2022-02-11T17:35:12.137Z",
+        "keyDescription": ""
+      }
+    ]
+  }
+}

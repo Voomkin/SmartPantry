@@ -26,5 +26,38 @@
         ]
       }
     }
+  },
+  "api": {
+    "logintest": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authlogintestcc48a87b"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 7,
+                "apiKeyExpirationDate": "2022-02-11T17:35:12.137Z",
+                "description": ""
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "storage": {
+    "smartpantry": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }

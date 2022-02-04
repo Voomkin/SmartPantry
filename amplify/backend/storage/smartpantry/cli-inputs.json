@@ -1,0 +1,14 @@
+{
+  "resourceName": "smartpantry",
+  "policyUUID": "c8ada58f",
+  "bucketName": "smartpantry2022csee481",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
