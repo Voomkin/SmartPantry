@@ -11,7 +11,7 @@ const HomeStack = createStackNavigator();
 const HomeStackScreen = () => {
     return (
         <HomeStack.Navigator>
-            <HomeStack.Screen name="Home" component={HomeScreen}/>
+            <HomeStack.Screen options={{headerShown:false}} name="Home" component={HomeScreen}/>
         </HomeStack.Navigator>
     )
 }
@@ -24,4 +24,4 @@ const HomeScreen = ({navigation}) => {
     )
 }
 
-export default HomeScreen;
+export default HomeStackScreen;

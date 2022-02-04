@@ -3,8 +3,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import PantryScreen from './screens/Pantry';
-import HomeScreen from './screens/Home';
-import SettingsScreen from './screens/Settings';
+import HomeStackScreen from './screens/Home';
+import SettingsStackScreen from './screens/Settings';
 import ProfileScreen from './screens/Profile';
 
 import React from 'react';
@@ -50,16 +50,15 @@ function App() {
       <Tab.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#ff9300",
+            backgroundColor: "#769353",
           },
         }}
       >
         <Tab.Screen
           name="Home"
-          component={HomeScreen}
+          component={HomeStackScreen}
           options={({ navigation }) => ({
             title: "Home",
-            headerRight: () => <Icon name="shopping-cart" />,
             headerLeft: () => (
               <View>
                 <Button
@@ -79,6 +78,7 @@ function App() {
           name="Profile"
           component={ProfileScreen}
           options={{
+            title: "Profile",
             tabBarIcon: () => {
               return <Icon name="account-box" />;
             },
@@ -97,7 +97,7 @@ function App() {
         />
         <Tab.Screen
           name="Settings"
-          component={SettingsScreen}
+          component={SettingsStackScreen}
           options={{
             tabBarIcon: () => {
               return <Icon name="settings" />;
