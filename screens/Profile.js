@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -6,10 +6,13 @@ import {
   Dimensions,
   ImageBackground,
   StyleSheet,
+  Platform,
+  Image
 } from "react-native";
-import { Flex, Divider } from "@aws-amplify/ui-react";
-import { Auth } from "aws-amplify";
-import { Button, Icon } from "react-native-elements";
+import GalleryComponent from './../src/components/GalleryComponent';
+
+
+
 
 const ProfileScreen = ({ navigation }) => {
   return (
@@ -27,19 +30,14 @@ const ProfileScreen = ({ navigation }) => {
       </ImageBackground>
       <View style={Styles.bottomView}>
         <View style={{ padding: 40 }}>
-          
           <View style={{ margin: 20 }}>
-           
+            <Text>Profile Photo</Text>
+            <GalleryComponent></GalleryComponent>
           </View>
 
           <View style={Styles.forgotPassView}>
-            <View style={{ flex: 1, marginLeft: -20 }}>
-             
-             
-            </View>
-            <View style={{ flex: 1, marginRight: 0 }}>
-              
-            </View>
+            <View style={{ flex: 1, marginLeft: -20 }}></View>
+            <View style={{ flex: 1, marginRight: 0 }}></View>
           </View>
 
           <View
@@ -48,12 +46,10 @@ const ProfileScreen = ({ navigation }) => {
               justifyContent: "center",
               alignItems: "center",
             }}
-          >
-            
-          </View>
-          <View style={{ marginBottom: 0, flex: 1, alignItems: "center" }}>
-            
-          </View>
+          ></View>
+          <View
+            style={{ marginBottom: 0, flex: 1, alignItems: "center" }}
+          ></View>
         </View>
       </View>
     </ScrollView>

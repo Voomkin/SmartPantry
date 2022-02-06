@@ -4,10 +4,15 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 schema {
     query:Query
+    mutation: Mutation
 }
 
 type Query {
     getItems: [Item]
+}
+
+type Mutation {
+    addItem(id: ID!, name: String, description: String, weight: Float, location: String): Item
 }
 
 type Item {
