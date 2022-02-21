@@ -1,6 +1,7 @@
-import { LogBox, Alert, Text, View } from 'react-native';
+import { LogBox, Alert, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import RNBluetoothClassic, {BluetoothDevice} from 'react-native-bluetooth-classic';
 
 import PantryScreen from './screens/Pantry';
 import HomeStackScreen from './screens/Home';
@@ -12,7 +13,9 @@ import {Icon, Button} from 'react-native-elements';
 import Amplify from 'aws-amplify';
 import awsconfig from './src/aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
-import { Auth } from "aws-amplify";
+import { Auth, API, graphqlOperation } from "aws-amplify";
+import {listItems} from './queries.js';
+import { useEffect, useState } from 'react';
 
 Amplify.configure({
   ...awsconfig,
@@ -45,6 +48,7 @@ const signOutAlert = () => {
 }
 
 function App() {
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -59,6 +63,13 @@ function App() {
           component={HomeStackScreen}
           options={({ navigation }) => ({
             title: "Home",
+            headerRight: () => (
+              <Button
+                icon={<Icon name="circle-notifications" size={25} color="#000000" />}
+                type="clear"
+              >
+              </Button>
+            ),
             headerLeft: () => (
               <View>
                 <Button

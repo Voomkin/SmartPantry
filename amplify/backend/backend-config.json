@@ -34,21 +34,14 @@
       "output": {
         "authConfig": {
           "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authlogintestcc48a87b"
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "apiKeyExpirationDate": "2023-02-21T19:16:11.664Z",
+              "description": "smart_pantry"
             }
           },
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "API_KEY",
-              "apiKeyConfig": {
-                "apiKeyExpirationDays": 7,
-                "apiKeyExpirationDate": "2022-02-11T17:35:12.137Z",
-                "description": ""
-              }
-            }
-          ]
+          "additionalAuthenticationProviders": []
         }
       }
     }

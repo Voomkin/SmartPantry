@@ -1,24 +1,18 @@
 # This "input" configures a global authorization rule to enable public access to
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-schema {
-    query:Query
-    mutation: Mutation
+type Pantry @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  owner: String!
+  items: [Item] @hasMany
 }
 
-type Query {
-    getItems: [Item]
-}
-
-type Mutation {
-    addItem(id: ID!, name: String, description: String, weight: Float, location: String): Item
-}
-
-type Item {
-    id: ID!
-    name: String
-    description: String
-    weight: Float
-    location: String
+type Item @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  pantry: Pantry @belongsTo
+  imagePath: String!
+  weight: Float
+  quantity: Int
 }

@@ -24,7 +24,7 @@ const SettingsStack = createStackNavigator();
 const SettingsStackScreen = () => {
   return (
     <SettingsStack.Navigator>
-      <SettingsStack.Screen options={{headerShown: false}}name="Settings" component={Settings} />
+      <SettingsStack.Screen options={{headerShown: false}}name="SettingsStack" component={Settings} />
       <SettingsStack.Screen name="About" component={AboutScreen} />
     </SettingsStack.Navigator>
   );

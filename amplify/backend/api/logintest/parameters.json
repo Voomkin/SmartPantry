@@ -2,10 +2,5 @@
   "AppSyncApiName": "logintest",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthCognitoUserPoolId": {
-    "Fn::GetAtt": [
-      "authlogintestcc48a87b",
-      "Outputs.UserPoolId"
-    ]
-  }
+  "AuthModeLastUpdated": "2022-02-21T19:16:14.720Z"
 }
