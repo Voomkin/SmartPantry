@@ -1,51 +1,95 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   Text,
   View,
-  ScrollView,
-  Dimensions,
-  ImageBackground,
-  StyleSheet,
 } from "react-native";
 import { useEffect, useState } from "react";
-import { Auth, API, graphqlOperation } from "aws-amplify";
+import {API, graphqlOperation, Auth } from "aws-amplify";
+import { getPantry } from './../queries';
 import { listItems } from "../queries.js";
+import {Button} from 'react-native-elements';
+import { createStackNavigator } from "@react-navigation/stack";
+import AddItemScreen from './AddItem';
+
+const PantryStack = createStackNavigator();
+
+const PantryStackScreen = () => {
+    return (
+        <PantryStack.Navigator>
+            <PantryStack.Screen options={{headerShown:false}} name="PantryStack" component={PantryScreen}/>
+            <PantryStack.Screen options={{headerShown:true, title: 'Add Item'}} name="AddItem" component={AddItemScreen} />
+        </PantryStack.Navigator>
+    )
+}
+
 
 const PantryScreen = ({ navigation }) => {
   const [items, setItems] = useState([]);
+  const [pantryExists, setPantryExists] = useState(false);
 
-  // empty array to only load this once
+  // Loads when you come back to this screen
   useEffect(() => {
-    fetchItems();
-  }, []);
+    const unsubscribe = navigation.addListener("focus", () => {
+      fetchItems();
+    });
+    return unsubscribe;
+  }, [navigation]);
 
+  // fetches just the items of the pantry that belongs to the current authenticated user
   const fetchItems = async () => {
     try {
-      const itemData = await API.graphql(graphqlOperation(listItems));
-      const itemList = itemData.data.listItems.items;
-      setItems(itemList);
+      const user = await Auth.currentAuthenticatedUser();
+      const pantryData = await API.graphql(graphqlOperation(getPantry, {id: user.username.toString()}));
+      
+      if (pantryData.data.getPantry != null) {
+        setPantryExists(true);
+      } else {
+        setPantryExists(false);
+      }
+
+      const pantryId = pantryData.data.getPantry.id;
+      const itemsList = await API.graphql(
+        graphqlOperation(listItems, {
+          filter: {
+            pantryItemsId: {
+              eq: pantryId.toString(),
+            },
+          },
+        })
+      );
+    const b = itemsList.data.listItems.items
+    setItems(b);
     } catch (err) {
       console.log(err);
     }
   };
 
 // list of items description
-const listOfItems = items.map(item => {
-    return (
-      <>
-        <Text>{item.name}</Text>
-        <Text>{item.weight}</Text>
-      </>
-    );
-})
-
+  const listOfItems = items.map(item => {
+      return (
+        <>
+          <Text>{'\n' + item.name + '\n'}</Text>
+        </>
+      );
+  })
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>
-          {listOfItems}
+        {!pantryExists && <Text>You don't have a pantry!</Text>}
+        {pantryExists && (
+          <Button
+            title="Add Item"
+            onPress={() => {
+              navigation.navigate("AddItem");
+            }}
+          ></Button>
+        )}
+
+        <Text>{listOfItems}</Text>
       </Text>
     </View>
   );
+
 };
 
-export default PantryScreen;
+export default PantryStackScreen;

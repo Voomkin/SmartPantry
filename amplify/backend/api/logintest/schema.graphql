@@ -5,6 +5,7 @@ type Pantry @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String!
   owner: String!
+  accessors: [String!]!
   items: [Item] @hasMany
 }
 

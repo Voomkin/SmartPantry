@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import RNBluetoothClassic, {BluetoothDevice} from 'react-native-bluetooth-classic';
 
-import PantryScreen from './screens/Pantry';
+import PantryStackScreen from './screens/Pantry';
 import HomeStackScreen from './screens/Home';
 import SettingsStackScreen from './screens/Settings';
 import ProfileScreen from './screens/Profile';
@@ -13,9 +13,7 @@ import {Icon, Button} from 'react-native-elements';
 import Amplify from 'aws-amplify';
 import awsconfig from './src/aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
-import { Auth, API, graphqlOperation } from "aws-amplify";
-import {listItems} from './queries.js';
-import { useEffect, useState } from 'react';
+import { Auth } from "aws-amplify";
 
 Amplify.configure({
   ...awsconfig,
@@ -65,10 +63,11 @@ function App() {
             title: "Home",
             headerRight: () => (
               <Button
-                icon={<Icon name="circle-notifications" size={25} color="#000000" />}
+                icon={
+                  <Icon name="circle-notifications" size={25} color="#000000" />
+                }
                 type="clear"
-              >
-              </Button>
+              ></Button>
             ),
             headerLeft: () => (
               <View>
@@ -98,7 +97,7 @@ function App() {
         />
         <Tab.Screen
           name="Pantry"
-          component={PantryScreen}
+          component={PantryStackScreen}
           options={{
             tabBarIcon: () => {
               return <Icon name="store" />;
