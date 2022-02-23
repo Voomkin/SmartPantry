@@ -10,6 +10,7 @@ import { listItems } from "../queries.js";
 import {Button} from 'react-native-elements';
 import { createStackNavigator } from "@react-navigation/stack";
 import AddItemScreen from './AddItem';
+import ManualAddScreen from './ManualAdd';
 
 const PantryStack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const PantryStackScreen = () => {
         <PantryStack.Navigator>
             <PantryStack.Screen options={{headerShown:false}} name="PantryStack" component={PantryScreen}/>
             <PantryStack.Screen options={{headerShown:true, title: 'Add Item'}} name="AddItem" component={AddItemScreen} />
+            <PantryStack.Screen options={{headerShown:true, title: 'Manual Add'}} name="ManualAdd" component={ManualAddScreen} />
         </PantryStack.Navigator>
     )
 }
@@ -64,11 +66,14 @@ const PantryScreen = ({ navigation }) => {
     }
   };
 
-// list of items description
-  const listOfItems = items.map(item => {
+// list of items from pantry
+  const listOfItems = items.map((item, id) => {
       return (
         <>
-          <Text>{'\n' + item.name + '\n'}</Text>
+          <Text key={id}>{"\n" + item.name + " "}</Text>
+          <Text>{item.quantity ? item.quantity : "" + " " }</Text>
+          <Text>{item.weight ? item.weight : ""}</Text>
+          <Text>{"\n"}</Text>
         </>
       );
   })
@@ -77,15 +82,18 @@ const PantryScreen = ({ navigation }) => {
       <Text>
         {!pantryExists && <Text>You don't have a pantry!</Text>}
         {pantryExists && (
+          <>
           <Button
             title="Add Item"
             onPress={() => {
               navigation.navigate("AddItem");
             }}
           ></Button>
+          <Text>{listOfItems}</Text>
+          </>
         )}
 
-        <Text>{listOfItems}</Text>
+        
       </Text>
     </View>
   );

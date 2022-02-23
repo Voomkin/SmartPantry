@@ -25,7 +25,7 @@ const HomeScreen = ({navigation}) => {
     // refreshes each time you go back to the screen
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
-             checkIfPantryExists();
+            checkIfPantryExists();
         });
         return unsubscribe;
     }, [navigation]);
