@@ -47,6 +47,11 @@ const ManualAddScreen = ({ navigation }) => {
           onChangeText={(value) => setQuantityText(value)}
         />
         <Button
+          placeholder="Take picture (optional)"
+          containerStyle={{ width: 250 }}
+          onChangeText={(value) => setQuantityText(value)}
+        />
+        <Button
           buttonStyle={{ width: 200 }}
           title="Submit"
           onPress={() => {

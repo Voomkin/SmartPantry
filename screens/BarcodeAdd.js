@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from "react";
 import { Input, Button } from "react-native-elements";
-import { View, Text, StyleSheet, Alert} from "react-native";
+import { View, Text, Alert, StyleSheet } from "react-native";
 import { Auth, API, graphqlOperation } from "aws-amplify";
 import { createItem } from "../mutations";
 import { BarCodeScanner } from "expo-barcode-scanner";

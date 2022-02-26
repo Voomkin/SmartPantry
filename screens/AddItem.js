@@ -49,7 +49,7 @@ const addPantryItem = async () => {
         title="Barcode Add"
         buttonStyle={{ width: 200, margin: 10 }}
         onPress={() => {
-          navigation.navigate("BarcodeAdd");
+          navigation.navigate("BarcodeScan");
         }}
       ></Button>
       <Button
