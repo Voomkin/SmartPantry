@@ -15,6 +15,8 @@ import awsconfig from './src/aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import { Auth } from "aws-amplify";
 
+
+// Initializes Amplify
 Amplify.configure({
   ...awsconfig,
   Analytics: {
@@ -22,12 +24,15 @@ Amplify.configure({
   },
 });
 
+// Ignore certain logs
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
 
+// Creates a new Bottom Tab Navigator object
 const Tab = createBottomTabNavigator();
 
+// Function that signs a user out of the app with an alert box
 const signOutAlert = () => {
   Alert.alert(
     "Sign Out",
@@ -35,7 +40,7 @@ const signOutAlert = () => {
     [
       {
         text: "Yes",
-        onPress: () => Auth.signOut()
+        onPress: () => Auth.signOut() // Uses amplify Auth library and signOut() method
       },
       {
         text: "No",
@@ -45,9 +50,13 @@ const signOutAlert = () => {
   )
 }
 
+
+// Main App function
 function App() {
 
   return (
+
+    // Entire app wrapped in a NavigationContainer and uses the bottom tab navigator for screens
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
@@ -61,6 +70,7 @@ function App() {
           component={HomeStackScreen}
           options={({ navigation }) => ({
             title: "Home",
+            // Sets up header buttons for notifications and sign out
             headerRight: () => (
               <Button
                 icon={
@@ -78,13 +88,14 @@ function App() {
                 ></Button>
               </View>
             ),
+            // sets the icon for the home bottom tab screen
             tabBarIcon: () => {
               return <Icon name="home" />;
             },
             headerShown: true,
           })}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="Profile"
           component={ProfileScreen}
           options={{
@@ -94,8 +105,8 @@ function App() {
             },
             headerShown: true,
           }}
-        />
-        <Tab.Screen
+        /> */}
+        {/* <Tab.Screen
           name="Pantry"
           component={PantryStackScreen}
           options={{
@@ -104,7 +115,7 @@ function App() {
             },
             headerShown: true,
           }}
-        />
+        /> */}
         <Tab.Screen
           name="Settings"
           component={SettingsStackScreen}
@@ -120,4 +131,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App); // exports the app with Amplify's withAuthenticator for cognito

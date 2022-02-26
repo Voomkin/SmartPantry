@@ -31,6 +31,8 @@ const SettingsStackScreen = () => {
 };
 
 const Settings = ({navigation}) => {
+
+    // Contains the settings options, each has a title, subtitle, and what to do when pressed
     const settingsOptions = [
       { title: "My Info", subTitle: "Setup your profile", onPress: () => {} },
       { title: "Accounts", onPress: () => {} },
