@@ -151,6 +151,7 @@ const HomeScreen = ({ navigation }) => {
       {/* Conditional render based on the value of createPantryButton and pantryExists */}
       {createPantryButton && (
         <Button
+          buttonStyle={{margin: 15}}
           title="Create Pantry"
           onPress={() => {
             navigation.navigate("CreatePantry");
@@ -160,17 +161,15 @@ const HomeScreen = ({ navigation }) => {
       <Text>
         {!pantryExists && <Text>You don't have a pantry!</Text>}
         {pantryExists && (
-          <>
+          <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
             <Button
               title="Add Item"
               onPress={() => {
                 navigation.navigate("AddItem");
               }}
             ></Button>
-
-            {/* renders the listOfItems object */}
-            <Text>{listOfItems}</Text>
-          </>
+            <Text style={{width: 150}}>{listOfItems}</Text>
+          </View>
         )}
       </Text>
     </ScrollView>

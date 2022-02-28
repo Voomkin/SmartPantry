@@ -72,7 +72,7 @@ const Settings = ({navigation}) => {
                     paddingTop: 20
                 }}>
                     <Text style={{fontSize: 17}}>{title}</Text>
-                    {subTitle&& <Text style={{fontSize:13, color:'grey', paddingTop:5}}>{subTitle}</Text>}
+                    {subTitle && <Text style={{fontSize:13, color:'grey', paddingTop:5}}>{subTitle}</Text>}
                 </View>
                 <View style={{height: 1.2, backgroundColor: 'grey'}}/>
             </TouchableOpacity>)}
