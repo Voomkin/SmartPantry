@@ -57,6 +57,7 @@ export const onCreateItem = /* GraphQL */ `
       }
       imagePath
       weight
+      currWeight
       quantity
       createdAt
       updatedAt
@@ -78,6 +79,7 @@ export const onUpdateItem = /* GraphQL */ `
       }
       imagePath
       weight
+      currWeight
       quantity
       createdAt
       updatedAt
@@ -99,6 +101,7 @@ export const onDeleteItem = /* GraphQL */ `
       }
       imagePath
       weight
+      currWeight
       quantity
       createdAt
       updatedAt

@@ -47,6 +47,7 @@ export const getItem = /* GraphQL */ `
       }
       imagePath
       weight
+      currWeight
       quantity
       createdAt
       updatedAt
@@ -66,6 +67,7 @@ export const listItems = /* GraphQL */ `
         name
         imagePath
         weight
+        currWeight
         quantity
         createdAt
         updatedAt

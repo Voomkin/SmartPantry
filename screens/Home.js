@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import {Text,View,ScrollView,Dimensions,ImageBackground,StyleSheet} from "react-native";
+import {Text,View, SafeAreaView, StyleSheet ,ScrollView, Modal, Alert} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
-import {Icon} from 'react-native-elements';
+import {Icon, Input} from 'react-native-elements';
 import { Button } from "react-native-elements";
 import { getPantry } from "../queries";
 import CreatePantryScreen from "./CreatePantry";
 import AddItemScreen from "./AddItem";
 import ManualAddScreen from "./ManualAdd";
-import { listItems } from "../queries.js";
+import { listItems, getItem } from "../queries.js";
+import { deleteItem, updateItem } from "../mutations";
 import BarcodeAddScreen from "./BarcodeAdd";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { StatusBar } from "expo-status-bar";
 
 // Creates a stack navigator object
 const HomeStack = createStackNavigator();
@@ -56,6 +59,15 @@ const HomeScreen = ({ navigation }) => {
   const [createPantryButton, setCreatePantryButton] = useState(null);
   const [items, setItems] = useState([]);
   const [pantryExists, setPantryExists] = useState(false);
+  const [pantryName, setPantryName] = useState("");
+  const [nameText, setNameText] = useState("");
+  const [weightText, setWeightText] = useState("");
+  const [quantityText, setQuantityText] = useState("");
+  const [itemId, setItemId] = useState(null);
+
+   const [isModalVisible, setIsModalVisible] = useState(false);
+
+   const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
   // Loads when you come back to this screen
   // refreshes each time you go back to the screen
@@ -82,6 +94,7 @@ const HomeScreen = ({ navigation }) => {
       // otherwise sets it to false because they don't have a pantry yet
       if (pantryData.data.getPantry != null) {
         setPantryExists(true);
+        setPantryName(pantryData.data.getPantry.name);
       } else {
         setPantryExists(false);
       }
@@ -110,15 +123,116 @@ const HomeScreen = ({ navigation }) => {
     }
   };
 
+  // Update item
+  const updatePantryItem = async () => {
+
+    const item = await API.graphql(graphqlOperation(getItem, {id: itemId}));
+
+    try {
+      // Perform
+      const update = {
+        id: itemId,
+        name: nameText ? nameText : item.name,
+        currWeight: weightText ? parseFloat(weightText) : item.weight,
+        quantity: quantityText ? parseInt(quantityText) : item.quantity
+      }
+
+      const u = await API.graphql(graphqlOperation(updateItem, {input: update}));
+      setNameText("");
+      setWeightText("");
+      setQuantityText("");
+      handleModal();
+    } catch (err) {
+
+    }
+  }
+
+  // delete item
+  const deletePantryItem = async (deleteId) => {
+    console.log(deleteId);
+    try {
+      const id = {
+        id: deleteId
+      }
+      const d = await API.graphql(graphqlOperation(deleteItem,{input: id} ));
+    } catch (err) { 
+      console.log(err);
+    }
+  }
+
+  const modalScreen = (
+    <Modal visible={isModalVisible} animationType="slide">
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text style={{fontSize: 25, fontWeight: "bold", margin: 10}}>Edit your item</Text>
+        <Input
+          placeholder="Name"
+          containerStyle={{ width: 250 }}
+          onChangeText={(value) => setNameText(value)}
+        />
+        <Input
+          placeholder="Current Weight (optional)"
+          containerStyle={{ width: 250 }}
+          onChangeText={(value) => setWeightText(value)}
+        />
+        <Input
+          placeholder="Quantity (optional)"
+          containerStyle={{ width: 250 }}
+          onChangeText={(value) => setQuantityText(value)}
+        />
+        <Button
+          buttonStyle={{ width: 200, margin: 20}}
+          title="Submit"
+          onPress={() => {
+            updatePantryItem();
+          }}
+        ></Button>
+        <Button buttonStyle={{width: 200}} title="Go back" onPress={handleModal}></Button>
+      </View>
+    </Modal>
+  );
+
   // list of items from pantry
   const listOfItems = items.map((item) => {
     return (
-      <>
-        <Text>{"\n" + item.name + " "}</Text>
-        <Text>{item.quantity ? item.quantity : "" + " "}</Text>
-        <Text>{item.weight ? item.weight : "" + " "}</Text>
-        <Text>{"\n"}</Text>
-      </>
+      <View key={item.id}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingHorizontal: 20,
+            paddingBottom: 20,
+            paddingTop: 20,
+          }}
+        >
+          <Text
+            style={{paddingLeft: 15, width: "50%", flexDirection: "column", fontSize: 18 }}
+          >
+            {item.name + '\n'}
+            {item.quantity && <Text style={{fontSize: 15, fontWeight: 'bold'}}>Quantity: {item.quantity}</Text>}
+            {item.weight && <Text style={{fontSize: 15, fontWeight: "bold"}}>Percentage left: {item.weight}%</Text>}
+          </Text>
+          <Button buttonStyle={{ backgroundColor: 'grey', width: 75, marginRight: 5 }} title="update" onPress={() => {
+            setItemId(item.id);
+            handleModal();
+          }}>
+          </Button>
+          <Button  buttonStyle={{backgroundColor: 'red', width: 75, marginRight: 5}} title="delete" onPress={() => {
+             Alert.alert("Delete Item", "Are you sure you want to delete item?", [
+               {
+                 text: "Yes",
+                 onPress: () => { 
+                  deletePantryItem(item.id)}, // Uses amplify Auth library and signOut() method
+               },
+               {
+                 text: "No",
+                 style: "cancel",
+               },
+             ]);
+          }}></Button>
+        </View>
+        <View style={{ height: 1.2, backgroundColor: "grey" }} />
+      </View>
     );
   });
 
@@ -146,34 +260,45 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-
-      {/* Conditional render based on the value of createPantryButton and pantryExists */}
-      {createPantryButton && (
-        <Button
-          buttonStyle={{margin: 15}}
-          title="Create Pantry"
-          onPress={() => {
-            navigation.navigate("CreatePantry");
-          }}
-        ></Button>
-      )}
-      <Text>
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {/* Conditional render based on the value of createPantryButton and pantryExists */}
+        {createPantryButton && (
+          <Button
+            buttonStyle={{ margin: 15 }}
+            title="Create Pantry"
+            onPress={() => {
+              navigation.navigate("CreatePantry");
+            }}
+          ></Button>
+        )}
         {!pantryExists && <Text>You don't have a pantry!</Text>}
         {pantryExists && (
-          <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
+          <View
+            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          >
+            <Text style={{ fontSize: 25 }}>{pantryName}</Text>
             <Button
+              buttonStyle={{ width: 250 }}
               title="Add Item"
               onPress={() => {
                 navigation.navigate("AddItem");
               }}
             ></Button>
-            <Text style={{width: 150}}>{listOfItems}</Text>
+            <View>{listOfItems}</View>
+            <View>{modalScreen}</View>
           </View>
         )}
-      </Text>
-    </ScrollView>
+      </ScrollView>
   );
 };
 
+
+
 export default HomeStackScreen;
+

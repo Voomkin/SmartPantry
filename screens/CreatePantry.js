@@ -20,7 +20,7 @@ const CreatePantryScreen = ({ navigation }) => {
     
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            <Input placeholder="Name of pantry" style={{width: 50}} onChangeText={value => setInputText(value)} />
+            <Input placeholder="Name of pantry" containerStyle={{width: 250}} onChangeText={value => setInputText(value)} />
             <Button title="Submit" containerStyle={{
                 width: 200
             }} onPress={() => {

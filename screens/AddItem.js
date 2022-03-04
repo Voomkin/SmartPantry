@@ -29,7 +29,7 @@ const addPantryItem = async () => {
   const inputItem = await API.graphql(
     graphqlOperation(createItem, { input: itemInput })
   );
-  navigation.navigate("AddItem");
+  navigation.navigate("HomeStack");
 };
   
   return (
