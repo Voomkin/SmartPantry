@@ -26,6 +26,7 @@ const BarcodeAddScreen = ({ navigation }) => {
       name: nameText,
       imagePath: "default_img",
       weight: parseFloat(weightText),
+      currWeight: parseFloat(weightText),
       quantity: parseInt(quantityText),
       pantryItemsId: user.username.toString(),
     };
@@ -109,7 +110,7 @@ const BarcodeAddScreen = ({ navigation }) => {
               addPantryItem();
             }}
           ></Button>
-          <Button buttonStyle={{margin: 10}} title="Go Back" onPress={handleModal}></Button>
+          <Button buttonStyle={{width: 200, margin: 10}} title="Go Back" onPress={handleModal}></Button>
         </View>
       </Modal>
       {scanned && (

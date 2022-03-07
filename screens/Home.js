@@ -78,7 +78,7 @@ const HomeScreen = ({ navigation }) => {
       fetchItems();
     });
     return unsubscribe;
-  }, [navigation]);
+  }, [navigation, items]);
 
   // fetches just the items of the pantry that belongs to the current authenticated user
   const fetchItems = async () => {
@@ -127,6 +127,12 @@ const HomeScreen = ({ navigation }) => {
   const updatePantryItem = async () => {
 
     const item = await API.graphql(graphqlOperation(getItem, {id: itemId}));
+    // if item is updated to have 0 or less quantity, the item will automatically be deleted
+    if (!(item.quantity == null) && parseInt(quantityText) <= 0) {
+      deletePantryItem(itemId);
+      handleModal();
+      return;
+    }
 
     try {
       // Perform
@@ -141,6 +147,7 @@ const HomeScreen = ({ navigation }) => {
       setNameText("");
       setWeightText("");
       setQuantityText("");
+      fetchItems();
       handleModal();
     } catch (err) {
 
@@ -149,12 +156,12 @@ const HomeScreen = ({ navigation }) => {
 
   // delete item
   const deletePantryItem = async (deleteId) => {
-    console.log(deleteId);
     try {
       const id = {
         id: deleteId
       }
       const d = await API.graphql(graphqlOperation(deleteItem,{input: id} ));
+      fetchItems();
     } catch (err) { 
       console.log(err);
     }
@@ -193,6 +200,7 @@ const HomeScreen = ({ navigation }) => {
 
   // list of items from pantry
   const listOfItems = items.map((item) => {
+    let percentage = (parseFloat(item.currWeight) / parseFloat(item.weight) * 100).toFixed(2);
     return (
       <View key={item.id}>
         <View
@@ -210,7 +218,7 @@ const HomeScreen = ({ navigation }) => {
           >
             {item.name + '\n'}
             {item.quantity && <Text style={{fontSize: 15, fontWeight: 'bold'}}>Quantity: {item.quantity}</Text>}
-            {item.weight && <Text style={{fontSize: 15, fontWeight: "bold"}}>Percentage left: {item.weight}%</Text>}
+            {item.weight && <Text style={{fontSize: 15, fontWeight: "bold"}}>Percentage left: {percentage}%</Text>}
           </Text>
           <Button buttonStyle={{ backgroundColor: 'grey', width: 75, marginRight: 5 }} title="update" onPress={() => {
             setItemId(item.id);
@@ -282,7 +290,7 @@ const HomeScreen = ({ navigation }) => {
           <View
             style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
           >
-            <Text style={{ fontSize: 25 }}>{pantryName}</Text>
+            <Text style={{ fontSize: 25, marginBottom: 15 }}>{pantryName}</Text>
             <Button
               buttonStyle={{ width: 250 }}
               title="Add Item"

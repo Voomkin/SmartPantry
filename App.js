@@ -3,10 +3,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import RNBluetoothClassic, {BluetoothDevice} from 'react-native-bluetooth-classic';
 
-import PantryStackScreen from './screens/Pantry';
 import HomeStackScreen from './screens/Home';
 import SettingsStackScreen from './screens/Settings';
-import ProfileScreen from './screens/Profile';
 
 import React from 'react';
 import {Icon, Button} from 'react-native-elements';
@@ -14,6 +12,7 @@ import Amplify from 'aws-amplify';
 import awsconfig from './src/aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import { Auth } from "aws-amplify";
+import ShoppingStackScreen from './screens/Shopping';
 
 
 // Initializes Amplify
@@ -55,7 +54,6 @@ const signOutAlert = () => {
 function App() {
 
   return (
-
     // Entire app wrapped in a NavigationContainer and uses the bottom tab navigator for screens
     <NavigationContainer>
       <Tab.Navigator
@@ -94,6 +92,16 @@ function App() {
             },
             headerShown: true,
           })}
+        />
+        <Tab.Screen
+          name="Shopping"
+          component={ShoppingStackScreen}
+          options={{
+            tabBarIcon: () => {
+              return <Icon name="store" />;
+            },
+            headerShown: true,
+          }}
         />
         {/* <Tab.Screen
           name="Profile"

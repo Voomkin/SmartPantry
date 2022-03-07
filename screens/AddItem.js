@@ -23,6 +23,7 @@ const addPantryItem = async () => {
     name: nameText,
     imagePath: "default_img",
     weight: parseFloat(weightText),
+    currWeight: parseFloat(weightText),
     quantity: parseInt(quantityText),
     pantryItemsId: user.username.toString(),
   };
