@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import {Text,View, Switch, Alert, ScrollView } from "react-native";
 import {Icon, Button} from "react-native-elements";
 import {Auth} from 'aws-amplify';
+import MyInfoScreen from "./MyInfo";
+import AccountsScreen from "./Accounts";
+import NotificationsScreen from "./Notifications";
+import HelpScreen from "./Help";
 import AboutScreen from "./About";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -25,6 +29,10 @@ const SettingsStackScreen = () => {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen options={{headerShown: false}}name="SettingsStack" component={Settings} />
+      <SettingsStack.Screen name="My Info" component={MyInfoScreen} />
+      <SettingsStack.Screen name="Accounts" component={AccountsScreen} />
+      <SettingsStack.Screen name="Notifications" component={NotificationsScreen} />
+      <SettingsStack.Screen name="Help" component={HelpScreen} />
       <SettingsStack.Screen name="About" component={AboutScreen} />
     </SettingsStack.Navigator>
   );
@@ -34,14 +42,22 @@ const Settings = ({navigation}) => {
 
     // Contains the settings options, each has a title, subtitle, and what to do when pressed
     const settingsOptions = [
-      { title: "My Info", subTitle: "Setup your profile", onPress: () => {} },
-      { title: "Accounts", onPress: () => {} },
+      { title: "My Info", subTitle: "Setup your profile", onPress: () => {
+          navigation.navigate("My Info");
+      } },
+      { title: "Accounts", onPress: () => {
+          navigation.navigate("Accounts");
+      } },
       {
         title: "Notifications",
         subTitle: "Manage your notifications",
-        onPress: () => {},
+        onPress: () => {
+          navigation.navigate("Notifications");
+        },
       },
-      { title: "Help", subTitle: "Help page", onPress: () => {} },
+      { title: "Help", subTitle: "Help page", onPress: () => {
+          navigation.navigate("Help");
+      } },
       { title: "About", onPress: () => {
           navigation.navigate("About");
       } },
