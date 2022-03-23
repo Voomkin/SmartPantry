@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
   slider: {
     width: 50,
-    height: '80%',
+    height: '120%',
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
