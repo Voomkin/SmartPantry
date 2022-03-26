@@ -265,7 +265,7 @@ const HomeScreen = ({ navigation }) => {
                       },
                      },
                  ] );
-                },// deletePantryItem(item.id)}, // Uses amplify Auth library and signOut() method
+                },
                },
                {
                  text: "No",
