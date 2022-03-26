@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Text,View, Switch, Alert, ScrollView } from "react-native";
 import {Icon, Button} from "react-native-elements";
-import {Auth} from 'aws-amplify';
+import {Auth, API, graphqlOperation } from 'aws-amplify';
 import MyInfoScreen from "./MyInfo";
 import AccountsScreen from "./Accounts";
 import NotificationsScreen from "./Notifications";
@@ -9,6 +9,7 @@ import HelpScreen from "./Help";
 import AboutScreen from "./About";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { deletePantry, deleteShoppingList } from "../mutations";
 
 const handleSignOut = () => {
     Alert.alert("Sign Out", "Do you want to sign out?", [
@@ -77,6 +78,24 @@ const Settings = ({navigation}) => {
           ]);
         },
       },
+      {
+        title: "Delete Pantry",
+        subTitle: "Delete your pantry",
+        onPress: () => {
+          Alert.alert("Delete Pantry", "Would you like to delete your pantry? Doing so will also delete your Shopping List", [
+            {
+              text: "Yes",
+              onPress: () => {
+                  deleteUserPantry();
+              }
+            },
+            {
+              text: "No",
+              style: "cancel",
+            }
+          ])
+        }
+      }
     ];
     return (
         <ScrollView style={{backgroundColor: 'white'}}>
@@ -94,6 +113,22 @@ const Settings = ({navigation}) => {
             </TouchableOpacity>)}
         </ScrollView>
     );
+}
+
+const deleteUserPantry = async () => {
+  try {
+    const user = await Auth.currentAuthenticatedUser();
+
+    const delId = {
+      id: user.username.toString()
+    }
+
+    const delPantry = await API.graphql(graphqlOperation(deletePantry, { input: delId }));
+
+    const delShopping = await API.graphql(graphqlOperation(deleteShoppingList, { input: delId }));
+  } catch(err) {
+    console.log(err);
+  }
 }
 
 export default SettingsStackScreen;

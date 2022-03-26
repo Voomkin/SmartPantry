@@ -231,15 +231,15 @@ const Shopping = ({navigation}) => {
         }}
       >
         {/* Conditional render based on the value of shoppingListButton and shoppingListExists */}
-        {shoppingListButton && (
-          <Button
-            buttonStyle={{ margin: 15 }}
-            title="Create Pantry"
-            onPress={() => {
-              navigation.navigate("CreatePantry");
-            }}
-          ></Button>
-        )}
+        {/* {shoppingListButton && (
+          // <Button
+          //   buttonStyle={{ margin: 15 }}
+          //   title="Create Pantry"
+          //   onPress={() => {
+          //     navigation.navigate("CreatePantry");
+          //   }}
+          // ></Button>
+        )} */}
         {!shoppingListExists && <Text>You must make a pantry before you make a shopping list</Text>}
         {shoppingListExists && (
           <View

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View } from "react-native";
 import {Input, Button} from "react-native-elements";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
-import { createPantry } from "../mutations";
+import { createPantry, createShoppingList } from "../mutations";
 
 const CreatePantryScreen = ({ navigation }) => {
     const [inputText, setInputText] = useState("");
@@ -21,7 +21,7 @@ const CreatePantryScreen = ({ navigation }) => {
             id: user.username.toString()
         }
 
-        const q = await API.graphql(graphqlOperation(createShoppingList, {input: pantryInput}))
+        const q = await API.graphql(graphqlOperation(createShoppingList, {input: shoppingInput}))
 
         navigation.navigate("HomeStack");
     }
