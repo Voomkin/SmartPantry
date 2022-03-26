@@ -118,6 +118,7 @@ const NotificationsScreen = () => {
   let outer_y = 200;
 
   return (
+    // The following code was used for the slider, which at the moment we are no longer using
     // <SafeAreaView>
     //   <Text style={styles.title}>How often would you like to receive notifications?</Text>
     //   <View
@@ -245,6 +246,7 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={ async () => {
+            alert("You will receive a notification in a few seconds")
             await schedulePushNotification();
         }}
         title="Click here to test notifications"
@@ -296,31 +298,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 });
-
-
-// const ReceiveNotification = () => {
-//   const [expoPushToken, setExpoPushToken] = useState('');
-//   const [notification, setNotification] = useState(false);
-//   const notificationListener = useRef();
-//   const responseListener = useRef();
-
-//   useEffect( async () => {
-//     await registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
-
-//     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-//       setNotification(notification);
-//     });
-
-//     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-//       console.log(response);
-//     });
-
-//     return () => {
-//       Notifications.removeNotificationSubscription(notificationListener.current);
-//       Notifications.removeNotificationSubscription(responseListener.current);
-//     };
-//   }, []);
-// }
 
 async function schedulePushNotification() {
   await Notifications.scheduleNotificationAsync({
