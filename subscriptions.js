@@ -10,6 +10,7 @@ export const onCreatePantry = /* GraphQL */ `
       items {
         nextToken
       }
+      notiffreq
       createdAt
       updatedAt
     }
@@ -24,6 +25,7 @@ export const onUpdatePantry = /* GraphQL */ `
       items {
         nextToken
       }
+      notiffreq
       createdAt
       updatedAt
     }
@@ -38,6 +40,7 @@ export const onDeletePantry = /* GraphQL */ `
       items {
         nextToken
       }
+      notiffreq
       createdAt
       updatedAt
     }
@@ -52,6 +55,12 @@ export const onCreateItem = /* GraphQL */ `
         id
         name
         owner
+        notiffreq
+        createdAt
+        updatedAt
+      }
+      list {
+        id
         createdAt
         updatedAt
       }
@@ -62,6 +71,7 @@ export const onCreateItem = /* GraphQL */ `
       createdAt
       updatedAt
       pantryItemsId
+      shoppingListItemsId
     }
   }
 `;
@@ -74,6 +84,12 @@ export const onUpdateItem = /* GraphQL */ `
         id
         name
         owner
+        notiffreq
+        createdAt
+        updatedAt
+      }
+      list {
+        id
         createdAt
         updatedAt
       }
@@ -84,6 +100,7 @@ export const onUpdateItem = /* GraphQL */ `
       createdAt
       updatedAt
       pantryItemsId
+      shoppingListItemsId
     }
   }
 `;
@@ -96,6 +113,12 @@ export const onDeleteItem = /* GraphQL */ `
         id
         name
         owner
+        notiffreq
+        createdAt
+        updatedAt
+      }
+      list {
+        id
         createdAt
         updatedAt
       }
@@ -106,6 +129,43 @@ export const onDeleteItem = /* GraphQL */ `
       createdAt
       updatedAt
       pantryItemsId
+      shoppingListItemsId
+    }
+  }
+`;
+export const onCreateShoppingList = /* GraphQL */ `
+  subscription OnCreateShoppingList {
+    onCreateShoppingList {
+      id
+      items {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateShoppingList = /* GraphQL */ `
+  subscription OnUpdateShoppingList {
+    onUpdateShoppingList {
+      id
+      items {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteShoppingList = /* GraphQL */ `
+  subscription OnDeleteShoppingList {
+    onDeleteShoppingList {
+      id
+      items {
+        nextToken
+      }
+      createdAt
+      updatedAt
     }
   }
 `;

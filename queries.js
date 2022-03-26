@@ -10,6 +10,7 @@ export const getPantry = /* GraphQL */ `
       items {
         nextToken
       }
+      notiffreq
       createdAt
       updatedAt
     }
@@ -26,6 +27,7 @@ export const listPantries = /* GraphQL */ `
         id
         name
         owner
+        notiffreq
         createdAt
         updatedAt
       }
@@ -42,6 +44,12 @@ export const getItem = /* GraphQL */ `
         id
         name
         owner
+        notiffreq
+        createdAt
+        updatedAt
+      }
+      list {
+        id
         createdAt
         updatedAt
       }
@@ -52,6 +60,7 @@ export const getItem = /* GraphQL */ `
       createdAt
       updatedAt
       pantryItemsId
+      shoppingListItemsId
     }
   }
 `;
@@ -72,6 +81,35 @@ export const listItems = /* GraphQL */ `
         createdAt
         updatedAt
         pantryItemsId
+        shoppingListItemsId
+      }
+      nextToken
+    }
+  }
+`;
+export const getShoppingList = /* GraphQL */ `
+  query GetShoppingList($id: ID!) {
+    getShoppingList(id: $id) {
+      id
+      items {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listShoppingLists = /* GraphQL */ `
+  query ListShoppingLists(
+    $filter: ModelShoppingListFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listShoppingLists(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        createdAt
+        updatedAt
       }
       nextToken
     }
