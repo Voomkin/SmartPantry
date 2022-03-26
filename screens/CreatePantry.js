@@ -16,6 +16,13 @@ const CreatePantryScreen = ({ navigation }) => {
             notiffreq: 5,
         };
         const p = await API.graphql(graphqlOperation(createPantry, {input: pantryInput}))
+
+        const shoppingInput = {
+            id: user.username.toString()
+        }
+
+        const q = await API.graphql(graphqlOperation(createShoppingList, {input: pantryInput}))
+
         navigation.navigate("HomeStack");
     }
     

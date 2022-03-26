@@ -9,7 +9,7 @@ import CreatePantryScreen from "./CreatePantry";
 import AddItemScreen from "./AddItem";
 import ManualAddScreen from "./ManualAdd";
 import { listItems, getItem } from "../queries.js";
-import { deleteItem, updateItem } from "../mutations";
+import { createItem, deleteItem, updateItem, createShoppingList } from "../mutations";
 import BarcodeAddScreen from "./BarcodeAdd";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
@@ -167,6 +167,23 @@ const HomeScreen = ({ navigation }) => {
     }
   }
 
+  // add an item to the shopping list upon deleting it from the pantry, if the user wishes
+  const addToShoppingList = async (itemID, name) => {
+    try {
+      const user = await Auth.currentAuthenticatedUser();
+
+      const id = {
+        id: itemID,
+        name: name,
+        imagePath: "default_img",
+        shoppingListItemsId: user.username.toString()
+      }
+      const d = await API.graphql(graphqlOperation(createItem,{input: id} ));
+    } catch (err) { 
+      console.log(err);
+    }
+  }
+
   const modalScreen = (
     <Modal visible={isModalVisible} animationType="slide">
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -230,7 +247,25 @@ const HomeScreen = ({ navigation }) => {
                {
                  text: "Yes",
                  onPress: () => { 
-                  deletePantryItem(item.id)}, // Uses amplify Auth library and signOut() method
+                   Alert.alert("Shopping List", "Would you like to add the item to your shopping list?", [
+                     {
+                       text: "Yes",
+                       onPress: () => {
+                         const itemID = item.id;
+                         const name = item.name;
+                         Alert.alert("Shopping List", "Adding to shopping list: " + name);
+                         deletePantryItem(item.id);
+                         addToShoppingList(itemID, name);
+                       }
+                     },
+                     {
+                      text: "No",
+                      onPress: () => {
+                        deletePantryItem(item.id);
+                      },
+                     },
+                 ] );
+                },// deletePantryItem(item.id)}, // Uses amplify Auth library and signOut() method
                },
                {
                  text: "No",

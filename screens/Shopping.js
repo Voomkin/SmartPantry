@@ -25,7 +25,7 @@ const Shopping = ({navigation}) => {
 
     return (
       <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-        <Text>Shopping List</Text>
+        <Text>You must create a pantry before you can use the shopping list</Text>
       </View>
     );
 }
