@@ -1,5 +1,5 @@
 
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,11 +9,15 @@ import {
   PanResponder,
   Button,
   Alert,
+  Platform,
 } from 'react-native';
-import { Notifications } from 'expo';
+// import { Notifications } from 'expo';
+import PushNotification from 'react-native-push-notification';
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import { getPantry } from "../queries";
 import { deletePantry, updatePantry } from "../mutations";
+import Constants from 'expo-constants';
+import * as Notifications from 'expo-notifications';
 // import * as Permissions from 'expo-permissions';
 
 const updateFrequency = async ( new_frequency ) => {
@@ -47,8 +51,42 @@ const updateFrequency = async ( new_frequency ) => {
   }
 }
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
 const NotificationsScreen = () => {
   // fetchItems();
+  // ReceiveNotification();
+  try {
+    const [expoPushToken, setExpoPushToken] = useState('');
+    const [notification, setNotification] = useState(false);
+    const notificationListener = useRef();
+    const responseListener = useRef();
+
+    useEffect( () => {
+      registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+
+      notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+        setNotification(notification);
+      });
+
+      responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+        console.log(response);
+      });
+
+      return () => {
+        Notifications.removeNotificationSubscription(notificationListener.current);
+        Notifications.removeNotificationSubscription(responseListener.current);
+      };
+    }, []);
+  } catch(err) {
+    console.log(err);
+  }
 
   const [sliderDimensions, setSliderDimensions] = useState({
     height: null,
@@ -205,6 +243,14 @@ const NotificationsScreen = () => {
         color="#FF4C26"
         accessibilityLabel="Click here to confirm your notification preference"
       />
+      <Button
+        onPress={ async () => {
+            await schedulePushNotification();
+        }}
+        title="Click here to test notifications"
+        color="blue"
+        accessibilityLabel="Click here to test notifications"
+      />
     </SafeAreaView>
   );
 };
@@ -251,11 +297,71 @@ const styles = StyleSheet.create({
   },
 });
 
-// const useNotifications = (notificationListener) => {
-//     useEffect(() => {
-//       registerForPushNotifications();
-  
-//       if (notificationListener) Notifications.addListener(notificationListener);
-//     }, []);
+
+// const ReceiveNotification = () => {
+//   const [expoPushToken, setExpoPushToken] = useState('');
+//   const [notification, setNotification] = useState(false);
+//   const notificationListener = useRef();
+//   const responseListener = useRef();
+
+//   useEffect( async () => {
+//     await registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+
+//     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+//       setNotification(notification);
+//     });
+
+//     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+//       console.log(response);
+//     });
+
+//     return () => {
+//       Notifications.removeNotificationSubscription(notificationListener.current);
+//       Notifications.removeNotificationSubscription(responseListener.current);
+//     };
+//   }, []);
+// }
+
+async function schedulePushNotification() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "SMART PANTRY",
+      body: 'Don\'t forget to keep your pantry up to date!',
+      data: { data: 'goes here' },
+    },
+    trigger: { seconds: 2 },
+  });
+}
+
+async function registerForPushNotificationsAsync() {
+  let token;
+  if (Constants.isDevice) {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== 'granted') {
+      alert('Failed to get push token for push notification!');
+      return;
+    }
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+    console.log(token);
+  } else {
+    alert('Must use physical device for Push Notifications');
+  }
+
+  if (Platform.OS === 'android') {
+    Notifications.setNotificationChannelAsync('default', {
+      name: 'default',
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: '#FF231F7C',
+    });
+  }
+
+  return token;
+}
 
 export default NotificationsScreen;
