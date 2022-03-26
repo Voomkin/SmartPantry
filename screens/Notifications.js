@@ -1,7 +1,3 @@
-/*
-Note: As of 3/23/2022, initial layout of page complete. In progress: Saving the notification preference of the user based on the scroll input.
-TODO: Send push notifications regularly, and at a frequency based on the user's preference (probably from hourly to never)
-*/
 
 import React, {useState, useRef} from 'react';
 import {
@@ -20,18 +16,6 @@ import { getPantry } from "../queries";
 import { deletePantry, updatePantry } from "../mutations";
 // import * as Permissions from 'expo-permissions';
 
-const deleteAPantry = async (deleteId) => {
-  try {
-    const id = {
-      id: deleteId
-    }
-    const d = await API.graphql(graphqlOperation(deletePantry,{input: id} ));
-    fetchItems();
-  } catch (err) { 
-    console.log(err);
-  }
-}
-
 const updateFrequency = async ( new_frequency ) => {
     try {
       alert("Your notification frequency will be set to: " + new_frequency);
@@ -46,28 +30,12 @@ const updateFrequency = async ( new_frequency ) => {
         notiffreq: new_frequency,
       }
 
-      // const p = await API.graphql(graphqlOperation(updatePantry, {input: pantryInput}))
       const update = {
         id: user.username.toString(),
         notiffreq: new_frequency,
-        // name: nameText ? nameText : item.name,
-        // currWeight: weightText ? parseFloat(weightText) : item.weight,
-        // quantity: quantityText ? parseInt(quantityText) : item.quantity
       }
 
       const u = await API.graphql(graphqlOperation(updatePantry, {input: update}));
-
-    //   const pantryInput = {
-    //     id: user.username.toString(),
-    //     name: pantryData.data.getPantry.name,
-    //     owner: user.username.toString(),
-    //     notiffreq: new_frequency,
-    // };
-
-    // const p = await API.graphql(graphqlOperation(createPantry, {input: pantryInput}))
-
-    // alert(user.username.toString())
-    // Performs the getPantry query based on the id, which is the user's username
 
     const pantryData2 = await API.graphql(
       graphqlOperation(getPantry, { id: user.username.toString() })
@@ -159,8 +127,6 @@ const NotificationsScreen = () => {
       <Text>Please select how often you would like to receive notifications about your pantry:</Text>
       <Button
         onPress={() => {
-            // UpdatePreference(outer_y);
-            // Alert.alert("New preference: " + notification_preference);
             updateFrequency(1);
         }}
         title="1 Hour"
@@ -169,8 +135,6 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            // UpdatePreference(outer_y);
-            // Alert.alert("New preference: " + notification_preference);
             updateFrequency(2);
         }}
         title="2 Hours"
@@ -179,8 +143,6 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            // UpdatePreference(outer_y);
-            // Alert.alert("New preference: " + notification_preference);
             updateFrequency(3);
         }}
         title="5 Hours"
@@ -189,8 +151,6 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            // UpdatePreference(outer_y);
-            // Alert.alert("New preference: " + notification_preference);
             updateFrequency(4);
         }}
         title="12 Hours"
@@ -199,8 +159,6 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            // UpdatePreference(outer_y);
-            // Alert.alert("New preference: " + notification_preference);
             updateFrequency(5);
         }}
         title="1 Day"
@@ -209,8 +167,6 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            // UpdatePreference(outer_y);
-            // Alert.alert("New preference: " + notification_preference);
             updateFrequency(6);
         }}
         title="2 Days"
@@ -219,8 +175,6 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            // UpdatePreference(outer_y);
-            // Alert.alert("New preference: " + notification_preference);
             updateFrequency(7);
         }}
         title="1 Week"
@@ -229,8 +183,6 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            // UpdatePreference(outer_y);
-            // Alert.alert("New preference: " + notification_preference);
             updateFrequency(8);
         }}
         title="2 Weeks"
@@ -239,8 +191,6 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            // UpdatePreference(outer_y);
-            // Alert.alert("New preference: " + notification_preference);
             updateFrequency(9);
         }}
         title="1 Month"
@@ -249,8 +199,6 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            // UpdatePreference(outer_y);
-            // Alert.alert("New preference: " + notification_preference);
             updateFrequency(10);
         }}
         title="3 Months"
