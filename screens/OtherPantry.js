@@ -13,41 +13,7 @@ import { listItems, getItem } from "../queries.js";
 import { createItem, deleteItem, updateItem, createShoppingList } from "../mutations";
 import BarcodeAddScreen from "./BarcodeAdd";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
-
-
-
-const viewOtherPantry = async () => {
-    try {
-
-      const user = await Auth.currentAuthenticatedUser();
-  
-      const pantriesList = await API.graphql(
-        graphqlOperation(listPantries, {
-        filter: {
-            collabId: {
-            eq: user.username.toString(),
-            },
-        },
-        })
-      );
-
-      const b = pantriesList.data.listPantries.items;
-  
-      
-      //NOTE: As of 3/27/2022, it may be the case that a collaborator can view multiple pantries
-      const collabPantries = b.map( async (pantry) => {
-        console.log(pantry.name);
-      });
-  
-    } catch(err) {
-  
-    }
-  }
-
-
-
-  
+import { StatusBar } from "expo-status-bar";  
 
 
 const OtherPantryScreen = ({ navigation }) => {
@@ -85,9 +51,6 @@ const OtherPantryScreen = ({ navigation }) => {
       const user = await Auth.currentAuthenticatedUser(); // returns cognito user JSON
 
       // Performs the getPantry query based on the id, which is the user's username
-    //   const pantryData = await API.graphql(
-    //     graphqlOperation(getPantry, { id: user.username.toString() })
-    //   );
 
     //   const user = await Auth.currentAuthenticatedUser();
   
@@ -158,49 +121,6 @@ const OtherPantryScreen = ({ navigation }) => {
     }
   };
 
-  // Update item
-//   const updatePantryItem = async () => {
-
-//     const item = await API.graphql(graphqlOperation(getItem, {id: itemId}));
-//     // if item is updated to have 0 or less quantity, the item will automatically be deleted
-//     if (!(item.quantity == null) && parseInt(quantityText) <= 0) {
-//       deletePantryItem(itemId);
-//       handleModal();
-//       return;
-//     }
-
-//     try {
-//       // Perform
-//       const update = {
-//         id: itemId,
-//         name: nameText ? nameText : item.name,
-//         currWeight: weightText ? parseFloat(weightText) : item.weight,
-//         quantity: quantityText ? parseInt(quantityText) : item.quantity
-//       }
-
-//       const u = await API.graphql(graphqlOperation(updateItem, {input: update}));
-//       setNameText("");
-//       setWeightText("");
-//       setQuantityText("");
-//       fetchItems();
-//       handleModal();
-//     } catch (err) {
-
-//     }
-//   }
-
-  // delete item
-//   const deletePantryItem = async (deleteId) => {
-//     try {
-//       const id = {
-//         id: deleteId
-//       }
-//       const d = await API.graphql(graphqlOperation(deleteItem,{input: id} ));
-//       fetchItems();
-//     } catch (err) { 
-//       console.log(err);
-//     }
-//   }
 
   // add an item to the shopping list upon deleting it from the pantry, if the user wishes
   const addToShoppingList = async (itemID, name) => {
@@ -226,7 +146,7 @@ const OtherPantryScreen = ({ navigation }) => {
       const d = await API.graphql(graphqlOperation(createItem,{input: id} ));
 
       Alert.alert("Add to Shopping List", "Added \"" + name + "\" to shopping list");
-      
+
     } catch (err) { 
       console.log(err);
     }
@@ -357,31 +277,14 @@ const OtherPantryScreen = ({ navigation }) => {
           justifyContent: "center",
         }}
       >
-        {/* Conditional render based on the value of createPantryButton and pantryExists */}
-        {/* {createPantryButton && (
-          <Button
-            buttonStyle={{ margin: 15 }}
-            title="Create Pantry"
-            onPress={() => {
-              navigation.navigate("CreatePantry");
-            }}
-          ></Button>
-        )} */}
         {!pantryExists && <Text>You are not a collaborator for any pantries</Text>}
         {pantryExists && (
           <View
             style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
           >
             <Text style={{ fontSize: 25, marginBottom: 15 }}>{pantryName}</Text>
-            {/* <Button
-              buttonStyle={{ width: 250 }}
-              title="Add Item"
-              onPress={() => {
-                navigation.navigate("AddItem");
-              }}
-            ></Button> */}
+
             <View>{listOfItems}</View>
-            {/* <View>{modalScreen}</View> */}
           </View>
         )}
       </ScrollView>
