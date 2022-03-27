@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {Text,View, Switch, Alert, ScrollView } from "react-native";
 import {Icon, Button} from "react-native-elements";
 import {Auth, API, graphqlOperation } from 'aws-amplify';
@@ -9,7 +9,8 @@ import HelpScreen from "./Help";
 import AboutScreen from "./About";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { deletePantry, deleteShoppingList } from "../mutations";
+import { deletePantry, deleteShoppingList, deleteItem } from "../mutations";
+import { getPantry, listItems, getShoppingList } from "../queries";
 
 const handleSignOut = () => {
     Alert.alert("Sign Out", "Do you want to sign out?", [
@@ -40,6 +41,7 @@ const SettingsStackScreen = () => {
 };
 
 const Settings = ({navigation}) => {
+
 
     // Contains the settings options, each has a title, subtitle, and what to do when pressed
     const settingsOptions = [
@@ -119,13 +121,77 @@ const deleteUserPantry = async () => {
   try {
     const user = await Auth.currentAuthenticatedUser();
 
-    const delId = {
-      id: user.username.toString()
+    const pantryData = await API.graphql(
+      graphqlOperation(getPantry, { id: user.username.toString() })
+    );
+
+      // if the getPantry query does not return a null value, sets pantry exists to true
+      // otherwise sets it to false because they don't have a pantry yet
+      if (pantryData.data.getPantry == null) {
+        Alert.alert("Delete Pantry", "You do not have a pantry");
+      }
+      else {
+
+      // Grabs the id field from the pantry data
+      const pantryId = pantryData.data.getPantry.id;
+
+      // Grabs the items that are related to the id of the pantry
+      const itemsList = await API.graphql(
+        graphqlOperation(listItems, {
+          filter: {
+            pantryItemsId: {
+              eq: pantryId.toString(),
+            },
+          },
+        })
+      );
+
+      // stores the value of the items returned
+      const b = itemsList.data.listItems.items;
+      // alert(JSON.stringify(itemsList.data.listItems.items));
+      const deleteAllItems = b.map( async (item) => {
+        const deletionId = {
+          id: item.id,
+        };
+        const delPantryItem = await API.graphql(graphqlOperation(deleteItem, { input: deletionId }));
+      });
+
+      const shoppingListData = await API.graphql(
+        graphqlOperation(getShoppingList, { id: user.username.toString() })
+      );
+
+      const shoppingListId = shoppingListData.data.getShoppingList.id;
+
+      const shoppingItemsList = await API.graphql(
+        graphqlOperation(listItems, {
+          filter: {
+            shoppingListItemsId: {
+              eq: shoppingListId.toString(),
+            },
+          },
+        })
+      );
+
+      const c = shoppingItemsList.data.listItems.items;
+
+      const deleteAllShoppingItems = c.map( async (item) => {
+        const deletionId = {
+          id: item.id,
+        };
+        const delPantryItem = await API.graphql(graphqlOperation(deleteItem, { input: deletionId }));
+      });
+
+      const delId = {
+        id: user.username.toString()
+      }
+
+      const delPantry = await API.graphql(graphqlOperation(deletePantry, { input: delId }));
+
+      const delShopping = await API.graphql(graphqlOperation(deleteShoppingList, { input: delId }));
+
+      Alert.alert("Delete Pantry", "Your pantry and has been deleted");
     }
 
-    const delPantry = await API.graphql(graphqlOperation(deletePantry, { input: delId }));
-
-    const delShopping = await API.graphql(graphqlOperation(deleteShoppingList, { input: delId }));
   } catch(err) {
     console.log(err);
   }

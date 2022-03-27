@@ -20,12 +20,12 @@ const fetchInfo = async () => {
         console.log(err);
     }
 
-    alert(email);
+    // alert(email);
 
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
             <Text>
-                EMAIL { email }
+                EMAIL
             </Text>
         </View>
     );
@@ -43,14 +43,11 @@ const MyInfoScreen = ({ navigation }) => {
     //     const email = data.attributes.email ;
     //     return email;
     // })
-    fetchInfo();
+    // fetchInfo();
 
     return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            <Text>
-                { fetchInfo }
-            </Text>
-        </View>
+        
+        <View>{fetchInfo}</View>
     );
 };
 
