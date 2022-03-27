@@ -48,7 +48,9 @@ const Settings = ({navigation}) => {
       { title: "My Info", subTitle: "Setup your profile", onPress: () => {
           navigation.navigate("My Info");
       } },
-      { title: "Accounts", onPress: () => {
+      { title: "Accounts",
+        subTitle: "View other pantries and manage who can view yours",
+         onPress: () => {
           navigation.navigate("Accounts");
       } },
       {

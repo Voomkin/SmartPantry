@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import { updatePantry } from "../mutations";
-import { getPantry } from "../queries";
+import { getPantry, listPantries } from "../queries";
 import { Button, Input } from "react-native-elements";
 // Imports to be used if the QR code method is used for this part
 // import ReactDOM from "react-dom";
@@ -20,6 +20,7 @@ import { Button, Input } from "react-native-elements";
 //   </React.StrictMode>
 // );
 
+//This is the ID for one of my accounts (Kollin) used for testing functionality of collaborator accounts
 const testID = "0350bfeb-7f0f-45b3-b699-3a6607446a12";
 
 const addStringToDatabase = async (userToAdd) => {
@@ -47,6 +48,34 @@ const addStringToDatabase = async (userToAdd) => {
   }
 }
 
+const viewOtherPantry = async () => {
+  try {
+    const user = await Auth.currentAuthenticatedUser();
+
+    const pantriesList = await API.graphql(
+      graphqlOperation(listPantries, {
+      filter: {
+          collabId: {
+          eq: user.username.toString(),
+          },
+      },
+      })
+    );
+
+
+    const b = pantriesList.data.listPantries.items;
+
+    
+      //NOTE: As of 3/27/2022, it may be the case that a collaborator can view multiple pantries
+    const collabPantries = b.map( async (pantry) => {
+      console.log(pantry.name);
+    });
+
+  } catch(err) {
+
+  }
+}
+
 const AccountsScreen = ({ navigation }) => {
   const [userText, setUserText] = useState("");
 
@@ -63,8 +92,21 @@ const AccountsScreen = ({ navigation }) => {
       />
       <Button
         onPress={ async () => {
-            // Alert.alert("Add Viewer", "This will take you to add another user to your pantry it you have not already");
-            await addStringToDatabase(userText);
+          Alert.alert("Add Collaborator", "Add collaborator with ID \"" + userText + "\" to your pantry? Doing so will remove your current collaborator if you have one.", [
+            {
+              text: "Yes",
+              onPress: async () => {
+                //NOTE: The userText field should be the ID of the user to add. Want to implement a QR code generator/scanner
+                //to make this process seamless and not tedious.
+                await addStringToDatabase(userText);
+                Alert.alert("Add Collaborator", "Successfully added collaborator \"" + userText + "\"");
+              }
+            },
+            {
+              text: "No",
+              style: "cancel",
+            }
+          ])
         }}
         title="Click here to add a viewer to your pantry"
         color="orange"
@@ -72,7 +114,8 @@ const AccountsScreen = ({ navigation }) => {
       />
       <Button
         onPress={ async () => {
-            Alert.alert("View Other Pantry", "This will take you to view another user's pantry, assuming you have access");
+            // Alert.alert("View Other Pantry", "This will take you to view another user's pantry, assuming you have access");
+            viewOtherPantry();
         }}
         title="Click here to view another pantry"
         color="purple"
