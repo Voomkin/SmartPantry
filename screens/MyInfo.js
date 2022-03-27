@@ -76,6 +76,7 @@ const getPantryInfo = async (user) => {
             outputString += "\nPantry Create Date: " + dateCreated + "\nLast Pantry Update: " + dateUpdated + "\nSize of Pantry: " + itemCount;
 
             Alert.alert("User Information", outputString)
+            //NOTE: Whenever this is finalized, it would probably be best to display a more user-friendly piece of data than a timestamp (basically just make it more legible)
         }
 
     } catch(err) {

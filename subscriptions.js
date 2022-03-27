@@ -11,6 +11,7 @@ export const onCreatePantry = /* GraphQL */ `
         nextToken
       }
       notiffreq
+      collabId
       createdAt
       updatedAt
     }
@@ -26,6 +27,7 @@ export const onUpdatePantry = /* GraphQL */ `
         nextToken
       }
       notiffreq
+      collabId
       createdAt
       updatedAt
     }
@@ -41,6 +43,7 @@ export const onDeletePantry = /* GraphQL */ `
         nextToken
       }
       notiffreq
+      collabId
       createdAt
       updatedAt
     }
@@ -56,6 +59,7 @@ export const onCreateItem = /* GraphQL */ `
         name
         owner
         notiffreq
+        collabId
         createdAt
         updatedAt
       }
@@ -85,6 +89,7 @@ export const onUpdateItem = /* GraphQL */ `
         name
         owner
         notiffreq
+        collabId
         createdAt
         updatedAt
       }
@@ -114,6 +119,7 @@ export const onDeleteItem = /* GraphQL */ `
         name
         owner
         notiffreq
+        collabId
         createdAt
         updatedAt
       }
