@@ -11,6 +11,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { deletePantry, deleteShoppingList, deleteItem } from "../mutations";
 import { getPantry, listItems, getShoppingList } from "../queries";
+import OtherPantryScreen from "./OtherPantry";
 
 const handleSignOut = () => {
     Alert.alert("Sign Out", "Do you want to sign out?", [
@@ -31,6 +32,7 @@ const SettingsStackScreen = () => {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen options={{headerShown: false}}name="SettingsStack" component={Settings} />
+      <SettingsStack.Screen name="Collaborator Pantry" component={OtherPantryScreen} />
       <SettingsStack.Screen name="My Info" component={MyInfoScreen} />
       <SettingsStack.Screen name="Accounts" component={AccountsScreen} />
       <SettingsStack.Screen name="Notifications" component={NotificationsScreen} />
@@ -45,6 +47,11 @@ const Settings = ({navigation}) => {
 
     // Contains the settings options, each has a title, subtitle, and what to do when pressed
     const settingsOptions = [
+      { title: "Collaborator Pantry",
+        subTitle: "View another user's pantry",
+         onPress: () => {
+          navigation.navigate("Collaborator Pantry");
+      } },
       { title: "My Info", subTitle: "Setup your profile", onPress: () => {
           navigation.navigate("My Info");
       } },

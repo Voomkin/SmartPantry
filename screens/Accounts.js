@@ -48,33 +48,7 @@ const addStringToDatabase = async (userToAdd) => {
   }
 }
 
-const viewOtherPantry = async () => {
-  try {
-    const user = await Auth.currentAuthenticatedUser();
 
-    const pantriesList = await API.graphql(
-      graphqlOperation(listPantries, {
-      filter: {
-          collabId: {
-          eq: user.username.toString(),
-          },
-      },
-      })
-    );
-
-
-    const b = pantriesList.data.listPantries.items;
-
-    
-      //NOTE: As of 3/27/2022, it may be the case that a collaborator can view multiple pantries
-    const collabPantries = b.map( async (pantry) => {
-      console.log(pantry.name);
-    });
-
-  } catch(err) {
-
-  }
-}
 
 const AccountsScreen = ({ navigation }) => {
   const [userText, setUserText] = useState("");
@@ -112,7 +86,7 @@ const AccountsScreen = ({ navigation }) => {
         color="orange"
         accessibilityLabel="Click here to add this collaborator to your pantry"
       />
-      <Button
+      {/* <Button
         onPress={ async () => {
             // Alert.alert("View Other Pantry", "This will take you to view another user's pantry, assuming you have access");
             viewOtherPantry();
@@ -120,7 +94,7 @@ const AccountsScreen = ({ navigation }) => {
         title="Click here to view another pantry"
         color="purple"
         accessibilityLabel="Click here to view another pantry"
-      />
+      /> */}
     </View>
   );
 };
