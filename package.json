@@ -25,10 +25,12 @@
     "expo": "~44.0.0",
     "expo-barcode-scanner": "^11.2.1",
     "expo-image-picker": "^12.0.2",
+    "expo-notifications": "~0.14.0",
     "expo-status-bar": "~1.2.0",
     "native-base": "^3.3.4",
+    "qrcode": "^1.5.0",
     "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react-dom": "^17.0.1",
     "react-native": "0.64.3",
     "react-native-bluetooth-classic": "^1.60.0-rc.20",
     "react-native-camera": "^4.2.1",
@@ -43,12 +45,12 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-settings-screen": "^2.2.1",
-    "react-native-svg": "^12.1.1",
+    "react-native-svg": "^12.3.0",
     "react-native-vector-icons": "^9.0.0",
     "react-native-video": "^5.2.0",
     "react-native-web": "0.17.1",
     "react-native-webview": "^11.17.1",
-    "expo-notifications": "~0.14.0"
+    "react-qr-code": "^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
