@@ -19,6 +19,7 @@ type Item @model @auth(rules: [{ allow: public }]) {
   weight: Float
   currWeight: Float
   quantity: Int
+  expDate: String
 }
 
 type ShoppingList @model @auth(rules: [{ allow: public }]) {

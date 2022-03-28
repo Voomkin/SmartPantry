@@ -312,7 +312,7 @@ async function schedulePushNotification() {
       body: 'Don\'t forget to keep your pantry up to date!',
       data: { data: 'goes here' },
     },
-    trigger: { seconds: 2 },
+    trigger: { seconds: 20 },
   });
 }
 

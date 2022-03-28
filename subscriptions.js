@@ -72,6 +72,7 @@ export const onCreateItem = /* GraphQL */ `
       weight
       currWeight
       quantity
+      expDate
       createdAt
       updatedAt
       pantryItemsId
@@ -102,6 +103,7 @@ export const onUpdateItem = /* GraphQL */ `
       weight
       currWeight
       quantity
+      expDate
       createdAt
       updatedAt
       pantryItemsId
@@ -132,6 +134,7 @@ export const onDeleteItem = /* GraphQL */ `
       weight
       currWeight
       quantity
+      expDate
       createdAt
       updatedAt
       pantryItemsId
