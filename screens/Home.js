@@ -11,7 +11,6 @@ import ManualAddScreen from "./ManualAdd";
 import { listItems, getItem } from "../queries.js";
 import { createItem, deleteItem, updateItem, createShoppingList } from "../mutations";
 import BarcodeAddScreen from "./BarcodeAdd";
-import {AsyncStorage} from '@react-native-async-storage/async-storage';
 
 
 // Creates a stack navigator object
@@ -52,6 +51,7 @@ const HomeStackScreen = () => {
       </HomeStack.Navigator>
     );
 }
+
 
 // The actual home screen rendering
 const HomeScreen = ({ navigation }) => {
@@ -288,12 +288,7 @@ const HomeScreen = ({ navigation }) => {
                  text: "No",
                  style: "cancel",
                },
-               {
-                 text: "Add to List",
-                 onPress: () => {
-                   
-                 },
-               }
+               
              ]);
           }}></Button>
         </View>
