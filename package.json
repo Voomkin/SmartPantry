@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^2.2.0",
-    "@react-native-async-storage/async-storage": "^1.15.17",
+    "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/checkbox": "^0.5.9",
     "@react-native-community/netinfo": "^7.1.9",
     "@react-native-picker/picker": "^2.2.1",

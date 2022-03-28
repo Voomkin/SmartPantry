@@ -32,7 +32,9 @@ const SettingsStack = createStackNavigator();
 
 const SettingsStackScreen = () => {
   return (
-    <SettingsStack.Navigator>
+    <SettingsStack.Navigator screenOptions={{
+      headerBackTitleVisible: false
+    }}>
       <SettingsStack.Screen options={{headerShown: false}}name="SettingsStack" component={Settings} />
       <SettingsStack.Screen name="Collaborator Pantry" component={OtherPantryScreen} />
       <SettingsStack.Screen name="My Info" component={MyInfoScreen} />
