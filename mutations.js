@@ -13,6 +13,8 @@ export const createPantry = /* GraphQL */ `
       items {
         nextToken
       }
+      notiffreq
+      collabId
       createdAt
       updatedAt
     }
@@ -30,6 +32,8 @@ export const updatePantry = /* GraphQL */ `
       items {
         nextToken
       }
+      notiffreq
+      collabId
       createdAt
       updatedAt
     }
@@ -47,6 +51,8 @@ export const deletePantry = /* GraphQL */ `
       items {
         nextToken
       }
+      notiffreq
+      collabId
       createdAt
       updatedAt
     }
@@ -64,6 +70,13 @@ export const createItem = /* GraphQL */ `
         id
         name
         owner
+        notiffreq
+        collabId
+        createdAt
+        updatedAt
+      }
+      list {
+        id
         createdAt
         updatedAt
       }
@@ -74,6 +87,7 @@ export const createItem = /* GraphQL */ `
       createdAt
       updatedAt
       pantryItemsId
+      shoppingListItemsId
     }
   }
 `;
@@ -89,6 +103,13 @@ export const updateItem = /* GraphQL */ `
         id
         name
         owner
+        notiffreq
+        collabId
+        createdAt
+        updatedAt
+      }
+      list {
+        id
         createdAt
         updatedAt
       }
@@ -99,6 +120,7 @@ export const updateItem = /* GraphQL */ `
       createdAt
       updatedAt
       pantryItemsId
+      shoppingListItemsId
     }
   }
 `;
@@ -114,6 +136,13 @@ export const deleteItem = /* GraphQL */ `
         id
         name
         owner
+        notiffreq
+        collabId
+        createdAt
+        updatedAt
+      }
+      list {
+        id
         createdAt
         updatedAt
       }
@@ -124,6 +153,52 @@ export const deleteItem = /* GraphQL */ `
       createdAt
       updatedAt
       pantryItemsId
+      shoppingListItemsId
+    }
+  }
+`;
+export const createShoppingList = /* GraphQL */ `
+  mutation CreateShoppingList(
+    $input: CreateShoppingListInput!
+    $condition: ModelShoppingListConditionInput
+  ) {
+    createShoppingList(input: $input, condition: $condition) {
+      id
+      items {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateShoppingList = /* GraphQL */ `
+  mutation UpdateShoppingList(
+    $input: UpdateShoppingListInput!
+    $condition: ModelShoppingListConditionInput
+  ) {
+    updateShoppingList(input: $input, condition: $condition) {
+      id
+      items {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteShoppingList = /* GraphQL */ `
+  mutation DeleteShoppingList(
+    $input: DeleteShoppingListInput!
+    $condition: ModelShoppingListConditionInput
+  ) {
+    deleteShoppingList(input: $input, condition: $condition) {
+      id
+      items {
+        nextToken
+      }
+      createdAt
+      updatedAt
     }
   }
 `;
