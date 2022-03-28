@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Text,View, SafeAreaView, StyleSheet ,ScrollView, Modal, Alert} from "react-native";
+import {Text,View ,ScrollView, Modal, Alert} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import {Icon, Input} from 'react-native-elements';
@@ -11,8 +11,8 @@ import ManualAddScreen from "./ManualAdd";
 import { listItems, getItem } from "../queries.js";
 import { deleteItem, updateItem } from "../mutations";
 import BarcodeAddScreen from "./BarcodeAdd";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
+import {AsyncStorage} from '@react-native-async-storage/async-storage';
+
 
 // Creates a stack navigator object
 const HomeStack = createStackNavigator();
@@ -21,7 +21,9 @@ const HomeStack = createStackNavigator();
 // Contains all the screens that are reachable/within the bottom tab home screen
 const HomeStackScreen = () => {
     return (
-      <HomeStack.Navigator>
+      <HomeStack.Navigator screenOptions={{
+        headerBackTitleVisible: false
+      }}>
         <HomeStack.Screen
           options={{ headerShown: false }}
           name="HomeStack"
@@ -127,31 +129,46 @@ const HomeScreen = ({ navigation }) => {
   const updatePantryItem = async () => {
 
     const item = await API.graphql(graphqlOperation(getItem, {id: itemId}));
+
     // if item is updated to have 0 or less quantity, the item will automatically be deleted
-    if (!(item.quantity == null) && parseInt(quantityText) <= 0) {
+    if (!(item.data.getItem.quantity == null) && parseInt(quantityText) <= 0) {
       deletePantryItem(itemId);
       handleModal();
       return;
     }
 
-    try {
-      // Perform
-      const update = {
-        id: itemId,
-        name: nameText ? nameText : item.name,
-        currWeight: weightText ? parseFloat(weightText) : item.weight,
-        quantity: quantityText ? parseInt(quantityText) : item.quantity
-      }
-
-      const u = await API.graphql(graphqlOperation(updateItem, {input: update}));
-      setNameText("");
-      setWeightText("");
-      setQuantityText("");
-      fetchItems();
+    // if item percentage goes to 0 or below, item automatically delete
+    if (
+      !(item.data.getItem.weight == null) &&
+      (parseFloat(weightText) / parseFloat(item.data.getItem.weight)) <= 0
+    )
+    {
+      deletePantryItem(itemId);
       handleModal();
-    } catch (err) {
-
+      return;
     }
+      try {
+        // Perform
+        const update = {
+          id: itemId,
+          name: nameText ? nameText : item.name,
+          currWeight: weightText
+            ? parseFloat(weightText)
+            : item.data.getItem.weight,
+          quantity: quantityText
+            ? parseInt(quantityText)
+            : item.data.getItem.quantity,
+        };
+
+        const u = await API.graphql(
+          graphqlOperation(updateItem, { input: update })
+        );
+        setNameText("");
+        setWeightText("");
+        setQuantityText("");
+        fetchItems();
+        handleModal();
+      } catch (err) {}
   }
 
   // delete item
@@ -230,12 +247,18 @@ const HomeScreen = ({ navigation }) => {
                {
                  text: "Yes",
                  onPress: () => { 
-                  deletePantryItem(item.id)}, // Uses amplify Auth library and signOut() method
+                  deletePantryItem(item.id)},
                },
                {
                  text: "No",
                  style: "cancel",
                },
+               {
+                 text: "Add to List",
+                 onPress: () => {
+                   
+                 },
+               }
              ]);
           }}></Button>
         </View>
@@ -270,7 +293,7 @@ const HomeScreen = ({ navigation }) => {
   return (
       <ScrollView
         contentContainerStyle={{
-          flexGrow: 1,
+          // flexGrow: 1,
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -290,7 +313,7 @@ const HomeScreen = ({ navigation }) => {
           <View
             style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
           >
-            <Text style={{ fontSize: 25, marginBottom: 15 }}>{pantryName}</Text>
+            <Text style={{ fontSize: 25, margin: 15 }}>{pantryName}</Text>
             <Button
               buttonStyle={{ width: 250 }}
               title="Add Item"
