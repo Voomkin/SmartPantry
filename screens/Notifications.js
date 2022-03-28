@@ -22,7 +22,7 @@ import * as Notifications from 'expo-notifications';
 
 const updateFrequency = async ( new_frequency ) => {
     try {
-      alert("Your notification frequency will be set to: " + new_frequency);
+      
 
       const user = await Auth.currentAuthenticatedUser(); // returns cognito user JSON
 
@@ -30,22 +30,28 @@ const updateFrequency = async ( new_frequency ) => {
         graphqlOperation(getPantry, { id: user.username.toString() })
       );
 
-      const pantryInput = {
-        notiffreq: new_frequency,
-      }
+      if (pantryData.data.getPantry == null) {
+        Alert.alert("Notifications", "You must have a pantry to select a notification frequency");
+        return null;
+      } else {
 
-      const update = {
-        id: user.username.toString(),
-        notiffreq: new_frequency,
-      }
+        const pantryInput = {
+          notiffreq: new_frequency,
+        }
 
-      const u = await API.graphql(graphqlOperation(updatePantry, {input: update}));
+        const update = {
+          id: user.username.toString(),
+          notiffreq: new_frequency,
+        }
 
-    const pantryData2 = await API.graphql(
-      graphqlOperation(getPantry, { id: user.username.toString() })
-    );
+        const u = await API.graphql(graphqlOperation(updatePantry, {input: update}));
 
-    console.log(pantryData2.data.getPantry.notiffreq);
+      const pantryData2 = await API.graphql(
+        graphqlOperation(getPantry, { id: user.username.toString() })
+      );
+
+      Alert.alert("Notifications", "Your notification frequency will be set to: " + new_frequency);
+    }
   } catch (err) {
     console.log(err);
   }
