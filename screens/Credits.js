@@ -4,12 +4,12 @@ import {
   View,
 } from "react-native";
 
-const HelpScreen = ({ navigation }) => {
+const CreditsScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Insert here video tutorials for various features (do last, after most styling complete)</Text>
+        <Text>Here will go pictures of the 5 of us and short bios</Text>
     </View>
   );
 };
 
-export default HelpScreen;
+export default CreditsScreen;

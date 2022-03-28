@@ -12,6 +12,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { deletePantry, deleteShoppingList, deleteItem } from "../mutations";
 import { getPantry, listItems, getShoppingList } from "../queries";
 import OtherPantryScreen from "./OtherPantry";
+import CreditsScreen from "./Credits";
+import PatchNotesScreen from "./PatchNotes";
 
 const handleSignOut = () => {
     Alert.alert("Sign Out", "Do you want to sign out?", [
@@ -38,6 +40,8 @@ const SettingsStackScreen = () => {
       <SettingsStack.Screen name="Notifications" component={NotificationsScreen} />
       <SettingsStack.Screen name="Help" component={HelpScreen} />
       <SettingsStack.Screen name="About" component={AboutScreen} />
+      <SettingsStack.Screen name="Credits" component={CreditsScreen} />
+      <SettingsStack.Screen name="PatchNotes" component={PatchNotesScreen} />
     </SettingsStack.Navigator>
   );
 };
@@ -70,9 +74,21 @@ const Settings = ({navigation}) => {
       { title: "Help", subTitle: "Help page", onPress: () => {
           navigation.navigate("Help");
       } },
-      { title: "About", onPress: () => {
+      { title: "About",
+        subTitle: "Learn about your Smart Pantry app", 
+        onPress: () => {
           navigation.navigate("About");
       } },
+      { title: "Credits",
+        subTitle: "About the creators",
+        onPress: () => {
+        navigation.navigate("Credits");
+      } },
+      { title: "Patch Notes",
+      subTitle: "See what's new in the latest update",
+      onPress: () => {
+      navigation.navigate("PatchNotes");
+    } },
       {
         title: "Sign Out",
         subTitle: "Sign out of app",

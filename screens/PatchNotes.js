@@ -4,12 +4,12 @@ import {
   View,
 } from "react-native";
 
-const HelpScreen = ({ navigation }) => {
+const PatchNotesScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Insert here video tutorials for various features (do last, after most styling complete)</Text>
+      <Text>This app is currently in its alpha testing phase</Text>
     </View>
   );
 };
 
-export default HelpScreen;
+export default PatchNotesScreen;
