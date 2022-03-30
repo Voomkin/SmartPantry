@@ -14,7 +14,6 @@ import awsconfig from './src/aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import { Auth } from "aws-amplify";
 
-
 // Initializes Amplify
 Amplify.configure({
   ...awsconfig,

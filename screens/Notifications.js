@@ -12,7 +12,7 @@ import {
   Platform,
 } from 'react-native';
 // import { Notifications } from 'expo';
-import PushNotification from 'react-native-push-notification';
+// import PushNotification from 'react-native-push-notification';
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import { getPantry } from "../queries";
 import { deletePantry, updatePantry } from "../mutations";
