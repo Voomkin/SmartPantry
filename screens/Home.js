@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import {Text,View ,ScrollView, Modal, Alert} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
@@ -11,6 +11,8 @@ import ManualAddScreen from "./ManualAdd";
 import { listItems, getItem } from "../queries.js";
 import { createItem, deleteItem, updateItem, createShoppingList } from "../mutations";
 import BarcodeAddScreen from "./BarcodeAdd";
+
+import { TextArea } from "native-base";
 
 
 // Creates a stack navigator object
