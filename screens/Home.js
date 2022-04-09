@@ -450,7 +450,81 @@ async function schedulePushNotification() {
       const p = await API.graphql(graphqlOperation(updatePantry, {input: pantryInput}))
     }
 
-    if(!pantryData.data.getPantry.notifPending) {
+    let itemsExpiring = false;
+    const today = new Date();
+
+    //HERE: Check if there are any items expiring in the current user's pantry
+    // Grabs the id field from the pantry data
+    const pantryId = pantryData.data.getPantry.id;
+
+    // Grabs the items that are related to the id of the pantry
+    const itemsList = await API.graphql(
+      graphqlOperation(listItems, {
+        filter: {
+          pantryItemsId: {
+            eq: pantryId.toString(),
+          },
+        },
+      })
+    );
+
+    const b = itemsList.data.listItems.items;
+
+    const checkExpirations = b.map( async (item) => {
+      //NOTE: For some reason, the JavaScipt Date function is outputting the wrong date for me. I can calibrate it to be accurate
+      //      but I don't want to do that until closer to when we demo our project.
+      // console.log("DATE: " + item.expDate);
+      // console.log("MONTH: " + today.getMonth() + " " + today.getDay() + " " + today.getFullYear());
+      const exp_date = item.expDate;
+
+      let month = 0;
+      let day = 0;
+      let year = 0;
+      if(exp_date.length == 7) {
+        month = parseInt(exp_date.charAt(0));
+        day = parseInt(exp_date.substring(1,3));
+        year = parseInt(exp_date.substring(3,7));
+        // console.log(month + " " + day + " " + year);
+      }
+      else if(exp_date.length = 8) {
+        month = parseInt(exp_date.substring(0,2));
+        day = parseInt(exp_date.substring(2,4));
+        year = parseInt(exp_date.substring(4,8));
+        // console.log(month + " " + day + " " + year);
+      }
+      // console.log("FULL YEAR", today.getFullYear() + " " + year);
+
+      //Handle if at the end of a year
+      if(today.getMonth() == 12) {
+        if(month == 12) {
+          if(today.getDay() <= day) {
+            itemsExpiring = true;
+          }
+        }
+        if(month == 1 && today.getFullYear() + 1 == year) {
+          if(day <= 15) {
+            itemsExpiring = true;
+          }
+        }
+      }//Next handle the general case
+      else if(today.getFullYear() == year) {
+        if(today.getMonth() == month && today.getDay() <= day) {
+          itemsExpiring = true;
+        }
+        else if(today.getMonth() + 1 == month && today.getDay() > 15 && day <= 15) {
+          itemsExpiring = true;
+        }
+      }
+    });
+
+    if(itemsExpiring) {
+      console.log("User has items expiring soon");
+    }
+    else {
+      console.log("User has no items expiring soon");
+    }
+
+    if(!pantryData.data.getPantry.notifPending && itemsExpiring) {
       console.log("Scheduling notification");
 
       const pantryInput = {
