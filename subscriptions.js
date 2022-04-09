@@ -14,6 +14,7 @@ export const onCreatePantry = /* GraphQL */ `
       collabId
       notifPending
       notifTime
+      email
       createdAt
       updatedAt
     }
@@ -32,6 +33,7 @@ export const onUpdatePantry = /* GraphQL */ `
       collabId
       notifPending
       notifTime
+      email
       createdAt
       updatedAt
     }
@@ -50,6 +52,7 @@ export const onDeletePantry = /* GraphQL */ `
       collabId
       notifPending
       notifTime
+      email
       createdAt
       updatedAt
     }
@@ -68,6 +71,7 @@ export const onCreateItem = /* GraphQL */ `
         collabId
         notifPending
         notifTime
+        email
         createdAt
         updatedAt
       }
@@ -101,6 +105,7 @@ export const onUpdateItem = /* GraphQL */ `
         collabId
         notifPending
         notifTime
+        email
         createdAt
         updatedAt
       }
@@ -134,6 +139,7 @@ export const onDeleteItem = /* GraphQL */ `
         collabId
         notifPending
         notifTime
+        email
         createdAt
         updatedAt
       }

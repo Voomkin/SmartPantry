@@ -16,6 +16,7 @@ const CreatePantryScreen = ({ navigation }) => {
             notiffreq: 86400,
             notifPending: false,
             notifTime: Math.floor(Date.now() / 1000),
+            email: user.attributes.email,
         };
         const p = await API.graphql(graphqlOperation(createPantry, {input: pantryInput}))
 

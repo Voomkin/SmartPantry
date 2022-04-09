@@ -58,7 +58,7 @@ const OtherPantryScreen = ({ navigation }) => {
         graphqlOperation(listPantries, {
         filter: {
             collabId: {
-            eq: user.username.toString(),
+            eq: user.attributes.email,
             },
         },
         })

@@ -34,7 +34,7 @@ const addStringToDatabase = async (userToAdd) => {
     if (pantryData.data.getPantry == null) {
       Alert.alert("Collaborator Error", "You must create a pantry before you can add a collaborator")
       return null;
-  }
+    }
 
     const update = {
       id: user.username.toString(),
@@ -42,6 +42,7 @@ const addStringToDatabase = async (userToAdd) => {
     }
 
     const u = await API.graphql(graphqlOperation(updatePantry, {input: update}));
+    Alert.alert("Add Collaborator", "Successfully added collaborator \"" + userToAdd + "\"");
 
   } catch(err) {
     console.log(err);
@@ -55,12 +56,9 @@ const AccountsScreen = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>You can add a collaborator to your pantry by typing in their unique ID in the space below.
-        Collaborators will be able to view the contents of your pantry, but can not modify it in any way.
-        Coming soon: Add collaborators to your pantry by scanning their unique QR code
-      </Text>
+      <Text>You can add a collaborator to your pantry by typing their email in the space below:</Text>
       <Input
-        placeholder="Enter Collaborator ID"
+        placeholder="Enter Collaborator Email"
         containerStyle={{ width: 250 }}
         onChangeText={(value) => setUserText(value)}
       />
@@ -73,7 +71,6 @@ const AccountsScreen = ({ navigation }) => {
                 //NOTE: The userText field should be the ID of the user to add. Want to implement a QR code generator/scanner
                 //to make this process seamless and not tedious.
                 await addStringToDatabase(userText);
-                Alert.alert("Add Collaborator", "Successfully added collaborator \"" + userText + "\"");
               }
             },
             {

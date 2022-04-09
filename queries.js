@@ -14,6 +14,7 @@ export const getPantry = /* GraphQL */ `
       collabId
       notifPending
       notifTime
+      email
       createdAt
       updatedAt
     }
@@ -34,6 +35,7 @@ export const listPantries = /* GraphQL */ `
         collabId
         notifPending
         notifTime
+        email
         createdAt
         updatedAt
       }
@@ -54,6 +56,7 @@ export const getItem = /* GraphQL */ `
         collabId
         notifPending
         notifTime
+        email
         createdAt
         updatedAt
       }
