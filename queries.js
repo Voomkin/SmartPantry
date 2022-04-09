@@ -12,6 +12,8 @@ export const getPantry = /* GraphQL */ `
       }
       notiffreq
       collabId
+      notifPending
+      notifTime
       createdAt
       updatedAt
     }
@@ -30,6 +32,8 @@ export const listPantries = /* GraphQL */ `
         owner
         notiffreq
         collabId
+        notifPending
+        notifTime
         createdAt
         updatedAt
       }
@@ -48,6 +52,8 @@ export const getItem = /* GraphQL */ `
         owner
         notiffreq
         collabId
+        notifPending
+        notifTime
         createdAt
         updatedAt
       }

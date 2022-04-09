@@ -69,11 +69,6 @@ const OtherPantryScreen = ({ navigation }) => {
     //   console.log(c[0].name);
 
       if(c.length > 0) {
-          
-      
-
-  
-      
         //NOTE: As of 3/27/2022, it may be the case that a collaborator can view multiple pantries
 
         //   const collabPantries = c.map( async (pantry) => {
@@ -107,13 +102,6 @@ const OtherPantryScreen = ({ navigation }) => {
         
             //   // changes the value of useState items value
               setItems(b);
-        //   });
-
-        
-        // alert("HERE");
-
-        // if the getPantry query does not return a null value, sets pantry exists to true
-        // otherwise sets it to false because they don't have a pantry yet
       }
       
     } catch (err) {
@@ -152,37 +140,6 @@ const OtherPantryScreen = ({ navigation }) => {
     }
   }
 
-//   const modalScreen = (
-//     <Modal visible={isModalVisible} animationType="slide">
-//       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-//         <Text style={{fontSize: 25, fontWeight: "bold", margin: 10}}>Edit your item</Text>
-//         <Input
-//           placeholder="Name"
-//           containerStyle={{ width: 250 }}
-//           onChangeText={(value) => setNameText(value)}
-//         />
-//         <Input
-//           placeholder="Current Weight (optional)"
-//           containerStyle={{ width: 250 }}
-//           onChangeText={(value) => setWeightText(value)}
-//         />
-//         <Input
-//           placeholder="Quantity (optional)"
-//           containerStyle={{ width: 250 }}
-//           onChangeText={(value) => setQuantityText(value)}
-//         />
-//         <Button
-//           buttonStyle={{ width: 200, margin: 20}}
-//           title="Submit"
-//           onPress={() => {
-//             updatePantryItem();
-//           }}
-//         ></Button>
-//         <Button buttonStyle={{width: 200}} title="Go back" onPress={handleModal}></Button>
-//       </View>
-//     </Modal>
-//   );
-
   // list of items from pantry
   const listOfItems = items.map((item) => {
     let percentage = (parseFloat(item.currWeight) / parseFloat(item.weight) * 100).toFixed(2);
@@ -209,37 +166,6 @@ const OtherPantryScreen = ({ navigation }) => {
             addToShoppingList(item.id, item.name);
           }}>
           </Button>
-          {/* <Button  buttonStyle={{backgroundColor: 'red', width: 75, marginRight: 5}} title="delete" onPress={() => {
-             Alert.alert("Delete Item", "Are you sure you want to delete item?", [
-               {
-                 text: "Yes",
-                 onPress: () => { 
-                   Alert.alert("Shopping List", "Would you like to add the item to your shopping list?", [
-                     {
-                       text: "Yes",
-                       onPress: () => {
-                         const itemID = item.id;
-                         const name = item.name;
-                         Alert.alert("Shopping List", "Adding to shopping list: " + name);
-                         deletePantryItem(item.id);
-                         addToShoppingList(itemID, name);
-                       }
-                     },
-                     {
-                      text: "No",
-                      onPress: () => {
-                        deletePantryItem(item.id);
-                      },
-                     },
-                 ] );
-                },
-               },
-               {
-                 text: "No",
-                 style: "cancel",
-               },
-             ]);
-          }}></Button> */}
         </View>
         <View style={{ height: 1.2, backgroundColor: "grey" }} />
       </View>

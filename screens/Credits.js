@@ -6,10 +6,19 @@ import {
 
 const CreditsScreen = ({ navigation }) => {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Here will go pictures of the 5 of us and short bios</Text>
-    </View>
+    <Button
+        onPress={ async () => {
+            // alert("You will receive a notification in a few seconds")
+            await schedulePushNotification();
+        }}
+        title="Test Bluetooth"
+        color="blue"
+      />
   );
 };
+
+const testBluetooth = async () => {
+  alert("TEST");
+}
 
 export default CreditsScreen;

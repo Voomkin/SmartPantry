@@ -8,6 +8,8 @@ type Pantry @model @auth(rules: [{ allow: public }]) {
   items: [Item] @hasMany
   notiffreq: Int
   collabId: ID
+  notifPending: Boolean
+  notifTime: Int
 }
 
 type Item @model @auth(rules: [{ allow: public }]) {

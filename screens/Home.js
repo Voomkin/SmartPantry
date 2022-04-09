@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {Text,View ,ScrollView, Modal, Alert} from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import {Text,View ,ScrollView, Modal, Alert, Animated, PanResponder} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import {Icon, Input} from 'react-native-elements';
@@ -9,8 +9,10 @@ import CreatePantryScreen from "./CreatePantry";
 import AddItemScreen from "./AddItem";
 import ManualAddScreen from "./ManualAdd";
 import { listItems, getItem } from "../queries.js";
-import { createItem, deleteItem, updateItem, createShoppingList } from "../mutations";
+import { createItem, deleteItem, updateItem, createShoppingList, updatePantry } from "../mutations";
 import BarcodeAddScreen from "./BarcodeAdd";
+import * as Notifications from 'expo-notifications';
+import Constants from 'expo-constants';
 
 
 // Creates a stack navigator object
@@ -56,6 +58,41 @@ const HomeStackScreen = () => {
 // The actual home screen rendering
 const HomeScreen = ({ navigation }) => {
 
+  //NOTIFICATION STUFF
+  try {
+    const [expoPushToken, setExpoPushToken] = useState('');
+    const [notification, setNotification] = useState(false);
+    const notificationListener = useRef();
+    const responseListener = useRef();
+
+    useEffect( () => {
+      registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+
+      notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+        setNotification(notification);
+      });
+
+      responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+        console.log(response);
+      });
+
+      return () => {
+        Notifications.removeNotificationSubscription(notificationListener.current);
+        Notifications.removeNotificationSubscription(responseListener.current);
+      };
+    }, []);
+  } catch(err) {
+    console.log(err);
+  }
+
+  //Note: Here we will need to determine the conditions in which a user should receive a notification.
+  //Current plan is to make an expiring soon and a running low function which returns items that are
+  //approaching the expiration date and which are running low in terms of weight respectively. Note
+  //that at the moment a user will get a notification no matter what when visiting home screen.
+  schedulePushNotification();  
+
+  //END NOTIFICATION STUFF
+
   // useState variables to track whether to render the create pantry button
   // the value of the pantry items, and if a user has a pantry.
   const [createPantryButton, setCreatePantryButton] = useState(null);
@@ -94,32 +131,32 @@ const HomeScreen = ({ navigation }) => {
 
       // if the getPantry query does not return a null value, sets pantry exists to true
       // otherwise sets it to false because they don't have a pantry yet
-      if (pantryData.data.getPantry != null) {
+      if (pantryData.data.getPantry == null) {
+        setPantryExists(false);
+      } else {
         setPantryExists(true);
         setPantryName(pantryData.data.getPantry.name);
-      } else {
-        setPantryExists(false);
-      }
 
-      // Grabs the id field from the pantry data
-      const pantryId = pantryData.data.getPantry.id;
+        // Grabs the id field from the pantry data
+        const pantryId = pantryData.data.getPantry.id;
 
-      // Grabs the items that are related to the id of the pantry
-      const itemsList = await API.graphql(
-        graphqlOperation(listItems, {
-          filter: {
-            pantryItemsId: {
-              eq: pantryId.toString(),
+        // Grabs the items that are related to the id of the pantry
+        const itemsList = await API.graphql(
+          graphqlOperation(listItems, {
+            filter: {
+              pantryItemsId: {
+                eq: pantryId.toString(),
+              },
             },
-          },
-        })
-      );
+          })
+        );
 
-      // stores the value of the items returned
-      const b = itemsList.data.listItems.items;
+        // stores the value of the items returned
+        const b = itemsList.data.listItems.items;
 
-      // changes the value of useState items value
-      setItems(b);
+        // changes the value of useState items value
+        setItems(b);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -359,7 +396,83 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
+async function registerForPushNotificationsAsync() {
+  let token;
+  if (Constants.isDevice) {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== 'granted') {
+      alert('Failed to get push token for push notification!');
+      return;
+    }
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+    console.log(token);
+  } else {
+    alert('Must use physical device for Push Notifications');
+  }
 
+  if (Platform.OS === 'android') {
+    Notifications.setNotificationChannelAsync('default', {
+      name: 'default',
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: '#FF231F7C',
+    });
+  }
+
+  return token;
+}
+
+async function schedulePushNotification() {
+
+  const user = await Auth.currentAuthenticatedUser(); // grabs current user's information
+
+  const pantryData = await API.graphql(
+    graphqlOperation(getPantry, { id: user.username.toString() })
+  );
+
+  if (pantryData.data.getPantry == null) {
+    console.log("User has no pantry");
+  }
+  else {
+    //NOTE: 17280 us 1/5th the amount of seconds in a day, so a user can receive a MAX of 5 notifications a day
+    //If frequency updates are kept in, use them here!!!
+    if(pantryData.data.getPantry.notifTime + 17280 < Math.floor(Date.now() / 1000) && pantryData.data.getPantry.notifPending) {
+      console.log("Allowing notifications again");
+      const pantryInput = {
+        id: user.username.toString(),
+        notifPending: false,
+        notifTime: Math.floor(Date.now() / 1000),
+      };
+      const p = await API.graphql(graphqlOperation(updatePantry, {input: pantryInput}))
+    }
+
+    if(!pantryData.data.getPantry.notifPending) {
+      console.log("Scheduling notification");
+
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: "SMART PANTRY",
+          body: 'You have items expiring soon! Click here to view them.',
+          data: { data: 'TEST TEST TEST TEST TEST' },
+        },
+        trigger: { seconds: 1000 },
+      });
+
+      const pantryInput = {
+        id: user.username.toString(),
+        notifPending: true,
+        notifTime: Math.floor(Date.now() / 1000),
+      };
+      const p = await API.graphql(graphqlOperation(updatePantry, {input: pantryInput}))
+
+    }
+  }
+}
 
 export default HomeStackScreen;
 
