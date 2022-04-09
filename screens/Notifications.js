@@ -172,6 +172,14 @@ const NotificationsScreen = () => {
       <Text>Please select how often you would like to receive notifications about your pantry:</Text>
       <Button
         onPress={() => {
+            updateFrequency(60);
+        }}
+        title="1 Minute"
+        color="black"
+        accessibilityLabel="Click here to confirm your notification preference"
+      />
+      <Button
+        onPress={() => {
             updateFrequency(86400 / 24);
         }}
         title="1 Hour"
