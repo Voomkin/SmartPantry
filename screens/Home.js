@@ -439,9 +439,8 @@ async function schedulePushNotification() {
     console.log("User has no pantry");
   }
   else {
-    //NOTE: 17280 us 1/5th the amount of seconds in a day, so a user can receive a MAX of 5 notifications a day
-    //If frequency updates are kept in, use them here!!!
-    if(pantryData.data.getPantry.notifTime + 17280 < Math.floor(Date.now() / 1000) && pantryData.data.getPantry.notifPending) {
+    //NOTE: The frequency update field stores the number of seconds between timestamps
+    if(pantryData.data.getPantry.notifTime + pantryData.data.getPantry.notiffreq < Math.floor(Date.now() / 1000) && pantryData.data.getPantry.notifPending) {
       console.log("Allowing notifications again");
       const pantryInput = {
         id: user.username.toString(),
@@ -454,21 +453,21 @@ async function schedulePushNotification() {
     if(!pantryData.data.getPantry.notifPending) {
       console.log("Scheduling notification");
 
-      await Notifications.scheduleNotificationAsync({
-        content: {
-          title: "SMART PANTRY",
-          body: 'You have items expiring soon! Click here to view them.',
-          data: { data: 'TEST TEST TEST TEST TEST' },
-        },
-        trigger: { seconds: 1000 },
-      });
-
       const pantryInput = {
         id: user.username.toString(),
         notifPending: true,
         notifTime: Math.floor(Date.now() / 1000),
       };
       const p = await API.graphql(graphqlOperation(updatePantry, {input: pantryInput}))
+
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: "SMART PANTRY",
+          body: 'You have items expiring soon! Click here to view them.',
+          data: { data: 'TEST TEST TEST TEST TEST' },
+        },
+        trigger: { seconds: pantryData.data.getPantry.notiffreq },
+      });
 
     }
   }
