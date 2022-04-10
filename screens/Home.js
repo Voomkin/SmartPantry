@@ -290,7 +290,7 @@ const HomeScreen = ({ navigation }) => {
             {item.name + '\n'}
             {item.quantity && <Text style={{fontSize: 15, fontWeight: 'bold'}}>Quantity: {item.quantity}</Text>}
             {item.weight && <Text style={{fontSize: 15, fontWeight: "bold"}}>Percentage left: {percentage}%</Text>}
-            {item.expDate && <Text style={{fontSize: 15, fontWeight: "bold"}}>Expiration date: {item.expDate}</Text>}
+            {item.expDate && <Text style={{fontSize: 15, fontWeight: "bold"}}>Expiration date: {item.expDate.substring(item.expDate.length - 8, item.expDate.length - 6) + "/" + item.expDate.substring(item.expDate.length - 6, item.expDate.length - 4) + "/" + item.expDate.substring(item.expDate.length - 4, item.expDate.length)}</Text>}
           </Text>
           <Button buttonStyle={{ backgroundColor: 'grey', width: 75, marginRight: 5 }} title="update" onPress={() => {
             setItemId(item.id);
@@ -547,24 +547,6 @@ async function schedulePushNotification() {
 
     }
   }
-}
-
-let convertExpDate = (date_string) => {
-  let month = "";
-  let day = "";
-  let year = "";
-  if(date_string.length == 7) {
-    month = date_string.charAt(0);
-    day = date_string.substring(1,3);
-    year = date_string.substring(3,7);
-  }
-  else if(date_string.length = 8) {
-    month = date_string.substring(0,2);
-    day = date_string.substring(2,4);
-    year = date_string.substring(4,8);
-  }
-
-  return "" + month + "/" + day + "/" + year;
 }
 
 export default HomeStackScreen;
