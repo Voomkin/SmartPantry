@@ -85,10 +85,12 @@ const HomeScreen = ({ navigation }) => {
     console.log(err);
   }
 
-  //Note: Here we will need to determine the conditions in which a user should receive a notification.
-  //Current plan is to make an expiring soon and a running low function which returns items that are
-  //approaching the expiration date and which are running low in terms of weight respectively. Note
-  //that at the moment a user will get a notification no matter what when visiting home screen.
+  //NOTE: Currently there is a bug which often causes the user to receive multiple notifications at a time.
+  //Should be an easy fix, but we will need to decide where this function should be called (preferably a button
+  //or something which the user will likely click frequently, so that the function doesn't need to be called
+  //constantly). Alternatively we could use some sort of lock mechanism (ie semaphore) so that the notification
+  //scheduler can not be called multiple times at once
+
   schedulePushNotification();  
 
   //END NOTIFICATION STUFF
@@ -441,7 +443,9 @@ async function schedulePushNotification() {
   }
   else {
     //NOTE: The frequency update field stores the number of seconds between timestamps
-    if(pantryData.data.getPantry.notifTime + pantryData.data.getPantry.notiffreq < Math.floor(Date.now() / 1000) && pantryData.data.getPantry.notifPending) {
+
+    //MAKE CHANGE HERE!!! Convert from string to long, then do Math.floor(notifTime / 1000)
+    if(Math.floor(parseInt(pantryData.data.getPantry.notifTime) / 1000) + pantryData.data.getPantry.notiffreq < Math.floor(Date.now() / 1000) && pantryData.data.getPantry.notifPending) {
       console.log("Allowing notifications again");
       const pantryInput = {
         id: user.username.toString(),
@@ -527,23 +531,45 @@ async function schedulePushNotification() {
     }
 
     if(!pantryData.data.getPantry.notifPending && itemsExpiring) {
-      console.log("Scheduling notification");
+
+      const newestPantryData = await API.graphql(
+        graphqlOperation(getPantry, { id: user.username.toString() })
+      );
+
+      const curr_time = Date.now();
+
+      let test = "" + curr_time;
+
+      // console.log("curr_time: " + test);
 
       const pantryInput = {
         id: user.username.toString(),
         notifPending: true,
-        notifTime: Math.floor(Date.now() / 1000),
+        notifTime: test,
       };
-      const p = await API.graphql(graphqlOperation(updatePantry, {input: pantryInput}))
+      
+      
 
-      await Notifications.scheduleNotificationAsync({
-        content: {
-          title: "SMART PANTRY",
-          body: 'You have items expiring soon! Click here to view them.',
-          data: { data: 'TEST TEST TEST TEST TEST' },
-        },
-        trigger: { seconds: pantryData.data.getPantry.notiffreq },
-      });
+      const old_time = newestPantryData.data.getPantry.notifTime
+      // console.log("OLD: " + old_time + " NEW: " + test);
+
+      if(parseInt(old_time) + 1000 < curr_time) { // The purpose here is to prevent the user from getting multiple notifications at once
+        
+        const p = await API.graphql(graphqlOperation(updatePantry, {input: pantryInput}))
+        // console.log("NEW TIME: " + test);
+        // console.log("ADDING");
+        // console.log("Scheduling notification");
+        // console.log(newestPantryData.data.getPantry.notifTime + ' ' + curr_time);
+      
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: "SMART PANTRY",
+            body: 'You have items expiring soon! Click here to view them.',
+            data: { data: 'View home menu' },
+          },
+          trigger: { seconds: pantryData.data.getPantry.notiffreq },
+        });
+      }
 
     }
   }

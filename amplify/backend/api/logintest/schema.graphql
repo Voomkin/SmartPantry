@@ -9,7 +9,7 @@ type Pantry @model @auth(rules: [{ allow: public }]) {
   notiffreq: Int
   collabId: ID
   notifPending: Boolean
-  notifTime: Int
+  notifTime: String
   email: String
 }
 
