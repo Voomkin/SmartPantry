@@ -5,8 +5,12 @@ import React from 'react'
 import { StatusBar, Box, HStack, IconButton, Text, Icon } from 'native-base'
 import { Entypo } from '@native-base/icons'
 
+
+
+
 // Test responsiveness later
-const Header = () => {
+const Header = (navigation) => {
+
   return (
     <View>
         <StatusBar style={hStyles.primaryColor} barStyle="light-content" />

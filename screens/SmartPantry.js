@@ -1,5 +1,5 @@
 
-import { LogBox, Alert, Text, View} from 'react-native';
+import { LogBox, Alert, Text, View, StyleSheet, ScrollView } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import RNBluetoothClassic, {BluetoothDevice} from 'react-native-bluetooth-classic';
@@ -15,7 +15,8 @@ import awsconfig from '../src/aws-exports';
 import { withAuthenticator, AmplifyTheme } from 'aws-amplify-react-native';
 import { Auth } from "aws-amplify";
 
-import Header from '../components/Header'
+import Card from '../components/Card'
+import { Heading, Box } from 'native-base'
 
 // Initializes Amplify
 Amplify.configure({
@@ -55,8 +56,29 @@ const signOutAlert = () => {
 const SmartPantry = () => {
 
     return (
-      <Header />
+      <ScrollView>
+        <Heading style={styles.paddedHeading}>Expiring Soon</Heading>
+        <Box alignItems='center'>
+          <Card svg='clock' itemName='Cookie' itemMetric='50lb'/>
+        </Box>
+        <Heading style={styles.paddedHeading}>Running Low</Heading>
+        <Box alignItems='center'>
+          <Card svg='low' itemName='Cookie' itemMetric='50lb'/>
+        </Box>
+        <Heading style={styles.paddedHeading}>Items</Heading>
+        <Box alignItems='center'>
+          <Card svg='item' itemName='Cookie' itemMetric='50lb'/>
+        </Box>
+      </ScrollView>
     );
 }
+
+const styles = StyleSheet.create({
+  paddedHeading : {
+    paddingTop: '5%',
+    paddingLeft: '5%',
+    paddingBottom: '5%',
+  },
+});
 
 export default withAuthenticator(SmartPantry); // exports the app with Amplify's withAuthenticator for cognito

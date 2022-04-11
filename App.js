@@ -1,12 +1,37 @@
+
 import React from 'react'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 
 import { NativeBaseProvider } from 'native-base'
 
 import SmartPantry from './screens/SmartPantry'
+import Profile from './screens/Profile'
+import ShoppingList from './screens/Shopping'
+import Help from './screens/Help'
+import Settings from './screens/Settings'
 import customTheme from './screens/Theme'
 
 import AppLoading from 'expo-app-loading'
 import { useFonts } from 'expo-font'
+
+
+const Drawer = createDrawerNavigator();
+
+const HeaderDrawer = () => {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="My Pantry" component={SmartPantry} />
+        <Drawer.Screen name="My Profile" component={Profile} />
+        <Drawer.Screen name="Shopping List" component={ShoppingList} />
+        <Drawer.Screen name="Settings" component={Settings} />
+        <Drawer.Screen name="Help" component={Help} />
+        <Drawer.Screen name="Logout"  component={SmartPantry} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
 
 const App = () => {
 
@@ -29,7 +54,7 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={customTheme}>
-      <SmartPantry />
+      <HeaderDrawer />
     </NativeBaseProvider>
   )
 }
