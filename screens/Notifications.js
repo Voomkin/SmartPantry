@@ -172,7 +172,15 @@ const NotificationsScreen = () => {
       <Text>Please select how often you would like to receive notifications about your pantry:</Text>
       <Button
         onPress={() => {
-            updateFrequency(1);
+            updateFrequency(60);
+        }}
+        title="1 Minute"
+        color="black"
+        accessibilityLabel="Click here to confirm your notification preference"
+      />
+      <Button
+        onPress={() => {
+            updateFrequency(86400 / 24);
         }}
         title="1 Hour"
         color="#431005"
@@ -180,7 +188,7 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            updateFrequency(2);
+            updateFrequency(86400 / 12);
         }}
         title="2 Hours"
         color="#571607"
@@ -188,15 +196,15 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            updateFrequency(3);
+            updateFrequency(86400 / 3);
         }}
-        title="5 Hours"
+        title="8 Hours"
         color="#671B0B"
         accessibilityLabel="Click here to confirm your notification preference"
       />
       <Button
         onPress={() => {
-            updateFrequency(4);
+            updateFrequency(86400 / 2);
         }}
         title="12 Hours"
         color="#79220F"
@@ -204,7 +212,7 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            updateFrequency(5);
+            updateFrequency(86400);
         }}
         title="1 Day"
         color="#8E2913"
@@ -212,7 +220,7 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            updateFrequency(6);
+            updateFrequency(86400 * 2);
         }}
         title="2 Days"
         color="#A32E15"
@@ -220,7 +228,7 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            updateFrequency(7);
+            updateFrequency(86400 * 7);
         }}
         title="1 Week"
         color="#B33216"
@@ -228,7 +236,7 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            updateFrequency(8);
+            updateFrequency(86400 * 14);
         }}
         title="2 Weeks"
         color="#DA330F"
@@ -236,7 +244,7 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            updateFrequency(9);
+            updateFrequency(86400 * 30);
         }}
         title="1 Month"
         color="#F3330A"
@@ -244,7 +252,7 @@ const NotificationsScreen = () => {
       />
       <Button
         onPress={() => {
-            updateFrequency(10);
+            updateFrequency(86400 * 90);
         }}
         title="3 Months"
         color="#FF4C26"
@@ -312,7 +320,7 @@ async function schedulePushNotification() {
       body: 'Don\'t forget to keep your pantry up to date!',
       data: { data: 'goes here' },
     },
-    trigger: { seconds: 2 },
+    trigger: { seconds: 20 },
   });
 }
 
