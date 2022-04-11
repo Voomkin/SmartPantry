@@ -103,27 +103,6 @@ function App() {
             headerShown: true,
           }}
         />
-        {/* <Tab.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={{
-            title: "Profile",
-            tabBarIcon: () => {
-              return <Icon name="account-box" />;
-            },
-            headerShown: true,
-          }}
-        /> */}
-        {/* <Tab.Screen
-          name="Pantry"
-          component={PantryStackScreen}
-          options={{
-            tabBarIcon: () => {
-              return <Icon name="store" />;
-            },
-            headerShown: true,
-          }}
-        /> */}
         <Tab.Screen
           name="Settings"
           component={SettingsStackScreen}
