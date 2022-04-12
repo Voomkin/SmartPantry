@@ -16,7 +16,8 @@ import { withAuthenticator, AmplifyTheme } from 'aws-amplify-react-native';
 import { Auth } from "aws-amplify";
 
 import Card from '../components/Card'
-import { Heading, Box } from 'native-base'
+import { Heading, Box, Flex, useTheme } from 'native-base'
+import { Searchbar } from 'react-native-paper'
 
 // Initializes Amplify
 Amplify.configure({
@@ -55,8 +56,16 @@ const signOutAlert = () => {
 // Main App function
 const SmartPantry = () => {
 
+  const {
+    colors
+  } = useTheme()
+
+  const [searchQuery, setSearchQuery] = React.useState('')
+
+  const onChangeSearch = query => setSearchQuery(query)
+
     return (
-      <ScrollView>
+      <ScrollView backgroundColor={colors.cream['500']}>
         <Heading style={styles.paddedHeading}>Expiring Soon</Heading>
         <Box alignItems='center'>
           <Card svg='clock' itemName='Cookie' itemMetric='50lb'/>
@@ -65,7 +74,17 @@ const SmartPantry = () => {
         <Box alignItems='center'>
           <Card svg='low' itemName='Cookie' itemMetric='50lb'/>
         </Box>
-        <Heading style={styles.paddedHeading}>Items</Heading>
+          <Flex flexDirection='row' py='5'>
+            <Heading flex='1' style={styles.paddedHeading}>Items</Heading>
+            <Box flex='3' alignItems='center' justifyContent='center' paddingRight='5'>
+              <Searchbar
+                style={styles.sBar}
+                placeholder="Search"
+                onChangeText={onChangeSearch}
+                value={searchQuery}
+              />
+            </Box>
+          </Flex>
         <Box alignItems='center'>
           <Card svg='item' itemName='Cookie' itemMetric='50lb'/>
         </Box>
@@ -74,11 +93,14 @@ const SmartPantry = () => {
 }
 
 const styles = StyleSheet.create({
-  paddedHeading : {
+  paddedHeading: {
     paddingTop: '5%',
     paddingLeft: '5%',
     paddingBottom: '5%',
   },
+  sBar: {
+    width: '100%',
+  }
 });
 
 export default withAuthenticator(SmartPantry); // exports the app with Amplify's withAuthenticator for cognito

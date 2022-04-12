@@ -15,7 +15,6 @@ import customTheme from './screens/Theme'
 import AppLoading from 'expo-app-loading'
 import { useFonts } from 'expo-font'
 
-
 const Drawer = createDrawerNavigator();
 
 const HeaderDrawer = () => {
