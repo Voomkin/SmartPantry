@@ -2,38 +2,14 @@ import React, { Component } from "react";
 import {
   Text,
   View,
+  ScrollView,
   Button,
   Alert,
 } from "react-native";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import { getPantry, listItems } from "../queries";
-
-
-const fetchInfo = async () => {
-    // alert(email);
-    try {
-        const user = await Auth.currentAuthenticatedUser();
-        // console.log(user);
-
-        const email = user.attributes.email;
-        const phone_number = user.attributes.phone_number;
-        // alert(phone_number);
-        const pantryStats = getPantryInfo(user);
-        
-    } catch (err) {
-        console.log(err);
-    }
-
-    // alert(email);
-
-    return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            <Text>
-                EMAIL
-            </Text>
-        </View>
-    );
-}
+import { Heading } from 'native-base'
+import { StyleSheet } from 'react-native';
 
 const getPantryInfo = async (user) => {
     try {
@@ -85,19 +61,72 @@ const getPantryInfo = async (user) => {
 }
 
 const MyInfoScreen = ({ navigation }) => {
+    const fetchInfo = async () => {
+        // alert(email);
+        try {
+            const user = await Auth.currentAuthenticatedUser();
+            // console.log(user);
+    
+            const email = user.attributes.email;
+            const phone_number = user.attributes.phone_number;
+            // alert(phone_number);
+            const pantryStats = getPantryInfo(user);
+            return user
+            
+        } catch (err) {
+            console.log(err);
+        }
+    }
     return (
-        <View>
-            <Text>The button below is a temporary solution until async text can be displayed to the screen. -Kollin</Text>
-            <Button
-            onPress={ async () => {
-                await fetchInfo();
-            }}
-            title="Click here to see your information"
-            color="green"
-            accessibilityLabel="Click here to see your information"
-        />
-      </View>
+        <ScrollView style={{backgroundColor: '#DDE5B6'}}>
+            <Heading style={styles.paddedHeading}>Username</Heading>
+            <Text style={{fontSize: 18}}>{'\t\t'}{async () => {
+                await fetchInfo()}}</Text>
+
+            <Heading style={styles.paddedHeading}>Email</Heading>
+            <Text style={{fontSize: 18}} >{'\t\t'}{async () => {
+                await fetchInfo().attributes.email}}</Text>
+
+            <Heading style={styles.paddedHeading}>Phone Number</Heading>
+            <Text style={{fontSize: 18}}>{'\t\t'}{async () => {
+                await fetchInfo().attributes.phone_number}}</Text>
+      </ScrollView>
     );
 };
+
+/*
+const fetchInfo = async () => {
+    // alert(email);
+    try {
+        const user = await Auth.currentAuthenticatedUser();
+        // console.log(user);
+
+        const email = user.attributes.email;
+        const phone_number = user.attributes.phone_number;
+        // alert(phone_number);
+        const pantryStats = getPantryInfo(user);
+        
+    } catch (err) {
+        console.log(err);
+    }
+
+    // alert(email);
+
+    return (
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+            <Text>
+                EMAIL
+            </Text>
+        </View>
+    );
+}*/
+const styles = StyleSheet.create({
+    paddedHeading : {
+      paddingTop: '5%',
+      paddingLeft: '5%',
+      paddingBottom: '5%',
+    },
+  });
+  
 
 export default MyInfoScreen;

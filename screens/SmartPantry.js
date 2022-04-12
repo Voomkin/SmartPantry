@@ -6,7 +6,7 @@ import RNBluetoothClassic, {BluetoothDevice} from 'react-native-bluetooth-classi
 
 import HomeStackScreen from './Home';
 import ShoppingStackScreen from './Shopping';
-import SettingsStackScreen from './Settings';
+import SettingsStackScreen from'./Settings';
 
 import React from 'react';
 import {Icon, Button} from 'react-native-elements';

@@ -29,12 +29,21 @@ Alert.alert("Shopping List", "Added " + nameText + " to your Shopping List"); //
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Input
-        placeholder="Name"
+        placeholder="Name (i.e. bananas)"
         containerStyle={{ width: 250 }}
         onChangeText={(value) => setNameText(value)}
       />
+
       <Button
-        buttonStyle={{ width: 200 }}
+        buttonStyle={{ marginTop:10,
+        paddingTop:15,
+        paddingBottom:15,
+        marginLeft:30,
+        marginRight:30,
+        backgroundColor:'#3D405B',
+        borderRadius:10,
+        borderWidth: 1,
+        borderColor: '#fff' }}
         title="Submit"
         onPress={() => {
           addShoppingListItem();

@@ -12,6 +12,10 @@ import {Auth, API, graphqlOperation} from 'aws-amplify';
 import ManualAddScreen from "./ManualAdd";
 import BarcodeAddScreen from "./BarcodeAdd";
 import { StatusBar } from "expo-status-bar";
+import { Heading, Box } from 'native-base'
+import Card from '../components/Card'
+
+
 
 
 const ShoppingStack = createStackNavigator();
@@ -21,7 +25,7 @@ const ShoppingStackScreen = () => {
     <ShoppingStack.Navigator>
       <ShoppingStack.Screen
         options={{ headerShown: false }}
-        name="SettingsStack"
+        name="Back"
         component={Shopping}
       />
       <ShoppingStack.Screen
@@ -36,7 +40,7 @@ const ShoppingStackScreen = () => {
 const Shopping = ({navigation}) => {
   const [shoppingListButton, setShoppingListButton] = useState(null);
   const [items, setItems] = useState([]);
-  const [shoppingListExists, setShoppingListExists] = useState(false);
+  const [shoppingListExists, setShoppingListExists] = useState(true);
   const [shoppingListName, setShoppingListName] = useState("");
   const [nameText, setNameText] = useState("");
   const [itemId, setItemId] = useState(null);
@@ -144,13 +148,13 @@ const Shopping = ({navigation}) => {
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text style={{fontSize: 25, fontWeight: "bold", margin: 10}}>Edit your item</Text>
         <Input
-          placeholder="Name"
+          placeholder="Name (i.e. bananas)"
           containerStyle={{ width: 250 }}
           onChangeText={(value) => setNameText(value)}
         />
         <Button
           buttonStyle={{ width: 200, margin: 20}}
-          title="Submit"
+          title="Hello"
           onPress={() => {
             updatePantryItem();
           }}
@@ -245,9 +249,17 @@ const Shopping = ({navigation}) => {
           <View
             style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
           >
-            <Text style={{ fontSize: 25, marginBottom: 15 }}>Shopping List</Text>
+            
             <Button
-              buttonStyle={{ width: 250 }}
+              buttonStyle={{ marginTop:10,
+                paddingTop:15,
+                paddingBottom:15,
+                marginLeft:30,
+                marginRight:30,
+                backgroundColor:'#3D405B',
+                borderRadius:10,
+                borderWidth: 1,
+                borderColor: '#fff' }}
               title="Add Item"
               onPress={() => {
                 navigation.navigate("AddShoppingListItem");

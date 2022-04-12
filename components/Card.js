@@ -12,8 +12,8 @@ import ClockSVG from '../assets/svgs/clock.svg'
 
 const Card = (props) => {
   return (
-    <Box width='80%' height='50%' borderColor='black' borderWidth="1" borderRadius="md">
-       
+    <Box width='80%' height='50%' borderColor='black' borderWidth="1" borderRadius="md" shadow={4}>
+        <ClockSVG style={styles.svgCenter} width='50%' height='50%' color='red'/>
     </Box>
   )
 }
@@ -27,5 +27,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 })
+
 
 export default Card

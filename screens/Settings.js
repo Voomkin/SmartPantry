@@ -13,7 +13,6 @@ import { deletePantry, deleteShoppingList, deleteItem } from "../mutations";
 import { getPantry, listItems, getShoppingList } from "../queries";
 import OtherPantryScreen from "./OtherPantry";
 import CreditsScreen from "./Credits";
-import PatchNotesScreen from "./PatchNotes";
 
 const handleSignOut = () => {
     Alert.alert("Sign Out", "Do you want to sign out?", [
@@ -37,13 +36,12 @@ const SettingsStackScreen = () => {
     }}>
       <SettingsStack.Screen options={{headerShown: false}}name="SettingsStack" component={Settings} />
       <SettingsStack.Screen name="Collaborator Pantry" component={OtherPantryScreen} />
-      <SettingsStack.Screen name="My Info" component={MyInfoScreen} />
-      <SettingsStack.Screen name="Accounts" component={AccountsScreen} />
+      <SettingsStack.Screen name="My Information" component={MyInfoScreen} />
+      <SettingsStack.Screen name="Manage My Pantry" component={AccountsScreen} />
       <SettingsStack.Screen name="Notifications" component={NotificationsScreen} />
       <SettingsStack.Screen name="Help" component={HelpScreen} />
       <SettingsStack.Screen name="About" component={AboutScreen} />
       <SettingsStack.Screen name="Credits" component={CreditsScreen} />
-      <SettingsStack.Screen name="PatchNotes" component={PatchNotesScreen} />
     </SettingsStack.Navigator>
   );
 };
@@ -53,44 +51,42 @@ const Settings = ({navigation}) => {
 
     // Contains the settings options, each has a title, subtitle, and what to do when pressed
     const settingsOptions = [
+      
+      { title: "My Information", subTitle: "View your profile information", onPress: () => {
+          navigation.navigate("My Information");
+      } },
+      { title: "Manage My Pantry",
+        subTitle: "Manage who can view yours",
+         onPress: () => {
+          navigation.navigate("Manage My Pantry");
+      } },
       { title: "Collaborator Pantry",
-        subTitle: "View another user's pantry",
+        subTitle: "View your collaborator pantry",
          onPress: () => {
           navigation.navigate("Collaborator Pantry");
       } },
-      { title: "My Info", subTitle: "Setup your profile", onPress: () => {
-          navigation.navigate("My Info");
-      } },
-      { title: "Accounts",
-        subTitle: "View other pantries and manage who can view yours",
-         onPress: () => {
-          navigation.navigate("Accounts");
-      } },
       {
         title: "Notifications",
-        subTitle: "Manage your notifications",
+        subTitle: "View and manage your notifications",
         onPress: () => {
           navigation.navigate("Notifications");
         },
       },
-      { title: "Help", subTitle: "Help page", onPress: () => {
-          navigation.navigate("Help");
-      } },
+      
       { title: "About",
         subTitle: "Learn about your Smart Pantry app", 
         onPress: () => {
           navigation.navigate("About");
       } },
+      { title: "Help", subTitle: "General help about using your Smart Pantry app", onPress: () => {
+        navigation.navigate("Help");
+    } },
       { title: "Credits",
-        subTitle: "About the creators",
+        subTitle: "Learn about the creators of your Smart Pantry app",
         onPress: () => {
         navigation.navigate("Credits");
       } },
-      { title: "Patch Notes",
-      subTitle: "See what's new in the latest update",
-      onPress: () => {
-      navigation.navigate("PatchNotes");
-    } },
+     
       {
         title: "Sign Out",
         subTitle: "Sign out of app",
@@ -127,7 +123,7 @@ const Settings = ({navigation}) => {
       }
     ];
     return (
-        <ScrollView style={{backgroundColor: 'white'}}>
+        <ScrollView style={{backgroundColor: '#DDE5B6'}}>
             {settingsOptions.map(({title,subTitle,onPress}) => 
             <TouchableOpacity key={title} onPress={onPress}>
                 <View style={{
@@ -135,8 +131,8 @@ const Settings = ({navigation}) => {
                     paddingBottom: 20,
                     paddingTop: 20
                 }}>
-                    <Text style={{fontSize: 17}}>{title}</Text>
-                    {subTitle && <Text style={{fontSize:13, color:'grey', paddingTop:5}}>{subTitle}</Text>}
+                    <Text style={{fontSize: 19, fontWeight: "bold"}}>{title}</Text>
+                    {subTitle && <Text style={{fontSize:15, color:'black', paddingTop:5}}>{subTitle}</Text>}
                 </View>
                 <View style={{height: 1.2, backgroundColor: 'grey'}}/>
             </TouchableOpacity>)}
