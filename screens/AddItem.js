@@ -39,7 +39,7 @@ const addPantryItem = async () => {
     }
   }
 
-  if(input_date.charAt(0) > '1' || input_date.charAt(2) > '3' || input_date.charAt(4) < '2') {
+  if((input_date.charAt(0) > '1' || input_date.charAt(2) > '3' || input_date.charAt(4) < '2') && input_date != "") {
     Alert.alert("Add Item", "Expiration date must be a valid date in the future");
     return;
   }
@@ -52,6 +52,7 @@ const addPantryItem = async () => {
     weight: parseFloat(weightText),
     currWeight: parseFloat(weightText),
     quantity: parseInt(quantityText),
+    origQuantity: parseInt(quantityText),
     expDate: parseInt(input_date),
     pantryItemsId: user.username.toString(),
   };

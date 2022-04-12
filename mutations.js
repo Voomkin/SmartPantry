@@ -96,6 +96,7 @@ export const createItem = /* GraphQL */ `
       weight
       currWeight
       quantity
+      origQuantity
       expDate
       createdAt
       updatedAt
@@ -133,6 +134,7 @@ export const updateItem = /* GraphQL */ `
       weight
       currWeight
       quantity
+      origQuantity
       expDate
       createdAt
       updatedAt
@@ -170,6 +172,7 @@ export const deleteItem = /* GraphQL */ `
       weight
       currWeight
       quantity
+      origQuantity
       expDate
       createdAt
       updatedAt
