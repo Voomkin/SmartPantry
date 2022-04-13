@@ -12,6 +12,9 @@ export const onCreatePantry = /* GraphQL */ `
       }
       notiffreq
       collabId
+      notifPending
+      notifTime
+      email
       createdAt
       updatedAt
     }
@@ -28,6 +31,9 @@ export const onUpdatePantry = /* GraphQL */ `
       }
       notiffreq
       collabId
+      notifPending
+      notifTime
+      email
       createdAt
       updatedAt
     }
@@ -44,6 +50,9 @@ export const onDeletePantry = /* GraphQL */ `
       }
       notiffreq
       collabId
+      notifPending
+      notifTime
+      email
       createdAt
       updatedAt
     }
@@ -60,6 +69,9 @@ export const onCreateItem = /* GraphQL */ `
         owner
         notiffreq
         collabId
+        notifPending
+        notifTime
+        email
         createdAt
         updatedAt
       }
@@ -72,6 +84,7 @@ export const onCreateItem = /* GraphQL */ `
       weight
       currWeight
       quantity
+      origQuantity
       expDate
       createdAt
       updatedAt
@@ -91,6 +104,9 @@ export const onUpdateItem = /* GraphQL */ `
         owner
         notiffreq
         collabId
+        notifPending
+        notifTime
+        email
         createdAt
         updatedAt
       }
@@ -103,6 +119,7 @@ export const onUpdateItem = /* GraphQL */ `
       weight
       currWeight
       quantity
+      origQuantity
       expDate
       createdAt
       updatedAt
@@ -122,6 +139,9 @@ export const onDeleteItem = /* GraphQL */ `
         owner
         notiffreq
         collabId
+        notifPending
+        notifTime
+        email
         createdAt
         updatedAt
       }
@@ -134,6 +154,7 @@ export const onDeleteItem = /* GraphQL */ `
       weight
       currWeight
       quantity
+      origQuantity
       expDate
       createdAt
       updatedAt

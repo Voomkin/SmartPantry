@@ -387,10 +387,6 @@ const HomeScreen = ({ navigation }) => {
                 navigation.navigate("CreatePantry");
                 schedulePushNotification();              }}
             ></Button>
-
-
-
-
         )}
         {pantryExists && (
           <View

@@ -14,7 +14,10 @@ const CreatePantryScreen = ({ navigation }) => {
             id: user.username.toString(),
             name: inputText.toString(),
             owner: user.username.toString(),
-            notiffreq: 5,
+            notiffreq: 86400,
+            notifPending: false,
+            notifTime: Math.floor(Date.now() / 1000),
+            email: user.attributes.email,
         };
         const p = await API.graphql(graphqlOperation(createPantry, {input: pantryInput}))
 

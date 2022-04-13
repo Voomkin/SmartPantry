@@ -22,7 +22,7 @@ const addShoppingListItem = async () => {
   const inputItem = await API.graphql(
     graphqlOperation(createItem, { input: itemInput })
   );
-//   navigation.navigate("HomeStack"); // NOTE: THIS IS WHERE CURRENT ERROR IS OCCURING, FIX THIS
+//   navigation.navigate("HomeStack");
 Alert.alert("Shopping List", "Added " + nameText + " to your Shopping List"); // Temporary fix, unless we prefer this method
 };
   
