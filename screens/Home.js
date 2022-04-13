@@ -608,7 +608,7 @@ async function schedulePushNotification() {
             trigger: { seconds: pantryData.data.getPantry.notiffreq },
           });
         }
-        else if(itemsExpiring <= 0 && runnLow > 0) {
+        else if(itemsExpiring <= 0 && runningLow > 0) {
           await Notifications.scheduleNotificationAsync({
             content: {
               title: "SMART PANTRY",
