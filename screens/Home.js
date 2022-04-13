@@ -75,7 +75,8 @@ const HomeScreen = ({ navigation }) => {
       responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
         console.log("User has clicked notification");
         //If we ever want the notification page to redirect the user to a particular screen, we could do that here
-        alert("Welcome back! Navigate to the home menu to see your expiring items.");
+        // console.log(response);
+        console.log(response.notification.request.content.data.data);
       });
 
       return () => {
@@ -87,14 +88,14 @@ const HomeScreen = ({ navigation }) => {
     console.log(err);
   }
 
-  //NOTE: Currently there is a bug which often causes the user to receive multiple notifications at a time.
-  //Should be an easy fix, but we will need to decide where this function should be called (preferably a button
-  //or something which the user will likely click frequently, so that the function doesn't need to be called
-  //constantly). Alternatively we could use some sort of lock mechanism (ie semaphore) so that the notification
-  //scheduler can not be called multiple times at once
+  //NOTE: There are still occaisionally some weird bugs where the user will receive double notifications,
+  //but to fix could comment out the following lines. However, the trade-off is that the user will not
+  //have their notifications renewed unless they actually click a button on the home page. May make more
+  //updates in the next few days (4/12/2022)
 
-  schedulePushNotification();  
-
+  if(Date.now() % 5 == 0) {
+    schedulePushNotification();  
+  }
   //END NOTIFICATION STUFF
 
   // useState variables to track whether to render the create pantry button
@@ -299,6 +300,7 @@ const HomeScreen = ({ navigation }) => {
           <Button buttonStyle={{ backgroundColor: 'grey', width: 75, marginRight: 5 }} title="update" onPress={() => {
             setItemId(item.id);
             handleModal();
+            schedulePushNotification();
           }}>
           </Button>
           <Button  buttonStyle={{backgroundColor: 'red', width: 75, marginRight: 5}} title="delete" onPress={() => {
@@ -306,6 +308,7 @@ const HomeScreen = ({ navigation }) => {
                {
                  text: "Yes",
                  onPress: () => { 
+                  schedulePushNotification();
                    Alert.alert("Shopping List", "Would you like to add the item to your shopping list?", [
                      {
                        text: "Yes",
@@ -377,6 +380,7 @@ const HomeScreen = ({ navigation }) => {
             title="Create Pantry"
             onPress={() => {
               navigation.navigate("CreatePantry");
+              schedulePushNotification();
             }}
           ></Button>
         )}
@@ -391,6 +395,7 @@ const HomeScreen = ({ navigation }) => {
               title="Add Item"
               onPress={() => {
                 navigation.navigate("AddItem");
+                schedulePushNotification();
               }}
             ></Button>
             <View>{listOfItems}</View>
@@ -549,21 +554,23 @@ async function schedulePushNotification() {
       }
     });
 
-    if(itemsExpiring > 0) {
-      console.log("User has items expiring soon");
-    }
-    else {
-      console.log("User has no items expiring soon");
-    }
+    // if(itemsExpiring > 0) {
+    //   console.log("User has items expiring soon");
+    // }
+    // else {
+    //   console.log("User has no items expiring soon");
+    // }
 
-    if(runningLow > 0) {
-      console.log("User has items running low");
-    }
-    else {
-      console.log("User has no items running low");
-    }
+    // if(runningLow > 0) {
+    //   console.log("User has items running low");
+    // }
+    // else {
+    //   console.log("User has no items running low");
+    // }
 
     if(!pantryData.data.getPantry.notifPending && (itemsExpiring > 0 || runningLow > 0)) {
+      console.log("Scheduling notification");
+
       const newestPantryData = await API.graphql(
         graphqlOperation(getPantry, { id: user.username.toString() })
       );
