@@ -1,7 +1,6 @@
 import { LogBox, Alert, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import RNBluetoothClassic, {BluetoothDevice} from 'react-native-bluetooth-classic';
 
 import HomeStackScreen from './screens/Home';
 import ShoppingStackScreen from './screens/Shopping';
@@ -52,7 +51,7 @@ const signOutAlert = () => {
 
 // Main App function
 function App() {
-
+  
   return (
     // Entire app wrapped in a NavigationContainer and uses the bottom tab navigator for screens
     <NavigationContainer>

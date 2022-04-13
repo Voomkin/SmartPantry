@@ -3,6 +3,7 @@ import {
   Text,
   View,
 } from "react-native";
+import {Button} from 'react-native-elements';
 
 const CreditsScreen = ({ navigation }) => {
   return (
