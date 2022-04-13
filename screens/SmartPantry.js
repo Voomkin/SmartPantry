@@ -7,8 +7,9 @@ import RNBluetoothClassic, {BluetoothDevice} from 'react-native-bluetooth-classi
 import HomeStackScreen from './Home';
 import ShoppingStackScreen from './Shopping';
 import SettingsStackScreen from'./Settings';
+import CreatePantryScreen from "./CreatePantry";
 
-import React from 'react';
+import React, {useState} from 'react';
 import {Icon, Button} from 'react-native-elements';
 import Amplify from 'aws-amplify';
 import awsconfig from '../src/aws-exports';
@@ -53,6 +54,7 @@ const signOutAlert = () => {
   )
 }
 
+
 // Main App function
 const SmartPantry = () => {
 
@@ -63,31 +65,35 @@ const SmartPantry = () => {
   const [searchQuery, setSearchQuery] = React.useState('')
 
   const onChangeSearch = query => setSearchQuery(query)
+  
+
 
     return (
-      <ScrollView backgroundColor={colors.cream['500']}>
-        <Heading style={styles.paddedHeading}>Expiring Soon</Heading>
-        <Box alignItems='center'>
-          <Card svg='clock' itemName='Cookie' itemMetric='50lb'/>
-        </Box>
-        <Heading style={styles.paddedHeading}>Running Low</Heading>
-        <Box alignItems='center'>
-          <Card svg='low' itemName='Cookie' itemMetric='50lb'/>
-        </Box>
-          <Flex flexDirection='row' py='5'>
-            <Heading flex='1' style={styles.paddedHeading}>Items</Heading>
-            <Box flex='3' alignItems='center' justifyContent='center' paddingRight='5'>
-              <Searchbar
-                style={styles.sBar}
-                placeholder="Search"
-                onChangeText={onChangeSearch}
-                value={searchQuery}
-              />
+      <ScrollView backgroundColor={"#DDE5B6"}>   
+
+            <Heading style={styles.paddedHeading}>Expiring Soon</Heading>
+            <Box alignItems='center'>
+              <Card svg='clock' itemName='Cookie' itemMetric='50lb'/>
             </Box>
-          </Flex>
-        <Box alignItems='center'>
-          <Card svg='item' itemName='Cookie' itemMetric='50lb'/>
-        </Box>
+              <Heading style={styles.paddedHeading}>Running Low</Heading>
+            <Box alignItems='center'>
+                <Card svg='low' itemName='Cookie' itemMetric='50lb'/>
+            </Box>
+            <Flex flexDirection='row' py='5'>
+              <Heading flex='1' style={styles.paddedHeading}>Items</Heading>
+              <Box flex='3' alignItems='center' justifyContent='center' paddingRight='5'>
+                  <Searchbar
+                    style={styles.sBar}
+                    placeholder="Search"
+                    onChangeText={onChangeSearch}
+                    value={searchQuery}
+                  />
+              </Box>
+              </Flex>
+              <Box alignItems='center'>
+              <Card svg='item' itemName='Cookie' itemMetric='50lb'/>
+              </Box>
+                
       </ScrollView>
     );
 }

@@ -4,6 +4,7 @@ import {Input, Button} from "react-native-elements";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import { createPantry, createShoppingList } from "../mutations";
 
+
 const CreatePantryScreen = ({ navigation }) => {
     const [inputText, setInputText] = useState("");
     
@@ -22,20 +23,26 @@ const CreatePantryScreen = ({ navigation }) => {
         }
 
         const q = await API.graphql(graphqlOperation(createShoppingList, {input: shoppingInput}))
-
         navigation.navigate("HomeStack");
     }
     
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            <Input placeholder="Name of pantry" containerStyle={{width: 250}} onChangeText={value => setInputText(value)} />
-            <Button title="Submit" containerStyle={{
-                width: 200
-            }} onPress={() => {
-                createNewPantry();
-            }} >
-
-            </Button>
+            <Input placeholder="Name of Pantry" containerStyle={{width: 250}} textAlign={'center'} onChangeText={value => setInputText(value)} />
+            <Button title="Submit" buttonStyle={{ marginTop:10,
+            paddingTop:15,
+            paddingBottom:15,
+            marginLeft:120,
+            marginRight:120,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            width: 100,
+            borderColor: '#fff' }}  
+            onPress={() => {
+              createNewPantry();
+            }}               
+           ></Button>
         </View>
     );
 };

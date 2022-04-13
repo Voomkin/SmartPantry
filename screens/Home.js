@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Component } from "react";
-import {Text,View ,ScrollView, Modal, Alert} from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import {Text,View ,ScrollView, Modal, Alert, Animated, PanResponder} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import {Icon, Input} from 'react-native-elements';
@@ -9,10 +9,10 @@ import CreatePantryScreen from "./CreatePantry";
 import AddItemScreen from "./AddItem";
 import ManualAddScreen from "./ManualAdd";
 import { listItems, getItem } from "../queries.js";
-import { createItem, deleteItem, updateItem, createShoppingList } from "../mutations";
+import { createItem, deleteItem, updateItem, createShoppingList, updatePantry } from "../mutations";
 import BarcodeAddScreen from "./BarcodeAdd";
-
-import { TextArea } from "native-base";
+import * as Notifications from 'expo-notifications';
+import Constants from 'expo-constants';
 
 
 // Creates a stack navigator object
@@ -58,6 +58,46 @@ const HomeStackScreen = () => {
 // The actual home screen rendering
 const HomeScreen = ({ navigation }) => {
 
+  //NOTIFICATION STUFF
+  try {
+    const [expoPushToken, setExpoPushToken] = useState('');
+    const [notification, setNotification] = useState(false);
+    const notificationListener = useRef();
+    const responseListener = useRef();
+
+    useEffect( () => {
+      registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+
+      notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+        setNotification(notification);
+      });
+
+      responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+        console.log("User has clicked notification");
+        //If we ever want the notification page to redirect the user to a particular screen, we could do that here
+        // console.log(response);
+        console.log(response.notification.request.content.data.data);
+      });
+
+      return () => {
+        Notifications.removeNotificationSubscription(notificationListener.current);
+        Notifications.removeNotificationSubscription(responseListener.current);
+      };
+    }, []);
+  } catch(err) {
+    console.log(err);
+  }
+
+  //NOTE: There are still occaisionally some weird bugs where the user will receive double notifications,
+  //but to fix could comment out the following lines. However, the trade-off is that the user will not
+  //have their notifications renewed unless they actually click a button on the home page. May make more
+  //updates in the next few days (4/12/2022)
+
+  if(Date.now() % 5 == 0) {
+    schedulePushNotification();  
+  }
+  //END NOTIFICATION STUFF
+
   // useState variables to track whether to render the create pantry button
   // the value of the pantry items, and if a user has a pantry.
   const [createPantryButton, setCreatePantryButton] = useState(null);
@@ -96,32 +136,32 @@ const HomeScreen = ({ navigation }) => {
 
       // if the getPantry query does not return a null value, sets pantry exists to true
       // otherwise sets it to false because they don't have a pantry yet
-      if (pantryData.data.getPantry != null) {
+      if (pantryData.data.getPantry == null) {
+        setPantryExists(false);
+      } else {
         setPantryExists(true);
         setPantryName(pantryData.data.getPantry.name);
-      } else {
-        setPantryExists(false);
-      }
 
-      // Grabs the id field from the pantry data
-      const pantryId = pantryData.data.getPantry.id;
+        // Grabs the id field from the pantry data
+        const pantryId = pantryData.data.getPantry.id;
 
-      // Grabs the items that are related to the id of the pantry
-      const itemsList = await API.graphql(
-        graphqlOperation(listItems, {
-          filter: {
-            pantryItemsId: {
-              eq: pantryId.toString(),
+        // Grabs the items that are related to the id of the pantry
+        const itemsList = await API.graphql(
+          graphqlOperation(listItems, {
+            filter: {
+              pantryItemsId: {
+                eq: pantryId.toString(),
+              },
             },
-          },
-        })
-      );
+          })
+        );
 
-      // stores the value of the items returned
-      const b = itemsList.data.listItems.items;
+        // stores the value of the items returned
+        const b = itemsList.data.listItems.items;
 
-      // changes the value of useState items value
-      setItems(b);
+        // changes the value of useState items value
+        setItems(b);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -255,10 +295,12 @@ const HomeScreen = ({ navigation }) => {
             {item.name + '\n'}
             {item.quantity && <Text style={{fontSize: 15, fontWeight: 'bold'}}>Quantity: {item.quantity}</Text>}
             {item.weight && <Text style={{fontSize: 15, fontWeight: "bold"}}>Percentage left: {percentage}%</Text>}
+            {item.expDate && <Text style={{fontSize: 15, fontWeight: "bold"}}>Expiration date: {item.expDate.substring(item.expDate.length - 8, item.expDate.length - 6) + "/" + item.expDate.substring(item.expDate.length - 6, item.expDate.length - 4) + "/" + item.expDate.substring(item.expDate.length - 4, item.expDate.length)}</Text>}
           </Text>
           <Button buttonStyle={{ backgroundColor: 'grey', width: 75, marginRight: 5 }} title="update" onPress={() => {
             setItemId(item.id);
             handleModal();
+            schedulePushNotification();
           }}>
           </Button>
           <Button  buttonStyle={{backgroundColor: 'red', width: 75, marginRight: 5}} title="delete" onPress={() => {
@@ -266,6 +308,7 @@ const HomeScreen = ({ navigation }) => {
                {
                  text: "Yes",
                  onPress: () => { 
+                  schedulePushNotification();
                    Alert.alert("Shopping List", "Would you like to add the item to your shopping list?", [
                      {
                        text: "Yes",
@@ -337,6 +380,7 @@ const HomeScreen = ({ navigation }) => {
             title="Create Pantry"
             onPress={() => {
               navigation.navigate("CreatePantry");
+              schedulePushNotification();
             }}
           ></Button>
         )}
@@ -351,6 +395,7 @@ const HomeScreen = ({ navigation }) => {
               title="Add Item"
               onPress={() => {
                 navigation.navigate("AddItem");
+                schedulePushNotification();
               }}
             ></Button>
             <View>{listOfItems}</View>
@@ -361,7 +406,232 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
+async function registerForPushNotificationsAsync() {
+  let token;
+  if (Constants.isDevice) {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== 'granted') {
+      alert('Failed to get push token for push notification!');
+      return;
+    }
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+    console.log(token);
+  } else {
+    alert('Must use physical device for Push Notifications');
+  }
 
+  if (Platform.OS === 'android') {
+    Notifications.setNotificationChannelAsync('default', {
+      name: 'default',
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: '#FF231F7C',
+    });
+  }
+
+  return token;
+}
+
+async function schedulePushNotification() {
+
+  const user = await Auth.currentAuthenticatedUser(); // grabs current user's information
+
+  const pantryData = await API.graphql(
+    graphqlOperation(getPantry, { id: user.username.toString() })
+  );
+
+  if (pantryData.data.getPantry == null) {
+    console.log("User has no pantry");
+  }
+  else {
+    //NOTE: The frequency update field stores the number of seconds between timestamps
+
+    //MAKE CHANGE HERE!!! Convert from string to long, then do Math.floor(notifTime / 1000)
+    if(Math.floor(parseInt(pantryData.data.getPantry.notifTime) / 1000) + pantryData.data.getPantry.notiffreq < Math.floor(Date.now() / 1000) && pantryData.data.getPantry.notifPending) {
+      console.log("Allowing notifications again");
+      const pantryInput = {
+        id: user.username.toString(),
+        notifPending: false,
+        notifTime: Math.floor(Date.now() / 1000),
+      };
+      const p = await API.graphql(graphqlOperation(updatePantry, {input: pantryInput}))
+    }
+
+    let itemsExpiring = 0;
+    const today = new Date();
+
+    //HERE: Check if there are any items expiring in the current user's pantry
+    // Grabs the id field from the pantry data
+    const pantryId = pantryData.data.getPantry.id;
+
+    // Grabs the items that are related to the id of the pantry
+    const itemsList = await API.graphql(
+      graphqlOperation(listItems, {
+        filter: {
+          pantryItemsId: {
+            eq: pantryId.toString(),
+          },
+        },
+      })
+    );
+
+    const b = itemsList.data.listItems.items;
+
+    const checkExpirations = b.map( async (item) => {
+      //NOTE: For some reason, the JavaScipt Date function is outputting the wrong date for me. I can calibrate it to be accurate
+      //      but I don't want to do that until closer to when we demo our project.
+      // console.log("DATE: " + item.expDate);
+      // console.log("MONTH: " + today.getMonth() + " " + today.getDay() + " " + today.getFullYear());
+      const exp_date = item.expDate;
+      if(exp_date != null) {
+
+        let month = 0;
+        let day = 0;
+        let year = 0;
+        // console.log("EXP DATE: " + exp_date);
+        if(exp_date.length == 7) {
+          month = parseInt(exp_date.charAt(0));
+          day = parseInt(exp_date.substring(1,3));
+          year = parseInt(exp_date.substring(3,7));
+          // console.log(month + " " + day + " " + year);
+        }
+        else if(exp_date.length == 8) {
+          month = parseInt(exp_date.substring(0,2));
+          day = parseInt(exp_date.substring(2,4));
+          year = parseInt(exp_date.substring(4,8));
+          // console.log(month + " " + day + " " + year);
+        }
+        // console.log("FULL YEAR", today.getFullYear() + " " + year);
+
+        //Handle if at the end of a year
+        if(today.getMonth() == 12) {
+          if(month == 12) {
+            if(today.getDay() <= day) {
+              itemsExpiring += 1;
+            }
+          }
+          if(month == 1 && today.getFullYear() + 1 == year) {
+            if(day <= 15) {
+              itemsExpiring += 1;
+            }
+          }
+        }//Next handle the general case
+        else if(today.getFullYear() == year) {
+          if(today.getMonth() == month && today.getDay() <= day) {
+            itemsExpiring += 1;
+          }
+          else if(today.getMonth() + 1 == month && today.getDay() > 15 && day <= 15) {
+            itemsExpiring += 1;
+          }
+        }
+      }
+    });
+
+    let runningLow = 0;
+
+    // console.log("CHECKING ITEMS");
+    const checkRunningLow = b.map( async (item) => {
+      // console.log("ITEM: " + item.name);
+      let alreadyCounted = false;
+
+      if(item.weight != null) {
+        if(item.currWeight < item.weight * 0.3) {
+          runningLow += 1;
+          alreadyCounted = true;
+          // console.log("WEIGHT RUNNING LOW");
+        }
+      }
+      if(item.quantity != null && !alreadyCounted) {
+        if(item.quantity <= 2 || item.quantity < item.origQuantity * 0.3) {
+          runningLow += 1;
+          // console.log("QUANTITY RUNNING LOW");
+        }
+      }
+    });
+
+    // if(itemsExpiring > 0) {
+    //   console.log("User has items expiring soon");
+    // }
+    // else {
+    //   console.log("User has no items expiring soon");
+    // }
+
+    // if(runningLow > 0) {
+    //   console.log("User has items running low");
+    // }
+    // else {
+    //   console.log("User has no items running low");
+    // }
+
+    if(!pantryData.data.getPantry.notifPending && (itemsExpiring > 0 || runningLow > 0)) {
+      console.log("Scheduling notification");
+
+      const newestPantryData = await API.graphql(
+        graphqlOperation(getPantry, { id: user.username.toString() })
+      );
+
+      const curr_time = Date.now();
+
+      let test = "" + curr_time;
+
+      // console.log("curr_time: " + test);
+
+      const pantryInput = {
+        id: user.username.toString(),
+        notifPending: true,
+        notifTime: test,
+      };
+
+      const old_time = newestPantryData.data.getPantry.notifTime
+      // console.log("OLD: " + old_time + " NEW: " + test);
+
+      if(parseInt(old_time) + 1000 < curr_time) { // The purpose here is to prevent the user from getting multiple notifications at once
+        
+        const p = await API.graphql(graphqlOperation(updatePantry, {input: pantryInput}))
+        // console.log("NEW TIME: " + test);
+        // console.log("ADDING");
+        // console.log("Scheduling notification");
+        // console.log(newestPantryData.data.getPantry.notifTime + ' ' + curr_time);
+
+        if(itemsExpiring > 0 && runningLow <= 0) {
+          await Notifications.scheduleNotificationAsync({
+            content: {
+              title: "SMART PANTRY",
+              body: 'You have ' + itemsExpiring + ' item(s) expiring soon! Click here to view them.',
+              data: { data: 'View home menu' },
+            },
+            trigger: { seconds: pantryData.data.getPantry.notiffreq },
+          });
+        }
+        else if(itemsExpiring <= 0 && runnLow > 0) {
+          await Notifications.scheduleNotificationAsync({
+            content: {
+              title: "SMART PANTRY",
+              body: 'You have ' + runningLow + ' item(s) running low! Click here to view them.',
+              data: { data: 'View home menu' },
+            },
+            trigger: { seconds: pantryData.data.getPantry.notiffreq },
+          });
+        }
+        else {
+          await Notifications.scheduleNotificationAsync({
+            content: {
+              title: "SMART PANTRY",
+              body: 'You have ' + itemsExpiring + ' item(s) expiring soon and ' + runningLow + ' item(s) running low! Click here to view them.',
+              data: { data: 'View home menu' },
+            },
+            trigger: { seconds: pantryData.data.getPantry.notiffreq },
+          });
+        }
+      }
+    }
+  }
+}
 
 export default HomeStackScreen;
 

@@ -34,14 +34,18 @@ const SettingsStackScreen = () => {
     <SettingsStack.Navigator screenOptions={{
       headerBackTitleVisible: false
     }}>
-      <SettingsStack.Screen options={{headerShown: false}}name="SettingsStack" component={Settings} />
-      <SettingsStack.Screen name="Collaborator Pantry" component={OtherPantryScreen} />
-      <SettingsStack.Screen name="My Information" component={MyInfoScreen} />
-      <SettingsStack.Screen name="Manage My Pantry" component={AccountsScreen} />
-      <SettingsStack.Screen name="Notifications" component={NotificationsScreen} />
-      <SettingsStack.Screen name="Help" component={HelpScreen} />
-      <SettingsStack.Screen name="About" component={AboutScreen} />
-      <SettingsStack.Screen name="Credits" component={CreditsScreen} />
+      <SettingsStack.Screen options={{ headerStyle: {backgroundColor: '#b5c99a'}, headerShown: false}} name="SettingsStack" component={Settings} />
+
+
+
+      
+      <SettingsStack.Screen name="Collaborator Pantry" component={OtherPantryScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+      <SettingsStack.Screen name="My Information" component={MyInfoScreen}options={{ headerStyle: {backgroundColor: '#b5c99a'} }} />
+      <SettingsStack.Screen name="Manage My Pantry" component={AccountsScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+      <SettingsStack.Screen name="Notifications" component={NotificationsScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+      <SettingsStack.Screen name="Help" component={HelpScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+      <SettingsStack.Screen name="About" component={AboutScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+      <SettingsStack.Screen name="Our Team" component={CreditsScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
     </SettingsStack.Navigator>
   );
 };
@@ -81,15 +85,15 @@ const Settings = ({navigation}) => {
       { title: "Help", subTitle: "General help about using your Smart Pantry app", onPress: () => {
         navigation.navigate("Help");
     } },
-      { title: "Credits",
-        subTitle: "Learn about the creators of your Smart Pantry app",
+      { title: "Meet The App Developers",
+        subTitle: "Learn about the developers of your Smart Pantry app",
         onPress: () => {
-        navigation.navigate("Credits");
+        navigation.navigate("Our Team");
       } },
      
       {
         title: "Sign Out",
-        subTitle: "Sign out of app",
+        subTitle: "Sign out of Smart Pantry app",
         onPress: () => {
           Alert.alert("Sign Out", "Do you want to sign out?", [
             {

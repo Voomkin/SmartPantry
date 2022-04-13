@@ -79,17 +79,27 @@ const MyInfoScreen = ({ navigation }) => {
     }
     return (
         <ScrollView style={{backgroundColor: '#DDE5B6'}}>
-            <Heading style={styles.paddedHeading}>Username</Heading>
-            <Text style={{fontSize: 18}}>{'\t\t'}{async () => {
-                await fetchInfo()}}</Text>
+            
+    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+      <View><Text style={[styles.paddedHeading, styles.width_username]}>Username</Text></View>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+    </View>
+    <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{async () => {await fetchInfo()}}</Text>
 
-            <Heading style={styles.paddedHeading}>Email</Heading>
-            <Text style={{fontSize: 18}} >{'\t\t'}{async () => {
-                await fetchInfo().attributes.email}}</Text>
+    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+      <View><Text style={[styles.paddedHeading, styles.width_email]}>Email</Text></View>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+    </View>
+    <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{async () => {await fetchInfo().attributes.email}}</Text>
 
-            <Heading style={styles.paddedHeading}>Phone Number</Heading>
-            <Text style={{fontSize: 18}}>{'\t\t'}{async () => {
-                await fetchInfo().attributes.phone_number}}</Text>
+    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+      <View><Text style={[styles.paddedHeading, styles.width_phonenumber]}>Phone Number</Text></View>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+    </View>
+    <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{async () => {await fetchInfo().attributes.phone_number}}</Text>
       </ScrollView>
     );
 };
@@ -122,10 +132,20 @@ const fetchInfo = async () => {
 }*/
 const styles = StyleSheet.create({
     paddedHeading : {
-      paddingTop: '5%',
-      paddingLeft: '5%',
-      paddingBottom: '5%',
+      fontWeight: 'bold',
+      fontSize: 19,
+      textAlign: 'center',
+      margin: 20
     },
+    width_username:{
+        width: 95,
+    },
+    width_email:{
+        width: 55,
+    },
+    width_phonenumber:{
+        width: 140,
+    }
   });
   
 

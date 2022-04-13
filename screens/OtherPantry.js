@@ -70,10 +70,6 @@ const OtherPantryScreen = ({ navigation }) => {
 
       if(c.length > 0) {
           
-      
-
-  
-      
         //NOTE: As of 3/27/2022, it may be the case that a collaborator can view multiple pantries
 
         //   const collabPantries = c.map( async (pantry) => {
@@ -270,20 +266,19 @@ const OtherPantryScreen = ({ navigation }) => {
   };
 
   return (
-      <ScrollView
+      <ScrollView style={{backgroundColor: '#DDE5B6'}}
         contentContainerStyle={{
           flexGrow: 1,
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
-        {!pantryExists && <Text>You are not a collaborator for any pantries</Text>}
+        {!pantryExists && <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>You are not a collaborator for any pantries</Text>}
         {pantryExists && (
           <View
             style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
           >
-            <Text style={{ fontSize: 25, marginBottom: 15 }}>{pantryName}</Text>
-
+            <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>{pantryName}</Text>
             <View>{listOfItems}</View>
           </View>
         )}

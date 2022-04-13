@@ -15,9 +15,6 @@ import { StatusBar } from "expo-status-bar";
 import { Heading, Box } from 'native-base'
 import Card from '../components/Card'
 
-
-
-
 const ShoppingStack = createStackNavigator();
 
 const ShoppingStackScreen = () => {
@@ -272,7 +269,5 @@ const Shopping = ({navigation}) => {
       </ScrollView>
   );
 }
-
-
 
 export default ShoppingStackScreen;

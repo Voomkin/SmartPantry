@@ -5,12 +5,13 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { NativeBaseProvider } from 'native-base'
 
-import SmartPantry from './screens/SmartPantry'
+import Home from './screens/Home'
 import Profile from './screens/Profile'
 import ShoppingList from './screens/Shopping'
 import Help from './screens/Help'
 import Settings from './screens/Settings'
 import customTheme from './screens/Theme'
+import SmartPantry from './screens/SmartPantry'
 
 import AppLoading from 'expo-app-loading'
 import { useFonts } from 'expo-font'
@@ -20,13 +21,18 @@ const Drawer = createDrawerNavigator();
 const HeaderDrawer = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="My Pantry" component={SmartPantry} />
-        <Drawer.Screen name="My Profile" component={Profile} />
-        <Drawer.Screen name="Shopping List" component={ShoppingList} />
-        <Drawer.Screen name="Settings" component={Settings} />
-        <Drawer.Screen name="Help" component={Help} />
-        <Drawer.Screen name="Logout"  component={SmartPantry} />
+      <Drawer.Navigator screenOptions={{
+        drawerStyle: {
+          backgroundColor: '#b5c99a',
+          width: 240,
+        },
+      }}>
+        <Drawer.Screen name="My Pantry" component={SmartPantry} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+        <Drawer.Screen name="My Profile" component={Profile} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+        <Drawer.Screen name="Shopping List" component={ShoppingList} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+        <Drawer.Screen name="Settings" component={Settings} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+        <Drawer.Screen name="Help" component={Help} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+        <Drawer.Screen name="Logout"  component={Home} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );

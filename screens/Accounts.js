@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Alert,
+  ScrollView
 } from "react-native";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import { updatePantry } from "../mutations";
@@ -54,17 +55,27 @@ const AccountsScreen = ({ navigation }) => {
   const [userText, setUserText] = useState("");
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>You can add a collaborator to your pantry by typing in their unique ID in the space below.
+    <ScrollView style={{backgroundColor: '#DDE5B6'}}>
+            <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>{'\n'}You can add a collaborator to your pantry by typing in their unique ID in the space below.
         Collaborators will be able to view the contents of your pantry, but can not modify it in any way.
-        Coming soon: Add collaborators to your pantry by scanning their unique QR code
-      </Text>
+        Coming soon: Add collaborators to your pantry by scanning their unique QR code{'\n'}</Text>      
+      
       <Input
         placeholder="Enter Collaborator ID"
-        containerStyle={{ width: 250 }}
+        containerStyle={{ width: "100%" }}
+        textAlign={'center'}
         onChangeText={(value) => setUserText(value)}
       />
-      <Button
+
+      <Button buttonStyle={{ marginTop:10,
+        paddingTop:15,
+        paddingBottom:15,
+        marginLeft:70,
+        marginRight:70,
+        backgroundColor:'#3D405B',
+        borderRadius:10,
+        borderWidth: 1,
+        borderColor: '#ffffff' }}
         onPress={ async () => {
           Alert.alert("Add Collaborator", "Add collaborator with ID \"" + userText + "\" to your pantry? Doing so will remove your current collaborator if you have one.", [
             {
@@ -82,7 +93,7 @@ const AccountsScreen = ({ navigation }) => {
             }
           ])
         }}
-        title="Click here to add a viewer to your pantry"
+        title="Add Collaborator to Your Pantry"
         color="orange"
         accessibilityLabel="Click here to add this collaborator to your pantry"
       />
@@ -95,7 +106,7 @@ const AccountsScreen = ({ navigation }) => {
         color="purple"
         accessibilityLabel="Click here to view another pantry"
       /> */}
-    </View>
+    </ScrollView>
   );
 };
 
