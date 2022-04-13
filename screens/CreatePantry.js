@@ -29,9 +29,7 @@ const CreatePantryScreen = ({ navigation }) => {
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
             <Input placeholder="Name of Pantry" containerStyle={{width: 250}} textAlign={'center'} onChangeText={value => setInputText(value)} />
-            <Button title="Submit" buttonStyle={{ marginTop:10,
-            paddingTop:15,
-            paddingBottom:15,
+            <Button title="Submit" buttonStyle={{ 
             marginLeft:120,
             marginRight:120,
             backgroundColor:'#3D405B',

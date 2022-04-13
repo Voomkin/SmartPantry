@@ -36,7 +36,7 @@ const addPantryItem = async () => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Input
-        placeholder="Name"
+        placeholder="Name (i.e. bananas)"
         containerStyle={{ width: 250 }}
         onChangeText={(value) => setNameText(value)}
       />

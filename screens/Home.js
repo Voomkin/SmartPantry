@@ -42,7 +42,7 @@ const HomeStackScreen = () => {
         />
         <HomeStack.Screen
           options={{ headerShown: true, title: "Manual Add" }}
-          name="ManualAdd"
+          name="ManualAdd" 
           component={ManualAddScreen}
         />
         <HomeStack.Screen
@@ -368,36 +368,54 @@ const HomeScreen = ({ navigation }) => {
   return (
       <ScrollView
         contentContainerStyle={{
-          // flexGrow: 1,
+           flexGrow: 1,
           alignItems: "center",
           justifyContent: "center",
         }}
       >
+        {!pantryExists}
         {/* Conditional render based on the value of createPantryButton and pantryExists */}
-        {createPantryButton && (
+        {createPantryButton && (         
           <Button
-            buttonStyle={{ margin: 15 }}
-            title="Create Pantry"
-            onPress={() => {
-              navigation.navigate("CreatePantry");
-              schedulePushNotification();
-            }}
-          ></Button>
+              buttonStyle={{                  
+                backgroundColor:'#3D405B',
+                borderRadius:10,
+                borderWidth: 1,
+                borderColor: '#fff' }}
+              title="Create Pantry"
+              onPress={() => {
+                navigation.navigate("CreatePantry");
+                schedulePushNotification();              }}
+            ></Button>
+
+
+
+
         )}
-        {!pantryExists && <Text>You don't have a pantry!</Text>}
         {pantryExists && (
           <View
             style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
           >
             <Text style={{ fontSize: 25, margin: 15 }}>{pantryName}</Text>
             <Button
-              buttonStyle={{ width: 250 }}
+              buttonStyle={{ marginTop:10,
+                paddingTop:15,
+                paddingBottom:15,
+                marginLeft:30,
+                marginRight:30,
+                backgroundColor:'#3D405B',
+                borderRadius:10,
+                borderWidth: 1,
+                borderColor: '#fff' }}
               title="Add Item"
               onPress={() => {
                 navigation.navigate("AddItem");
                 schedulePushNotification();
               }}
             ></Button>
+
+
+            
             <View>{listOfItems}</View>
             <View>{modalScreen}</View>
           </View>

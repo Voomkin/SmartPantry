@@ -27,7 +27,7 @@ const HeaderDrawer = () => {
           width: 240,
         },
       }}>
-        <Drawer.Screen name="My Pantry" component={SmartPantry} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+        <Drawer.Screen name="My Pantry" component={Home} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
         <Drawer.Screen name="My Profile" component={Profile} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
         <Drawer.Screen name="Shopping List" component={ShoppingList} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
         <Drawer.Screen name="Settings" component={Settings} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
