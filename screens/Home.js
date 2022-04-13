@@ -73,7 +73,10 @@ const HomeScreen = ({ navigation }) => {
       });
 
       responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-        console.log(response);
+        console.log("User has clicked notification");
+        //If we ever want the notification page to redirect the user to a particular screen, we could do that here
+        // console.log(response);
+        console.log(response.notification.request.content.data.data);
       });
 
       return () => {
@@ -85,14 +88,14 @@ const HomeScreen = ({ navigation }) => {
     console.log(err);
   }
 
-  //NOTE: Currently there is a bug which often causes the user to receive multiple notifications at a time.
-  //Should be an easy fix, but we will need to decide where this function should be called (preferably a button
-  //or something which the user will likely click frequently, so that the function doesn't need to be called
-  //constantly). Alternatively we could use some sort of lock mechanism (ie semaphore) so that the notification
-  //scheduler can not be called multiple times at once
+  //NOTE: There are still occaisionally some weird bugs where the user will receive double notifications,
+  //but to fix could comment out the following lines. However, the trade-off is that the user will not
+  //have their notifications renewed unless they actually click a button on the home page. May make more
+  //updates in the next few days (4/12/2022)
 
-  schedulePushNotification();  
-
+  if(Date.now() % 5 == 0) {
+    schedulePushNotification();  
+  }
   //END NOTIFICATION STUFF
 
   // useState variables to track whether to render the create pantry button
@@ -297,6 +300,7 @@ const HomeScreen = ({ navigation }) => {
           <Button buttonStyle={{ backgroundColor: 'grey', width: 75, marginRight: 5 }} title="update" onPress={() => {
             setItemId(item.id);
             handleModal();
+            schedulePushNotification();
           }}>
           </Button>
           <Button  buttonStyle={{backgroundColor: 'red', width: 75, marginRight: 5}} title="delete" onPress={() => {
@@ -304,6 +308,7 @@ const HomeScreen = ({ navigation }) => {
                {
                  text: "Yes",
                  onPress: () => { 
+                  schedulePushNotification();
                    Alert.alert("Shopping List", "Would you like to add the item to your shopping list?", [
                      {
                        text: "Yes",
@@ -375,6 +380,7 @@ const HomeScreen = ({ navigation }) => {
             title="Create Pantry"
             onPress={() => {
               navigation.navigate("CreatePantry");
+              schedulePushNotification();
             }}
           ></Button>
         )}
@@ -389,6 +395,7 @@ const HomeScreen = ({ navigation }) => {
               title="Add Item"
               onPress={() => {
                 navigation.navigate("AddItem");
+                schedulePushNotification();
               }}
             ></Button>
             <View>{listOfItems}</View>
@@ -455,7 +462,7 @@ async function schedulePushNotification() {
       const p = await API.graphql(graphqlOperation(updatePantry, {input: pantryInput}))
     }
 
-    let itemsExpiring = false;
+    let itemsExpiring = 0;
     const today = new Date();
 
     //HERE: Check if there are any items expiring in the current user's pantry
@@ -481,56 +488,88 @@ async function schedulePushNotification() {
       // console.log("DATE: " + item.expDate);
       // console.log("MONTH: " + today.getMonth() + " " + today.getDay() + " " + today.getFullYear());
       const exp_date = item.expDate;
+      if(exp_date != null) {
 
-      let month = 0;
-      let day = 0;
-      let year = 0;
-      // console.log("EXP DATE: " + exp_date);
-      if(exp_date.length == 7) {
-        month = parseInt(exp_date.charAt(0));
-        day = parseInt(exp_date.substring(1,3));
-        year = parseInt(exp_date.substring(3,7));
-        // console.log(month + " " + day + " " + year);
-      }
-      else if(exp_date.length == 8) {
-        month = parseInt(exp_date.substring(0,2));
-        day = parseInt(exp_date.substring(2,4));
-        year = parseInt(exp_date.substring(4,8));
-        // console.log(month + " " + day + " " + year);
-      }
-      // console.log("FULL YEAR", today.getFullYear() + " " + year);
+        let month = 0;
+        let day = 0;
+        let year = 0;
+        // console.log("EXP DATE: " + exp_date);
+        if(exp_date.length == 7) {
+          month = parseInt(exp_date.charAt(0));
+          day = parseInt(exp_date.substring(1,3));
+          year = parseInt(exp_date.substring(3,7));
+          // console.log(month + " " + day + " " + year);
+        }
+        else if(exp_date.length == 8) {
+          month = parseInt(exp_date.substring(0,2));
+          day = parseInt(exp_date.substring(2,4));
+          year = parseInt(exp_date.substring(4,8));
+          // console.log(month + " " + day + " " + year);
+        }
+        // console.log("FULL YEAR", today.getFullYear() + " " + year);
 
-      //Handle if at the end of a year
-      if(today.getMonth() == 12) {
-        if(month == 12) {
-          if(today.getDay() <= day) {
-            itemsExpiring = true;
+        //Handle if at the end of a year
+        if(today.getMonth() == 12) {
+          if(month == 12) {
+            if(today.getDay() <= day) {
+              itemsExpiring += 1;
+            }
           }
-        }
-        if(month == 1 && today.getFullYear() + 1 == year) {
-          if(day <= 15) {
-            itemsExpiring = true;
+          if(month == 1 && today.getFullYear() + 1 == year) {
+            if(day <= 15) {
+              itemsExpiring += 1;
+            }
           }
-        }
-      }//Next handle the general case
-      else if(today.getFullYear() == year) {
-        if(today.getMonth() == month && today.getDay() <= day) {
-          itemsExpiring = true;
-        }
-        else if(today.getMonth() + 1 == month && today.getDay() > 15 && day <= 15) {
-          itemsExpiring = true;
+        }//Next handle the general case
+        else if(today.getFullYear() == year) {
+          if(today.getMonth() == month && today.getDay() <= day) {
+            itemsExpiring += 1;
+          }
+          else if(today.getMonth() + 1 == month && today.getDay() > 15 && day <= 15) {
+            itemsExpiring += 1;
+          }
         }
       }
     });
 
-    if(itemsExpiring) {
-      console.log("User has items expiring soon");
-    }
-    else {
-      console.log("User has no items expiring soon");
-    }
+    let runningLow = 0;
 
-    if(!pantryData.data.getPantry.notifPending && itemsExpiring) {
+    // console.log("CHECKING ITEMS");
+    const checkRunningLow = b.map( async (item) => {
+      // console.log("ITEM: " + item.name);
+      let alreadyCounted = false;
+
+      if(item.weight != null) {
+        if(item.currWeight < item.weight * 0.3) {
+          runningLow += 1;
+          alreadyCounted = true;
+          // console.log("WEIGHT RUNNING LOW");
+        }
+      }
+      if(item.quantity != null && !alreadyCounted) {
+        if(item.quantity <= 2 || item.quantity < item.origQuantity * 0.3) {
+          runningLow += 1;
+          // console.log("QUANTITY RUNNING LOW");
+        }
+      }
+    });
+
+    // if(itemsExpiring > 0) {
+    //   console.log("User has items expiring soon");
+    // }
+    // else {
+    //   console.log("User has no items expiring soon");
+    // }
+
+    // if(runningLow > 0) {
+    //   console.log("User has items running low");
+    // }
+    // else {
+    //   console.log("User has no items running low");
+    // }
+
+    if(!pantryData.data.getPantry.notifPending && (itemsExpiring > 0 || runningLow > 0)) {
+      console.log("Scheduling notification");
 
       const newestPantryData = await API.graphql(
         graphqlOperation(getPantry, { id: user.username.toString() })
@@ -547,8 +586,6 @@ async function schedulePushNotification() {
         notifPending: true,
         notifTime: test,
       };
-      
-      
 
       const old_time = newestPantryData.data.getPantry.notifTime
       // console.log("OLD: " + old_time + " NEW: " + test);
@@ -560,17 +597,38 @@ async function schedulePushNotification() {
         // console.log("ADDING");
         // console.log("Scheduling notification");
         // console.log(newestPantryData.data.getPantry.notifTime + ' ' + curr_time);
-      
-        await Notifications.scheduleNotificationAsync({
-          content: {
-            title: "SMART PANTRY",
-            body: 'You have items expiring soon! Click here to view them.',
-            data: { data: 'View home menu' },
-          },
-          trigger: { seconds: pantryData.data.getPantry.notiffreq },
-        });
-      }
 
+        if(itemsExpiring > 0 && runningLow <= 0) {
+          await Notifications.scheduleNotificationAsync({
+            content: {
+              title: "SMART PANTRY",
+              body: 'You have ' + itemsExpiring + ' item(s) expiring soon! Click here to view them.',
+              data: { data: 'View home menu' },
+            },
+            trigger: { seconds: pantryData.data.getPantry.notiffreq },
+          });
+        }
+        else if(itemsExpiring <= 0 && runnLow > 0) {
+          await Notifications.scheduleNotificationAsync({
+            content: {
+              title: "SMART PANTRY",
+              body: 'You have ' + runningLow + ' item(s) running low! Click here to view them.',
+              data: { data: 'View home menu' },
+            },
+            trigger: { seconds: pantryData.data.getPantry.notiffreq },
+          });
+        }
+        else {
+          await Notifications.scheduleNotificationAsync({
+            content: {
+              title: "SMART PANTRY",
+              body: 'You have ' + itemsExpiring + ' item(s) expiring soon and ' + runningLow + ' item(s) running low! Click here to view them.',
+              data: { data: 'View home menu' },
+            },
+            trigger: { seconds: pantryData.data.getPantry.notiffreq },
+          });
+        }
+      }
     }
   }
 }
