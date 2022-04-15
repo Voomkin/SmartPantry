@@ -608,22 +608,29 @@ async function schedulePushNotification() {
             trigger: { seconds: pantryData.data.getPantry.notiffreq },
           });
         }
-        else if(itemsExpiring <= 0 && runnLow > 0) {
+        else if (itemsExpiring <= 0 && runningLow > 0) {
           await Notifications.scheduleNotificationAsync({
             content: {
               title: "SMART PANTRY",
-              body: 'You have ' + runningLow + ' item(s) running low! Click here to view them.',
-              data: { data: 'View home menu' },
+              body:
+                "You have " +
+                runningLow +
+                " item(s) running low! Click here to view them.",
+              data: { data: "View home menu" },
             },
             trigger: { seconds: pantryData.data.getPantry.notiffreq },
           });
-        }
-        else {
+        } else {
           await Notifications.scheduleNotificationAsync({
             content: {
               title: "SMART PANTRY",
-              body: 'You have ' + itemsExpiring + ' item(s) expiring soon and ' + runningLow + ' item(s) running low! Click here to view them.',
-              data: { data: 'View home menu' },
+              body:
+                "You have " +
+                itemsExpiring +
+                " item(s) expiring soon and " +
+                runningLow +
+                " item(s) running low! Click here to view them.",
+              data: { data: "View home menu" },
             },
             trigger: { seconds: pantryData.data.getPantry.notiffreq },
           });
