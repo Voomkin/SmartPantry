@@ -63,7 +63,7 @@ const addPantryItem = async () => {
 };
   
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: '#b5e48c'}}>
       <Input
         placeholder="Name (i.e. bananas)"
         containerStyle={{ width: 250 }}
@@ -87,13 +87,25 @@ const addPantryItem = async () => {
       <Text>Format for expiration date: MM/DD/YYYY</Text>
       <Button
         title="Barcode Add"
-        buttonStyle={{ width: 200, margin: 10 }}
+        buttonStyle={{ marginTop:10,
+          paddingTop:15,
+          paddingBottom:15,
+          backgroundColor:'#3D405B',
+          borderRadius:10,
+          borderWidth: 1,
+          borderColor: '#fff' }}
         onPress={() => {
           navigation.navigate("BarcodeAdd");
         }}
       ></Button>
       <Button
-        buttonStyle={{ width: 200 }}
+        buttonStyle={{ marginTop:10,
+          paddingTop:15,
+          paddingBottom:15,
+          backgroundColor:'#3D405B',
+          borderRadius:10,
+          borderWidth: 1,
+          borderColor: '#fff' }}
         title="Submit"
         onPress={() => {
           addPantryItem();

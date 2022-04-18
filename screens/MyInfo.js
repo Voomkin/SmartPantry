@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect} from "react";
 import {
   Text,
   View,
@@ -11,7 +11,7 @@ import { getPantry, listItems } from "../queries";
 import { Heading } from 'native-base'
 import { StyleSheet } from 'react-native';
 
-const getPantryInfo = async (user) => {
+{/*const getPantryInfo = async (user) => {
     try {
         const pantryData = await API.graphql(
             graphqlOperation(getPantry, { id: user.username.toString() })
@@ -58,48 +58,57 @@ const getPantryInfo = async (user) => {
     } catch(err) {
         console.log(err);
     }
-}
+}*/}
 
 const MyInfoScreen = ({ navigation }) => {
+   useEffect(() => {
+        const unsubscribe = navigation.addListener("focus", () => {
+            fetchInfo();
+        });
+        return unsubscribe;
+      }, [navigation]);
+
+    const [email, setEmail]= useState("");
+    const [phoneNumber, setPhoneNumber]= useState("");
+
+
     const fetchInfo = async () => {
+        console.log("HERE") 
         // alert(email);
         try {
             const user = await Auth.currentAuthenticatedUser();
             // console.log(user);
     
-            const email = user.attributes.email;
-            const phone_number = user.attributes.phone_number;
+            // const email = user.attributes.email;
+            // const phone_number = user.attributes.phone_number;
+    
+            setEmail(user.attributes.email); 
+            setPhoneNumber([user.attributes.phone_number.substring(0,2), '-', user.attributes.phone_number.substring(2,5),'-',user.attributes.phone_number.substring(5,8),'-',user.attributes.phone_number.substring(8,12)]);
+    
             // alert(phone_number);
-            const pantryStats = getPantryInfo(user);
-            return user
+            //const pantryStats = getPantryInfo(user);
+            // return (<Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{email}</Text>)
             
         } catch (err) {
             console.log(err);
         }
     }
     return (
-        <ScrollView style={{backgroundColor: '#DDE5B6'}}>
-            
-    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-      <View><Text style={[styles.paddedHeading, styles.width_username]}>Username</Text></View>
-      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-    </View>
-    <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{async () => {await fetchInfo()}}</Text>
-
-    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-      <View><Text style={[styles.paddedHeading, styles.width_email]}>Email</Text></View>
-      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-    </View>
-    <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{async () => {await fetchInfo().attributes.email}}</Text>
-
-    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-      <View><Text style={[styles.paddedHeading, styles.width_phonenumber]}>Phone Number</Text></View>
-      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-    </View>
-    <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{async () => {await fetchInfo().attributes.phone_number}}</Text>
+    <ScrollView style={{backgroundColor: '#b5e48c'}}>    
+       
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        <View><Text style={[styles.paddedHeading, styles.width_username]}>Email</Text></View>
+        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        </View> 
+        <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{email}</Text>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        <View><Text style={[styles.paddedHeading, styles.width_phonenumber]}>Phone Number</Text></View>
+        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        </View> 
+        <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{phoneNumber}</Text>  
+        
       </ScrollView>
     );
 };
@@ -137,9 +146,6 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       margin: 20
     },
-    width_username:{
-        width: 95,
-    },
     width_email:{
         width: 55,
     },
@@ -147,6 +153,6 @@ const styles = StyleSheet.create({
         width: 140,
     }
   });
-  
+
 
 export default MyInfoScreen;

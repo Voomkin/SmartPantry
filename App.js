@@ -1,10 +1,11 @@
-
-import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { NativeBaseProvider } from 'native-base'
-import React from 'react';
+import { Alert } from "react-native";
+
+import React, { Component, useState, useEffect} from "react";
 import {Icon, Button} from 'react-native-elements';
 import Amplify from 'aws-amplify';
 import {Auth, API, graphqlOperation} from 'aws-amplify';
@@ -22,30 +23,104 @@ import Settings from './screens/Settings'
 import customTheme from './screens/Theme'
 import SmartPantry from './screens/SmartPantry'
 
+import WelcomeScreen from './screens/Welcome';
 import AppLoading from 'expo-app-loading'
 import { useFonts } from 'expo-font'
+import MyInfoScreen from './screens/MyInfo';
+import CustomDrawer from './components/CustomDrawer'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Drawer = createDrawerNavigator();
 
-const HeaderDrawer = () => {
+/*const HandleSignOut = () => {
+  Alert.alert("Sign Out", "Do you want to sign out?", [
+    {
+      text: "Yes",
+      onPress: () => Auth.signOut(),
+    },
+    {
+      text: "No",
+      style: "cancel",
+    },
+  ]);
+  return null;
+}*/
+
+const HeaderDrawer = (props) => {
+
   return (
+    <NavigationContainer>
+      <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />}
+      screenOptions={{headerShown: true, drawerActiveBackgroundColor:'#3D405B', drawerActiveTintColor: '#fff'}}>
+        <Drawer.Screen name="Welcome" component={WelcomeScreen} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="hand-left-outline" size={22} color={color} />
+          ),
+          headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff'
+        }}/>
+        <Drawer.Screen name="My Pantry" component={Home} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="home-outline" size={22} color={color} />
+          ),
+          headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff'
+        }}/>
+        <Drawer.Screen name="Shopping List" component={ShoppingList} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="cart-outline" size={22} color={color} />
+          ),
+          headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff'
+        }}/>
+        <Drawer.Screen name="My Profile" component={MyInfoScreen} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="person-outline" size={22} color={color} />
+          ),
+          headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff'
+        }}/>
+        <Drawer.Screen name="Help" component={Help} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="help-outline" size={22} color={color} />
+          ),
+          headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff'
+        }}/>
+        <Drawer.Screen name="Settings" component={Settings} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="settings-outline" size={22} color={color} />
+          ),
+          headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff'
+        }}/>
+      {/*  <Drawer.Screen name="Logout" component={HandleSignOut} options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="log-out-outline" size={22} color={color} />
+          ),
+          headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff'
+        }}/>*/}
+      </Drawer.Navigator>
+    </NavigationContainer>
+    /*
     <NavigationContainer>
       <Drawer.Navigator screenOptions={{
         drawerStyle: {
-          backgroundColor: '#b5c99a',
+          backgroundColor: '#3D405B',
           width: 240,
         },
+        contentOptions: {
+          labelStyle: {
+            color: '#fff',
+          },
+        }
       }}>
-        <Drawer.Screen name="My Pantry" component={Home} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
-        <Drawer.Screen name="My Profile" component={Profile} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
-        <Drawer.Screen name="Shopping List" component={ShoppingList} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
-        <Drawer.Screen name="Settings" component={Settings} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
-        <Drawer.Screen name="Help" component={Help} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
-        <Drawer.Screen name="Logout"  component={Home} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+        <Drawer.Screen name="My Pantry" component={Home} options={{  headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff'}}/>
+        <Drawer.Screen name="Shopping List" component={ShoppingList} options={{ headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff' }}/>
+        <Drawer.Screen name="My Profile" component={MyInfoScreen} options={{ headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff' }}/>
+        <Drawer.Screen name="Help" component={Help} options={{ headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff' }}/>
+        <Drawer.Screen name="Settings" component={Settings} options={{ headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff' }}/>
+        <Drawer.Screen name="Logout"  component={HandleSignOut} options={{ headerStyle: {backgroundColor: '#3D405B'}, headerTintColor: '#fff' }}/>
       </Drawer.Navigator>
     </NavigationContainer>
+    */
   );
 }
+
   
 const updateNotifFreq = async ( new_pref ) => {
   const user = await Auth.currentAuthenticatedUser();
@@ -155,9 +230,42 @@ const notificationUpdate = async () => {
   }
 }
 
-
 // Main App function
 const App = () => {
+
+  const [email, setEmail]= useState("");
+  //const [phoneNumber, setPhoneNumber]= useState("");
+
+  useEffect(() => {
+    fetchInfo()
+  }, [])
+
+  const fetchInfo = async () => {
+      console.log("HERE") 
+      // alert(email);
+      try {
+          const user = await Auth.currentAuthenticatedUser();
+          // console.log(user);
+
+          // const email = user.attributes.email;
+          // const phone_number = user.attributes.phone_number;
+
+          //setEmail(user.attributes.email); 
+          //setPhoneNumber([user.attributes.phone_number.substring(0,2), '-', user.attributes.phone_number.substring(2,5),'-',user.attributes.phone_number.substring(5,8),'-',user.attributes.phone_number.substring(8,12)]);
+
+          await AsyncStorage.setItem('@userEmail', user.attributes.email)
+          // alert(phone_number);
+          //const pantryStats = getPantryInfo(user);
+          // return (<Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{email}</Text>)
+          
+      } catch (err) {
+          console.log(err);
+      }
+  }
+
+
+  console.log(email)
+
   let [areFontsLoaded] = useFonts({
     'Lato-Black': require('./assets/fonts/Lato/Lato-Black.ttf'),
     'Lato-BlackItalic': require('./assets/fonts/Lato/Lato-BlackItalic.ttf'),
@@ -188,6 +296,7 @@ const App = () => {
         screenOptions={{
           headerStyle: {
             backgroundColor: "#769353",
+            color: 'red'
           },
         }}
       >

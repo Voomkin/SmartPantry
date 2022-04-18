@@ -10,7 +10,7 @@ import {
 
 const CreditsScreen = ({ navigation }) => {
   return (
-    <ScrollView style={{backgroundColor: '#DDE5B6'}}>
+    <ScrollView style={{backgroundColor: '#b5e48c'}}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
       <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
       <View><Text style={styles.paddedHeading}>Meet the Developers of Your App</Text></View>
@@ -22,12 +22,6 @@ const CreditsScreen = ({ navigation }) => {
         <Image source={require("../assets/images/Ryan.png")} style={styles1.logo}/>
       </View>
       <Text style={{fontSize: 18, fontWeight:'bold', textAlign: 'center', marginHorizontal: 15}}>Ryan Mraz</Text>
-      <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>Computer Science (B.S.){'\n'}</Text>
-
-      <View style={styles1.container}>
-        <Image source={require("../assets/images/Jon.png")} style={styles1.logo}/>
-      </View>
-      <Text style={{fontSize: 18, fontWeight:'bold', textAlign: 'center', marginHorizontal: 15}}>Jonathan Malcomb</Text>
       <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>Computer Science (B.S.){'\n'}</Text>
 
       <View style={styles1.container}>
@@ -43,10 +37,17 @@ const CreditsScreen = ({ navigation }) => {
       <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>Computer Science (B.S.) with a minor in Mathematics and Area of Emphasis in Cybersecurity{'\n'}</Text>
     
       <View style={styles1.container}>
+        <Image source={require("../assets/images/Jon.png")} style={styles1.logo}/>
+      </View>
+      <Text style={{fontSize: 18, fontWeight:'bold', textAlign: 'center', marginHorizontal: 15}}>Jonathan Malcomb</Text>
+      <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>Computer Science (B.S.){'\n'}</Text>
+      
+      <View style={styles1.container}>
         <Image source={require("../assets/images/Shannon.png")} style={styles1.logo}/>
       </View>
       <Text style={{fontSize: 18, fontWeight:'bold', textAlign: 'center', marginHorizontal: 15}}>Shannon Biega</Text>
       <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>Computer Science (B.S.) and Spanish (B.A.) with an Area of Emphasis in Cybersecurity{'\n'}</Text>
+
     </ScrollView>
   );
 };

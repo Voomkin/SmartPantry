@@ -196,20 +196,24 @@ const OtherPantryScreen = ({ navigation }) => {
   };
 
   return (
-      <ScrollView style={{backgroundColor: '#DDE5B6'}}
+      <ScrollView style={{backgroundColor: '#b5e48c'}}
         contentContainerStyle={{
           flexGrow: 1,
           alignItems: "center",
           justifyContent: "center"
         }}
       >
-        {!pantryExists && <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>You are not a collaborator for any pantries</Text>}
+        {!pantryExists && <Text style={styles.body}>You are not a collaborator for any pantries.</Text>}
         {pantryExists && (
           <View
             style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
           >
-            <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>{pantryName}</Text>
-            <View>{listOfItems}</View>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+            <View><Text style={[styles.paddedHeading, styles.width_username]}>Email</Text></View>
+            <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        </View> 
+        <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{email}</Text>
           </View>
         )}
       </ScrollView>
@@ -221,5 +225,12 @@ const OtherPantryScreen = ({ navigation }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  body:{
+    fontSize: 18,
+    textAlign: 'center'
+  }
+});
 
 export default OtherPantryScreen;

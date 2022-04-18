@@ -27,7 +27,7 @@ Alert.alert("Shopping List", "Added " + nameText + " to your Shopping List"); //
 };
   
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: '#b5e48c'}}>
       <Input
         placeholder="Name (i.e. bananas)"
         containerStyle={{ width: 250 }}

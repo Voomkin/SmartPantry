@@ -36,7 +36,8 @@ const HomeStackScreen = () => {
           component={CreatePantryScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Add Item" }}
+          options={{ headerShown: true, title: "Add Item", headerStyle: {backgroundColor: '#b5e48c'}
+        }}
           name="AddItem"
           component={AddItemScreen}
         />
@@ -371,6 +372,7 @@ const HomeScreen = ({ navigation }) => {
            flexGrow: 1,
           alignItems: "center",
           justifyContent: "center",
+          backgroundColor: '#b5e48c'
         }}
       >
         {!pantryExists}

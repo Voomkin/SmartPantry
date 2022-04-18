@@ -10,7 +10,7 @@ import { Heading } from 'native-base'
 
 const HelpScreen = ({ navigation }) => {
   return (
-    <ScrollView style={{backgroundColor: '#DDE5B6', }}>
+    <ScrollView style={{backgroundColor: '#b5e48c'}}>
     
     <View style={{flexDirection: 'row', alignItems: 'center'}}>
       <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
@@ -106,9 +106,21 @@ const HelpScreen = ({ navigation }) => {
       <Text style={styles.body}>➀{'\n'}Navigate to</Text>
       <Text style={[styles.body, {fontStyle: 'italic'}]}> Settings</Text>
       <Text style={styles.body}>{'\n'}➁{'\n'}Click "Manage My Pantry"</Text> 
-      <Text style={styles.body}>{'\n'}➂{'\n'}Enter Collaborator ID</Text>
+      <Text style={styles.body}>{'\n'}➂{'\n'}Enter Collaborator Email</Text>
       <Text style={styles.body}>{'\n'}➃{'\n'}Click "Add Collaborator to Pantry"{'\n'}</Text>
-    </Text>        
+    </Text> 
+
+    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+      <View><Text style={styles.paddedHeading}>How To Delete Your Pantry</Text></View>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+    </View>
+    <Text>
+      <Text style={styles.body}>➀{'\n'}Navigate to</Text>
+      <Text style={[styles.body, {fontStyle: 'italic'}]}> Settings</Text>
+      <Text style={styles.body}>{'\n'}➁{'\n'}Click "Manage My Pantry"</Text> 
+      <Text style={styles.body}>{'\n'}➂{'\n'}Click "Delete My Pantry"{'\n'}</Text>
+    </Text>       
     </ScrollView>
     
   );

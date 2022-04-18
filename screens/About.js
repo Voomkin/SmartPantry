@@ -9,13 +9,24 @@ import {
 
 const AboutScreen = ({ navigation }) => {
   return (
-    <ScrollView style={{backgroundColor: '#DDE5B6', }}>
+    <ScrollView style={{backgroundColor: '#b5e48c', }}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
       <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
       <View><Text style={styles.paddedHeading}>What is The Smart Pantry app?</Text></View>
       <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
       </View>
       <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 20}}>Powered by hardware and software, The Smart Pantry app allows users to track food items stored in their kitchen pantry.</Text>
+
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+      <View><Text style={styles.paddedHeading}>What is the Smart Pantry mission?</Text></View>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+      </View>
+      <Text style={{fontSize: 25, textAlign: 'center', marginHorizontal: 10}}>★</Text>
+      <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 50}}>Aid elders in remembering their food items and living more independently​.</Text>
+
+      <Text style={{fontSize: 25, textAlign: 'center', marginHorizontal: 10}}>★</Text>
+      <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 20}}>Reduce food waste and malnutrition among elders.</Text>
 
 
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -38,7 +49,7 @@ const AboutScreen = ({ navigation }) => {
 
       <Text style={{fontSize: 30, textAlign: 'center', margin: 10}}>④</Text>
       <Text style={{fontSize: 18, fontWeight:'bold', textAlign: 'center', marginHorizontal: 15}}>Notifications</Text>
-      <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 35}}>Notify users when an item's quantity is running low or expiration date is near</Text>
+      <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 35}}>Notify users when an item's quantity is running low or expiration date is near{'\n'}</Text>
       
     </ScrollView>
   );

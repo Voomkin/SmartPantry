@@ -19,17 +19,21 @@ const ShoppingStack = createStackNavigator();
 
 const ShoppingStackScreen = () => {
   return (
-    <ShoppingStack.Navigator>
+    <ShoppingStack.Navigator >
       <ShoppingStack.Screen
         options={{ headerShown: false }}
         name="Back"
         component={Shopping}
       />
       <ShoppingStack.Screen
-          options={{ headerShown: true, title: "Add Item" }}
+          options={{ headerShown: true, title: "Add Item",  headerStyle: {backgroundColor: '#b5e48c'} }}
           name="AddShoppingListItem"
           component={AddShoppingListItemScreen}
+          
         />
+
+
+
     </ShoppingStack.Navigator>
   );
 };
@@ -178,9 +182,15 @@ const Shopping = ({navigation}) => {
           <Text
             style={{paddingLeft: 15, width: "50%", flexDirection: "column", fontSize: 18 }}
           >
-            {item.name + '\n'}
+            {item.name}
           </Text>
-          <Button  buttonStyle={{backgroundColor: 'red', width: 75, marginRight: 5}} title="delete" onPress={() => {
+          <Button  buttonStyle={{ marginTop:10,
+                paddingTop:15,
+                paddingBottom:15,
+                backgroundColor:'#ff686b',
+                borderRadius:10,
+                borderWidth: 1,
+                borderColor: '#fff' }} title="Delete Item" onPress={() => {
              Alert.alert("Delete Item", "Are you sure you want to delete item?", [
                {
                  text: "Yes",
@@ -229,6 +239,7 @@ const Shopping = ({navigation}) => {
           flexGrow: 1,
           alignItems: "center",
           justifyContent: "center",
+          backgroundColor: '#b5e48c'
         }}
       >
         {/* Conditional render based on the value of shoppingListButton and shoppingListExists */}
@@ -241,7 +252,13 @@ const Shopping = ({navigation}) => {
           //   }}
           // ></Button>
         )} */}
-        {!shoppingListExists && <Text>You must make a pantry before you make a shopping list</Text>}
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+      <View><Text style={styles.paddedHeading}>My Shopping List</Text></View>
+      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+      </View>
+
+        {!shoppingListExists && <Text style={[styles.body]}>You must make a pantry before you make a shopping list.</Text>}
         {shoppingListExists && (
           <View
             style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
@@ -269,5 +286,19 @@ const Shopping = ({navigation}) => {
       </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  paddedHeading : {
+    fontWeight: 'bold',
+    fontSize: 19,
+    textAlign: 'center',
+    margin: 10
+  },
+  body:{
+    fontSize: 18,
+    textAlign: 'center',
+    margin: 75,
+  }
+});
 
 export default ShoppingStackScreen;

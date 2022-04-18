@@ -69,7 +69,7 @@ const SmartPantry = () => {
 
 
     return (
-      <ScrollView backgroundColor={"#DDE5B6"}>   
+      <ScrollView backgroundColor={"#b5e48c"}>   
 
             <Heading style={styles.paddedHeading}>Expiring Soon</Heading>
             <Box alignItems='center'>

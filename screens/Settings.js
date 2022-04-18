@@ -34,18 +34,14 @@ const SettingsStackScreen = () => {
     <SettingsStack.Navigator screenOptions={{
       headerBackTitleVisible: false
     }}>
-      <SettingsStack.Screen options={{ headerStyle: {backgroundColor: '#b5c99a'}, headerShown: false}} name="SettingsStack" component={Settings} />
-
-
-
-      
-      <SettingsStack.Screen name="Collaborator Pantry" component={OtherPantryScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
-      <SettingsStack.Screen name="My Information" component={MyInfoScreen}options={{ headerStyle: {backgroundColor: '#b5c99a'} }} />
-      <SettingsStack.Screen name="Manage My Pantry" component={AccountsScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
-      <SettingsStack.Screen name="Notifications" component={NotificationsScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
-      <SettingsStack.Screen name="Help" component={HelpScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
-      <SettingsStack.Screen name="About" component={AboutScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
-      <SettingsStack.Screen name="Our Team" component={CreditsScreen} options={{ headerStyle: {backgroundColor: '#b5c99a'} }}/>
+      <SettingsStack.Screen options={{ headerStyle: {backgroundColor: '#b5e48c'}, headerShown: false}} name="SettingsStack" component={Settings} />
+      <SettingsStack.Screen name="Collaborator Pantry" component={OtherPantryScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>
+      <SettingsStack.Screen name="My Information" component={MyInfoScreen}options={{ headerStyle: {backgroundColor: '#b5e48c'} }} />
+      <SettingsStack.Screen name="Manage My Pantry" component={AccountsScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>
+      <SettingsStack.Screen name="Notifications" component={NotificationsScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>
+      <SettingsStack.Screen name="Help" component={HelpScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>
+      <SettingsStack.Screen name="About" component={AboutScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>
+      <SettingsStack.Screen name="Our Team" component={CreditsScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>
     </SettingsStack.Navigator>
   );
 };
@@ -60,7 +56,7 @@ const Settings = ({navigation}) => {
           navigation.navigate("My Information");
       } },
       { title: "Manage My Pantry",
-        subTitle: "Manage who can view yours",
+        subTitle: "View pantry details\nManage who can view your pantry",
          onPress: () => {
           navigation.navigate("Manage My Pantry");
       } },
@@ -76,15 +72,16 @@ const Settings = ({navigation}) => {
           navigation.navigate("Notifications");
         },
       },
+      { title: "Help", subTitle: "General help about using your Smart Pantry app", onPress: () => {
+        navigation.navigate("Help");
+    } },
       
       { title: "About",
         subTitle: "Learn about your Smart Pantry app", 
         onPress: () => {
           navigation.navigate("About");
       } },
-      { title: "Help", subTitle: "General help about using your Smart Pantry app", onPress: () => {
-        navigation.navigate("Help");
-    } },
+      
       { title: "Meet The App Developers",
         subTitle: "Learn about the developers of your Smart Pantry app",
         onPress: () => {
@@ -93,7 +90,7 @@ const Settings = ({navigation}) => {
      
       {
         title: "Sign Out",
-        subTitle: "Sign out of Smart Pantry app",
+        subTitle: "Sign out of your Smart Pantry app",
         onPress: () => {
           Alert.alert("Sign Out", "Do you want to sign out?", [
             {
@@ -107,7 +104,7 @@ const Settings = ({navigation}) => {
           ]);
         },
       },
-      {
+     /* {
         title: "Delete Pantry",
         subTitle: "Delete your pantry",
         onPress: () => {
@@ -124,10 +121,10 @@ const Settings = ({navigation}) => {
             }
           ])
         }
-      }
+      }*/
     ];
     return (
-        <ScrollView style={{backgroundColor: '#DDE5B6'}}>
+        <ScrollView style={{backgroundColor: '#b5e48c'}}>
             {settingsOptions.map(({title,subTitle,onPress}) => 
             <TouchableOpacity key={title} onPress={onPress}>
                 <View style={{
