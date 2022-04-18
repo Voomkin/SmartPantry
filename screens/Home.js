@@ -294,8 +294,8 @@ const HomeScreen = ({ navigation }) => {
             style={{paddingLeft: 15, width: "50%", flexDirection: "column", fontSize: 18 }}
           >
             {item.name + '\n'}
-            {item.quantity && <Text style={{fontSize: 15, fontWeight: 'bold'}}>Quantity: {item.quantity}</Text>}
-            {item.weight && <Text style={{fontSize: 15, fontWeight: "bold"}}>Percentage left: {percentage}%</Text>}
+            {item.quantity && <Text style={{fontSize: 15, fontWeight: 'bold'}}>Quantity: {item.quantity + "\n"}</Text>}
+            {item.weight && <Text style={{fontSize: 15, fontWeight: "bold"}}>Percentage left: {percentage + "%\n"}</Text>}
             {item.expDate && <Text style={{fontSize: 15, fontWeight: "bold"}}>Expiration date: {item.expDate.substring(item.expDate.length - 8, item.expDate.length - 6) + "/" + item.expDate.substring(item.expDate.length - 6, item.expDate.length - 4) + "/" + item.expDate.substring(item.expDate.length - 4, item.expDate.length)}</Text>}
           </Text>
           <Button buttonStyle={{ backgroundColor: 'grey', width: 75, marginRight: 5 }} title="update" onPress={() => {
@@ -624,7 +624,7 @@ async function schedulePushNotification() {
             trigger: { seconds: pantryData.data.getPantry.notiffreq },
           });
         }
-        else if(itemsExpiring <= 0 && runnLow > 0) {
+        else if(itemsExpiring <= 0 && runningLow > 0) {
           await Notifications.scheduleNotificationAsync({
             content: {
               title: "SMART PANTRY",

@@ -195,6 +195,9 @@ const OtherPantryScreen = ({ navigation }) => {
     }
   };
 
+  // const email = user.attributes.email;
+  // console.log(email);
+
   return (
       <ScrollView style={{backgroundColor: '#b5e48c'}}
         contentContainerStyle={{
@@ -213,7 +216,7 @@ const OtherPantryScreen = ({ navigation }) => {
             <View><Text style={[styles.paddedHeading, styles.width_username]}>Email</Text></View>
             <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
         </View> 
-        <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{email}</Text>
+        {/* <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{email}</Text> */}
           </View>
         )}
       </ScrollView>
