@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">SmartPantry/screens/Settings.js | smartpantry</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createItem">createItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createPantry">createPantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createShoppingList">createShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deleteItem">deleteItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deletePantry">deletePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deleteShoppingList">deleteShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updateItem">updateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updatePantry">updatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updateShoppingList">updateShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getItem">getItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getPantry">getPantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getShoppingList">getShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listItems">listItems</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listPantries">listPantries</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listShoppingLists">listShoppingLists</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreateItem">onCreateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreatePantry">onCreatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreateShoppingList">onCreateShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeleteItem">onDeleteItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeletePantry">onDeletePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeleteShoppingList">onDeleteShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdateItem">onUpdateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdatePantry">onUpdatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdateShoppingList">onUpdateShoppingList</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#screens">screens</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AboutScreen">AboutScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AccountsScreen">AccountsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendEmail">sendEmail</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddItemScreen">AddItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddShoppingListItemScreen">AddShoppingListItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-BarcodeAddScreen">BarcodeAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreatePantryScreen">CreatePantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreditsScreen">CreditsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HelpScreen">HelpScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HomeStackScreen">HomeStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ManualAddScreen">ManualAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MyInfoScreen">MyInfoScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-NotificationsScreen">NotificationsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OtherPantryScreen">OtherPantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PatchNotesScreen">PatchNotesScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ProfileScreen">ProfileScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SettingsStackScreen">SettingsStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ShoppingStackScreen">ShoppingStackScreen</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">SmartPantry/screens/Settings.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, { Component, useState } from &quot;react&quot;;
+import {Text,View, Switch, Alert, ScrollView } from &quot;react-native&quot;;
+import {Icon, Button} from &quot;react-native-elements&quot;;
+import {Auth, API, graphqlOperation } from &apos;aws-amplify&apos;;
+import MyInfoScreen from &quot;./MyInfo&quot;;
+import AccountsScreen from &quot;./Accounts&quot;;
+import NotificationsScreen from &quot;./Notifications&quot;;
+import HelpScreen from &quot;./Help&quot;;
+import AboutScreen from &quot;./About&quot;;
+import { createStackNavigator } from &quot;@react-navigation/stack&quot;;
+import { TouchableOpacity } from &quot;react-native-gesture-handler&quot;;
+import { deletePantry, deleteShoppingList, deleteItem } from &quot;../mutations&quot;;
+import { getPantry, listItems, getShoppingList } from &quot;../queries&quot;;
+import OtherPantryScreen from &quot;./OtherPantry&quot;;
+import CreditsScreen from &quot;./Credits&quot;;
+import PatchNotesScreen from &quot;./PatchNotes&quot;;
+
+const handleSignOut = () =&gt; {
+    Alert.alert(&quot;Sign Out&quot;, &quot;Do you want to sign out?&quot;, [
+      {
+        text: &quot;Yes&quot;,
+        onPress: () =&gt; Auth.signOut(),
+      },
+      {
+        text: &quot;No&quot;,
+        style: &quot;cancel&quot;,
+      },
+    ]);
+}
+
+const SettingsStack = createStackNavigator();
+
+const SettingsStackScreen = () =&gt; {
+  return (
+    &lt;SettingsStack.Navigator screenOptions={{
+      headerBackTitleVisible: false
+    }}&gt;
+      &lt;SettingsStack.Screen options={{headerShown: false}}name=&quot;SettingsStack&quot; component={Settings} /&gt;
+      &lt;SettingsStack.Screen name=&quot;Collaborator Pantry&quot; component={OtherPantryScreen} /&gt;
+      &lt;SettingsStack.Screen name=&quot;My Info&quot; component={MyInfoScreen} /&gt;
+      &lt;SettingsStack.Screen name=&quot;Accounts&quot; component={AccountsScreen} /&gt;
+      &lt;SettingsStack.Screen name=&quot;Notifications&quot; component={NotificationsScreen} /&gt;
+      &lt;SettingsStack.Screen name=&quot;Help&quot; component={HelpScreen} /&gt;
+      &lt;SettingsStack.Screen name=&quot;About&quot; component={AboutScreen} /&gt;
+      &lt;SettingsStack.Screen name=&quot;Credits&quot; component={CreditsScreen} /&gt;
+      &lt;SettingsStack.Screen name=&quot;PatchNotes&quot; component={PatchNotesScreen} /&gt;
+    &lt;/SettingsStack.Navigator&gt;
+  );
+};
+
+const Settings = ({navigation}) =&gt; {
+
+
+    // Contains the settings options, each has a title, subtitle, and what to do when pressed
+    const settingsOptions = [
+      { title: &quot;Collaborator Pantry&quot;,
+        subTitle: &quot;View another user&apos;s pantry&quot;,
+         onPress: () =&gt; {
+          navigation.navigate(&quot;Collaborator Pantry&quot;);
+      } },
+      { title: &quot;My Info&quot;, subTitle: &quot;Setup your profile&quot;, onPress: () =&gt; {
+          navigation.navigate(&quot;My Info&quot;);
+      } },
+      { title: &quot;Accounts&quot;,
+        subTitle: &quot;View other pantries and manage who can view yours&quot;,
+         onPress: () =&gt; {
+          navigation.navigate(&quot;Accounts&quot;);
+      } },
+      {
+        title: &quot;Notifications&quot;,
+        subTitle: &quot;Manage your notifications&quot;,
+        onPress: () =&gt; {
+          navigation.navigate(&quot;Notifications&quot;);
+        },
+      },
+      { title: &quot;Help&quot;, subTitle: &quot;Help page&quot;, onPress: () =&gt; {
+          navigation.navigate(&quot;Help&quot;);
+      } },
+      { title: &quot;About&quot;,
+        subTitle: &quot;Learn about your Smart Pantry app&quot;, 
+        onPress: () =&gt; {
+          navigation.navigate(&quot;About&quot;);
+      } },
+      { title: &quot;Credits&quot;,
+        subTitle: &quot;About the creators&quot;,
+        onPress: () =&gt; {
+        navigation.navigate(&quot;Credits&quot;);
+      } },
+      { title: &quot;Patch Notes&quot;,
+      subTitle: &quot;See what&apos;s new in the latest update&quot;,
+      onPress: () =&gt; {
+      navigation.navigate(&quot;PatchNotes&quot;);
+    } },
+      {
+        title: &quot;Sign Out&quot;,
+        subTitle: &quot;Sign out of app&quot;,
+        onPress: () =&gt; {
+          Alert.alert(&quot;Sign Out&quot;, &quot;Do you want to sign out?&quot;, [
+            {
+              text: &quot;Yes&quot;,
+              onPress: () =&gt; Auth.signOut(),
+            },
+            {
+              text: &quot;No&quot;,
+              style: &quot;cancel&quot;,
+            },
+          ]);
+        },
+      },
+      {
+        title: &quot;Delete Pantry&quot;,
+        subTitle: &quot;Delete your pantry&quot;,
+        onPress: () =&gt; {
+          Alert.alert(&quot;Delete Pantry&quot;, &quot;Would you like to delete your pantry? Doing so will also delete your Shopping List&quot;, [
+            {
+              text: &quot;Yes&quot;,
+              onPress: () =&gt; {
+                  deleteUserPantry();
+              }
+            },
+            {
+              text: &quot;No&quot;,
+              style: &quot;cancel&quot;,
+            }
+          ])
+        }
+      }
+    ];
+    return (
+        &lt;ScrollView style={{backgroundColor: &apos;white&apos;}}&gt;
+            {settingsOptions.map(({title,subTitle,onPress}) =&gt; 
+            &lt;TouchableOpacity key={title} onPress={onPress}&gt;
+                &lt;View style={{
+                    paddingHorizontal: 20,
+                    paddingBottom: 20,
+                    paddingTop: 20
+                }}&gt;
+                    &lt;Text style={{fontSize: 17}}&gt;{title}&lt;/Text&gt;
+                    {subTitle &amp;&amp; &lt;Text style={{fontSize:13, color:&apos;grey&apos;, paddingTop:5}}&gt;{subTitle}&lt;/Text&gt;}
+                &lt;/View&gt;
+                &lt;View style={{height: 1.2, backgroundColor: &apos;grey&apos;}}/&gt;
+            &lt;/TouchableOpacity&gt;)}
+        &lt;/ScrollView&gt;
+    );
+}
+
+const deleteUserPantry = async () =&gt; {
+  try {
+    const user = await Auth.currentAuthenticatedUser();
+
+    const pantryData = await API.graphql(
+      graphqlOperation(getPantry, { id: user.username.toString() })
+    );
+
+      // if the getPantry query does not return a null value, sets pantry exists to true
+      // otherwise sets it to false because they don&apos;t have a pantry yet
+      if (pantryData.data.getPantry == null) {
+        Alert.alert(&quot;Delete Pantry&quot;, &quot;You do not have a pantry&quot;);
+      }
+      else {
+
+      // Grabs the id field from the pantry data
+      const pantryId = pantryData.data.getPantry.id;
+
+      // Grabs the items that are related to the id of the pantry
+      const itemsList = await API.graphql(
+        graphqlOperation(listItems, {
+          filter: {
+            pantryItemsId: {
+              eq: pantryId.toString(),
+            },
+          },
+        })
+      );
+
+      // stores the value of the items returned
+      const b = itemsList.data.listItems.items;
+      // alert(JSON.stringify(itemsList.data.listItems.items));
+      const deleteAllItems = b.map( async (item) =&gt; {
+        const deletionId = {
+          id: item.id,
+        };
+        const delPantryItem = await API.graphql(graphqlOperation(deleteItem, { input: deletionId }));
+      });
+
+      const shoppingListData = await API.graphql(
+        graphqlOperation(getShoppingList, { id: user.username.toString() })
+      );
+
+      const shoppingListId = shoppingListData.data.getShoppingList.id;
+
+      const shoppingItemsList = await API.graphql(
+        graphqlOperation(listItems, {
+          filter: {
+            shoppingListItemsId: {
+              eq: shoppingListId.toString(),
+            },
+          },
+        })
+      );
+
+      const c = shoppingItemsList.data.listItems.items;
+
+      const deleteAllShoppingItems = c.map( async (item) =&gt; {
+        const deletionId = {
+          id: item.id,
+        };
+        const delPantryItem = await API.graphql(graphqlOperation(deleteItem, { input: deletionId }));
+      });
+
+      const delId = {
+        id: user.username.toString()
+      }
+
+      const delPantry = await API.graphql(graphqlOperation(deletePantry, { input: delId }));
+
+      const delShopping = await API.graphql(graphqlOperation(deleteShoppingList, { input: delId }));
+
+      Alert.alert(&quot;Delete Pantry&quot;, &quot;Your pantry and has been deleted&quot;);
+    }
+
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+export default SettingsStackScreen;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

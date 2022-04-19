@@ -22,6 +22,8 @@
     "aws-amplify": "^4.3.13",
     "aws-amplify-react-native": "^6.0.2",
     "barcode-reader": "^1.6.1",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-jsx-plugin": "^1.0.0",
     "expo": "~44.0.0",
     "expo-barcode-scanner": "^11.2.1",
     "expo-image-picker": "^12.0.2",
@@ -31,6 +33,7 @@
     "qrcode": "^1.5.0",
     "qs": "^6.10.3",
     "react": "17.0.1",
+    "react-docgen": "^5.4.0",
     "react-dom": "^17.0.1",
     "react-native": "0.64.3",
     "react-native-bluetooth-classic": "^1.60.0-rc.20",
@@ -55,6 +58,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "typescript": "~4.3.5"
   },
   "private": true

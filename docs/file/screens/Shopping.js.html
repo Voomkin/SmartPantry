@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">screens/Shopping.js | smartpantry</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AboutScreen">AboutScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AccountsScreen">AccountsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendEmail">sendEmail</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddItemScreen">AddItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddShoppingListItemScreen">AddShoppingListItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-BarcodeAddScreen">BarcodeAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreatePantryScreen">CreatePantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreditsScreen">CreditsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HelpScreen">HelpScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HomeStackScreen">HomeStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ManualAddScreen">ManualAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MyInfoScreen">MyInfoScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-NotificationsScreen">NotificationsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OtherPantryScreen">OtherPantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PatchNotesScreen">PatchNotesScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ProfileScreen">ProfileScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SettingsStackScreen">SettingsStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ShoppingStackScreen">ShoppingStackScreen</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">screens/Shopping.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, { useState, useEffect, Component } from &quot;react&quot;;
+import { Text, View, Switch, Alert, ScrollView, Modal, StyleSheet, SafeAreaView } from &quot;react-native&quot;;
+import { Icon, Button, Input } from &quot;react-native-elements&quot;;
+import AboutScreen from &quot;./About&quot;;
+import { createStackNavigator } from &quot;@react-navigation/stack&quot;;
+import { TouchableOpacity } from &quot;react-native-gesture-handler&quot;;
+import CreatePantryScreen from &quot;./CreatePantry&quot;;
+import { getShoppingList, listItems, getItem } from &quot;../queries&quot;;
+import { createItem, deleteItem, updateItem, createShoppingList } from &quot;../mutations&quot;;
+import AddShoppingListItemScreen from &quot;./AddShoppingListItem&quot;;
+import {Auth, API, graphqlOperation} from &apos;aws-amplify&apos;;
+import ManualAddScreen from &quot;./ManualAdd&quot;;
+import BarcodeAddScreen from &quot;./BarcodeAdd&quot;;
+import { StatusBar } from &quot;expo-status-bar&quot;;
+
+
+const ShoppingStack = createStackNavigator();
+
+const ShoppingStackScreen = () =&gt; {
+  return (
+    &lt;ShoppingStack.Navigator&gt;
+      &lt;ShoppingStack.Screen
+        options={{ headerShown: false }}
+        name=&quot;SettingsStack&quot;
+        component={Shopping}
+      /&gt;
+      &lt;ShoppingStack.Screen
+          options={{ headerShown: true, title: &quot;Add Item&quot; }}
+          name=&quot;AddShoppingListItem&quot;
+          component={AddShoppingListItemScreen}
+        /&gt;
+    &lt;/ShoppingStack.Navigator&gt;
+  );
+};
+
+const Shopping = ({navigation}) =&gt; {
+  const [shoppingListButton, setShoppingListButton] = useState(null);
+  const [items, setItems] = useState([]);
+  const [shoppingListExists, setShoppingListExists] = useState(false);
+  const [shoppingListName, setShoppingListName] = useState(&quot;&quot;);
+  const [nameText, setNameText] = useState(&quot;&quot;);
+  const [itemId, setItemId] = useState(null);
+
+   const [isModalVisible, setIsModalVisible] = useState(false);
+
+   const handleModal = () =&gt; setIsModalVisible(() =&gt; !isModalVisible);
+
+  // Loads when you come back to this screen
+  // refreshes each time you go back to the screen
+  // Checks if a shopping list exists and fetches the user&apos;s items on every load
+  useEffect(() =&gt; {
+    const unsubscribe = navigation.addListener(&quot;focus&quot;, () =&gt; {
+      checkIfShoppingListExists();
+      fetchItems();
+    });
+    return unsubscribe;
+  }, [navigation, items]);
+
+  // fetches just the items of the shopping list that belongs to the current authenticated user
+  const fetchItems = async () =&gt; {
+    try {
+      const user = await Auth.currentAuthenticatedUser(); // returns cognito user JSON
+
+      // Performs the getShoppingList query based on the id, which is the user&apos;s username
+      const shoppingListData = await API.graphql(
+        graphqlOperation(getShoppingList, { id: user.username.toString() })
+      );
+
+      // if the getShoppingList query does not return a null value, sets shopping list exists to true
+      // otherwise sets it to false because they don&apos;t have a shopping list yet
+      if (shoppingListData.data.getShoppingList != null) {
+        setShoppingListExists(true);
+        setShoppingListName(shoppingListData.data.getShoppingList.name);
+      } else {
+        setShoppingListExists(false);
+      }
+
+      // Grabs the id field from the shopping list data
+      const shoppingListId = shoppingListData.data.getShoppingList.id;
+
+      // Grabs the items that are related to the id of the shopping list
+      const itemsList = await API.graphql(
+        graphqlOperation(listItems, {
+          filter: {
+            shoppingListItemsId: {
+              eq: shoppingListId.toString(),
+            },
+          },
+        })
+      );
+
+      // stores the value of the items returned
+      const b = itemsList.data.listItems.items;
+
+      // changes the value of useState items value
+      setItems(b);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Update item
+  const updateShoppingListItem = async () =&gt; {
+
+    const item = await API.graphql(graphqlOperation(getItem, {id: itemId}));
+    // if item is updated to have 0 or less quantity, the item will automatically be deleted
+    if (!(item.quantity == null) &amp;&amp; parseInt(quantityText) &lt;= 0) {
+      deleteShoppingListItem(itemId);
+      handleModal();
+      return;
+    }
+
+    try {
+      // Perform
+      const update = {
+        id: itemId,
+        name: nameText ? nameText : item.name,
+      }
+
+      const u = await API.graphql(graphqlOperation(updateItem, {input: update}));
+      setNameText(&quot;&quot;);
+      fetchItems();
+      handleModal();
+    } catch (err) {
+
+    }
+  }
+
+  // delete item
+  const deleteShoppingListItem = async (deleteId) =&gt; {
+    try {
+      const id = {
+        id: deleteId
+      }
+      const d = await API.graphql(graphqlOperation(deleteItem,{input: id} ));
+      fetchItems();
+    } catch (err) { 
+      console.log(err);
+    }
+  }
+
+  const modalScreen = (
+    &lt;Modal visible={isModalVisible} animationType=&quot;slide&quot;&gt;
+      &lt;View style={{ flex: 1, alignItems: &quot;center&quot;, justifyContent: &quot;center&quot; }}&gt;
+        &lt;Text style={{fontSize: 25, fontWeight: &quot;bold&quot;, margin: 10}}&gt;Edit your item&lt;/Text&gt;
+        &lt;Input
+          placeholder=&quot;Name&quot;
+          containerStyle={{ width: 250 }}
+          onChangeText={(value) =&gt; setNameText(value)}
+        /&gt;
+        &lt;Button
+          buttonStyle={{ width: 200, margin: 20}}
+          title=&quot;Submit&quot;
+          onPress={() =&gt; {
+            updatePantryItem();
+          }}
+        &gt;&lt;/Button&gt;
+        &lt;Button buttonStyle={{width: 200}} title=&quot;Go back&quot; onPress={handleModal}&gt;&lt;/Button&gt;
+      &lt;/View&gt;
+    &lt;/Modal&gt;
+  );
+
+  // list of items from shopping list
+  const listOfItems = items.map((item) =&gt; {
+    return (
+      &lt;View key={item.id}&gt;
+        &lt;View
+          style={{
+            flexDirection: &quot;row&quot;,
+            alignItems: &quot;center&quot;,
+            justifyContent: &quot;center&quot;,
+            paddingHorizontal: 20,
+            paddingBottom: 20,
+            paddingTop: 20,
+          }}
+        &gt;
+          &lt;Text
+            style={{paddingLeft: 15, width: &quot;50%&quot;, flexDirection: &quot;column&quot;, fontSize: 18 }}
+          &gt;
+            {item.name + &apos;\n&apos;}
+          &lt;/Text&gt;
+          &lt;Button  buttonStyle={{backgroundColor: &apos;red&apos;, width: 75, marginRight: 5}} title=&quot;delete&quot; onPress={() =&gt; {
+             Alert.alert(&quot;Delete Item&quot;, &quot;Are you sure you want to delete item?&quot;, [
+               {
+                 text: &quot;Yes&quot;,
+                 onPress: () =&gt; { 
+                    deleteShoppingListItem(item.id); // Uses amplify Auth library and signOut() method
+                },
+               },
+               {
+                 text: &quot;No&quot;,
+                 style: &quot;cancel&quot;,
+               },
+             ]);
+          }}&gt;&lt;/Button&gt;
+        &lt;/View&gt;
+        &lt;View style={{ height: 1.2, backgroundColor: &quot;grey&quot; }} /&gt;
+      &lt;/View&gt;
+    );
+  });
+
+
+  // checks whether or not a user has a shopping list yet
+  const checkIfShoppingListExists = async () =&gt; {
+    try {
+      const user = await Auth.currentAuthenticatedUser(); // grabs current user&apos;s information
+
+      // Performs the getShoppingList query based on user&apos;s id
+      const shoppingListData = await API.graphql(
+        graphqlOperation(getShoppingList, { id: user.username.toString() })
+      );
+
+      // If it&apos;s null, we want to render the create shopping list button
+      // otherwise, we want to hide it
+      if (shoppingListData.data.getShoppingList == null) {
+        setShoppingListButton(true);
+      } else {
+        setShoppingListButton(null);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
+      &lt;ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+          alignItems: &quot;center&quot;,
+          justifyContent: &quot;center&quot;,
+        }}
+      &gt;
+        {/* Conditional render based on the value of shoppingListButton and shoppingListExists */}
+        {/* {shoppingListButton &amp;&amp; (
+          // &lt;Button
+          //   buttonStyle={{ margin: 15 }}
+          //   title=&quot;Create Pantry&quot;
+          //   onPress={() =&gt; {
+          //     navigation.navigate(&quot;CreatePantry&quot;);
+          //   }}
+          // &gt;&lt;/Button&gt;
+        )} */}
+        {!shoppingListExists &amp;&amp; &lt;Text&gt;You must make a pantry before you make a shopping list&lt;/Text&gt;}
+        {shoppingListExists &amp;&amp; (
+          &lt;View
+            style={{ flex: 1, alignItems: &quot;center&quot;, justifyContent: &quot;center&quot; }}
+          &gt;
+            &lt;Text style={{ fontSize: 25, marginBottom: 15 }}&gt;Shopping List&lt;/Text&gt;
+            &lt;Button
+              buttonStyle={{ width: 250 }}
+              title=&quot;Add Item&quot;
+              onPress={() =&gt; {
+                navigation.navigate(&quot;AddShoppingListItem&quot;);
+              }}
+            &gt;&lt;/Button&gt;
+            &lt;View&gt;{listOfItems}&lt;/View&gt;
+            &lt;View&gt;{modalScreen}&lt;/View&gt;
+          &lt;/View&gt;
+        )}
+      &lt;/ScrollView&gt;
+  );
+}
+
+
+
+export default ShoppingStackScreen;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
