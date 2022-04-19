@@ -1,0 +1,11 @@
+{
+    "source": ".",
+    "includes": ["\\.js$"],
+    "excludes": ["(node_modules|docs|.vscode|.expo|.expo-shared)"],
+    "destination": "./docs",
+    "plugins": [
+        {"name": "esdoc-standard-plugin"},
+        {"name": "esdoc-jsx-plugin", "option": {"enable": true}},
+        {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}}
+    ]
+} 

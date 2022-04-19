@@ -74,6 +74,9 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@types/metro-config": "^0.66.0",
+    "esdoc": "^1.1.0",
+    "esdoc-jsx-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "typescript": "~4.3.5"
   },
   "private": true
