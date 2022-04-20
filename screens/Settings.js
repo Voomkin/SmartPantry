@@ -146,6 +146,9 @@ const Settings = ({navigation}) => {
     );
 }
 
+/**
+ * @author Kollin Labowski
+ */
 const deleteUserPantry = async () => {
   try {
     const user = await Auth.currentAuthenticatedUser();

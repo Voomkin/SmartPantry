@@ -1,7 +1,7 @@
 {
-  "coverage": "34.78%",
+  "coverage": "35.86%",
   "expectCount": 92,
-  "actualCount": 32,
+  "actualCount": 33,
   "files": {
     "SmartPantry/App.js": {
       "expectCount": 5,
@@ -184,12 +184,11 @@
     },
     "SmartPantry/screens/Settings.js": {
       "expectCount": 5,
-      "actualCount": 1,
+      "actualCount": 2,
       "undocumentLines": [
         17,
         30,
-        54,
-        149
+        54
       ]
     },
     "SmartPantry/screens/Shopping.js": {
