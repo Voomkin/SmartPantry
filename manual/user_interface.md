@@ -2,7 +2,7 @@
 ### Sign In Page
 This is the page the user will be sent to when they first open the app. If they have previously created an account, they may enter their username and password in the appropriate input fields, and click the **SIGN IN** button to log in to their account. If a user has created an account but cannot remember their password, they may click the **Forgot Password** button to be navigated to a new screen to reset their password. If the user has not yet created an account, they may select the **Sign Up** button to be navigated to another new screen which will allow them to create a new account.
 
-<img src="./images/signin.jpg" height="500px" width="250px" align="center"></img>
+<img src="./images/signin.jpg" height="500px" width="250px"></img>
 
 ### Create Account Page
 This is the page the user is sent to if they select the **Sign Up** option from the **Sign In Page**. They will be able to enter a new username, password, email address, and phone number in the appropriate fields. When all 4 fields have been filled in by the user, they may select the **SIGN UP** button to navigate to a screen which will allow them to confirm their email address. The user may alternatively select the **Confirm a Code** option to be directed automatically to the same screen as the **SIGN UP** button, however it will not send a code upon being clicked. The user may also return to the **Sign In Page** by selecting the **Sign In** button in the bottom right corner.
