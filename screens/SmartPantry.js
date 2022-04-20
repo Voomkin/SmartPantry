@@ -56,6 +56,12 @@ const signOutAlert = () => {
 
 
 // Main App function
+
+/**
+ * @author Jonathan Malcomb
+ * @author Shannon Biega
+ * @returns Displays the home page of the app with expiring, running low, and all items displayed in separate sections.
+ */
 const SmartPantry = () => {
 
   const {

@@ -4,6 +4,11 @@ import { Button, Input } from "react-native-elements";
 import {Auth, API, graphqlOperation } from 'aws-amplify';
 import { createItem } from "../mutations";
 
+/**
+ * @author Kollin Labowski
+ * @param navigate - Used for navigating from the Shopping List stack 
+ * @returns An input and a button for getting a name for the item to add to the shopping list.
+ */
 const AddShoppingListItemScreen = ({ navigation }) => {
   
 const [nameText, setNameText] = useState("");

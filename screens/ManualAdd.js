@@ -4,7 +4,11 @@ import { View, ScrollView} from "react-native";
 import { Auth, API, graphqlOperation } from "aws-amplify";
 import { createItem } from "../mutations";
 
-
+/**
+ * @author Ryan Mraz
+ * @param navigation - Used for navigating on the Home stack screen.  
+ * @returns Inputs and buttons used for updating fields of an item
+ */
 const ManualAddScreen = ({ navigation }) => {
 
     const [nameText, setNameText] = useState("");

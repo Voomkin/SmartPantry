@@ -4,7 +4,13 @@ import {Input, Button} from "react-native-elements";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import { createPantry, createShoppingList } from "../mutations";
 
-
+/**
+ * @author Ryan Mraz
+ * @author Kollin Labowski
+ * @author Shannon Biega
+ * @param navigation - Used for navigating on the Home stack 
+ * @returns The input and button used to get and set the name of the pantry to be created.
+ */
 const CreatePantryScreen = ({ navigation }) => {
     const [inputText, setInputText] = useState("");
     

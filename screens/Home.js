@@ -20,6 +20,11 @@ const HomeStack = createStackNavigator();
 
 // Allows the nesting of bottom tab and stack navigation
 // Contains all the screens that are reachable/within the bottom tab home screen
+
+/**
+ * @author Ryan Mraz
+ * @returns Manages the Home stack, including AddItemScreen, CreatePantryScreen, ManualAddScreen, and BarcodeAddScreen
+ */
 const HomeStackScreen = () => {
     return (
       <HomeStack.Navigator screenOptions={{
@@ -57,6 +62,12 @@ const HomeStackScreen = () => {
 
 
 // The actual home screen rendering
+/**
+ * @author Ryan Mraz
+ * @author Kollin Labowski
+ * @param navigation - used for navigating from the Home stack. 
+ * @returns Displays items and related information for the current user's pantry, AND manages notifications for the user's device.
+ */
 const HomeScreen = ({ navigation }) => {
 
   //NOTIFICATION STUFF
@@ -422,6 +433,10 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
+/**
+ * @author Kollin Labowski
+ * @returns An expo token for the user to show that the user has registered for notifications through Expo
+ */
 async function registerForPushNotificationsAsync() {
   let token;
   if (Constants.isDevice) {

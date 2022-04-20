@@ -28,7 +28,12 @@ const handleSignOut = () => {
 }
 
 const SettingsStack = createStackNavigator();
-
+/**
+ * @author Ryan Mraz
+ * @author Kollin Labowski
+ * @author Shannon Biega
+ * @returns The Settings stack used to navigate to different settings screens.
+ */
 const SettingsStackScreen = () => {
   return (
     <SettingsStack.Navigator screenOptions={{

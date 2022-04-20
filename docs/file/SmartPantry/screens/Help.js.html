@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">SmartPantry/screens/Help.js | smartpantry</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createItem">createItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createPantry">createPantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createShoppingList">createShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deleteItem">deleteItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deletePantry">deletePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deleteShoppingList">deleteShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updateItem">updateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updatePantry">updatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updateShoppingList">updateShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getItem">getItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getPantry">getPantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getShoppingList">getShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listItems">listItems</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listPantries">listPantries</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listShoppingLists">listShoppingLists</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreateItem">onCreateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreatePantry">onCreatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreateShoppingList">onCreateShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeleteItem">onDeleteItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeletePantry">onDeletePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeleteShoppingList">onDeleteShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdateItem">onUpdateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdatePantry">onUpdatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdateShoppingList">onUpdateShoppingList</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components">components</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Card">Card</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CustomDrawer">CustomDrawer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Header">Header</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Heading">Heading</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#screens">screens</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AboutScreen">AboutScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AccountsScreen">AccountsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendEmail">sendEmail</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddItemScreen">AddItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddShoppingListItemScreen">AddShoppingListItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-BarcodeAddScreen">BarcodeAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreatePantryScreen">CreatePantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreditsScreen">CreditsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-GlobalText">GlobalText</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HelpScreen">HelpScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HomeStackScreen">HomeStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ManualAddScreen">ManualAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MyInfoScreen">MyInfoScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-NotificationsScreen">NotificationsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OtherPantryScreen">OtherPantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ProfileScreen">ProfileScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SettingsStackScreen">SettingsStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ShoppingStackScreen">ShoppingStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-WelcomeScreen">WelcomeScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-customTheme">customTheme</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">SmartPantry/screens/Help.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, { Component } from &quot;react&quot;;
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+} from &quot;react-native&quot;;
+import { Heading } from &apos;native-base&apos;
+
+/**
+ * @author Shannon Biega
+ * @param navigation - Used for navigation from the Settings stack. 
+ * @returns Displays the help information to the screen, including how the user can complete various tasks on the Smart Pantry app.
+ */
+const HelpScreen = ({ navigation }) =&gt; {
+  return (
+    &lt;ScrollView style={{backgroundColor: &apos;#b5e48c&apos;}}&gt;
+    
+    &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+      &lt;View&gt;&lt;Text style={styles.paddedHeading}&gt;Tips and Tricks&lt;/Text&gt;&lt;/View&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+    &lt;/View&gt;
+  
+    &lt;Text style={{fontSize: 17, paddingTop: &apos;3%&apos;, textAlign: &apos;center&apos;, marginHorizontal: 40}}&gt;See below tutorials for assistance with common Smart Pantry app functionality.{&apos;\n&apos;}&lt;/Text&gt;    
+    
+    &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+      &lt;View&gt;&lt;Text style={styles.paddedHeading}&gt;How To Create a Pantry&lt;/Text&gt;&lt;/View&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+    &lt;/View&gt;
+    &lt;Text&gt;
+      &lt;Text style={styles.body}&gt;&#x2780;{&apos;\n&apos;}Navigate to&lt;/Text&gt;
+      &lt;Text style={[styles.body, {fontStyle: &apos;italic&apos;}]}&gt; My Pantry&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2781;{&apos;\n&apos;}Click &quot;Create Pantry&quot; button&lt;/Text&gt; 
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2782;{&apos;\n&apos;}Type the name of your pantry&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2783;{&apos;\n&apos;}Click &quot;Submit&quot;&lt;/Text&gt;
+    &lt;/Text&gt;  
+
+    &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+      &lt;View&gt;&lt;Text style={styles.paddedHeading}&gt;How To Add Pantry Items&lt;/Text&gt;&lt;/View&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+    &lt;/View&gt;
+    &lt;Text style={styles.body}&gt;An an item to your pantry by...&lt;/Text&gt;
+      
+  
+    &lt;Text style={{fontSize: 25, textAlign: &apos;center&apos;, marginHorizontal: 10}}&gt;&#x278A;&lt;/Text&gt;
+    &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+      &lt;View&gt;&lt;Text style={styles.paddedHeading}&gt;Manually Add Pantry Item&lt;/Text&gt;&lt;/View&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+    &lt;/View&gt;
+    &lt;Text&gt;
+      &lt;Text style={styles.body}&gt;&#x2780;{&apos;\n&apos;}Navigate to&lt;/Text&gt;
+      &lt;Text style={[styles.body, {fontStyle: &apos;italic&apos;}]}&gt; My Pantry&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2781;{&apos;\n&apos;}Click &quot;Add Item&quot; button&lt;/Text&gt; 
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2782;{&apos;\n&apos;}Type the name of the food item&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2783;{&apos;\n&apos;}Either weigh the food item or input its quantity&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2784;{&apos;\n&apos;}Click &quot;Submit&quot;&lt;/Text&gt;      
+    &lt;/Text&gt;
+
+
+    &lt;Text style={{fontSize: 25, textAlign: &apos;center&apos;, marginHorizontal: 10}}&gt;{&apos;\n&apos;}&#x278B;&lt;/Text&gt;
+    &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+      &lt;View&gt;&lt;Text style={styles.paddedHeading}&gt;Barcode Add Pantry Item&lt;/Text&gt;&lt;/View&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+    &lt;/View&gt;
+    &lt;Text&gt;
+      &lt;Text style={styles.body}&gt;&#x2780;{&apos;\n&apos;}Navigate to&lt;/Text&gt;
+      &lt;Text style={[styles.body, {fontStyle: &apos;italic&apos;}]}&gt; My Pantry&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2781;{&apos;\n&apos;}Click &quot;Add Item&quot; button&lt;/Text&gt; 
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2782;{&apos;\n&apos;}Click &quot;Barcode Add&quot; button&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2783;{&apos;\n&apos;}Scan item&apos;s barcode using device camera&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2784;{&apos;\n&apos;}Click &quot;Submit&quot;&lt;/Text&gt;      
+    &lt;/Text&gt;
+
+    &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+      &lt;View&gt;&lt;Text style={styles.paddedHeading}&gt;How To Update Pantry Items Quantities&lt;/Text&gt;&lt;/View&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+    &lt;/View&gt;
+    &lt;Text&gt;
+      &lt;Text style={styles.body}&gt;&#x2780;{&apos;\n&apos;}Navigate to&lt;/Text&gt;
+      &lt;Text style={[styles.body, {fontStyle: &apos;italic&apos;}]}&gt; My Pantry&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2781;{&apos;\n&apos;}Locate item and click &quot;Update Item&quot;&lt;/Text&gt; 
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2782;{&apos;\n&apos;}Enter new item weight&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2783;{&apos;\n&apos;}Click &quot;Submit&quot;&lt;/Text&gt;
+    &lt;/Text&gt;
+
+    &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+      &lt;View&gt;&lt;Text style={styles.paddedHeading}&gt;How To Remove Pantry Items&lt;/Text&gt;&lt;/View&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+    &lt;/View&gt;
+    &lt;Text&gt;
+      &lt;Text style={styles.body}&gt;&#x2780;{&apos;\n&apos;}Navigate to&lt;/Text&gt;
+      &lt;Text style={[styles.body, {fontStyle: &apos;italic&apos;}]}&gt; My Pantry&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2781;{&apos;\n&apos;}Locate item and click &quot;Remove Item&quot;&lt;/Text&gt; 
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2782;{&apos;\n&apos;}Click Submit&lt;/Text&gt;
+    &lt;/Text&gt;
+
+    &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+      &lt;View&gt;&lt;Text style={styles.paddedHeading}&gt;How To Add a Collaborator to Your Pantry&lt;/Text&gt;&lt;/View&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+    &lt;/View&gt;
+    &lt;Text&gt;
+      &lt;Text style={styles.body}&gt;&#x2780;{&apos;\n&apos;}Navigate to&lt;/Text&gt;
+      &lt;Text style={[styles.body, {fontStyle: &apos;italic&apos;}]}&gt; Settings&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2781;{&apos;\n&apos;}Click &quot;Manage My Pantry&quot;&lt;/Text&gt; 
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2782;{&apos;\n&apos;}Enter Collaborator Email&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2783;{&apos;\n&apos;}Click &quot;Add Collaborator to Pantry&quot;{&apos;\n&apos;}&lt;/Text&gt;
+    &lt;/Text&gt; 
+
+    &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+      &lt;View&gt;&lt;Text style={styles.paddedHeading}&gt;How To Delete Your Pantry&lt;/Text&gt;&lt;/View&gt;
+      &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+    &lt;/View&gt;
+    &lt;Text&gt;
+      &lt;Text style={styles.body}&gt;&#x2780;{&apos;\n&apos;}Navigate to&lt;/Text&gt;
+      &lt;Text style={[styles.body, {fontStyle: &apos;italic&apos;}]}&gt; Settings&lt;/Text&gt;
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2781;{&apos;\n&apos;}Click &quot;Manage My Pantry&quot;&lt;/Text&gt; 
+      &lt;Text style={styles.body}&gt;{&apos;\n&apos;}&#x2782;{&apos;\n&apos;}Click &quot;Delete My Pantry&quot;{&apos;\n&apos;}&lt;/Text&gt;
+    &lt;/Text&gt;       
+    &lt;/ScrollView&gt;
+    
+  );
+};
+
+const styles = StyleSheet.create({
+  paddedHeading : {
+    fontWeight: &apos;bold&apos;,
+    fontSize: 19,
+    textAlign: &apos;center&apos;,
+    margin: 10
+  },
+  body:{
+    fontSize: 18,
+    textAlign: &apos;center&apos;,
+    margin: 10,
+  }
+});
+
+
+export default HelpScreen;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

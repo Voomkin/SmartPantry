@@ -4,7 +4,14 @@
     "excludes": ["(node_modules|docs|.vscode|.expo|.expo-shared)"],
     "destination": "./docs",
     "plugins": [
-        {"name": "esdoc-standard-plugin"},
+        {   "name": "esdoc-standard-plugin", 
+            "option": {
+                "repository": "https://github.com/Voomkin/SmartPantry"
+            },
+            "manual": {
+                "index": "./manual/index.md"
+            }
+        },
         {"name": "esdoc-jsx-plugin", "option": {"enable": true}},
         {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}}
     ]

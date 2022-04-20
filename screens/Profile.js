@@ -13,7 +13,11 @@ import GalleryComponent from './../src/components/GalleryComponent';
 
 
 
-
+/**
+ * @author Shannon Biega
+ * @param navigation - Used to navigate the Settings stack.
+ * @returns Displays the user's profile information and profile picture.
+ */
 const ProfileScreen = ({ navigation }) => {
   return (
     <ScrollView

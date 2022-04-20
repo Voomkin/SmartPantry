@@ -17,6 +17,10 @@ import Card from '../components/Card'
 
 const ShoppingStack = createStackNavigator();
 
+/**
+ * @author Kollin Labowski
+ * @returns The Shopping stack screen for navigating between the shopping list page and the add item page.
+ */
 const ShoppingStackScreen = () => {
   return (
     <ShoppingStack.Navigator >
@@ -38,6 +42,11 @@ const ShoppingStackScreen = () => {
   );
 };
 
+/**
+ * @author Kollin Labowski
+ * @param navigation - Used for navigating the Shopping List stack. 
+ * @returns Displays the shopping list of the current user to the screen.
+ */
 const Shopping = ({navigation}) => {
   const [shoppingListButton, setShoppingListButton] = useState(null);
   const [items, setItems] = useState([]);

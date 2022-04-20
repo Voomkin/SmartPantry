@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">SmartPantry/App.js | smartpantry</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createItem">createItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createPantry">createPantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createShoppingList">createShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deleteItem">deleteItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deletePantry">deletePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deleteShoppingList">deleteShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updateItem">updateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updatePantry">updatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updateShoppingList">updateShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getItem">getItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getPantry">getPantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getShoppingList">getShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listItems">listItems</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listPantries">listPantries</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listShoppingLists">listShoppingLists</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreateItem">onCreateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreatePantry">onCreatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreateShoppingList">onCreateShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeleteItem">onDeleteItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeletePantry">onDeletePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeleteShoppingList">onDeleteShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdateItem">onUpdateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdatePantry">onUpdatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdateShoppingList">onUpdateShoppingList</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components">components</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Card">Card</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CustomDrawer">CustomDrawer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Header">Header</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Heading">Heading</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#screens">screens</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AboutScreen">AboutScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AccountsScreen">AccountsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendEmail">sendEmail</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddItemScreen">AddItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddShoppingListItemScreen">AddShoppingListItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-BarcodeAddScreen">BarcodeAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreatePantryScreen">CreatePantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreditsScreen">CreditsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-GlobalText">GlobalText</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HelpScreen">HelpScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HomeStackScreen">HomeStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ManualAddScreen">ManualAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MyInfoScreen">MyInfoScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-NotificationsScreen">NotificationsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OtherPantryScreen">OtherPantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ProfileScreen">ProfileScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SettingsStackScreen">SettingsStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ShoppingStackScreen">ShoppingStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-WelcomeScreen">WelcomeScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-customTheme">customTheme</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">SmartPantry/App.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { createDrawerNavigator } from &apos;@react-navigation/drawer&apos;;
+import { NavigationContainer } from &apos;@react-navigation/native&apos;;
+import AsyncStorage from &apos;@react-native-async-storage/async-storage&apos;;
+
+import { NativeBaseProvider } from &apos;native-base&apos;
+import { Alert } from &quot;react-native&quot;;
+
+import React, { Component, useState, useEffect} from &quot;react&quot;;
+import {Icon, Button} from &apos;react-native-elements&apos;;
+import Amplify from &apos;aws-amplify&apos;;
+import {Auth, API, graphqlOperation} from &apos;aws-amplify&apos;;
+import awsconfig from &apos;./src/aws-exports&apos;;
+import { withAuthenticator } from &apos;aws-amplify-react-native&apos;;
+
+import { getPantry } from &quot;./queries.js&quot;;
+import { updatePantry } from &quot;./mutations.js&quot;;
+
+import Home from &apos;./screens/Home&apos;
+import Profile from &apos;./screens/Profile&apos;
+import ShoppingList from &apos;./screens/Shopping&apos;
+import Help from &apos;./screens/Help&apos;
+import Settings from &apos;./screens/Settings&apos;
+import customTheme from &apos;./screens/Theme&apos;
+import SmartPantry from &apos;./screens/SmartPantry&apos;
+
+import WelcomeScreen from &apos;./screens/Welcome&apos;;
+import AppLoading from &apos;expo-app-loading&apos;
+import { useFonts } from &apos;expo-font&apos;
+import MyInfoScreen from &apos;./screens/MyInfo&apos;;
+import CustomDrawer from &apos;./components/CustomDrawer&apos;
+import Ionicons from &apos;react-native-vector-icons/Ionicons&apos;;
+
+const Drawer = createDrawerNavigator();
+
+/*const HandleSignOut = () =&gt; {
+  Alert.alert(&quot;Sign Out&quot;, &quot;Do you want to sign out?&quot;, [
+    {
+      text: &quot;Yes&quot;,
+      onPress: () =&gt; Auth.signOut(),
+    },
+    {
+      text: &quot;No&quot;,
+      style: &quot;cancel&quot;,
+    },
+  ]);
+  return null;
+}*/
+
+/**
+ * @author Jonathan Malcomb
+ * @author Shannon Biega
+ * @param props 
+ * @returns Creates a drawer that the user can use to navigate throughout the application.
+ */
+const HeaderDrawer = (props) =&gt; {
+
+  return (
+    &lt;NavigationContainer&gt;
+      &lt;Drawer.Navigator drawerContent={props =&gt; &lt;CustomDrawer {...props} /&gt;}
+      screenOptions={{headerShown: true, drawerActiveBackgroundColor:&apos;#3D405B&apos;, drawerActiveTintColor: &apos;#fff&apos;}}&gt;
+        &lt;Drawer.Screen name=&quot;Welcome&quot; component={WelcomeScreen} options={{
+          drawerIcon: ({color}) =&gt; (
+            &lt;Ionicons name=&quot;hand-left-outline&quot; size={22} color={color} /&gt;
+          ),
+          headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos;
+        }}/&gt;
+        &lt;Drawer.Screen name=&quot;My Pantry&quot; component={Home} options={{
+          drawerIcon: ({color}) =&gt; (
+            &lt;Ionicons name=&quot;home-outline&quot; size={22} color={color} /&gt;
+          ),
+          headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos;
+        }}/&gt;
+        &lt;Drawer.Screen name=&quot;Shopping List&quot; component={ShoppingList} options={{
+          drawerIcon: ({color}) =&gt; (
+            &lt;Ionicons name=&quot;cart-outline&quot; size={22} color={color} /&gt;
+          ),
+          headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos;
+        }}/&gt;
+        &lt;Drawer.Screen name=&quot;My Profile&quot; component={MyInfoScreen} options={{
+          drawerIcon: ({color}) =&gt; (
+            &lt;Ionicons name=&quot;person-outline&quot; size={22} color={color} /&gt;
+          ),
+          headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos;
+        }}/&gt;
+        &lt;Drawer.Screen name=&quot;Help&quot; component={Help} options={{
+          drawerIcon: ({color}) =&gt; (
+            &lt;Ionicons name=&quot;help-outline&quot; size={22} color={color} /&gt;
+          ),
+          headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos;
+        }}/&gt;
+        &lt;Drawer.Screen name=&quot;Settings&quot; component={Settings} options={{
+          drawerIcon: ({color}) =&gt; (
+            &lt;Ionicons name=&quot;settings-outline&quot; size={22} color={color} /&gt;
+          ),
+          headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos;
+        }}/&gt;
+      {/*  &lt;Drawer.Screen name=&quot;Logout&quot; component={HandleSignOut} options={{
+          drawerIcon: ({color}) =&gt; (
+            &lt;Ionicons name=&quot;log-out-outline&quot; size={22} color={color} /&gt;
+          ),
+          headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos;
+        }}/&gt;*/}
+      &lt;/Drawer.Navigator&gt;
+    &lt;/NavigationContainer&gt;
+    /*
+    &lt;NavigationContainer&gt;
+      &lt;Drawer.Navigator screenOptions={{
+        drawerStyle: {
+          backgroundColor: &apos;#3D405B&apos;,
+          width: 240,
+        },
+        contentOptions: {
+          labelStyle: {
+            color: &apos;#fff&apos;,
+          },
+        }
+      }}&gt;
+        &lt;Drawer.Screen name=&quot;My Pantry&quot; component={Home} options={{  headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos;}}/&gt;
+        &lt;Drawer.Screen name=&quot;Shopping List&quot; component={ShoppingList} options={{ headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos; }}/&gt;
+        &lt;Drawer.Screen name=&quot;My Profile&quot; component={MyInfoScreen} options={{ headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos; }}/&gt;
+        &lt;Drawer.Screen name=&quot;Help&quot; component={Help} options={{ headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos; }}/&gt;
+        &lt;Drawer.Screen name=&quot;Settings&quot; component={Settings} options={{ headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos; }}/&gt;
+        &lt;Drawer.Screen name=&quot;Logout&quot;  component={HandleSignOut} options={{ headerStyle: {backgroundColor: &apos;#3D405B&apos;}, headerTintColor: &apos;#fff&apos; }}/&gt;
+      &lt;/Drawer.Navigator&gt;
+    &lt;/NavigationContainer&gt;
+    */
+  );
+}
+
+  /**
+   * @author Kollin Labowski
+   * @param new_pref - The preference value to change the user&apos;s notification preference to.
+   */
+const updateNotifFreq = async ( new_pref ) =&gt; {
+  const user = await Auth.currentAuthenticatedUser();
+
+  const pantryData = await API.graphql(
+    graphqlOperation(getPantry, { id: user.username.toString() })
+  );
+
+  const update = {
+    id: user.username.toString(),
+    notiffreq: new_pref,
+  }
+
+  const u = await API.graphql(graphqlOperation(updatePantry, {input: update}));
+  
+}
+
+/**
+ * @author Kollin Labowski
+ */
+const notificationUpdate = async () =&gt; {
+  const user = await Auth.currentAuthenticatedUser();
+
+  const pantryData = await API.graphql(
+    graphqlOperation(getPantry, { id: user.username.toString() })
+  );
+
+  if(pantryData == null) {
+    Alert.alert(&quot;Notifications&quot;, &quot;You must create a pantry before you can change your notification preferences.&quot;);
+  }
+  else {
+    const current_preference = pantryData.data.getPantry.notiffreq;
+    let preference_response = &quot;&quot;;
+
+    if(current_preference == 60) {
+      preference_response = &quot;once a minute&quot;;
+    }
+    else if(current_preference == 86400 / 24) {
+      preference_response = &quot;once an hour&quot;;
+    }
+    else if(current_preference == 86400 / 12) {
+      preference_response = &quot;every two hours&quot;;
+    }
+    else if(current_preference == 86400 / 3) {
+      preference_response = &quot;every eight hours&quot;;
+    }
+    else if(current_preference == 86400 / 2) {
+      preference_response = &quot;every twelve hours&quot;;
+    }
+    else if(current_preference == 86400) {
+      preference_response = &quot;every day&quot;;
+    }
+    else if(current_preference == 86400 * 2) {
+      preference_response = &quot;every two days&quot;;
+    }
+    else if(current_preference == 86400 * 7) {
+      preference_response = &quot;every week&quot;;
+    }
+    else if(current_preference == 86400 * 14) {
+      preference_response = &quot;every two weeks&quot;;
+    }
+    else if(current_preference == 86400 * 30) {
+      preference_response = &quot;every month&quot;;
+    }
+    else if(current_preference == 86400 * 90) {
+      preference_response = &quot;every 3 months&quot;;
+    }
+
+    Alert.alert(
+      &quot;Notifications&quot;,
+      &quot;You will receive a notification &quot; + preference_response + &quot;. Would you like to change your notification preference?&quot;,
+      [
+        {
+          text: &quot;Yes&quot;,
+          onPress: () =&gt; {
+            Alert.alert(&quot;Notifications&quot;,
+            &quot;What would you like to change your notification preference to? (You will have more options in the notification page in Settings)&quot;,
+            [
+              {
+                text: &quot;Hourly&quot;,
+                onPress: () =&gt; {
+                  updateNotifFreq(86400 / 24);
+                  Alert.alert(&quot;Notifications&quot;, &quot;You will now recieve notifications at most every hour.&quot;)
+                }
+              },
+              {
+                text: &quot;Daily&quot;,
+                onPress: () =&gt; {
+                  updateNotifFreq(86400);
+                  Alert.alert(&quot;Notifications&quot;, &quot;You will now recieve notifications at most every day.&quot;)
+                }
+              },
+              {
+                text: &quot;Weekly&quot;,
+                onPress: () =&gt; {
+                  updateNotifFreq(86400 * 7);
+                  Alert.alert(&quot;Notifications&quot;, &quot;You will now recieve notifications at most every week.&quot;)
+                }
+              }
+            ]);
+
+          }
+        },
+        {
+          text: &quot;No&quot;,
+          style: &quot;cancel&quot;
+        }
+      ]
+    );
+  }
+}
+
+// Main App function
+/**
+ * @author Ryan Mraz
+ * @returns Creates a tool bar for the user to user to navigate the app. Note, newer versions of the app use the drawer as the main form of navigation.
+ */
+const App = () =&gt; {
+
+  const [email, setEmail]= useState(&quot;&quot;);
+  //const [phoneNumber, setPhoneNumber]= useState(&quot;&quot;);
+
+  useEffect(() =&gt; {
+    fetchInfo()
+  }, [])
+
+  const fetchInfo = async () =&gt; {
+      console.log(&quot;HERE&quot;) 
+      // alert(email);
+      try {
+          const user = await Auth.currentAuthenticatedUser();
+          // console.log(user);
+
+          // const email = user.attributes.email;
+          // const phone_number = user.attributes.phone_number;
+
+          //setEmail(user.attributes.email); 
+          //setPhoneNumber([user.attributes.phone_number.substring(0,2), &apos;-&apos;, user.attributes.phone_number.substring(2,5),&apos;-&apos;,user.attributes.phone_number.substring(5,8),&apos;-&apos;,user.attributes.phone_number.substring(8,12)]);
+
+          await AsyncStorage.setItem(&apos;@userEmail&apos;, user.attributes.email)
+          // alert(phone_number);
+          //const pantryStats = getPantryInfo(user);
+          // return (&lt;Text style={{fontSize: 17, textAlign: &apos;center&apos;, margin: 10}}&gt;{email}&lt;/Text&gt;)
+          
+      } catch (err) {
+          console.log(err);
+      }
+  }
+
+
+  console.log(email)
+
+  let [areFontsLoaded] = useFonts({
+    &apos;Lato-Black&apos;: require(&apos;./assets/fonts/Lato/Lato-Black.ttf&apos;),
+    &apos;Lato-BlackItalic&apos;: require(&apos;./assets/fonts/Lato/Lato-BlackItalic.ttf&apos;),
+    &apos;Lato-Bold&apos;: require(&apos;./assets/fonts/Lato/Lato-Bold.ttf&apos;),
+    &apos;Lato-BoldItalic&apos;: require(&apos;./assets/fonts/Lato/Lato-BoldItalic.ttf&apos;),
+    &apos;Lato-Italic&apos;: require(&apos;./assets/fonts/Lato/Lato-Italic.ttf&apos;),
+    &apos;Lato-Light&apos;: require(&apos;./assets/fonts/Lato/Lato-Light.ttf&apos;),
+    &apos;Lato-LightItalic&apos;: require(&apos;./assets/fonts/Lato/Lato-LightItalic.ttf&apos;),
+    &apos;Lato-Regular&apos;: require(&apos;./assets/fonts/Lato/Lato-Regular.ttf&apos;),
+    &apos;Lato-Thin&apos;: require(&apos;./assets/fonts/Lato/Lato-Thin.ttf&apos;),
+    &apos;Lato-ThinItalic&apos;: require(&apos;./assets/fonts/Lato/Lato-ThinItalic.ttf&apos;)
+  });
+
+  if (!areFontsLoaded) {
+    return &lt;AppLoading /&gt;
+  }
+
+  return (
+    &lt;NativeBaseProvider theme={customTheme}&gt;
+      &lt;HeaderDrawer /&gt;
+    &lt;/NativeBaseProvider&gt;
+  )
+
+  return (
+    // Entire app wrapped in a NavigationContainer and uses the bottom tab navigator for screens
+    &lt;NavigationContainer&gt;
+      &lt;Tab.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: &quot;#769353&quot;,
+            color: &apos;red&apos;
+          },
+        }}
+      &gt;
+        &lt;Tab.Screen
+          name=&quot;Home&quot;
+          component={HomeStackScreen}
+          options={({ navigation }) =&gt; ({
+            title: &quot;Home&quot;,
+            // Sets up header buttons for notifications and sign out
+            headerRight: () =&gt; (
+              &lt;Button
+                icon={
+                  &lt;Icon name=&quot;circle-notifications&quot; size={25} color=&quot;#000000&quot; /&gt;}
+                  onPress={notificationUpdate}
+                type=&quot;clear&quot;
+              &gt;&lt;/Button&gt;
+            ),
+            headerLeft: () =&gt; (
+              &lt;View&gt;
+                &lt;Button
+                  icon={&lt;Icon name=&quot;logout&quot; size={25} color=&quot;#000000&quot; /&gt;}
+                  onPress={signOutAlert}
+                  type=&quot;clear&quot;
+                &gt;&lt;/Button&gt;
+              &lt;/View&gt;
+            ),
+            // sets the icon for the home bottom tab screen
+            tabBarIcon: () =&gt; {
+              return &lt;Icon name=&quot;home&quot; /&gt;;
+            },
+            headerShown: true,
+          })}
+        /&gt;
+        &lt;Tab.Screen
+          name=&quot;Shopping&quot;
+          component={ShoppingStackScreen}
+          options={{
+            tabBarIcon: () =&gt; {
+              return &lt;Icon name=&quot;store&quot; /&gt;;
+            },
+            headerShown: true,
+          }}
+        /&gt;
+        {/* &lt;Tab.Screen
+          name=&quot;Profile&quot;
+          component={ProfileScreen}
+          options={{
+            title: &quot;Profile&quot;,
+            tabBarIcon: () =&gt; {
+              return &lt;Icon name=&quot;account-box&quot; /&gt;;
+            },
+            headerShown: true,
+          }}
+        /&gt; */}
+        {/* &lt;Tab.Screen
+          name=&quot;Pantry&quot;
+          component={PantryStackScreen}
+          options={{
+            tabBarIcon: () =&gt; {
+              return &lt;Icon name=&quot;store&quot; /&gt;;
+            },
+            headerShown: true,
+          }}
+        /&gt; */}
+        &lt;Tab.Screen
+          name=&quot;Settings&quot;
+          component={SettingsStackScreen}
+          options={{
+            tabBarIcon: () =&gt; {
+              return &lt;Icon name=&quot;settings&quot; /&gt;;
+            },
+            headerShown: true,
+          }}
+        /&gt;
+      &lt;/Tab.Navigator&gt;
+    &lt;/NavigationContainer&gt;
+  );
+}
+
+export default withAuthenticator(App)</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

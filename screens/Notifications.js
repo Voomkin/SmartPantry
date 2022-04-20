@@ -20,6 +20,10 @@ import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 // import * as Permissions from 'expo-permissions';
 
+/**
+ * @author Kollin Labowski
+ * @param {Integer} new_frequency - The new notification frequency to use, measured in seconds
+ */
 const updateFrequency = async ( new_frequency ) => {
     try {
       
@@ -65,6 +69,10 @@ Notifications.setNotificationHandler({
   }),
 });
 
+/**
+ * @author Kollin Labowski
+ * @returns Different buttons for the user to select their desired notification frequency
+ */
 const NotificationsScreen = () => {
   // fetchItems();
   // ReceiveNotification();
@@ -313,6 +321,9 @@ const styles = StyleSheet.create({
   },
 });
 
+/**
+ * @author Kollin Labowski
+ */
 async function schedulePushNotification() {
   await Notifications.scheduleNotificationAsync({
     content: {
@@ -324,6 +335,10 @@ async function schedulePushNotification() {
   });
 }
 
+/**
+ * @author Kollin Labowski
+ * @returns Token used to verify that the user was registered for push notifications
+ */
 async function registerForPushNotificationsAsync() {
   let token;
   if (Constants.isDevice) {

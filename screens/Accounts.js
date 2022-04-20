@@ -30,7 +30,10 @@ import { deletePantry, deleteShoppingList, deleteItem } from "../mutations";
 //This is the ID for one of my accounts (Kollin) used for testing functionality of collaborator accounts
 const testID = "0350bfeb-7f0f-45b3-b699-3a6607446a12";
 
-
+/**
+ * @author Kollin Labowski
+ * @param {String} userToAdd - The email address of the user to add as a collaborator for the current user's pantry.
+ */
 const addStringToDatabase = async (userToAdd) => {
   try {
     const user = await Auth.currentAuthenticatedUser();
@@ -76,6 +79,9 @@ const addStringToDatabase = async (userToAdd) => {
   }
 }
 
+/**
+ * @return Deletes the current user's pantry, shopping list, and all of their items.
+ */
 const deleteUserPantry = async () => {
   try {
     console.log("DELTE")
@@ -179,7 +185,11 @@ const checkIfPantryExists = async () => {
   }
 };
 
-
+/**
+ * 
+ * @param navigation - Navigation from the Settings screen 
+ * @returns All frontend data for the Accounts page, including user information, adding collaborators, and deleting user pantries.
+ */
 const AccountsScreen = ({ navigation }) => {
   useEffect(() => {
     const unsubscribe = navigation.addListener("focus", () => {
@@ -386,6 +396,14 @@ const AccountsScreen = ({ navigation }) => {
   );
 };
 
+/**
+ * 
+ * @param {String} to - The email address to send the email to.
+ * @param {String} subject - The subject header to use for the email.
+ * @param {String} body - The body of the email message.
+ * @param {String} options - Options for cc or bcc line of message.
+ * @returns URL for the query to open the user's email application.
+ */
 export async function sendEmail(to, subject, body, options = {}) {
   const { cc, bcc } = options;
 

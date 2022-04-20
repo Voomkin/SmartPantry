@@ -60,6 +60,13 @@ import { StyleSheet } from 'react-native';
     }
 }*/}
 
+/**
+ * @author Kollin Labowski
+ * @author Shannon Biega
+ * @author Ryan Mraz
+ * @param navigation - Used to navigate for the Settings stack 
+ * @returns Displays information about the user
+ */
 const MyInfoScreen = ({ navigation }) => {
    useEffect(() => {
         const unsubscribe = navigation.addListener("focus", () => {

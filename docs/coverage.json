@@ -1,0 +1,242 @@
+{
+  "coverage": "34.78%",
+  "expectCount": 92,
+  "actualCount": 32,
+  "files": {
+    "SmartPantry/App.js": {
+      "expectCount": 5,
+      "actualCount": 4,
+      "undocumentLines": [
+        33
+      ]
+    },
+    "SmartPantry/babel.config.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "SmartPantry/components/Card.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        35,
+        13
+      ]
+    },
+    "SmartPantry/components/CustomDrawer.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        24,
+        38
+      ]
+    },
+    "SmartPantry/components/Header.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        31,
+        12
+      ]
+    },
+    "SmartPantry/components/Heading.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        15,
+        5
+      ]
+    },
+    "SmartPantry/metro.config.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        2
+      ]
+    },
+    "SmartPantry/mutations.js": {
+      "expectCount": 9,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        26,
+        48,
+        70,
+        108,
+        146,
+        184,
+        199,
+        214
+      ]
+    },
+    "SmartPantry/queries.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        23,
+        46,
+        81,
+        106,
+        118
+      ]
+    },
+    "SmartPantry/screens/About.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        65
+      ]
+    },
+    "SmartPantry/screens/Accounts.js": {
+      "expectCount": 7,
+      "actualCount": 4,
+      "undocumentLines": [
+        31,
+        167,
+        434
+      ]
+    },
+    "SmartPantry/screens/AddItem.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "SmartPantry/screens/AddShoppingListItem.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "SmartPantry/screens/BarcodeAdd.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "SmartPantry/screens/CreatePantry.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "SmartPantry/screens/Credits.js": {
+      "expectCount": 3,
+      "actualCount": 1,
+      "undocumentLines": [
+        59,
+        68
+      ]
+    },
+    "SmartPantry/screens/GlobalText.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        25
+      ]
+    },
+    "SmartPantry/screens/Help.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        133
+      ]
+    },
+    "SmartPantry/screens/Home.js": {
+      "expectCount": 5,
+      "actualCount": 3,
+      "undocumentLines": [
+        19,
+        471
+      ]
+    },
+    "SmartPantry/screens/ManualAdd.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "SmartPantry/screens/MyInfo.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        149
+      ]
+    },
+    "SmartPantry/screens/Notifications.js": {
+      "expectCount": 5,
+      "actualCount": 4,
+      "undocumentLines": [
+        282
+      ]
+    },
+    "SmartPantry/screens/OtherPantry.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        236
+      ]
+    },
+    "SmartPantry/screens/Profile.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        65
+      ]
+    },
+    "SmartPantry/screens/Settings.js": {
+      "expectCount": 5,
+      "actualCount": 1,
+      "undocumentLines": [
+        17,
+        30,
+        54,
+        149
+      ]
+    },
+    "SmartPantry/screens/Shopping.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        18,
+        299
+      ]
+    },
+    "SmartPantry/screens/SmartPantry.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        37,
+        40,
+        107
+      ]
+    },
+    "SmartPantry/screens/Theme.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "SmartPantry/screens/Welcome.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        37
+      ]
+    },
+    "SmartPantry/subscriptions.js": {
+      "expectCount": 9,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        23,
+        42,
+        61,
+        96,
+        131,
+        166,
+        178,
+        190
+      ]
+    }
+  }
+}

@@ -7,6 +7,13 @@ import {
   StyleSheet,
 } from "react-native";
 
+/**
+ * @author Shannon Biega
+ * @author Matthew Winston
+ * @author Kollin Labowski
+ * @param navigation - handles navigation from the Settings stack.
+ * @returns The text and styling for the about page and its information.
+ */
 const AboutScreen = ({ navigation }) => {
   return (
     <ScrollView style={{backgroundColor: '#b5e48c', }}>

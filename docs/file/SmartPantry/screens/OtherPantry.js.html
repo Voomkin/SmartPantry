@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">SmartPantry/screens/OtherPantry.js | smartpantry</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createItem">createItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createPantry">createPantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createShoppingList">createShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deleteItem">deleteItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deletePantry">deletePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deleteShoppingList">deleteShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updateItem">updateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updatePantry">updatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updateShoppingList">updateShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getItem">getItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getPantry">getPantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getShoppingList">getShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listItems">listItems</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listPantries">listPantries</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listShoppingLists">listShoppingLists</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreateItem">onCreateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreatePantry">onCreatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreateShoppingList">onCreateShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeleteItem">onDeleteItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeletePantry">onDeletePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeleteShoppingList">onDeleteShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdateItem">onUpdateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdatePantry">onUpdatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdateShoppingList">onUpdateShoppingList</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components">components</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Card">Card</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CustomDrawer">CustomDrawer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Header">Header</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Heading">Heading</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#screens">screens</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AboutScreen">AboutScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AccountsScreen">AccountsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendEmail">sendEmail</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddItemScreen">AddItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddShoppingListItemScreen">AddShoppingListItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-BarcodeAddScreen">BarcodeAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreatePantryScreen">CreatePantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreditsScreen">CreditsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-GlobalText">GlobalText</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HelpScreen">HelpScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HomeStackScreen">HomeStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ManualAddScreen">ManualAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MyInfoScreen">MyInfoScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-NotificationsScreen">NotificationsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OtherPantryScreen">OtherPantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ProfileScreen">ProfileScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SettingsStackScreen">SettingsStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ShoppingStackScreen">ShoppingStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-WelcomeScreen">WelcomeScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-customTheme">customTheme</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">SmartPantry/screens/OtherPantry.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { getPantry, listPantries } from &quot;../queries&quot;;
+// import { Button } from &quot;react-native-elements&quot;;
+import {Auth, API, graphqlOperation} from &apos;aws-amplify&apos;;
+
+import React, { useState, useEffect, Component } from &quot;react&quot;;
+import {Text,View, SafeAreaView, StyleSheet ,ScrollView, Modal, Alert, Button } from &quot;react-native&quot;;
+import { createStackNavigator } from &quot;@react-navigation/stack&quot;;
+import {Icon, Input} from &apos;react-native-elements&apos;;
+import CreatePantryScreen from &quot;./CreatePantry&quot;;
+import AddItemScreen from &quot;./AddItem&quot;;
+import ManualAddScreen from &quot;./ManualAdd&quot;;
+import { listItems, getItem } from &quot;../queries.js&quot;;
+import { createItem, deleteItem, updateItem, createShoppingList } from &quot;../mutations&quot;;
+import BarcodeAddScreen from &quot;./BarcodeAdd&quot;;
+import { TouchableOpacity } from &quot;react-native-gesture-handler&quot;;
+import { StatusBar } from &quot;expo-status-bar&quot;;  
+
+/**
+ * @author Kollin Labowski
+ * @param navigation - Used to navigate on the Settings stack. 
+ * @returns Displays all information for the other user&apos;s pantry, or displays a message if the user has not been added as a collaborator on another pantry.
+ */
+const OtherPantryScreen = ({ navigation }) =&gt; {
+    // viewOtherPantry();
+
+    // useState variables to track whether to render the create pantry button
+  // the value of the pantry items, and if a user has a pantry.
+  const [createPantryButton, setCreatePantryButton] = useState(null);
+  const [items, setItems] = useState([]);
+  const [pantryExists, setPantryExists] = useState(false);
+  const [pantryName, setPantryName] = useState(&quot;&quot;);
+  const [nameText, setNameText] = useState(&quot;&quot;);
+  const [weightText, setWeightText] = useState(&quot;&quot;);
+  const [quantityText, setQuantityText] = useState(&quot;&quot;);
+  const [itemId, setItemId] = useState(null);
+
+   const [isModalVisible, setIsModalVisible] = useState(false);
+
+   const handleModal = () =&gt; setIsModalVisible(() =&gt; !isModalVisible);
+
+  // Loads when you come back to this screen
+  // refreshes each time you go back to the screen
+  // Checks if a pantry exists and fetches the user&apos;s items on every load
+  useEffect(() =&gt; {
+    const unsubscribe = navigation.addListener(&quot;focus&quot;, () =&gt; {
+      checkIfPantryExists();
+      fetchItems();
+    });
+    return unsubscribe;
+  }, [navigation, items]);
+
+  // fetches just the items of the pantry that belongs to the current authenticated user
+  const fetchItems = async () =&gt; {
+    try {
+      const user = await Auth.currentAuthenticatedUser(); // returns cognito user JSON
+
+      // Performs the getPantry query based on the id, which is the user&apos;s username
+
+    //   const user = await Auth.currentAuthenticatedUser();
+  
+      const pantriesList = await API.graphql(
+        graphqlOperation(listPantries, {
+        filter: {
+            collabId: {
+            eq: user.attributes.email,
+            },
+        },
+        })
+      );
+
+      const c = pantriesList.data.listPantries.items;
+
+    //   console.log(c[0].name);
+
+      if(c.length &gt; 0) {
+        //NOTE: As of 3/27/2022, it may be the case that a collaborator can view multiple pantries
+
+        //   const collabPantries = c.map( async (pantry) =&gt; {
+        const pantryData = await API.graphql(graphqlOperation(getPantry, { id: c[0].id }));
+
+            //  console.log(pantryData.data.getPantry.name);
+
+        if (pantryData.data.getPantry != null) {
+            setPantryExists(true);
+            setPantryName(pantryData.data.getPantry.name);
+        } else {
+            setPantryExists(false);
+        }
+        
+            //   // Grabs the id field from the pantry data
+              const pantryId = pantryData.data.getPantry.id;
+        
+              // Grabs the items that are related to the id of the pantry
+              const itemsList = await API.graphql(
+                graphqlOperation(listItems, {
+                  filter: {
+                    pantryItemsId: {
+                      eq: pantryId.toString(),
+                    },
+                  },
+                })
+              );
+        
+            //   // stores the value of the items returned
+              const b = itemsList.data.listItems.items;
+        
+            //   // changes the value of useState items value
+              setItems(b);
+      }
+      
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+  // add an item to the shopping list upon deleting it from the pantry, if the user wishes
+  const addToShoppingList = async (itemID, name) =&gt; {
+    try {
+        // console.log(itemID, name);
+
+      const user = await Auth.currentAuthenticatedUser();
+    //   console.log(user.username.toString());
+      const pantryData = await API.graphql(
+          graphqlOperation(getPantry, { id: user.username.toString() })
+      );
+
+      if (pantryData.data.getPantry == null) {
+        Alert.alert(&quot;Shopping List Error&quot;, &quot;You must create a pantry before you can add items to your shopping list&quot;);
+        return null;
+      }
+
+      const id = {
+        name: name,
+        imagePath: &quot;default_img&quot;,
+        shoppingListItemsId: user.username.toString()
+      }
+      const d = await API.graphql(graphqlOperation(createItem,{input: id} ));
+
+      Alert.alert(&quot;Add to Shopping List&quot;, &quot;Added \&quot;&quot; + name + &quot;\&quot; to shopping list&quot;);
+
+    } catch (err) { 
+      console.log(err);
+    }
+  }
+
+  // list of items from pantry
+  const listOfItems = items.map((item) =&gt; {
+    let percentage = (parseFloat(item.currWeight) / parseFloat(item.weight) * 100).toFixed(2);
+    return (
+      &lt;View key={item.id}&gt;
+        &lt;View
+          style={{
+            flexDirection: &quot;row&quot;,
+            alignItems: &quot;center&quot;,
+            justifyContent: &quot;center&quot;,
+            paddingHorizontal: 20,
+            paddingBottom: 20,
+            paddingTop: 20,
+          }}
+        &gt;
+          &lt;Text
+            style={{paddingLeft: 15, width: &quot;50%&quot;, flexDirection: &quot;column&quot;, fontSize: 18 }}
+          &gt;
+            {item.name + &apos;\n&apos;}
+            {item.quantity &amp;&amp; &lt;Text style={{fontSize: 15, fontWeight: &apos;bold&apos;}}&gt;Quantity: {item.quantity}&lt;/Text&gt;}
+            {item.weight &amp;&amp; &lt;Text style={{fontSize: 15, fontWeight: &quot;bold&quot;}}&gt;Percentage left: {percentage}%&lt;/Text&gt;}
+          &lt;/Text&gt;
+          &lt;Button buttonStyle={{ backgroundColor: &apos;grey&apos;, width: 75, marginRight: 5 }} title=&quot;add to shopping list&quot; onPress={() =&gt; {
+            addToShoppingList(item.id, item.name);
+          }}&gt;
+          &lt;/Button&gt;
+        &lt;/View&gt;
+        &lt;View style={{ height: 1.2, backgroundColor: &quot;grey&quot; }} /&gt;
+      &lt;/View&gt;
+    );
+  });
+
+
+  // checks whether or not a user has a pantry yet
+  const checkIfPantryExists = async () =&gt; {
+    try {
+      const user = await Auth.currentAuthenticatedUser(); // grabs current user&apos;s information
+
+      // Performs the getPantry query based on user&apos;s id
+      const pantryData = await API.graphql(
+        graphqlOperation(getPantry, { id: user.username.toString() })
+      );
+
+      // If it&apos;s null, we want to render the create pantry button
+      // otherwise, we want to hide it
+      if (pantryData.data.getPantry == null) {
+        setCreatePantryButton(true);
+      } else {
+        setCreatePantryButton(null);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // const email = user.attributes.email;
+  // console.log(email);
+
+  return (
+      &lt;ScrollView style={{backgroundColor: &apos;#b5e48c&apos;}}
+        contentContainerStyle={{
+          flexGrow: 1,
+          alignItems: &quot;center&quot;,
+          justifyContent: &quot;center&quot;
+        }}
+      &gt;
+        {!pantryExists &amp;&amp; &lt;Text style={styles.body}&gt;You are not a collaborator for any pantries.&lt;/Text&gt;}
+        {pantryExists &amp;&amp; (
+          &lt;View
+            style={{ flex: 1, alignItems: &quot;center&quot;, justifyContent: &quot;center&quot; }}
+          &gt;
+            &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
+            &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+            &lt;View&gt;&lt;Text style={[styles.paddedHeading, styles.width_username]}&gt;Email&lt;/Text&gt;&lt;/View&gt;
+            &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
+        &lt;/View&gt; 
+        {/* &lt;Text style={{fontSize: 17, textAlign: &apos;center&apos;, margin: 10}}&gt;{email}&lt;/Text&gt; */}
+          &lt;/View&gt;
+        )}
+      &lt;/ScrollView&gt;
+  );
+  
+    return (
+    &lt;View style={{ flex: 1, alignItems: &quot;center&quot;, justifyContent: &quot;center&quot; }}&gt;
+      
+    &lt;/View&gt;
+  );
+};
+
+const styles = StyleSheet.create({
+  body:{
+    fontSize: 18,
+    textAlign: &apos;center&apos;
+  }
+});
+
+export default OtherPantryScreen;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

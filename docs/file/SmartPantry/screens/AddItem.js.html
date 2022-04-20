@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">SmartPantry/screens/AddItem.js | smartpantry</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createItem">createItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createPantry">createPantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-createShoppingList">createShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deleteItem">deleteItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deletePantry">deletePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-deleteShoppingList">deleteShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updateItem">updateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updatePantry">updatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-updateShoppingList">updateShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getItem">getItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getPantry">getPantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getShoppingList">getShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listItems">listItems</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listPantries">listPantries</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listShoppingLists">listShoppingLists</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreateItem">onCreateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreatePantry">onCreatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onCreateShoppingList">onCreateShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeleteItem">onDeleteItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeletePantry">onDeletePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onDeleteShoppingList">onDeleteShoppingList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdateItem">onUpdateItem</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdatePantry">onUpdatePantry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-onUpdateShoppingList">onUpdateShoppingList</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components">components</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Card">Card</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CustomDrawer">CustomDrawer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Header">Header</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Heading">Heading</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#screens">screens</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AboutScreen">AboutScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AccountsScreen">AccountsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendEmail">sendEmail</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddItemScreen">AddItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddShoppingListItemScreen">AddShoppingListItemScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-BarcodeAddScreen">BarcodeAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreatePantryScreen">CreatePantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CreditsScreen">CreditsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-GlobalText">GlobalText</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HelpScreen">HelpScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HomeStackScreen">HomeStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ManualAddScreen">ManualAddScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MyInfoScreen">MyInfoScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-NotificationsScreen">NotificationsScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-OtherPantryScreen">OtherPantryScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ProfileScreen">ProfileScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SettingsStackScreen">SettingsStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ShoppingStackScreen">ShoppingStackScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-WelcomeScreen">WelcomeScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-customTheme">customTheme</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">SmartPantry/screens/AddItem.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, { useState, useEffect } from &quot;react&quot;;
+import { StyleSheet, View, Text, Alert } from &quot;react-native&quot;;
+import { Button, Input } from &quot;react-native-elements&quot;;
+import {Auth, API, graphqlOperation } from &apos;aws-amplify&apos;;
+import { createItem } from &quot;../mutations&quot;;
+
+
+/**
+ * @author Ryan Mraz
+ * @param navigation - Used for navigating from the Home stack. 
+ * @returns - Returns inputs and buttons for getting information about an item to add. Will return immediately if an input expiration date is the wrong format.
+ */
+const AddItemScreen = ({ navigation }) =&gt; {
+  
+const [nameText, setNameText] = useState(&quot;&quot;);
+const [weightText, setWeightText] = useState(&quot;&quot;);
+const [quantityText, setQuantityText] = useState(&quot;&quot;);
+const [expirationText, setExpirationText] = useState(&quot;&quot;);
+
+
+const addPantryItem = async () =&gt; {
+  if (nameText == &quot;&quot;) {
+    Alert.alert(&quot;Add Item&quot;, &quot;Please add a name for your item&quot;)
+    return;
+  }
+
+  const user = await Auth.currentAuthenticatedUser();
+
+  let input_date = expirationText;
+  console.log(&quot;expirationText &quot; + input_date);
+  if(input_date != &quot;&quot; &amp;&amp; (input_date.length != 10 || input_date.charAt(2) != &apos;/&apos; || input_date.charAt(5) != &apos;/&apos;)) {
+    Alert.alert(&quot;Add Item&quot;, &quot;Date must be in a numerical format, ex: 02/11/2023&quot;);
+    return;
+  }
+
+  input_date = input_date.replace(&quot;/&quot;, &quot;&quot;);
+  input_date = input_date.replace(&quot;/&quot;, &quot;&quot;);
+
+  for(let i = 0; i &lt; input_date.length; i++) {
+    if(input_date.charAt(i) &lt; &apos;0&apos; || input_date.charAt(i) &gt; &apos;9&apos;) {
+      Alert.alert(&quot;Add Item&quot;, &quot;Date must be in a numerical format, ex: 02/11/2023&quot;);
+      return;
+    }
+  }
+
+  if((input_date.charAt(0) &gt; &apos;1&apos; || input_date.charAt(2) &gt; &apos;3&apos; || input_date.charAt(4) &lt; &apos;2&apos;) &amp;&amp; input_date != &quot;&quot;) {
+    Alert.alert(&quot;Add Item&quot;, &quot;Expiration date must be a valid date in the future&quot;);
+    return;
+  }
+
+  console.log(&quot;New Exp Date &quot; + input_date);
+
+  const itemInput = {
+    name: nameText,
+    imagePath: &quot;default_img&quot;,
+    weight: parseFloat(weightText),
+    currWeight: parseFloat(weightText),
+    quantity: parseInt(quantityText),
+    origQuantity: parseInt(quantityText),
+    expDate: parseInt(input_date),
+    pantryItemsId: user.username.toString(),
+  };
+  const inputItem = await API.graphql(
+    graphqlOperation(createItem, { input: itemInput })
+  );
+  navigation.navigate(&quot;HomeStack&quot;);
+};
+  
+  return (
+    &lt;View style={{ flex: 1, alignItems: &quot;center&quot;, justifyContent: &quot;center&quot;, backgroundColor: &apos;#b5e48c&apos;}}&gt;
+      &lt;Input
+        placeholder=&quot;Name (i.e. bananas)&quot;
+        containerStyle={{ width: 250 }}
+        onChangeText={(value) =&gt; setNameText(value)}
+      /&gt;
+      &lt;Input
+        placeholder=&quot;Weight (lbs.) (optional)&quot;
+        containerStyle={{ width: 250 }}
+        onChangeText={(value) =&gt; setWeightText(value)}
+      /&gt;
+      &lt;Input
+        placeholder=&quot;Quantity (optional)&quot;
+        containerStyle={{ width: 250 }}
+        onChangeText={(value) =&gt; setQuantityText(value)}
+      /&gt;
+      &lt;Input
+        placeholder=&quot;Expiration Date (optional)&quot;
+        containerStyle={{ width: 250 }}
+        onChangeText={(value) =&gt; setExpirationText(value)}
+      /&gt;
+      &lt;Text&gt;Format for expiration date: MM/DD/YYYY&lt;/Text&gt;
+      &lt;Button
+        title=&quot;Barcode Add&quot;
+        buttonStyle={{ marginTop:10,
+          paddingTop:15,
+          paddingBottom:15,
+          backgroundColor:&apos;#3D405B&apos;,
+          borderRadius:10,
+          borderWidth: 1,
+          borderColor: &apos;#fff&apos; }}
+        onPress={() =&gt; {
+          navigation.navigate(&quot;BarcodeAdd&quot;);
+        }}
+      &gt;&lt;/Button&gt;
+      &lt;Button
+        buttonStyle={{ marginTop:10,
+          paddingTop:15,
+          paddingBottom:15,
+          backgroundColor:&apos;#3D405B&apos;,
+          borderRadius:10,
+          borderWidth: 1,
+          borderColor: &apos;#fff&apos; }}
+        title=&quot;Submit&quot;
+        onPress={() =&gt; {
+          addPantryItem();
+        }}
+      &gt;&lt;/Button&gt;
+    &lt;/View&gt;
+  );
+};
+
+
+export default AddItemScreen;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

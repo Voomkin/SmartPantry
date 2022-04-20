@@ -3,6 +3,12 @@ import React from 'react'
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
+/**
+ * @author Jonathan Malcomb
+ * @author Shannon Biega
+ * @param props 
+ * @returns The appropriate text style depending on the user's preference
+ */
 const GlobalText = (props) => {
 
     let [fontsLoaded] = useFonts({

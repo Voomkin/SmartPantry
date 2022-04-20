@@ -5,7 +5,11 @@ import {Auth, API, graphqlOperation } from 'aws-amplify';
 import { createItem } from "../mutations";
 
 
-
+/**
+ * @author Ryan Mraz
+ * @param navigation - Used for navigating from the Home stack. 
+ * @returns - Returns inputs and buttons for getting information about an item to add. Will return immediately if an input expiration date is the wrong format.
+ */
 const AddItemScreen = ({ navigation }) => {
   
 const [nameText, setNameText] = useState("");

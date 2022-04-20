@@ -5,6 +5,11 @@ import { Auth, API, graphqlOperation } from "aws-amplify";
 import { createItem } from "../mutations";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
+/**
+ * @author Ryan Mraz
+ * @param navigation - Used to navigate on the Home stack. 
+ * @returns Inputs and buttons for allowing the user to continue on to add the item into the database after scanning it.
+ */
 const BarcodeAddScreen = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);

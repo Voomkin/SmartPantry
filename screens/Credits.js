@@ -7,7 +7,11 @@ import {
   Image
 } from "react-native";
 
-
+/**
+ * @author Shannon Biega
+ * @param navigation - Used for navigating the Settings stack. 
+ * @returns Displays the credits information to the screen for the user to view, including styling.
+ */
 const CreditsScreen = ({ navigation }) => {
   return (
     <ScrollView style={{backgroundColor: '#b5e48c'}}>

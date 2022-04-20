@@ -46,6 +46,12 @@ const Drawer = createDrawerNavigator();
   return null;
 }*/
 
+/**
+ * @author Jonathan Malcomb
+ * @author Shannon Biega
+ * @param props 
+ * @returns Creates a drawer that the user can use to navigate throughout the application.
+ */
 const HeaderDrawer = (props) => {
 
   return (
@@ -121,7 +127,10 @@ const HeaderDrawer = (props) => {
   );
 }
 
-  
+  /**
+   * @author Kollin Labowski
+   * @param new_pref - The preference value to change the user's notification preference to.
+   */
 const updateNotifFreq = async ( new_pref ) => {
   const user = await Auth.currentAuthenticatedUser();
 
@@ -138,6 +147,9 @@ const updateNotifFreq = async ( new_pref ) => {
   
 }
 
+/**
+ * @author Kollin Labowski
+ */
 const notificationUpdate = async () => {
   const user = await Auth.currentAuthenticatedUser();
 
@@ -231,6 +243,10 @@ const notificationUpdate = async () => {
 }
 
 // Main App function
+/**
+ * @author Ryan Mraz
+ * @returns Creates a tool bar for the user to user to navigate the app. Note, newer versions of the app use the drawer as the main form of navigation.
+ */
 const App = () => {
 
   const [email, setEmail]= useState("");

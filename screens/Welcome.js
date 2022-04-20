@@ -12,7 +12,11 @@ import Video from 'react-native-video';
 
 
 
-
+/**
+ * @author Shannon Biega
+ * @param navigate - Used for navigating from the drawer. 
+ * @returns Displays a welcome message to the user's screen.
+ */
 const WelcomeScreen = ({ navigation }) => {
   return (
     <ScrollView style={{backgroundColor: '#b5e48c'}}>

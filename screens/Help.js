@@ -7,7 +7,11 @@ import {
 } from "react-native";
 import { Heading } from 'native-base'
 
-
+/**
+ * @author Shannon Biega
+ * @param navigation - Used for navigation from the Settings stack. 
+ * @returns Displays the help information to the screen, including how the user can complete various tasks on the Smart Pantry app.
+ */
 const HelpScreen = ({ navigation }) => {
   return (
     <ScrollView style={{backgroundColor: '#b5e48c'}}>

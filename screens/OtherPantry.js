@@ -15,7 +15,11 @@ import BarcodeAddScreen from "./BarcodeAdd";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";  
 
-
+/**
+ * @author Kollin Labowski
+ * @param navigation - Used to navigate on the Settings stack. 
+ * @returns Displays all information for the other user's pantry, or displays a message if the user has not been added as a collaborator on another pantry.
+ */
 const OtherPantryScreen = ({ navigation }) => {
     // viewOtherPantry();
 
