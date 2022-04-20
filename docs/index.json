@@ -2717,7 +2717,7 @@
     "__docId__": 134,
     "kind": "file",
     "name": "SmartPantry/screens/OtherPantry.js",
-    "content": "import { getPantry, listPantries } from \"../queries\";\r\n// import { Button } from \"react-native-elements\";\r\nimport {Auth, API, graphqlOperation} from 'aws-amplify';\r\n\r\nimport React, { useState, useEffect, Component } from \"react\";\r\nimport {Text,View, SafeAreaView, StyleSheet ,ScrollView, Modal, Alert, Button } from \"react-native\";\r\nimport { createStackNavigator } from \"@react-navigation/stack\";\r\nimport {Icon, Input} from 'react-native-elements';\r\nimport CreatePantryScreen from \"./CreatePantry\";\r\nimport AddItemScreen from \"./AddItem\";\r\nimport ManualAddScreen from \"./ManualAdd\";\r\nimport { listItems, getItem } from \"../queries.js\";\r\nimport { createItem, deleteItem, updateItem, createShoppingList } from \"../mutations\";\r\nimport BarcodeAddScreen from \"./BarcodeAdd\";\r\nimport { TouchableOpacity } from \"react-native-gesture-handler\";\r\nimport { StatusBar } from \"expo-status-bar\";  \r\n\r\n/**\r\n * @author Kollin Labowski\r\n * @param navigation - Used to navigate on the Settings stack. \r\n * @returns Displays all information for the other user's pantry, or displays a message if the user has not been added as a collaborator on another pantry.\r\n */\r\nconst OtherPantryScreen = ({ navigation }) => {\r\n    // viewOtherPantry();\r\n\r\n    // useState variables to track whether to render the create pantry button\r\n  // the value of the pantry items, and if a user has a pantry.\r\n  const [createPantryButton, setCreatePantryButton] = useState(null);\r\n  const [items, setItems] = useState([]);\r\n  const [pantryExists, setPantryExists] = useState(false);\r\n  const [pantryName, setPantryName] = useState(\"\");\r\n  const [nameText, setNameText] = useState(\"\");\r\n  const [weightText, setWeightText] = useState(\"\");\r\n  const [quantityText, setQuantityText] = useState(\"\");\r\n  const [itemId, setItemId] = useState(null);\r\n\r\n   const [isModalVisible, setIsModalVisible] = useState(false);\r\n\r\n   const handleModal = () => setIsModalVisible(() => !isModalVisible);\r\n\r\n  // Loads when you come back to this screen\r\n  // refreshes each time you go back to the screen\r\n  // Checks if a pantry exists and fetches the user's items on every load\r\n  useEffect(() => {\r\n    const unsubscribe = navigation.addListener(\"focus\", () => {\r\n      checkIfPantryExists();\r\n      fetchItems();\r\n    });\r\n    return unsubscribe;\r\n  }, [navigation, items]);\r\n\r\n  // fetches just the items of the pantry that belongs to the current authenticated user\r\n  const fetchItems = async () => {\r\n    try {\r\n      const user = await Auth.currentAuthenticatedUser(); // returns cognito user JSON\r\n\r\n      // Performs the getPantry query based on the id, which is the user's username\r\n\r\n    //   const user = await Auth.currentAuthenticatedUser();\r\n  \r\n      const pantriesList = await API.graphql(\r\n        graphqlOperation(listPantries, {\r\n        filter: {\r\n            collabId: {\r\n            eq: user.attributes.email,\r\n            },\r\n        },\r\n        })\r\n      );\r\n\r\n      const c = pantriesList.data.listPantries.items;\r\n\r\n    //   console.log(c[0].name);\r\n\r\n      if(c.length > 0) {\r\n        //NOTE: As of 3/27/2022, it may be the case that a collaborator can view multiple pantries\r\n\r\n        //   const collabPantries = c.map( async (pantry) => {\r\n        const pantryData = await API.graphql(graphqlOperation(getPantry, { id: c[0].id }));\r\n\r\n            //  console.log(pantryData.data.getPantry.name);\r\n\r\n        if (pantryData.data.getPantry != null) {\r\n            setPantryExists(true);\r\n            setPantryName(pantryData.data.getPantry.name);\r\n        } else {\r\n            setPantryExists(false);\r\n        }\r\n        \r\n            //   // Grabs the id field from the pantry data\r\n              const pantryId = pantryData.data.getPantry.id;\r\n        \r\n              // Grabs the items that are related to the id of the pantry\r\n              const itemsList = await API.graphql(\r\n                graphqlOperation(listItems, {\r\n                  filter: {\r\n                    pantryItemsId: {\r\n                      eq: pantryId.toString(),\r\n                    },\r\n                  },\r\n                })\r\n              );\r\n        \r\n            //   // stores the value of the items returned\r\n              const b = itemsList.data.listItems.items;\r\n        \r\n            //   // changes the value of useState items value\r\n              setItems(b);\r\n      }\r\n      \r\n    } catch (err) {\r\n      console.log(err);\r\n    }\r\n  };\r\n\r\n\r\n  // add an item to the shopping list upon deleting it from the pantry, if the user wishes\r\n  const addToShoppingList = async (itemID, name) => {\r\n    try {\r\n        // console.log(itemID, name);\r\n\r\n      const user = await Auth.currentAuthenticatedUser();\r\n    //   console.log(user.username.toString());\r\n      const pantryData = await API.graphql(\r\n          graphqlOperation(getPantry, { id: user.username.toString() })\r\n      );\r\n\r\n      if (pantryData.data.getPantry == null) {\r\n        Alert.alert(\"Shopping List Error\", \"You must create a pantry before you can add items to your shopping list\");\r\n        return null;\r\n      }\r\n\r\n      const id = {\r\n        name: name,\r\n        imagePath: \"default_img\",\r\n        shoppingListItemsId: user.username.toString()\r\n      }\r\n      const d = await API.graphql(graphqlOperation(createItem,{input: id} ));\r\n\r\n      Alert.alert(\"Add to Shopping List\", \"Added \\\"\" + name + \"\\\" to shopping list\");\r\n\r\n    } catch (err) { \r\n      console.log(err);\r\n    }\r\n  }\r\n\r\n  // list of items from pantry\r\n  const listOfItems = items.map((item) => {\r\n    let percentage = (parseFloat(item.currWeight) / parseFloat(item.weight) * 100).toFixed(2);\r\n    return (\r\n      <View key={item.id}>\r\n        <View\r\n          style={{\r\n            flexDirection: \"row\",\r\n            alignItems: \"center\",\r\n            justifyContent: \"center\",\r\n            paddingHorizontal: 20,\r\n            paddingBottom: 20,\r\n            paddingTop: 20,\r\n          }}\r\n        >\r\n          <Text\r\n            style={{paddingLeft: 15, width: \"50%\", flexDirection: \"column\", fontSize: 18 }}\r\n          >\r\n            {item.name + '\\n'}\r\n            {item.quantity && <Text style={{fontSize: 15, fontWeight: 'bold'}}>Quantity: {item.quantity}</Text>}\r\n            {item.weight && <Text style={{fontSize: 15, fontWeight: \"bold\"}}>Percentage left: {percentage}%</Text>}\r\n          </Text>\r\n          <Button buttonStyle={{ backgroundColor: 'grey', width: 75, marginRight: 5 }} title=\"add to shopping list\" onPress={() => {\r\n            addToShoppingList(item.id, item.name);\r\n          }}>\r\n          </Button>\r\n        </View>\r\n        <View style={{ height: 1.2, backgroundColor: \"grey\" }} />\r\n      </View>\r\n    );\r\n  });\r\n\r\n\r\n  // checks whether or not a user has a pantry yet\r\n  const checkIfPantryExists = async () => {\r\n    try {\r\n      const user = await Auth.currentAuthenticatedUser(); // grabs current user's information\r\n\r\n      // Performs the getPantry query based on user's id\r\n      const pantryData = await API.graphql(\r\n        graphqlOperation(getPantry, { id: user.username.toString() })\r\n      );\r\n\r\n      // If it's null, we want to render the create pantry button\r\n      // otherwise, we want to hide it\r\n      if (pantryData.data.getPantry == null) {\r\n        setCreatePantryButton(true);\r\n      } else {\r\n        setCreatePantryButton(null);\r\n      }\r\n    } catch (err) {\r\n      console.log(err);\r\n    }\r\n  };\r\n\r\n  // const email = user.attributes.email;\r\n  // console.log(email);\r\n\r\n  return (\r\n      <ScrollView style={{backgroundColor: '#b5e48c'}}\r\n        contentContainerStyle={{\r\n          flexGrow: 1,\r\n          alignItems: \"center\",\r\n          justifyContent: \"center\"\r\n        }}\r\n      >\r\n        {!pantryExists && <Text style={styles.body}>You are not a collaborator for any pantries.</Text>}\r\n        {pantryExists && (\r\n          <View\r\n            style={{ flex: 1, alignItems: \"center\", justifyContent: \"center\" }}\r\n          >\r\n            <View style={{flexDirection: 'row', alignItems: 'center'}}>\r\n            <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />\r\n            <View><Text style={[styles.paddedHeading, styles.width_username]}>Email</Text></View>\r\n            <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />\r\n        </View> \r\n        {/* <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{email}</Text> */}\r\n          </View>\r\n        )}\r\n      </ScrollView>\r\n  );\r\n  \r\n    return (\r\n    <View style={{ flex: 1, alignItems: \"center\", justifyContent: \"center\" }}>\r\n      \r\n    </View>\r\n  );\r\n};\r\n\r\nconst styles = StyleSheet.create({\r\n  body:{\r\n    fontSize: 18,\r\n    textAlign: 'center'\r\n  }\r\n});\r\n\r\nexport default OtherPantryScreen;",
+    "content": "import { getPantry, listPantries } from \"../queries\";\r\n// import { Button } from \"react-native-elements\";\r\nimport {Auth, API, graphqlOperation} from 'aws-amplify';\r\n\r\nimport React, { useState, useEffect, Component } from \"react\";\r\nimport {Text,View, SafeAreaView, StyleSheet ,ScrollView, Modal, Alert, Button } from \"react-native\";\r\nimport { createStackNavigator } from \"@react-navigation/stack\";\r\nimport {Icon, Input} from 'react-native-elements';\r\nimport CreatePantryScreen from \"./CreatePantry\";\r\nimport AddItemScreen from \"./AddItem\";\r\nimport ManualAddScreen from \"./ManualAdd\";\r\nimport { listItems, getItem } from \"../queries.js\";\r\nimport { createItem, deleteItem, updateItem, createShoppingList } from \"../mutations\";\r\nimport BarcodeAddScreen from \"./BarcodeAdd\";\r\nimport { TouchableOpacity } from \"react-native-gesture-handler\";\r\nimport { StatusBar } from \"expo-status-bar\";  \r\n\r\n\r\nconst OtherPantryScreen = ({ navigation }) => {\r\n    // viewOtherPantry();\r\n\r\n    // useState variables to track whether to render the create pantry button\r\n  // the value of the pantry items, and if a user has a pantry.\r\n  const [createPantryButton, setCreatePantryButton] = useState(null);\r\n  const [items, setItems] = useState([]);\r\n  const [pantryExists, setPantryExists] = useState(false);\r\n  const [pantryName, setPantryName] = useState(\"\");\r\n  const [nameText, setNameText] = useState(\"\");\r\n  const [weightText, setWeightText] = useState(\"\");\r\n  const [quantityText, setQuantityText] = useState(\"\");\r\n  const [itemId, setItemId] = useState(null);\r\n\r\n   const [isModalVisible, setIsModalVisible] = useState(false);\r\n\r\n   const handleModal = () => setIsModalVisible(() => !isModalVisible);\r\n\r\n  // Loads when you come back to this screen\r\n  // refreshes each time you go back to the screen\r\n  // Checks if a pantry exists and fetches the user's items on every load\r\n  useEffect(() => {\r\n    const unsubscribe = navigation.addListener(\"focus\", () => {\r\n      checkIfPantryExists();\r\n      fetchItems();\r\n    });\r\n    return unsubscribe;\r\n  }, [navigation, items]);\r\n\r\n  // fetches just the items of the pantry that belongs to the current authenticated user\r\n  const fetchItems = async () => {\r\n    try {\r\n      const user = await Auth.currentAuthenticatedUser(); // returns cognito user JSON\r\n\r\n      // Performs the getPantry query based on the id, which is the user's username\r\n\r\n    //   const user = await Auth.currentAuthenticatedUser();\r\n  \r\n      const pantriesList = await API.graphql(\r\n        graphqlOperation(listPantries, {\r\n        filter: {\r\n            collabId: {\r\n            eq: user.attributes.email,\r\n            },\r\n        },\r\n        })\r\n      );\r\n\r\n      const c = pantriesList.data.listPantries.items;\r\n\r\n    //   console.log(c[0].name);\r\n\r\n      if(c.length > 0) {\r\n        //NOTE: As of 3/27/2022, it may be the case that a collaborator can view multiple pantries\r\n\r\n        //   const collabPantries = c.map( async (pantry) => {\r\n        const pantryData = await API.graphql(graphqlOperation(getPantry, { id: c[0].id }));\r\n\r\n            //  console.log(pantryData.data.getPantry.name);\r\n\r\n        if (pantryData.data.getPantry != null) {\r\n            setPantryExists(true);\r\n            setPantryName(pantryData.data.getPantry.name);\r\n        } else {\r\n            setPantryExists(false);\r\n        }\r\n        \r\n            //   // Grabs the id field from the pantry data\r\n              const pantryId = pantryData.data.getPantry.id;\r\n        \r\n              // Grabs the items that are related to the id of the pantry\r\n              const itemsList = await API.graphql(\r\n                graphqlOperation(listItems, {\r\n                  filter: {\r\n                    pantryItemsId: {\r\n                      eq: pantryId.toString(),\r\n                    },\r\n                  },\r\n                })\r\n              );\r\n        \r\n            //   // stores the value of the items returned\r\n              const b = itemsList.data.listItems.items;\r\n        \r\n            //   // changes the value of useState items value\r\n              setItems(b);\r\n      }\r\n      \r\n    } catch (err) {\r\n      console.log(err);\r\n    }\r\n  };\r\n\r\n\r\n  // add an item to the shopping list upon deleting it from the pantry, if the user wishes\r\n  const addToShoppingList = async (itemID, name) => {\r\n    try {\r\n        // console.log(itemID, name);\r\n\r\n      const user = await Auth.currentAuthenticatedUser();\r\n    //   console.log(user.username.toString());\r\n      const pantryData = await API.graphql(\r\n          graphqlOperation(getPantry, { id: user.username.toString() })\r\n      );\r\n\r\n      if (pantryData.data.getPantry == null) {\r\n        Alert.alert(\"Shopping List Error\", \"You must create a pantry before you can add items to your shopping list\");\r\n        return null;\r\n      }\r\n\r\n      const id = {\r\n        name: name,\r\n        imagePath: \"default_img\",\r\n        shoppingListItemsId: user.username.toString()\r\n      }\r\n      const d = await API.graphql(graphqlOperation(createItem,{input: id} ));\r\n\r\n      Alert.alert(\"Add to Shopping List\", \"Added \\\"\" + name + \"\\\" to shopping list\");\r\n\r\n    } catch (err) { \r\n      console.log(err);\r\n    }\r\n  }\r\n\r\n  // list of items from pantry\r\n  const listOfItems = items.map((item) => {\r\n    let percentage = (parseFloat(item.currWeight) / parseFloat(item.weight) * 100).toFixed(2);\r\n    return (\r\n      <View key={item.id}>\r\n        <View\r\n          style={{\r\n            flexDirection: \"row\",\r\n            alignItems: \"center\",\r\n            justifyContent: \"center\",\r\n            paddingHorizontal: 20,\r\n            paddingBottom: 20,\r\n            paddingTop: 20,\r\n          }}\r\n        >\r\n          <Text\r\n            style={{paddingLeft: 15, width: \"50%\", flexDirection: \"column\", fontSize: 18 }}\r\n          >\r\n            {item.name + '\\n'}\r\n            {item.quantity && <Text style={{fontSize: 15, fontWeight: 'bold'}}>Quantity: {item.quantity}</Text>}\r\n            {item.weight && <Text style={{fontSize: 15, fontWeight: \"bold\"}}>Percentage left: {percentage}%</Text>}\r\n          </Text>\r\n          <Button buttonStyle={{ backgroundColor: 'grey', width: 75, marginRight: 5 }} title=\"add to shopping list\" onPress={() => {\r\n            addToShoppingList(item.id, item.name);\r\n          }}>\r\n          </Button>\r\n        </View>\r\n        <View style={{ height: 1.2, backgroundColor: \"grey\" }} />\r\n      </View>\r\n    );\r\n  });\r\n\r\n\r\n  // checks whether or not a user has a pantry yet\r\n  const checkIfPantryExists = async () => {\r\n    try {\r\n      const user = await Auth.currentAuthenticatedUser(); // grabs current user's information\r\n\r\n      // Performs the getPantry query based on user's id\r\n      const pantryData = await API.graphql(\r\n        graphqlOperation(getPantry, { id: user.username.toString() })\r\n      );\r\n\r\n      // If it's null, we want to render the create pantry button\r\n      // otherwise, we want to hide it\r\n      if (pantryData.data.getPantry == null) {\r\n        setCreatePantryButton(true);\r\n      } else {\r\n        setCreatePantryButton(null);\r\n      }\r\n    } catch (err) {\r\n      console.log(err);\r\n    }\r\n  };\r\n\r\n  return (\r\n      <ScrollView\r\n        contentContainerStyle={{\r\n          flexGrow: 1,\r\n          alignItems: \"center\",\r\n          justifyContent: \"center\",\r\n        }}\r\n      >\r\n        {!pantryExists && <Text>You are not a collaborator for any pantries</Text>}\r\n        {pantryExists && (\r\n          <View\r\n            style={{ flex: 1, alignItems: \"center\", justifyContent: \"center\" }}\r\n          >\r\n            <Text style={{ fontSize: 25, marginBottom: 15 }}>{pantryName}</Text>\r\n\r\n            <View>{listOfItems}</View>\r\n          </View>\r\n        )}\r\n      </ScrollView>\r\n  );\r\n  \r\n    return (\r\n    <View style={{ flex: 1, alignItems: \"center\", justifyContent: \"center\" }}>\r\n      \r\n    </View>\r\n  );\r\n};\r\n\r\nexport default OtherPantryScreen;",
     "static": true,
     "longname": "C:/Users/kk_la/Desktop/SmartPantry/SmartPantry/screens/OtherPantry.js",
     "access": "public",
@@ -2726,27 +2726,6 @@
   },
   {
     "__docId__": 135,
-    "kind": "variable",
-    "name": "styles",
-    "memberof": "SmartPantry/screens/OtherPantry.js",
-    "static": true,
-    "longname": "SmartPantry/screens/OtherPantry.js~styles",
-    "access": "public",
-    "export": false,
-    "importPath": "smartpantry/SmartPantry/screens/OtherPantry.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 236,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 136,
     "kind": "function",
     "name": "OtherPantryScreen",
     "memberof": "SmartPantry/screens/OtherPantry.js",
@@ -2758,41 +2737,29 @@
     "export": true,
     "importPath": "smartpantry/SmartPantry/screens/OtherPantry.js",
     "importStyle": "OtherPantryScreen",
-    "description": "",
-    "lineNumber": 23,
-    "unknown": [
-      {
-        "tagName": "@author",
-        "tagValue": "Kollin Labowski"
-      },
-      {
-        "tagName": "@returns",
-        "tagValue": "Displays all information for the other user's pantry, or displays a message if the user has not been added as a collaborator on another pantry."
-      }
-    ],
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
     "params": [
       {
-        "nullable": null,
+        "name": "objectPattern",
         "types": [
-          "*"
+          "{\"navigation\": *}"
         ],
-        "spread": false,
-        "optional": false,
-        "name": "navigation",
-        "description": "Used to navigate on the Settings stack."
+        "defaultRaw": {
+          "navigation": null
+        },
+        "defaultValue": "{\"navigation\":null}"
       }
     ],
     "return": {
-      "nullable": null,
       "types": [
         "*"
-      ],
-      "spread": false,
-      "description": "Displays all information for the other user's pantry, or displays a message if the user has not been added as a collaborator on another pantry."
+      ]
     }
   },
   {
-    "__docId__": 137,
+    "__docId__": 136,
     "kind": "file",
     "name": "SmartPantry/screens/Profile.js",
     "content": "import React, { useState, useEffect } from \"react\";\r\nimport {\r\n  Text,\r\n  View,\r\n  ScrollView,\r\n  Dimensions,\r\n  ImageBackground,\r\n  StyleSheet,\r\n  Platform,\r\n  Image\r\n} from \"react-native\";\r\nimport GalleryComponent from './../src/components/GalleryComponent';\r\n\r\n\r\n\r\n/**\r\n * @author Shannon Biega\r\n * @param navigation - Used to navigate the Settings stack.\r\n * @returns Displays the user's profile information and profile picture.\r\n */\r\nconst ProfileScreen = ({ navigation }) => {\r\n  return (\r\n    <ScrollView\r\n      style={{ flex: 1, backgroundColor: \"#fff\" }}\r\n      showsVerticalScrollIndicator={false}\r\n    >\r\n      <ImageBackground\r\n        source={require(\"../assets/images/bg.jpg\")}\r\n        style={{ height: Dimensions.get(\"window\").height / 4 }}\r\n      >\r\n        <View style={Styles.brandView}>\r\n          <Text style={Styles.brandViewText}></Text>\r\n        </View>\r\n      </ImageBackground>\r\n      <View style={Styles.bottomView}>\r\n        <View style={{ padding: 40 }}>\r\n          <View style={{ margin: 20 }}>\r\n            <Text>Profile Photo</Text>\r\n            <GalleryComponent></GalleryComponent>\r\n          </View>\r\n\r\n          <View style={Styles.forgotPassView}>\r\n            <View style={{ flex: 1, marginLeft: -20 }}></View>\r\n            <View style={{ flex: 1, marginRight: 0 }}></View>\r\n          </View>\r\n\r\n          <View\r\n            style={{\r\n              height: 100,\r\n              justifyContent: \"center\",\r\n              alignItems: \"center\",\r\n            }}\r\n          ></View>\r\n          <View\r\n            style={{ marginBottom: 0, flex: 1, alignItems: \"center\" }}\r\n          ></View>\r\n        </View>\r\n      </View>\r\n    </ScrollView>\r\n  );\r\n};\r\n\r\nexport default ProfileScreen;\r\n\r\nconst Styles = StyleSheet.create({\r\n  brandView: {\r\n    flex: 1,\r\n    justifyContent: \"center\",\r\n    alignItems: \"center\",\r\n  },\r\n\r\n  brandViewText: {\r\n    color: \"black\",\r\n    fontSize: 45,\r\n    fontWeight: \"bold\",\r\n    textTransform: \"uppercase\",\r\n    backgroundColor: \"white\",\r\n    padding: 5,\r\n    borderRadius: 20,\r\n  },\r\n  bottomView: {\r\n    flex: 1.5,\r\n    backgroundColor: \"white\",\r\n    bottom: 50,\r\n    borderTopStartRadius: 60,\r\n    borderTopEndRadius: 60,\r\n  },\r\n  textInputs: {\r\n    height: 40,\r\n    width: 250,\r\n    margin: 10,\r\n    borderWidth: 1,\r\n    padding: 10,\r\n    borderRadius: 15,\r\n  },\r\n  forgotPassView: {\r\n    height: 50,\r\n    marginTop: 5,\r\n    flexDirection: \"row\",\r\n  },\r\n});\r\n",
@@ -2803,7 +2770,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 138,
+    "__docId__": 137,
     "kind": "variable",
     "name": "Styles",
     "memberof": "SmartPantry/screens/Profile.js",
@@ -2824,7 +2791,7 @@
     "ignore": true
   },
   {
-    "__docId__": 139,
+    "__docId__": 138,
     "kind": "function",
     "name": "ProfileScreen",
     "memberof": "SmartPantry/screens/Profile.js",
@@ -2870,7 +2837,7 @@
     }
   },
   {
-    "__docId__": 140,
+    "__docId__": 139,
     "kind": "file",
     "name": "SmartPantry/screens/Settings.js",
     "content": "import React, { Component, useState } from \"react\";\r\nimport {Text,View, Switch, Alert, ScrollView } from \"react-native\";\r\nimport {Icon, Button} from \"react-native-elements\";\r\nimport {Auth, API, graphqlOperation } from 'aws-amplify';\r\nimport MyInfoScreen from \"./MyInfo\";\r\nimport AccountsScreen from \"./Accounts\";\r\nimport NotificationsScreen from \"./Notifications\";\r\nimport HelpScreen from \"./Help\";\r\nimport AboutScreen from \"./About\";\r\nimport { createStackNavigator } from \"@react-navigation/stack\";\r\nimport { TouchableOpacity } from \"react-native-gesture-handler\";\r\nimport { deletePantry, deleteShoppingList, deleteItem } from \"../mutations\";\r\nimport { getPantry, listItems, getShoppingList } from \"../queries\";\r\nimport OtherPantryScreen from \"./OtherPantry\";\r\nimport CreditsScreen from \"./Credits\";\r\n\r\nconst handleSignOut = () => {\r\n    Alert.alert(\"Sign Out\", \"Do you want to sign out?\", [\r\n      {\r\n        text: \"Yes\",\r\n        onPress: () => Auth.signOut(),\r\n      },\r\n      {\r\n        text: \"No\",\r\n        style: \"cancel\",\r\n      },\r\n    ]);\r\n}\r\n\r\nconst SettingsStack = createStackNavigator();\r\n/**\r\n * @author Ryan Mraz\r\n * @author Kollin Labowski\r\n * @author Shannon Biega\r\n * @returns The Settings stack used to navigate to different settings screens.\r\n */\r\nconst SettingsStackScreen = () => {\r\n  return (\r\n    <SettingsStack.Navigator screenOptions={{\r\n      headerBackTitleVisible: false\r\n    }}>\r\n      <SettingsStack.Screen options={{ headerStyle: {backgroundColor: '#b5e48c'}, headerShown: false}} name=\"SettingsStack\" component={Settings} />\r\n      <SettingsStack.Screen name=\"Collaborator Pantry\" component={OtherPantryScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>\r\n      <SettingsStack.Screen name=\"My Information\" component={MyInfoScreen}options={{ headerStyle: {backgroundColor: '#b5e48c'} }} />\r\n      <SettingsStack.Screen name=\"Manage My Pantry\" component={AccountsScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>\r\n      <SettingsStack.Screen name=\"Notifications\" component={NotificationsScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>\r\n      <SettingsStack.Screen name=\"Help\" component={HelpScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>\r\n      <SettingsStack.Screen name=\"About\" component={AboutScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>\r\n      <SettingsStack.Screen name=\"Our Team\" component={CreditsScreen} options={{ headerStyle: {backgroundColor: '#b5e48c'} }}/>\r\n    </SettingsStack.Navigator>\r\n  );\r\n};\r\n\r\nconst Settings = ({navigation}) => {\r\n\r\n\r\n    // Contains the settings options, each has a title, subtitle, and what to do when pressed\r\n    const settingsOptions = [\r\n      \r\n      { title: \"My Information\", subTitle: \"View your profile information\", onPress: () => {\r\n          navigation.navigate(\"My Information\");\r\n      } },\r\n      { title: \"Manage My Pantry\",\r\n        subTitle: \"View pantry details\\nManage who can view your pantry\",\r\n         onPress: () => {\r\n          navigation.navigate(\"Manage My Pantry\");\r\n      } },\r\n      { title: \"Collaborator Pantry\",\r\n        subTitle: \"View your collaborator pantry\",\r\n         onPress: () => {\r\n          navigation.navigate(\"Collaborator Pantry\");\r\n      } },\r\n      {\r\n        title: \"Notifications\",\r\n        subTitle: \"View and manage your notifications\",\r\n        onPress: () => {\r\n          navigation.navigate(\"Notifications\");\r\n        },\r\n      },\r\n      { title: \"Help\", subTitle: \"General help about using your Smart Pantry app\", onPress: () => {\r\n        navigation.navigate(\"Help\");\r\n    } },\r\n      \r\n      { title: \"About\",\r\n        subTitle: \"Learn about your Smart Pantry app\", \r\n        onPress: () => {\r\n          navigation.navigate(\"About\");\r\n      } },\r\n      \r\n      { title: \"Meet The App Developers\",\r\n        subTitle: \"Learn about the developers of your Smart Pantry app\",\r\n        onPress: () => {\r\n        navigation.navigate(\"Our Team\");\r\n      } },\r\n     \r\n      {\r\n        title: \"Sign Out\",\r\n        subTitle: \"Sign out of your Smart Pantry app\",\r\n        onPress: () => {\r\n          Alert.alert(\"Sign Out\", \"Do you want to sign out?\", [\r\n            {\r\n              text: \"Yes\",\r\n              onPress: () => Auth.signOut(),\r\n            },\r\n            {\r\n              text: \"No\",\r\n              style: \"cancel\",\r\n            },\r\n          ]);\r\n        },\r\n      },\r\n     /* {\r\n        title: \"Delete Pantry\",\r\n        subTitle: \"Delete your pantry\",\r\n        onPress: () => {\r\n          Alert.alert(\"Delete Pantry\", \"Would you like to delete your pantry? Doing so will also delete your Shopping List\", [\r\n            {\r\n              text: \"Yes\",\r\n              onPress: () => {\r\n                  deleteUserPantry();\r\n              }\r\n            },\r\n            {\r\n              text: \"No\",\r\n              style: \"cancel\",\r\n            }\r\n          ])\r\n        }\r\n      }*/\r\n    ];\r\n    return (\r\n        <ScrollView style={{backgroundColor: '#b5e48c'}}>\r\n            {settingsOptions.map(({title,subTitle,onPress}) => \r\n            <TouchableOpacity key={title} onPress={onPress}>\r\n                <View style={{\r\n                    paddingHorizontal: 20,\r\n                    paddingBottom: 20,\r\n                    paddingTop: 20\r\n                }}>\r\n                    <Text style={{fontSize: 19, fontWeight: \"bold\"}}>{title}</Text>\r\n                    {subTitle && <Text style={{fontSize:15, color:'black', paddingTop:5}}>{subTitle}</Text>}\r\n                </View>\r\n                <View style={{height: 1.2, backgroundColor: 'grey'}}/>\r\n            </TouchableOpacity>)}\r\n        </ScrollView>\r\n    );\r\n}\r\n\r\n/**\r\n * @author Kollin Labowski\r\n */\r\nconst deleteUserPantry = async () => {\r\n  try {\r\n    const user = await Auth.currentAuthenticatedUser();\r\n\r\n    const pantryData = await API.graphql(\r\n      graphqlOperation(getPantry, { id: user.username.toString() })\r\n    );\r\n\r\n      // if the getPantry query does not return a null value, sets pantry exists to true\r\n      // otherwise sets it to false because they don't have a pantry yet\r\n      if (pantryData.data.getPantry == null) {\r\n        Alert.alert(\"Delete Pantry\", \"You do not have a pantry\");\r\n      }\r\n      else {\r\n\r\n      // Grabs the id field from the pantry data\r\n      const pantryId = pantryData.data.getPantry.id;\r\n\r\n      // Grabs the items that are related to the id of the pantry\r\n      const itemsList = await API.graphql(\r\n        graphqlOperation(listItems, {\r\n          filter: {\r\n            pantryItemsId: {\r\n              eq: pantryId.toString(),\r\n            },\r\n          },\r\n        })\r\n      );\r\n\r\n      // stores the value of the items returned\r\n      const b = itemsList.data.listItems.items;\r\n      // alert(JSON.stringify(itemsList.data.listItems.items));\r\n      const deleteAllItems = b.map( async (item) => {\r\n        const deletionId = {\r\n          id: item.id,\r\n        };\r\n        const delPantryItem = await API.graphql(graphqlOperation(deleteItem, { input: deletionId }));\r\n      });\r\n\r\n      const shoppingListData = await API.graphql(\r\n        graphqlOperation(getShoppingList, { id: user.username.toString() })\r\n      );\r\n\r\n      const shoppingListId = shoppingListData.data.getShoppingList.id;\r\n\r\n      const shoppingItemsList = await API.graphql(\r\n        graphqlOperation(listItems, {\r\n          filter: {\r\n            shoppingListItemsId: {\r\n              eq: shoppingListId.toString(),\r\n            },\r\n          },\r\n        })\r\n      );\r\n\r\n      const c = shoppingItemsList.data.listItems.items;\r\n\r\n      const deleteAllShoppingItems = c.map( async (item) => {\r\n        const deletionId = {\r\n          id: item.id,\r\n        };\r\n        const delPantryItem = await API.graphql(graphqlOperation(deleteItem, { input: deletionId }));\r\n      });\r\n\r\n      const delId = {\r\n        id: user.username.toString()\r\n      }\r\n\r\n      const delPantry = await API.graphql(graphqlOperation(deletePantry, { input: delId }));\r\n\r\n      const delShopping = await API.graphql(graphqlOperation(deleteShoppingList, { input: delId }));\r\n\r\n      Alert.alert(\"Delete Pantry\", \"Your pantry and has been deleted\");\r\n    }\r\n\r\n  } catch(err) {\r\n    console.log(err);\r\n  }\r\n}\r\n\r\nexport default SettingsStackScreen;",
@@ -2881,7 +2848,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 141,
+    "__docId__": 140,
     "kind": "function",
     "name": "handleSignOut",
     "memberof": "SmartPantry/screens/Settings.js",
@@ -2901,7 +2868,7 @@
     "ignore": true
   },
   {
-    "__docId__": 142,
+    "__docId__": 141,
     "kind": "variable",
     "name": "SettingsStack",
     "memberof": "SmartPantry/screens/Settings.js",
@@ -2922,7 +2889,7 @@
     "ignore": true
   },
   {
-    "__docId__": 143,
+    "__docId__": 142,
     "kind": "function",
     "name": "Settings",
     "memberof": "SmartPantry/screens/Settings.js",
@@ -2957,7 +2924,7 @@
     "ignore": true
   },
   {
-    "__docId__": 144,
+    "__docId__": 143,
     "kind": "function",
     "name": "deleteUserPantry",
     "memberof": "SmartPantry/screens/Settings.js",
@@ -2982,7 +2949,7 @@
     "ignore": true
   },
   {
-    "__docId__": 145,
+    "__docId__": 144,
     "kind": "function",
     "name": "SettingsStackScreen",
     "memberof": "SmartPantry/screens/Settings.js",
@@ -3025,7 +2992,7 @@
     "params": []
   },
   {
-    "__docId__": 146,
+    "__docId__": 145,
     "kind": "file",
     "name": "SmartPantry/screens/Shopping.js",
     "content": "import React, { useState, useEffect, Component } from \"react\";\r\nimport { Text, View, Switch, Alert, ScrollView, Modal, StyleSheet, SafeAreaView } from \"react-native\";\r\nimport { Icon, Button, Input } from \"react-native-elements\";\r\nimport AboutScreen from \"./About\";\r\nimport { createStackNavigator } from \"@react-navigation/stack\";\r\nimport { TouchableOpacity } from \"react-native-gesture-handler\";\r\nimport CreatePantryScreen from \"./CreatePantry\";\r\nimport { getShoppingList, listItems, getItem } from \"../queries\";\r\nimport { createItem, deleteItem, updateItem, createShoppingList } from \"../mutations\";\r\nimport AddShoppingListItemScreen from \"./AddShoppingListItem\";\r\nimport {Auth, API, graphqlOperation} from 'aws-amplify';\r\nimport ManualAddScreen from \"./ManualAdd\";\r\nimport BarcodeAddScreen from \"./BarcodeAdd\";\r\nimport { StatusBar } from \"expo-status-bar\";\r\nimport { Heading, Box } from 'native-base'\r\nimport Card from '../components/Card'\r\n\r\nconst ShoppingStack = createStackNavigator();\r\n\r\n/**\r\n * @author Kollin Labowski\r\n * @returns The Shopping stack screen for navigating between the shopping list page and the add item page.\r\n */\r\nconst ShoppingStackScreen = () => {\r\n  return (\r\n    <ShoppingStack.Navigator >\r\n      <ShoppingStack.Screen\r\n        options={{ headerShown: false }}\r\n        name=\"Back\"\r\n        component={Shopping}\r\n      />\r\n      <ShoppingStack.Screen\r\n          options={{ headerShown: true, title: \"Add Item\",  headerStyle: {backgroundColor: '#b5e48c'} }}\r\n          name=\"AddShoppingListItem\"\r\n          component={AddShoppingListItemScreen}\r\n          \r\n        />\r\n\r\n\r\n\r\n    </ShoppingStack.Navigator>\r\n  );\r\n};\r\n\r\n/**\r\n * @author Kollin Labowski\r\n * @param navigation - Used for navigating the Shopping List stack. \r\n * @returns Displays the shopping list of the current user to the screen.\r\n */\r\nconst Shopping = ({navigation}) => {\r\n  const [shoppingListButton, setShoppingListButton] = useState(null);\r\n  const [items, setItems] = useState([]);\r\n  const [shoppingListExists, setShoppingListExists] = useState(true);\r\n  const [shoppingListName, setShoppingListName] = useState(\"\");\r\n  const [nameText, setNameText] = useState(\"\");\r\n  const [itemId, setItemId] = useState(null);\r\n\r\n   const [isModalVisible, setIsModalVisible] = useState(false);\r\n\r\n   const handleModal = () => setIsModalVisible(() => !isModalVisible);\r\n\r\n  // Loads when you come back to this screen\r\n  // refreshes each time you go back to the screen\r\n  // Checks if a shopping list exists and fetches the user's items on every load\r\n  useEffect(() => {\r\n    const unsubscribe = navigation.addListener(\"focus\", () => {\r\n      checkIfShoppingListExists();\r\n      fetchItems();\r\n    });\r\n    return unsubscribe;\r\n  }, [navigation, items]);\r\n\r\n  // fetches just the items of the shopping list that belongs to the current authenticated user\r\n  const fetchItems = async () => {\r\n    try {\r\n      const user = await Auth.currentAuthenticatedUser(); // returns cognito user JSON\r\n\r\n      // Performs the getShoppingList query based on the id, which is the user's username\r\n      const shoppingListData = await API.graphql(\r\n        graphqlOperation(getShoppingList, { id: user.username.toString() })\r\n      );\r\n\r\n      // if the getShoppingList query does not return a null value, sets shopping list exists to true\r\n      // otherwise sets it to false because they don't have a shopping list yet\r\n      if (shoppingListData.data.getShoppingList != null) {\r\n        setShoppingListExists(true);\r\n        setShoppingListName(shoppingListData.data.getShoppingList.name);\r\n      } else {\r\n        setShoppingListExists(false);\r\n      }\r\n\r\n      // Grabs the id field from the shopping list data\r\n      const shoppingListId = shoppingListData.data.getShoppingList.id;\r\n\r\n      // Grabs the items that are related to the id of the shopping list\r\n      const itemsList = await API.graphql(\r\n        graphqlOperation(listItems, {\r\n          filter: {\r\n            shoppingListItemsId: {\r\n              eq: shoppingListId.toString(),\r\n            },\r\n          },\r\n        })\r\n      );\r\n\r\n      // stores the value of the items returned\r\n      const b = itemsList.data.listItems.items;\r\n\r\n      // changes the value of useState items value\r\n      setItems(b);\r\n    } catch (err) {\r\n      console.log(err);\r\n    }\r\n  };\r\n\r\n  // Update item\r\n  const updateShoppingListItem = async () => {\r\n\r\n    const item = await API.graphql(graphqlOperation(getItem, {id: itemId}));\r\n    // if item is updated to have 0 or less quantity, the item will automatically be deleted\r\n    if (!(item.quantity == null) && parseInt(quantityText) <= 0) {\r\n      deleteShoppingListItem(itemId);\r\n      handleModal();\r\n      return;\r\n    }\r\n\r\n    try {\r\n      // Perform\r\n      const update = {\r\n        id: itemId,\r\n        name: nameText ? nameText : item.name,\r\n      }\r\n\r\n      const u = await API.graphql(graphqlOperation(updateItem, {input: update}));\r\n      setNameText(\"\");\r\n      fetchItems();\r\n      handleModal();\r\n    } catch (err) {\r\n\r\n    }\r\n  }\r\n\r\n  // delete item\r\n  const deleteShoppingListItem = async (deleteId) => {\r\n    try {\r\n      const id = {\r\n        id: deleteId\r\n      }\r\n      const d = await API.graphql(graphqlOperation(deleteItem,{input: id} ));\r\n      fetchItems();\r\n    } catch (err) { \r\n      console.log(err);\r\n    }\r\n  }\r\n\r\n  const modalScreen = (\r\n    <Modal visible={isModalVisible} animationType=\"slide\">\r\n      <View style={{ flex: 1, alignItems: \"center\", justifyContent: \"center\" }}>\r\n        <Text style={{fontSize: 25, fontWeight: \"bold\", margin: 10}}>Edit your item</Text>\r\n        <Input\r\n          placeholder=\"Name (i.e. bananas)\"\r\n          containerStyle={{ width: 250 }}\r\n          onChangeText={(value) => setNameText(value)}\r\n        />\r\n        <Button\r\n          buttonStyle={{ width: 200, margin: 20}}\r\n          title=\"Hello\"\r\n          onPress={() => {\r\n            updatePantryItem();\r\n          }}\r\n        ></Button>\r\n        <Button buttonStyle={{width: 200}} title=\"Go back\" onPress={handleModal}></Button>\r\n      </View>\r\n    </Modal>\r\n  );\r\n\r\n  // list of items from shopping list\r\n  const listOfItems = items.map((item) => {\r\n    return (\r\n      <View key={item.id}>\r\n        <View\r\n          style={{\r\n            flexDirection: \"row\",\r\n            alignItems: \"center\",\r\n            justifyContent: \"center\",\r\n            paddingHorizontal: 20,\r\n            paddingBottom: 20,\r\n            paddingTop: 20,\r\n          }}\r\n        >\r\n          <Text\r\n            style={{paddingLeft: 15, width: \"50%\", flexDirection: \"column\", fontSize: 18 }}\r\n          >\r\n            {item.name}\r\n          </Text>\r\n          <Button  buttonStyle={{ marginTop:10,\r\n                paddingTop:15,\r\n                paddingBottom:15,\r\n                backgroundColor:'#ff686b',\r\n                borderRadius:10,\r\n                borderWidth: 1,\r\n                borderColor: '#fff' }} title=\"Delete Item\" onPress={() => {\r\n             Alert.alert(\"Delete Item\", \"Are you sure you want to delete item?\", [\r\n               {\r\n                 text: \"Yes\",\r\n                 onPress: () => { \r\n                    deleteShoppingListItem(item.id); // Uses amplify Auth library and signOut() method\r\n                },\r\n               },\r\n               {\r\n                 text: \"No\",\r\n                 style: \"cancel\",\r\n               },\r\n             ]);\r\n          }}></Button>\r\n        </View>\r\n        <View style={{ height: 1.2, backgroundColor: \"grey\" }} />\r\n      </View>\r\n    );\r\n  });\r\n\r\n\r\n  // checks whether or not a user has a shopping list yet\r\n  const checkIfShoppingListExists = async () => {\r\n    try {\r\n      const user = await Auth.currentAuthenticatedUser(); // grabs current user's information\r\n\r\n      // Performs the getShoppingList query based on user's id\r\n      const shoppingListData = await API.graphql(\r\n        graphqlOperation(getShoppingList, { id: user.username.toString() })\r\n      );\r\n\r\n      // If it's null, we want to render the create shopping list button\r\n      // otherwise, we want to hide it\r\n      if (shoppingListData.data.getShoppingList == null) {\r\n        setShoppingListButton(true);\r\n      } else {\r\n        setShoppingListButton(null);\r\n      }\r\n    } catch (err) {\r\n      console.log(err);\r\n    }\r\n  };\r\n\r\n  return (\r\n      <ScrollView\r\n        contentContainerStyle={{\r\n          flexGrow: 1,\r\n          alignItems: \"center\",\r\n          justifyContent: \"center\",\r\n          backgroundColor: '#b5e48c'\r\n        }}\r\n      >\r\n        {/* Conditional render based on the value of shoppingListButton and shoppingListExists */}\r\n        {/* {shoppingListButton && (\r\n          // <Button\r\n          //   buttonStyle={{ margin: 15 }}\r\n          //   title=\"Create Pantry\"\r\n          //   onPress={() => {\r\n          //     navigation.navigate(\"CreatePantry\");\r\n          //   }}\r\n          // ></Button>\r\n        )} */}\r\n      <View style={{flexDirection: 'row', alignItems: 'center'}}>\r\n      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />\r\n      <View><Text style={styles.paddedHeading}>My Shopping List</Text></View>\r\n      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />\r\n      </View>\r\n\r\n        {!shoppingListExists && <Text style={[styles.body]}>You must make a pantry before you make a shopping list.</Text>}\r\n        {shoppingListExists && (\r\n          <View\r\n            style={{ flex: 1, alignItems: \"center\", justifyContent: \"center\" }}\r\n          >\r\n            \r\n            <Button\r\n              buttonStyle={{ marginTop:10,\r\n                paddingTop:15,\r\n                paddingBottom:15,\r\n                marginLeft:30,\r\n                marginRight:30,\r\n                backgroundColor:'#3D405B',\r\n                borderRadius:10,\r\n                borderWidth: 1,\r\n                borderColor: '#fff' }}\r\n              title=\"Add Item\"\r\n              onPress={() => {\r\n                navigation.navigate(\"AddShoppingListItem\");\r\n              }}\r\n            ></Button>\r\n            <View>{listOfItems}</View>\r\n            <View>{modalScreen}</View>\r\n          </View>\r\n        )}\r\n      </ScrollView>\r\n  );\r\n}\r\n\r\nconst styles = StyleSheet.create({\r\n  paddedHeading : {\r\n    fontWeight: 'bold',\r\n    fontSize: 19,\r\n    textAlign: 'center',\r\n    margin: 10\r\n  },\r\n  body:{\r\n    fontSize: 18,\r\n    textAlign: 'center',\r\n    margin: 75,\r\n  }\r\n});\r\n\r\nexport default ShoppingStackScreen;\r\n",
@@ -3036,7 +3003,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 147,
+    "__docId__": 146,
     "kind": "variable",
     "name": "ShoppingStack",
     "memberof": "SmartPantry/screens/Shopping.js",
@@ -3057,7 +3024,7 @@
     "ignore": true
   },
   {
-    "__docId__": 148,
+    "__docId__": 147,
     "kind": "function",
     "name": "Shopping",
     "memberof": "SmartPantry/screens/Shopping.js",
@@ -3104,7 +3071,7 @@
     "ignore": true
   },
   {
-    "__docId__": 149,
+    "__docId__": 148,
     "kind": "variable",
     "name": "styles",
     "memberof": "SmartPantry/screens/Shopping.js",
@@ -3125,7 +3092,7 @@
     "ignore": true
   },
   {
-    "__docId__": 150,
+    "__docId__": 149,
     "kind": "function",
     "name": "ShoppingStackScreen",
     "memberof": "SmartPantry/screens/Shopping.js",
@@ -3160,7 +3127,7 @@
     "params": []
   },
   {
-    "__docId__": 151,
+    "__docId__": 150,
     "kind": "file",
     "name": "SmartPantry/screens/SmartPantry.js",
     "content": "\r\nimport { LogBox, Alert, Text, View, StyleSheet, ScrollView } from 'react-native';\r\nimport {NavigationContainer} from '@react-navigation/native';\r\nimport { createBottomTabNavigator } from '@react-navigation/bottom-tabs';\r\nimport RNBluetoothClassic, {BluetoothDevice} from 'react-native-bluetooth-classic';\r\n\r\nimport HomeStackScreen from './Home';\r\nimport ShoppingStackScreen from './Shopping';\r\nimport SettingsStackScreen from'./Settings';\r\nimport CreatePantryScreen from \"./CreatePantry\";\r\n\r\nimport React, {useState} from 'react';\r\nimport {Icon, Button} from 'react-native-elements';\r\nimport Amplify from 'aws-amplify';\r\nimport awsconfig from '../src/aws-exports';\r\nimport { withAuthenticator, AmplifyTheme } from 'aws-amplify-react-native';\r\nimport { Auth } from \"aws-amplify\";\r\n\r\nimport Card from '../components/Card'\r\nimport { Heading, Box, Flex, useTheme } from 'native-base'\r\nimport { Searchbar } from 'react-native-paper'\r\n\r\n// Initializes Amplify\r\nAmplify.configure({\r\n  ...awsconfig,\r\n  Analytics: {\r\n    disabled: true,\r\n  },\r\n});\r\n\r\n// Ignore certain logs\r\nLogBox.ignoreLogs([\r\n  \"[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!\",\r\n]);\r\n\r\n// Creates a new Bottom Tab Navigator object\r\nconst Tab = createBottomTabNavigator();\r\n\r\n// Function that signs a user out of the app with an alert box\r\nconst signOutAlert = () => {\r\n  Alert.alert(\r\n    \"Sign Out\",\r\n    \"Do you want to sign out?\",\r\n    [\r\n      {\r\n        text: \"Yes\",\r\n        onPress: () => Auth.signOut() // Uses amplify Auth library and signOut() method\r\n      },\r\n      {\r\n        text: \"No\",\r\n        style: \"cancel\"\r\n      }\r\n    ]\r\n  )\r\n}\r\n\r\n\r\n// Main App function\r\n\r\n/**\r\n * @author Jonathan Malcomb\r\n * @author Shannon Biega\r\n * @returns Displays the home page of the app with expiring, running low, and all items displayed in separate sections.\r\n */\r\nconst SmartPantry = () => {\r\n\r\n  const {\r\n    colors\r\n  } = useTheme()\r\n\r\n  const [searchQuery, setSearchQuery] = React.useState('')\r\n\r\n  const onChangeSearch = query => setSearchQuery(query)\r\n  \r\n\r\n\r\n    return (\r\n      <ScrollView backgroundColor={\"#b5e48c\"}>   \r\n\r\n            <Heading style={styles.paddedHeading}>Expiring Soon</Heading>\r\n            <Box alignItems='center'>\r\n              <Card svg='clock' itemName='Cookie' itemMetric='50lb'/>\r\n            </Box>\r\n              <Heading style={styles.paddedHeading}>Running Low</Heading>\r\n            <Box alignItems='center'>\r\n                <Card svg='low' itemName='Cookie' itemMetric='50lb'/>\r\n            </Box>\r\n            <Flex flexDirection='row' py='5'>\r\n              <Heading flex='1' style={styles.paddedHeading}>Items</Heading>\r\n              <Box flex='3' alignItems='center' justifyContent='center' paddingRight='5'>\r\n                  <Searchbar\r\n                    style={styles.sBar}\r\n                    placeholder=\"Search\"\r\n                    onChangeText={onChangeSearch}\r\n                    value={searchQuery}\r\n                  />\r\n              </Box>\r\n              </Flex>\r\n              <Box alignItems='center'>\r\n              <Card svg='item' itemName='Cookie' itemMetric='50lb'/>\r\n              </Box>\r\n                \r\n      </ScrollView>\r\n    );\r\n}\r\n\r\nconst styles = StyleSheet.create({\r\n  paddedHeading: {\r\n    paddingTop: '5%',\r\n    paddingLeft: '5%',\r\n    paddingBottom: '5%',\r\n  },\r\n  sBar: {\r\n    width: '100%',\r\n  }\r\n});\r\n\r\nexport default withAuthenticator(SmartPantry); // exports the app with Amplify's withAuthenticator for cognito\r\n",
@@ -3171,7 +3138,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 152,
+    "__docId__": 151,
     "kind": "variable",
     "name": "Tab",
     "memberof": "SmartPantry/screens/SmartPantry.js",
@@ -3192,7 +3159,7 @@
     "ignore": true
   },
   {
-    "__docId__": 153,
+    "__docId__": 152,
     "kind": "function",
     "name": "signOutAlert",
     "memberof": "SmartPantry/screens/SmartPantry.js",
@@ -3212,7 +3179,7 @@
     "ignore": true
   },
   {
-    "__docId__": 154,
+    "__docId__": 153,
     "kind": "function",
     "name": "SmartPantry",
     "memberof": "SmartPantry/screens/SmartPantry.js",
@@ -3252,7 +3219,7 @@
     "ignore": true
   },
   {
-    "__docId__": 155,
+    "__docId__": 154,
     "kind": "variable",
     "name": "styles",
     "memberof": "SmartPantry/screens/SmartPantry.js",
@@ -3273,7 +3240,7 @@
     "ignore": true
   },
   {
-    "__docId__": 156,
+    "__docId__": 155,
     "kind": "file",
     "name": "SmartPantry/screens/Theme.js",
     "content": "\r\nimport { extendTheme } from 'native-base'\r\n\r\nconst customTheme = extendTheme({\r\n    fontConfig: {\r\n      Lato: {\r\n        100: {\r\n          normal: 'Lato-Thin',\r\n          italic: 'Lato-ThinItalic',\r\n        },\r\n        200: {\r\n          normal: 'Lato-Light',\r\n          italic: 'Lato-LightItalic',\r\n        },\r\n        300: {\r\n          normal: 'Lato-Light',\r\n          italic: 'Lato-LightItalic',\r\n        },\r\n        400: {\r\n          normal: 'Lato-Black',\r\n          italic: 'Lato-BlackItalic',\r\n        },\r\n        500: {\r\n          normal: 'Lato-Bold',\r\n          italic: 'Lato-Italic'\r\n        },\r\n        600: {\r\n          normal: 'Lato-Bold',\r\n          italic: 'Lato-BoldItalic',\r\n        },\r\n      },\r\n    },\r\n  \r\n    // Make sure values below matches any of the keys in `fontConfig`\r\n    fonts: {\r\n      heading: 'Lato-Bold',\r\n      body: 'Lato-Black',\r\n      mono: 'Lato-Thin',\r\n    },\r\n\r\n    colors: {\r\n      green: {\r\n        500: '#81B29A'\r\n      },\r\n      cream: {\r\n        500: '#F4F1DE'\r\n      },\r\n      orange: {\r\n        500: '#E07A5F'\r\n      }\r\n    }\r\n});\r\n\r\nexport default customTheme",
@@ -3284,7 +3251,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 157,
+    "__docId__": 156,
     "kind": "variable",
     "name": "customTheme",
     "memberof": "SmartPantry/screens/Theme.js",
@@ -3304,7 +3271,7 @@
     }
   },
   {
-    "__docId__": 158,
+    "__docId__": 157,
     "kind": "file",
     "name": "SmartPantry/screens/Welcome.js",
     "content": "import React, { Component } from \"react\";\r\nimport {\r\n  Text,\r\n  View,\r\n  ScrollView,\r\n  StyleSheet,\r\n  Image,\r\n  ImageBackground\r\n} from \"react-native\";\r\nimport Ionicons from 'react-native-vector-icons/Ionicons';\r\nimport Video from 'react-native-video';\r\n\r\n\r\n\r\n/**\r\n * @author Shannon Biega\r\n * @param navigate - Used for navigating from the drawer. \r\n * @returns Displays a welcome message to the user's screen.\r\n */\r\nconst WelcomeScreen = ({ navigation }) => {\r\n  return (\r\n    <ScrollView style={{backgroundColor: '#b5e48c'}}>\r\n      <View style={{flexDirection: 'row', alignItems: 'center'}}>\r\n      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />\r\n      <View><Text style={styles.paddedHeading}>Smart Pantry Application</Text></View>\r\n      <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />\r\n      </View>\r\n      <Text style={{fontSize: 17, textAlign: 'center'}}>Version 1{'\\n'}</Text>\r\n      <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>This Smart Pantry application will help you track the food items stored in your pantry.{'\\n'}Click on the three lines above to browse the app.{'\\n'}</Text>\r\n      <ImageBackground source={require('../assets/images/food.png')} style={{width: '100%', height: '150%', position: 'absolute', bottom: -525}}></ImageBackground>   \r\n      <ImageBackground source={require('../assets/images/wvu.png')} style={{width: '70%', height: '110%', position: 'absolute', bottom:-250, right: 20}}></ImageBackground>   \r\n\r\n    </ScrollView>\r\n  );\r\n};\r\n\r\nconst styles = StyleSheet.create({\r\n  paddedHeading : {\r\n    fontWeight: 'bold',\r\n    fontSize: 19,\r\n    textAlign: 'center',\r\n    margin: 20\r\n  },\r\n});\r\n\r\nexport default WelcomeScreen;",
@@ -3315,7 +3282,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 159,
+    "__docId__": 158,
     "kind": "variable",
     "name": "styles",
     "memberof": "SmartPantry/screens/Welcome.js",
@@ -3336,7 +3303,7 @@
     "ignore": true
   },
   {
-    "__docId__": 160,
+    "__docId__": 159,
     "kind": "function",
     "name": "WelcomeScreen",
     "memberof": "SmartPantry/screens/Welcome.js",
@@ -3382,7 +3349,7 @@
     }
   },
   {
-    "__docId__": 161,
+    "__docId__": 160,
     "kind": "file",
     "name": "SmartPantry/subscriptions.js",
     "content": "/* eslint-disable */\r\n// this is an auto generated file. This will be overwritten\r\n\r\nexport const onCreatePantry = /* GraphQL */ `\r\n  subscription OnCreatePantry {\r\n    onCreatePantry {\r\n      id\r\n      name\r\n      owner\r\n      items {\r\n        nextToken\r\n      }\r\n      notiffreq\r\n      collabId\r\n      notifPending\r\n      notifTime\r\n      email\r\n      createdAt\r\n      updatedAt\r\n    }\r\n  }\r\n`;\r\nexport const onUpdatePantry = /* GraphQL */ `\r\n  subscription OnUpdatePantry {\r\n    onUpdatePantry {\r\n      id\r\n      name\r\n      owner\r\n      items {\r\n        nextToken\r\n      }\r\n      notiffreq\r\n      collabId\r\n      notifPending\r\n      notifTime\r\n      email\r\n      createdAt\r\n      updatedAt\r\n    }\r\n  }\r\n`;\r\nexport const onDeletePantry = /* GraphQL */ `\r\n  subscription OnDeletePantry {\r\n    onDeletePantry {\r\n      id\r\n      name\r\n      owner\r\n      items {\r\n        nextToken\r\n      }\r\n      notiffreq\r\n      collabId\r\n      notifPending\r\n      notifTime\r\n      email\r\n      createdAt\r\n      updatedAt\r\n    }\r\n  }\r\n`;\r\nexport const onCreateItem = /* GraphQL */ `\r\n  subscription OnCreateItem {\r\n    onCreateItem {\r\n      id\r\n      name\r\n      pantry {\r\n        id\r\n        name\r\n        owner\r\n        notiffreq\r\n        collabId\r\n        notifPending\r\n        notifTime\r\n        email\r\n        createdAt\r\n        updatedAt\r\n      }\r\n      list {\r\n        id\r\n        createdAt\r\n        updatedAt\r\n      }\r\n      imagePath\r\n      weight\r\n      currWeight\r\n      quantity\r\n      origQuantity\r\n      expDate\r\n      createdAt\r\n      updatedAt\r\n      pantryItemsId\r\n      shoppingListItemsId\r\n    }\r\n  }\r\n`;\r\nexport const onUpdateItem = /* GraphQL */ `\r\n  subscription OnUpdateItem {\r\n    onUpdateItem {\r\n      id\r\n      name\r\n      pantry {\r\n        id\r\n        name\r\n        owner\r\n        notiffreq\r\n        collabId\r\n        notifPending\r\n        notifTime\r\n        email\r\n        createdAt\r\n        updatedAt\r\n      }\r\n      list {\r\n        id\r\n        createdAt\r\n        updatedAt\r\n      }\r\n      imagePath\r\n      weight\r\n      currWeight\r\n      quantity\r\n      origQuantity\r\n      expDate\r\n      createdAt\r\n      updatedAt\r\n      pantryItemsId\r\n      shoppingListItemsId\r\n    }\r\n  }\r\n`;\r\nexport const onDeleteItem = /* GraphQL */ `\r\n  subscription OnDeleteItem {\r\n    onDeleteItem {\r\n      id\r\n      name\r\n      pantry {\r\n        id\r\n        name\r\n        owner\r\n        notiffreq\r\n        collabId\r\n        notifPending\r\n        notifTime\r\n        email\r\n        createdAt\r\n        updatedAt\r\n      }\r\n      list {\r\n        id\r\n        createdAt\r\n        updatedAt\r\n      }\r\n      imagePath\r\n      weight\r\n      currWeight\r\n      quantity\r\n      origQuantity\r\n      expDate\r\n      createdAt\r\n      updatedAt\r\n      pantryItemsId\r\n      shoppingListItemsId\r\n    }\r\n  }\r\n`;\r\nexport const onCreateShoppingList = /* GraphQL */ `\r\n  subscription OnCreateShoppingList {\r\n    onCreateShoppingList {\r\n      id\r\n      items {\r\n        nextToken\r\n      }\r\n      createdAt\r\n      updatedAt\r\n    }\r\n  }\r\n`;\r\nexport const onUpdateShoppingList = /* GraphQL */ `\r\n  subscription OnUpdateShoppingList {\r\n    onUpdateShoppingList {\r\n      id\r\n      items {\r\n        nextToken\r\n      }\r\n      createdAt\r\n      updatedAt\r\n    }\r\n  }\r\n`;\r\nexport const onDeleteShoppingList = /* GraphQL */ `\r\n  subscription OnDeleteShoppingList {\r\n    onDeleteShoppingList {\r\n      id\r\n      items {\r\n        nextToken\r\n      }\r\n      createdAt\r\n      updatedAt\r\n    }\r\n  }\r\n`;\r\n",
@@ -3393,7 +3360,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 162,
+    "__docId__": 161,
     "kind": "variable",
     "name": "onCreatePantry",
     "memberof": "SmartPantry/subscriptions.js",
@@ -3413,7 +3380,7 @@
     }
   },
   {
-    "__docId__": 163,
+    "__docId__": 162,
     "kind": "variable",
     "name": "onUpdatePantry",
     "memberof": "SmartPantry/subscriptions.js",
@@ -3433,7 +3400,7 @@
     }
   },
   {
-    "__docId__": 164,
+    "__docId__": 163,
     "kind": "variable",
     "name": "onDeletePantry",
     "memberof": "SmartPantry/subscriptions.js",
@@ -3453,7 +3420,7 @@
     }
   },
   {
-    "__docId__": 165,
+    "__docId__": 164,
     "kind": "variable",
     "name": "onCreateItem",
     "memberof": "SmartPantry/subscriptions.js",
@@ -3473,7 +3440,7 @@
     }
   },
   {
-    "__docId__": 166,
+    "__docId__": 165,
     "kind": "variable",
     "name": "onUpdateItem",
     "memberof": "SmartPantry/subscriptions.js",
@@ -3493,7 +3460,7 @@
     }
   },
   {
-    "__docId__": 167,
+    "__docId__": 166,
     "kind": "variable",
     "name": "onDeleteItem",
     "memberof": "SmartPantry/subscriptions.js",
@@ -3513,7 +3480,7 @@
     }
   },
   {
-    "__docId__": 168,
+    "__docId__": 167,
     "kind": "variable",
     "name": "onCreateShoppingList",
     "memberof": "SmartPantry/subscriptions.js",
@@ -3533,7 +3500,7 @@
     }
   },
   {
-    "__docId__": 169,
+    "__docId__": 168,
     "kind": "variable",
     "name": "onUpdateShoppingList",
     "memberof": "SmartPantry/subscriptions.js",
@@ -3553,7 +3520,7 @@
     }
   },
   {
-    "__docId__": 170,
+    "__docId__": 169,
     "kind": "variable",
     "name": "onDeleteShoppingList",
     "memberof": "SmartPantry/subscriptions.js",
@@ -3591,7 +3558,7 @@
   {
     "kind": "manualIndex",
     "globalIndex": true,
-    "content": "# Smart Pantry User Manual and System Manual\r\nThank you using our Smart Pantry application. In this guide, you will find the User Manual and the System Manual for our application. The User Manual explains how to use the app, and is intended to act as a reference for users who would like to familiarize themselves with a feature of the application. The System Manual shows all the functions used throughout the application, and is intended to act as a reference for programmers who would like to understand how the app works under the hood.\r\n\r\nThe Smart Pantry app was created by the following students in the LANE department of Electrical Engineering and Computer Science at West Virginia University:\r\n- Shannon Biega\r\n- Kollin Labowski\r\n- Jonathan Malcomb\r\n- Ryan Mraz\r\n- Matthew Winston\r\n\r\nTo view the System Manual, select the \"Source\" tab at the top left of the screen.\r\n\r\n### Vision Statement\r\n### Current Status of the Project\r\n### Documentation of Testing\r\n### Architecture Diagram\r\n### User Interface\r\n### Setup Manual\r\n### User Manual and Maintenance Manual\r\n### Reflections and Intructions for Future Developers\r\n### Directory of the Project Archive",
+    "content": "# Smart Pantry User Manual and System Manual\r\nThank you using our Smart Pantry application. In this guide, you will find the User Manual and the System Manual for our application. The User Manual explains how to use the app, and is intended to act as a reference for users who would like to familiarize themselves with a feature of the application. The System Manual shows all the functions used throughout the application, and is intended to act as a reference for programmers who would like to understand how the app works under the hood.\r\n\r\nThe Smart Pantry app was created by the following students in the LANE department of Electrical Engineering and Computer Science at West Virginia University:\r\n- Shannon Biega\r\n- Kollin Labowski\r\n- Jonathan Malcomb\r\n- Ryan Mraz\r\n- Matthew Winston\r\n\r\nTo view the System Manual, select the \"Source\" tab at the top left of the screen.\r\n\r\n### Vision Statement\r\nA CSEE 481 effort to assist elders in tracking their food pantry items and living more independently while decreasing food waste and malnutrition among elders.  \r\n\r\n### Current Status of the Project\r\n| Requirement Number | Requirement Description | Completion Status | Is it demonstratable? | Comment                                                                                                    |\r\n|--------------------|-------------------------|-------------------|-----------------------|------------------------------------------------------------------------------------------------------------|\r\n| 1                  | Create Account          | Yes               | Yes                   | A user can successfully create an account with their chosen credentials and can access account information |\r\n| 2                  | Login                   | Yes               | Yes                   | A user can login to the Smart Pantry application                                                           |\r\n| 3                  | Create Pantry           | Yes               | Yes                   | A user can to create a pantry                                                                              |\r\n| 4                  | View Pantry             | Yes               | Yes                   | A user can view the contents of the pantry                                                                 |\r\n| 5                  | Barcode Add Item        | Yes               | Yes                   | A user can add a food item to their pantry via scanning the barcode of the item                            |\r\n| 6                  | Manual Add Item         | Yes               | Yes                   | A user can add a food item to their pantry by manually inputting the information                           |\r\n| 7                  | Update Item             | Yes               | Yes                   | A user can modify the name/quantity/weight of a food item                                                  |\r\n| 8                  | Remove Item             | Yes               | Yes                   | A user can remove an item from the pantry                                                                  |\r\n| 9                  | Notifications           | Yes               | Yes                   | A user has a notification displayed when a food item's quantity/weight is low or if it is expiring soon    |\r\n\r\n### Documentation of Testing\r\n\r\n### Architecture Diagram\r\n\r\nThe architecture used is based off of AWS Amplify. React Native is the JavaScript library used to develop for both Android and iOS devices, AWS S3 provides a storage solution, AWS Cognito provides authentication for the app, and AWS AppSync creates a GraphQL endpoint to interact with AWS DynamoDB as the backend database. \r\n\r\n![Architecture Diagram](../manual/images/arch_diagram.png)\r\n\r\n### Setup Manual\r\n### User Manual and Maintenance Manual\r\n### Reflections and Intructions for Future Developers\r\n### Directory of the Project Archive\r\n\r\nGroup 3’s Smart Pantry Application is housed on GitHub at the following link:\r\n- https://github.com/Voomkin/SmartPantry/tree/master ",
     "longname": "C:\\Users\\kk_la\\Desktop\\SmartPantry\\SmartPantry\\manual\\index.md",
     "name": "./manual/index.md",
     "static": true,
@@ -3606,9 +3573,33 @@
   },
   {
     "kind": "manual",
+    "longname": "C:\\Users\\kk_la\\Desktop\\SmartPantry\\SmartPantry\\manual\\user_interface.md",
+    "name": "./manual/user_interface.md",
+    "content": "# User Interface\r\n### Sign In Page\r\nThis is the page the user will be sent to when they first open the app. If they have previously created an account, they may enter their username and password in the appropriate input fields, and click the **SIGN IN** button to log in to their account. If a user has created an account but cannot remember their password, they may click the **Forgot Password** button to be navigated to a new screen to reset their password. If the user has not yet created an account, they may select the **Sign Up** button to be navigated to another new screen which will allow them to create a new account.\r\n\r\n<img src=\"./images/signin.jpg\" height=\"500px\" width=\"250px\" align=\"center\"></img>\r\n\r\n### Create Account Page\r\nThis is the page the user is sent to if they select the **Sign Up** option from the **Sign In Page**. They will be able to enter a new username, password, email address, and phone number in the appropriate fields. When all 4 fields have been filled in by the user, they may select the **SIGN UP** button to navigate to a screen which will allow them to confirm their email address. The user may alternatively select the **Confirm a Code** option to be directed automatically to the same screen as the **SIGN UP** button, however it will not send a code upon being clicked. The user may also return to the **Sign In Page** by selecting the **Sign In** button in the bottom right corner.\r\n\r\n<img src=\"../manual/images/createaccount.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Confirm Email Page\r\nThis is the page where a user may confirm their email address by entering a special code which was sent to their email. To confirm the code, they must enter their username and their received confirmation code in the appropriate input fields. The user may then select **Confirm** to confirm their information and be redirecting to the **Sign In Page**. The user may also choose to have the code resent by clicking **Resend Code**, or to navigate back to sign in without creating a new account by selecting **Back to Sign In**.\r\n\r\n<img src=\"../manual/images/confirm.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Landing Page\r\nThis is what the user will see when they first sign in to their account. To navigate to different parts of the app, the user may select the menu in the top left corner of the page. This will bring up a drawer with options for navigation.\r\n\r\n<img src=\"../manual/images/landing.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Navigation Drawer\r\nThe drawer includes links to some of the different pages on the app. The user may choose to navigate to the landing page at any time by selecting the **Welcome** option. The user may also choose to view their pantry by selecting the **My Pantry** option. The user can view their shopping list by selecting the **Shopping List** option. The user will be navigated to their profile screen using the **My Profile** option. The help screen can be visited by clicking the **Help** option. The settings menu can be accessed by selecting the **Settings** menu. Finally, the user may choose to sign out of their account by selecting the **Sign Out** option.\r\n\r\n<img src=\"../manual/images/drawer.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Create Pantry Page\r\nThis screen is shown to the user before they have created a pantry. It is a button labeled **Create Pantry** which the user may click to be navigated to the **Name Pantry Page**.\r\n\r\n<img src=\"../manual/images/createpantry.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Name Pantry Page\r\nThis page allows the user to enter a name for their pantry in an input field, and then select the **Submit** button to navigate to the **View Pantry Page**.\r\n\r\n<img src=\"../manual/images/addpantry.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### View Pantry Page\r\nThe first time the user navigates to this page, it will look like the below image. The user will see the name of their pantry displayed, and they will have the option to add an item to their pantry by selecting **Add Item**. This will navigate the user to the **Add Item Page**.\r\n\r\n<img src=\"../manual/images/viewpantry.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\nAfter adding items to the pantry, each item will be displayed on this page with their name, as well as their weight, quantity, and/or expiration date if the user filled in any of those optional fields. The user will also have the option to update an item with the **update** button, or delete it from their pantry using the **delete** option.\r\n\r\n<img src=\"../manual/images/pantryitem.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Add Item Page\r\nOn this page, the user will have the option to add an item to their pantry by specifying a name and optionally a weight, quantity, and/or expiration date in their respective fields. The user may also choose to navigate to the **Barcode Add Page** by selecting the **Barcode Add** button, or they may choose to add their input information to their pantry using the **Submit** button.\r\n\r\n<img src=\"../manual/images/additem.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Barcode Add Page\r\nOn this page, the user's camera is opened up, and the user may scan the barcode of a food item they have. The information from the barcode scan will be used to create a new item in the user's pantry.\r\n\r\n<img src=\"../manual/images/barcodeadd.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Update Item Page\r\nThis is a page the user may use to change some of the fields of an item in their pantry. Specifically, the user may change the name, weight, or quantity of an item they have selected. They may commit these changes by using the **Submit** button, or they may rollback the changes using the **Go back** button.\r\n\r\n<img src=\"../manual/images/updateitem.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Delete Item Page\r\nWhen the user attempts to delete an item, a pop-up will appear confirming whether the user would actually like to delete the item or not. If the user selects **YES**, the user will then be asked whether they would like to add the item to their shopping list (not pictured).\r\n\r\n<img src=\"../manual/images/deleteitem.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Shopping List Page\r\nThis page will display the name of all items in the user's shopping list, and will give the user the option to delete the items by selecting the **Delete Item** button. If the user selects this button, they will receive a pop-up identical to the **Delete Item Page**. The user may also select the **Add Item** button to add new items to their shopping list on the **Shopping List Add Page**. Note that this page will only display if the user has created a pantry.\r\n\r\n<img src=\"../manual/images/shopping.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Shopping List Add Page\r\nOn this page the user will be able to add a new item to their shopping list by typing in a name for their item in the appropriate input field shown below. The user may then add that item to their list using the **Submit** button. The user may also return to the **Shopping List Page** using the arrow in the top left corner.\r\n\r\n<img src=\"../manual/images/shoppingitem.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Profile Page\r\nOn this page, the user can view their profile, which displays their email address and their phone number as they input when they created their account.\r\n\r\n<img src=\"../manual/images/profile.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Help Page\r\nThis page will allow the user to learn about how to use their Smart Pantry app.\r\n\r\n<img src=\"../manual/images/help.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Settings Page\r\nThis page will allow the user to navigate to the various settings pages for the application. The user may visit the **Profile Page** by clicking the **My Information** button. The user may navigate to the **Manage Pantry Page** by selecting **Manage My Pantry**. The user can visit the **Collaborator Pantry Page** by selecting **Collaborator Pantry**. The user can visit the **Notifications Page** if they select **Notifications**. The user may select **Help** to visit the **Help Page**. The user can visit the **About Page** by selecting **About**. The user can visit the **Credits Page** by selecting **Meet The App Developers**. Finally, the user may access the **Sign Out Page** by selecting **Sign Out**.\r\n\r\n<img src=\"../manual/images/settings.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Manage Pantry Page\r\nThis page will allow the user to view information about their pantry and change some of its settings.\r\n\r\n<img src=\"../manual/images/managepantry.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\nIn this page, the user may add a collaborator to their pantry by adding the user's email address appropriate input field. The user may also choose to delete their pantry by selecting the **Delete Pantry** button.\r\n\r\n<img src=\"../manual/images/managepantry2.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Collaborator Pantry Page\r\nHere the user can view a pantry which they have been added to as a collaborator. They cannot make any modifications to the pantry, however they may choose to add an item to their shopping list using the **ADD TO SHOPPING LIST** button.\r\n\r\n<img src=\"../manual/images/collaborator.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Notifications Page\r\nThis page will allow the user to change the frequency of notifications they will recieve. The user may select any of the buttons which shows their preferred frequency and it will update it for their pantry. The user may also test their notifications by selecting **CLICK HERE TO TEST NOTIFICATIONS**.\r\n\r\n<img src=\"../manual/images/notifications.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### About Page\r\nThis page displays information about the Smart Pantry app to the user.\r\n\r\n<img src=\"../manual/images/about.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Credits Page\r\nThis page displays information about the creators of the application.\r\n\r\n<img src=\"../manual/images/credits.jpg\" height=\"500px\" width=\"250px\"></img>\r\n\r\n### Sign Out Page\r\nThis page features a pop-up to confirm whether the user would like to sign out of their account. If they select **YES**, they will be navigated to the **Sign In Page**.\r\n\r\n<img src=\"../manual/images/signout.jpg\" height=\"500px\" width=\"250px\"></img>",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "C:\\Users\\kk_la\\Desktop\\SmartPantry\\SmartPantry\\manual\\setup_manual.md",
+    "name": "./manual/setup_manual.md",
+    "content": "# Setup Manual\r\n### User's Guide\r\n\r\n### Programmer's Guide",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
     "longname": "C:\\Users\\kk_la\\Desktop\\SmartPantry\\SmartPantry\\manual\\user_manual.md",
     "name": "./manual/user_manual.md",
     "content": "# User Manual\r\n### Create Account\r\n### Login\r\n### Sign Out\r\n### Navigating the App\r\n### Create Pantry\r\n### Manual Add Item\r\n### Barcode Add Item\r\n### Update Item\r\n### Using the Scale\r\n### Delete Item\r\n### View Pantry\r\n### Delete Pantry\r\n### Notifications\r\n### Shopping List\r\n### Add Collaborators\r\n### View Collaborator Pantries\r\n### Profile\r\n### Settings",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "C:\\Users\\kk_la\\Desktop\\SmartPantry\\SmartPantry\\manual\\architecture.md",
+    "name": "./manual/architecture.md",
+    "content": "# Architecture Diagrams\r\n### Development Environment\r\nThe architecture used is based off of AWS Amplify. React Native is the JavaScript library used to develop for both Android and iOS devices, AWS S3 provides a storage solution, AWS Cognito provides authentication for the app, and AWS AppSync creates a GraphQL endpoint to interact with AWS DynamoDB as the backend database.\r\n\r\n### Hardware Diagrams\r\nThe circuit connects the Scale (shown by the small circuit to the left) with the Arduino Mega 2560, which sends data to the ESP32 DEVKIT V1 to send to the database through Wi-Fi. The Scale connects to the Arduino’s 3.3 V, the D2 pin, the D4 pin, and GND. The ESP32’connects to the Arduino through the ESP32’s RX2 and TX2 pins, which connect to the board’s RX0 and TX0 pins, respectively. The ESP32 also connects to the Arduino’s GND. ",
     "static": true,
     "access": "public"
   }

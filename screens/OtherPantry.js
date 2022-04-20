@@ -15,11 +15,7 @@ import BarcodeAddScreen from "./BarcodeAdd";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";  
 
-/**
- * @author Kollin Labowski
- * @param navigation - Used to navigate on the Settings stack. 
- * @returns Displays all information for the other user's pantry, or displays a message if the user has not been added as a collaborator on another pantry.
- */
+
 const OtherPantryScreen = ({ navigation }) => {
     // viewOtherPantry();
 
@@ -199,28 +195,22 @@ const OtherPantryScreen = ({ navigation }) => {
     }
   };
 
-  // const email = user.attributes.email;
-  // console.log(email);
-
   return (
-      <ScrollView style={{backgroundColor: '#b5e48c'}}
+      <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
-        {!pantryExists && <Text style={styles.body}>You are not a collaborator for any pantries.</Text>}
+        {!pantryExists && <Text>You are not a collaborator for any pantries</Text>}
         {pantryExists && (
           <View
             style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
           >
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-            <View><Text style={[styles.paddedHeading, styles.width_username]}>Email</Text></View>
-            <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-        </View> 
-        {/* <Text style={{fontSize: 17, textAlign: 'center', margin: 10}}>{email}</Text> */}
+            <Text style={{ fontSize: 25, marginBottom: 15 }}>{pantryName}</Text>
+
+            <View>{listOfItems}</View>
           </View>
         )}
       </ScrollView>
@@ -232,12 +222,5 @@ const OtherPantryScreen = ({ navigation }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  body:{
-    fontSize: 18,
-    textAlign: 'center'
-  }
-});
 
 export default OtherPantryScreen;

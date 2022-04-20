@@ -24,7 +24,7 @@
   </span>
     <ul class="search-result"></ul>
   </div>
-<a style="position:relative; top:3px;" href="https://github.com/Voomkin/SmartPantry"><img width="20px" src="./image/github.png"></a></header>
+<a style="position:relative; top:3px;" href="https://github.com/Voomkin/SmartPantry/tree/master"><img width="20px" src="./image/github.png"></a></header>
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
@@ -99,11 +99,7 @@ import BarcodeAddScreen from &quot;./BarcodeAdd&quot;;
 import { TouchableOpacity } from &quot;react-native-gesture-handler&quot;;
 import { StatusBar } from &quot;expo-status-bar&quot;;  
 
-/**
- * @author Kollin Labowski
- * @param navigation - Used to navigate on the Settings stack. 
- * @returns Displays all information for the other user&apos;s pantry, or displays a message if the user has not been added as a collaborator on another pantry.
- */
+
 const OtherPantryScreen = ({ navigation }) =&gt; {
     // viewOtherPantry();
 
@@ -283,28 +279,22 @@ const OtherPantryScreen = ({ navigation }) =&gt; {
     }
   };
 
-  // const email = user.attributes.email;
-  // console.log(email);
-
   return (
-      &lt;ScrollView style={{backgroundColor: &apos;#b5e48c&apos;}}
+      &lt;ScrollView
         contentContainerStyle={{
           flexGrow: 1,
           alignItems: &quot;center&quot;,
-          justifyContent: &quot;center&quot;
+          justifyContent: &quot;center&quot;,
         }}
       &gt;
-        {!pantryExists &amp;&amp; &lt;Text style={styles.body}&gt;You are not a collaborator for any pantries.&lt;/Text&gt;}
+        {!pantryExists &amp;&amp; &lt;Text&gt;You are not a collaborator for any pantries&lt;/Text&gt;}
         {pantryExists &amp;&amp; (
           &lt;View
             style={{ flex: 1, alignItems: &quot;center&quot;, justifyContent: &quot;center&quot; }}
           &gt;
-            &lt;View style={{flexDirection: &apos;row&apos;, alignItems: &apos;center&apos;}}&gt;
-            &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
-            &lt;View&gt;&lt;Text style={[styles.paddedHeading, styles.width_username]}&gt;Email&lt;/Text&gt;&lt;/View&gt;
-            &lt;View style={{flex: 1, height: 1, backgroundColor: &apos;black&apos;}} /&gt;
-        &lt;/View&gt; 
-        {/* &lt;Text style={{fontSize: 17, textAlign: &apos;center&apos;, margin: 10}}&gt;{email}&lt;/Text&gt; */}
+            &lt;Text style={{ fontSize: 25, marginBottom: 15 }}&gt;{pantryName}&lt;/Text&gt;
+
+            &lt;View&gt;{listOfItems}&lt;/View&gt;
           &lt;/View&gt;
         )}
       &lt;/ScrollView&gt;
@@ -316,13 +306,6 @@ const OtherPantryScreen = ({ navigation }) =&gt; {
     &lt;/View&gt;
   );
 };
-
-const styles = StyleSheet.create({
-  body:{
-    fontSize: 18,
-    textAlign: &apos;center&apos;
-  }
-});
 
 export default OtherPantryScreen;</code></pre>
 

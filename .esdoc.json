@@ -17,7 +17,7 @@
           "logo": "./logo.png",
           "title": "My Library",
           "description": "this is awesome library",
-          "repository": "https://github.com/Voomkin/SmartPantry",
+          "repository": "https://github.com/Voomkin/SmartPantry/tree/master",
           "image": "http://my-library.org/logo.png"
         },
         "manual": {
@@ -25,7 +25,10 @@
           "globalIndex": true,
           "asset": "./manual/asset",
           "files": [
-            "./manual/user_manual.md"
+            "./manual/user_interface.md",
+            "./manual/setup_manual.md",
+            "./manual/user_manual.md",
+            "./manual/architecture.md"
           ]
         },
         "test": {
