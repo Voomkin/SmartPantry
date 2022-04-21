@@ -92,7 +92,9 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/architecture.html"><a href="manual/architecture.html" data-ice="link">Architecture Diagrams</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#development-environment" data-ice="link">Development Environment</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#database-design" data-ice="link">Database Design</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#hardware-diagrams" data-ice="link">Hardware Diagrams</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#note-about-final-system-design-documentation" data-ice="link">Note About Final System Design Documentation</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -103,12 +105,36 @@
 <li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#create-pantry" data-ice="link">Create Pantry</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#manual-add-item---view-pantry" data-ice="link">Manual Add Item / View Pantry</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#barcode-add-item" data-ice="link">Barcode Add Item</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#update-item" data-ice="link">Update Item</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#remove-item" data-ice="link">Remove Item</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#notifications" data-ice="link">Notifications</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#create-account-edge-cases" data-ice="link">Create Account Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#login-edge-cases" data-ice="link">Login Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#create-pantry-edge-cases" data-ice="link">Create Pantry Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#update-barcode-manual-item-add-edge-cases" data-ice="link">Update/Barcode/Manual Item Add Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#notifications-edge-cases" data-ice="link">Notifications Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#shopping-list-edge-cases" data-ice="link">Shopping List Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#settings-edge-cases" data-ice="link">Settings Edge Cases</a></li>
 </ul>
   </div>
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="setup-manual">Setup Manual</h1><h3 id="user--39-s-guide">User&apos;s Guide</h3><h3 id="programmer--39-s-guide">Programmer&apos;s Guide</h3></div>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="setup-manual">Setup Manual</h1><h3 id="user--39-s-guide">User&apos;s Guide</h3><p>To use our application, you need to navigate to your App Store and download &#x201C;Smart Pantry &#x2013; Group 3&#x201D;. You can find our application on both the Google Play Store and Apple&#x2019;s App Store. After you have downloaded the application, please unbox your Smart Pantry Weight Sensor and place it in a location you wish while also being in a good range for your Wi-Fi router. Please connect it to Wi-Fi for it to work.   </p>
+<p>After setting up your Smart Pantry Weight Sensor and connecting it to Wi-Fi, please open the downloaded Smart Pantry Application. You should be greeted with this screen... </p>
+<p><img src="./manual/./images/signin.jpg" height="500px" width="250px"></p>
+<p>You must first create an account, please create an account with a secure password that is at least 16 characters long! After you are done with your account creation, you will be sent an email to the email address that is attached to your account... you must use that verification code to complete the creation process. Once you have done that you can then login with your new account! After you login in you should be greeted with this screen... </p>
+<p><img src="./manual/./images/welcome.png" height="500px" width="500px"></p>
+<p>You should now be all set up! Just tap the 3-line menu (hamburger menu) in the top left and navigate to &#x2018;My Pantry&#x2019; in the menu that comes out.  </p>
+<h3 id="programmer--39-s-guide">Programmer&apos;s Guide</h3><p>To begin, you must navigate to <a href="https://github.com/Voomkin/SmartPantry/releases">https://github.com/Voomkin/SmartPantry/releases</a> and download the most recent release. You can alternatively git clone <a href="https://github.com/Voomkin/SmartPantry">https://github.com/Voomkin/SmartPantry</a> in order to obtain the most updated codebase but be warned there might be unsquashed bugs.  </p>
+<p>After performing either of the above, navigate to the directory where the project is located and run the following commands to gather the necessary dependencies. </p>
+<p><em>npm install</em> </p>
+<p><em>amplify init</em> </p>
+<p>You must provide your AWS credentials during the Amplify Initialization process. If you do not already have Android Studio (or XCode if you are on MacOS), you should install your respective emulation software and follow these instructions to set up your emulator.  </p>
+<p><em>Android</em>: <a href="https://developer.android.com/studio/run/emulator">https://developer.android.com/studio/run/emulator</a> </p>
+<p><em>iOS</em>: <a href="https://docs.experitest.com/display/TC/AS+-+Connecting+An+iOS+Emulator">https://docs.experitest.com/display/TC/AS+-+Connecting+An+iOS+Emulator</a>  </p>
+<p>If you wish to develop within the weight module, you must unbox your Smart Pantry Weight Sensor and download the Arduino IDE (<a href="https://www.arduino.cc/en/software">https://www.arduino.cc/en/software</a>) to begin development </p>
+</div>
 </div>
 
 <footer class="footer">

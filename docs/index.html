@@ -92,7 +92,9 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/architecture.html"><a href="manual/architecture.html" data-ice="link">Architecture Diagrams</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#development-environment" data-ice="link">Development Environment</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#database-design" data-ice="link">Database Design</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#hardware-diagrams" data-ice="link">Hardware Diagrams</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#note-about-final-system-design-documentation" data-ice="link">Note About Final System Design Documentation</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -103,6 +105,16 @@
 <li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#create-pantry" data-ice="link">Create Pantry</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#manual-add-item---view-pantry" data-ice="link">Manual Add Item / View Pantry</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#barcode-add-item" data-ice="link">Barcode Add Item</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#update-item" data-ice="link">Update Item</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#remove-item" data-ice="link">Remove Item</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#notifications" data-ice="link">Notifications</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#create-account-edge-cases" data-ice="link">Create Account Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#login-edge-cases" data-ice="link">Login Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#create-pantry-edge-cases" data-ice="link">Create Pantry Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#update-barcode-manual-item-add-edge-cases" data-ice="link">Update/Barcode/Manual Item Add Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#notifications-edge-cases" data-ice="link">Notifications Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#shopping-list-edge-cases" data-ice="link">Shopping List Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#settings-edge-cases" data-ice="link">Settings Edge Cases</a></li>
 </ul>
   </div>
 </div>
@@ -219,7 +231,7 @@
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Setup Manual</h1><h3>User&apos;s Guide</h3><h3>Programmer&apos;s Guide</h3></div>
+        <div data-ice="card"><h1>Setup Manual</h1><h3>User&apos;s Guide</h3><p>To use our application, you need to navigate to your App Store and download &#x201C;Smart Pantry &#x2013; Group 3&#x201D;. You can find our application on both the Google Play Store and Apple&#x2019;s App Store. After you have downloaded the application, please unbox your Smart Pantry Weight Sensor and place it in a location you wish while also being in a good range for your Wi-Fi router. Please connect it to Wi-Fi for it to work.   </p><p>After setting up your Smart Pantry Weight Sensor and connecting it to Wi-Fi, please open the downloaded Smart Pantry Application. You should be greeted with this screen... </p><p><img src="./manual/./images/signin.jpg" height="500px" width="250px"></p><p>You must first create an account, please create an account with a secure password that is at least 16 characters long! After you are done with your account creation, you will be sent an email to the email address that is attached to your account... you must use that verification code to complete the creation process. Once you have done that you can then login with your new account! After you login in you should be greeted with this screen... </p><p><img src="./manual/./images/welcome.png" height="500px" width="500px"></p><p>You should now be all set up! Just tap the 3-line menu (hamburger menu) in the top left and navigate to &#x2018;My Pantry&#x2019; in the menu that comes out.  </p><h3>Programmer&apos;s Guide</h3><p>To begin, you must navigate to <a href="https://github.com/Voomkin/SmartPantry/releases">https://github.com/Voomkin/SmartPantry/releases</a> and download the most recent release. You can alternatively git clone <a href="https://github.com/Voomkin/SmartPantry">https://github.com/Voomkin/SmartPantry</a> in order to obtain the most updated codebase but be warned there might be unsquashed bugs.  </p><p>After performing either of the above, navigate to the directory where the project is located and run the following commands to gather the necessary dependencies. </p><p><em>npm install</em> </p><p><em>amplify init</em> </p><p>You must provide your AWS credentials during the Amplify Initialization process. If you do not already have Android Studio (or XCode if you are on MacOS), you should install your respective emulation software and follow these instructions to set up your emulator.  </p><p><em>Android</em>: <a href="https://developer.android.com/studio/run/emulator">https://developer.android.com/studio/run/emulator</a> </p><p><em>iOS</em>: <a href="https://docs.experitest.com/display/TC/AS+-+Connecting+An+iOS+Emulator">https://docs.experitest.com/display/TC/AS+-+Connecting+An+iOS+Emulator</a>  </p><p>If you wish to develop within the weight module, you must unbox your Smart Pantry Weight Sensor and download the Arduino IDE (<a href="https://www.arduino.cc/en/software">https://www.arduino.cc/en/software</a>) to begin development </p></div>
         <a data-ice="link" href="manual/setup_manual.html"></a>
       </div>
     </div>
@@ -231,13 +243,346 @@
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Architecture Diagrams</h1><h3>Development Environment</h3><p>The architecture used is based off of AWS Amplify. React Native is the JavaScript library used to develop for both Android and iOS devices, AWS S3 provides a storage solution, AWS Cognito provides authentication for the app, and AWS AppSync creates a GraphQL endpoint to interact with AWS DynamoDB as the backend database.</p><h3>Hardware Diagrams</h3><p>The circuit connects the Scale (shown by the small circuit to the left) with the Arduino Mega 2560, which sends data to the ESP32 DEVKIT V1 to send to the database through Wi-Fi. The Scale connects to the Arduino&#x2019;s 3.3 V, the D2 pin, the D4 pin, and GND. The ESP32&#x2019;connects to the Arduino through the ESP32&#x2019;s RX2 and TX2 pins, which connect to the board&#x2019;s RX0 and TX0 pins, respectively. The ESP32 also connects to the Arduino&#x2019;s GND. </p></div>
+        <div data-ice="card"><h1>Architecture Diagrams</h1><h3>Development Environment</h3><p>The architecture used is based off of AWS Amplify. React Native is the JavaScript library used to develop for both Android and iOS devices, AWS S3 provides a storage solution, AWS Cognito provides authentication for the app, and AWS AppSync creates a GraphQL endpoint to interact with AWS DynamoDB as the backend database.</p><p><img src="./manual/../manual/images/arch_diagram.png" height="300px" width="600px"></p><h3>Database Design</h3><p>With the use of DynamoDB we created three tables to hold our data, with relationships shown between each table. One-to-One relationship between an Item and a Pantry and a one-to-one relationship between a ShoppingList and a Pantry. We used GraphQL in order to manipulate or extract data from our database. With the above relations, we were able to easily relate any individual entry in the database itself. Our intent with the design was to allow us to clearly relate Items to Pantrys, and ShoppingLists to Pantrys and thus Items. It made sense to have everything related to a Pantry as that acted as the central repository for all Items that were added by a User.  </p><p><img src="./manual/../manual/images/database.png" height="300px" width="600px"></p><h3>Hardware Diagrams</h3><p>The circuit connects the Scale (shown by the small circuit to the left) with the Arduino Mega 2560, which sends data to the ESP32 DEVKIT V1 to send to the database through Wi-Fi. The Scale connects to the Arduino&#x2019;s 3.3 V, the D2 pin, the D4 pin, and GND. The ESP32&#x2019;connects to the Arduino through the ESP32&#x2019;s RX2 and TX2 pins, which connect to the board&#x2019;s RX0 and TX0 pins, respectively. The ESP32 also connects to the Arduino&#x2019;s GND. </p><p><img src="./manual/../manual/images/arduino.png" height="300px" width="600px"></p><h3>Note About Final System Design Documentation</h3><p>This documentation includes information about all functions in the project. This information can be found using the <strong>Reference</strong> and <strong>Source</strong> tabs at the top left of this web page. The functions in each file are listed out, and the full source code can be found as well.</p><p><strong>NOTE</strong>: Several features used throughout the project were imported from various creators and changed for use in the app. Imported features include:</p><ul>
+<li>Notifications, which are done through Expo</li>
+<li>The navigation drawer, which is imported from React</li>
+<li>The mutations.json and queries.json files used for accessing/mutating the database were autogenerated via Amplify from AppSync (AWS)</li>
+<li>Barcode scanning features were imported from React</li>
+<li>Recognizing barcodes was done using the Edamam API</li>
+<li>The database is stored on AWS DynamoDB</li>
+<li>Verifying credentials is done using AWS Cognito</li>
+<li>Development of the app was done using the Expo Go app</li>
+</ul><p>The code for App.js and the JavaScript files in the screens folder was all coded by our group, although most of them include a few elements imported from React and React Native for support of app development, such as buttons, inputs, Screen stacks, etc. For full information, view the code as mentioned at the begining of this section. Imports for each file are stored at the top, and most of the imports come from React, Expo, and AWS Amplify.</p></div>
         <a data-ice="link" href="manual/architecture.html"></a>
       </div>
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Documentation of Testing</h1><h3>Create Account / Login</h3><p>On the &#x201C;Sign in to your account&#x201D; screen, click &#x201C;Sign Up&#x201D; </p><p>This will open a screen with &#x201C;Create a new account&#x201D; at the top, with four text fields. </p><p>Fill in the: </p><p>&#x201C;Username&#x201D; field with a valid email address </p><p>&#x201C;Password&#x201D; field with a password </p><p>&#x201C;Email&#x201D; field with a valid email address </p><p>&#x201C;Phone Number&#x201D; with a valid phone number </p><p>Click &#x201C;Sign Up&#x201D; </p><p>This will open a screen with &#x201C;Confirm Sign Up&#x201D; at the top, with two text fields. This will also send a confirmation code to the email address previously provided. </p><p>Fill in the: </p><p>&#x201C;Username&#x201D; field with the email address previously provided </p><p>&#x201C;Confirmation Code&#x201D; field with the confirmation code received via email </p><p>Click &#x201C;Confirm&#x201D; </p><p>This will open a screen with &#x201C;Sign in to your account&#x201D; at the top, with two text fields. </p><p>Fill in the: </p><p>&#x201C;Username&#x201D; field with the email address previously provided </p><p>&#x201C;Password&#x201D; field with the matching password to the email in the &#x201C;Username&#x201D; field </p><p>Click &#x201C;Sign In&#x201D; </p><p>This will open a screen with &#x201C;Welcome&#x201D; at the top </p><p>Click the three horizontal lines in the top left corner of the screen </p><p>A sidebar will open on the left of the screen with the following options: </p><p>Welcome </p><p>My Pantry </p><p>Shopping List </p><p>My Profile </p><p>Help </p><p>Settings </p><p>The username used to log in will show above the sidebar options </p><h3>Create Pantry</h3><p>On the &#x201C;Welcome&#x201D; screen, click the three horizontal lines on the top left of the screen </p><p>This will open a sidebar with the following options: </p><p>Welcome </p><p>My Pantry </p><p>Shopping List </p><p>My Profile </p><p>Help </p><p>Settings </p><p>Click the &#x201C;My Pantry&#x201D; option </p><p>This will open a screen with &#x201C;My Pantry&#x201D; at the top, with one button in the middle of the screen with &#x201C;Create Pantry&#x201D; on it. </p><p>Click the &#x201C;Create Pantry button&#x201D; </p><p>This will open a screen with &#x201C;Create Pantry&#x201D; at the top, underneath the parent screen &#x201C;My Pantry&#x201D;, with one text field in the middle of the screen and a button underneath with &#x201C;Submit&#x201D; on it. </p><p>Click the text field and enter a name for the pantry </p><p>Click the &#x201C;Submit&#x201D; button </p><p>This will return to the &#x201C;My Pantry&#x201D; screen, but will have the provided name of the pantry in the middle of the screen, with a button underneath with &#x201C;Add Item&#x201D; on it </p><h3>Manual Add Item / View Pantry</h3><p>On the &#x201C;My Pantry&#x201D; screen, after a pantry is created, click the &#x201C;Add Item&#x201D; button </p><p>This will open a child screen called &#x201C;Add Item&#x201D; with four text boxes and two buttons with &#x201C;Barcode Add&#x201D; and &#x201C;Submit&quot;, respectively </p><p>Fill in the: </p><p>&#x201C;Name&#x201D; field with &#x201C;Tomato Soup&#x201D; </p><p>&#x201C;Weight&#x201D; field with 1 </p><p>&#x201C;Quantity&#x201D; field with 5 </p><p>&#x201C;Expiration date&#x201D; with the date 30 days away </p><p>Click the &#x201C;Submit&#x201D; button </p><p>This will return to the main &#x201C;My Pantry&#x201D; screen with the added item shown below the &#x201C;Add Item&#x201D; button. The new item will include the item name, the given weight, the given quantity, the given expiration date, an &#x201C;Update&#x201D; button, and a &#x201C;Delete&#x201D; button </p><h3>Barcode Add Item</h3><p>On the &#x201C;My Pantry&#x201D; screen, after a pantry is created, click the &#x201C;Add Item&#x201D; button </p><p>This will open a child screen called &#x201C;Add Item&#x201D; with four text boxes and two buttons with &#x201C;Barcode Add&#x201D; and &#x201C;Submit&quot;, respectively </p><p>Click the &#x201C;Barcode Add&#x201D; button </p><p>The phone&#x2019;s camera will open inside a child screen called &#x201C;Barcode Add&#x201D; </p><p>Point the camera at the barcode on the wanted item </p><p>This will open a screen with the name of the item above two text fields, a button called &#x201C;Submit&#x201D; and a button called &#x201C;Go Back&#x201D; underneath </p><p>Clicking &#x201C;Go Back&#x201D; will return to the &#x201C;Add Item&#x201D; screen. If clicked, follow steps 1-3 to return to the screen with the &#x201C;Go Back&#x201D; button </p><p>Fill in the: </p><p> &#x201C;Quantity&#x201D; as 1 </p><p>Click the &#x201C;Submit&#x201D; button </p><p>This will return to the &#x201C;Add Item&#x201D; screen </p><p>Click the arrow in the top left of the screen </p><p>This will return to the &#x201C;My Pantry&#x201D; screen, and will refresh to include the added item </p><p>Update Item </p><p>On the &#x201C;My Pantry&#x201D; screen, click the &#x201C;Update&#x201D; button next to an item with the values: </p><p>Name: Tomato Soup </p><p>Weight: 1 </p><p>Quantity: 5 </p><p>This will open a screen with &#x201C;Edit your item&#x201D; at the top, with three text fields and two buttons called &#x201C;Submit&#x201D; and &#x201C;Go Back&#x201D; </p><p>Fill in the: </p><p>&#x201C;Name&#x201D; field with &#x201C;Soup&#x201D; </p><p>&#x201C;Quantity&#x201D; field with 4 </p><p>Clicking &#x201C;Go Back&#x201D; will return to the &#x201C;My Pantry&#x201D; screen. If clicked, follow steps 1-2 to return to the &#x201C;Edit your item&#x201D; screen </p><p>Click the &#x201C;Submit&#x201D; button </p><p>This will return to the &#x201C;My Pantry&#x201D; screen with the changed values shown for the updated item </p><p>Remove Item </p><p>On the &#x201C;My Pantry&#x201D; screen, click the &#x201C;Remove&#x201D; button next to an item with the values: </p><p>Name: Soup </p><p>Weight: 1 </p><p>Quantity: 4 </p><p>This will open a pop-up called &#x201C;Delete Item&#x201D; asking for confirmation to delete </p><p>Clicking &#x201C;No&#x201D; will return to the &#x201C;My Pantry&#x201D; screen. If clicked, follow step 1 to return to the pop-up </p><p>Click &#x201C;Yes&#x201D; </p><p>This will open another pop-up called &#x201C;Shopping List&#x201D; asking if the item should be added to the shopping list </p><p>Clicking &#x201C;No&#x201D; will return to the &#x201C;My Pantry&#x201D; screen and delete the item, but not add it to the shopping list. If clicked, follow steps 1-2 to return to the &#x201C;Shopping List&#x201D; pop-up </p><p>Click &#x201C;Yes&#x201D; </p><p>This will return to the &#x201C;My Pantry&#x201D; screen with the removed item not shown </p><p>Click the three horizontal lines in the top left of the screen </p><p>This will open a sidebar with the following options: </p><p>Welcome </p><p>My Pantry </p><p>Shopping List </p><p>My Profile </p><p>Help </p><p>Settings </p><p>Click &#x201C;Shopping List&#x201D; </p><p>This will open the &#x201C;Shopping List&#x201D; screen with a button that says &#x201C;Add Item&#x201D; in the middle, and the item added to the shopping list with a button with &#x201C;Delete Item&#x201D; on it </p><p>Notifications </p><p>Make sure the pantry is empty </p><p>On the &#x201C;My Pantry&#x201D; screen, click the three horizontal lines in the top left of the screen </p><p>This will open a sidebar with the following options: </p><p>Welcome </p><p>My Pantry </p><p>Shopping List </p><p>My Profile </p><p>Help </p><p>Settings </p><p>Click the &#x201C;Settings&#x201D; option </p><p>This will open the &#x201C;Settings&#x201D; screen, with the options: </p><p>My Information </p><p>Manage My Pantry </p><p>Collaborator Pantry </p><p>Notifications </p><p>Help </p><p>About </p><p>Meet The App Developers </p><p>Sign Out </p><p>Click the &#x201C;Notifications&#x201D; option </p><p>This will open the &#x201C;Notifications&#x201D; screen, with multiple bars with different time increments on them spanning the width of the screen </p><p>Click the &#x201C;10 SECONDS&#x201D; bar </p><p>This will check to see if notifications need to be sent every 10 seconds </p><p>Click the three horizontal lines in the top left of the screen </p><p>This will open a sidebar with the following options: </p><p>Welcome </p><p>My Pantry </p><p>Shopping List </p><p>My Profile </p><p>Help </p><p>Settings </p><p>Click the &#x201C;My Pantry&#x201D; option </p><p>This will open the &#x201C;My Pantry&#x201D; screen, showing all the items that are in the pantry </p><p>Click the &#x201C;Add Item&#x201D; button </p><p>This will open a child screen called &#x201C;Add Item&#x201D; with four text boxes and two buttons with &#x201C;Barcode Add&#x201D; and &#x201C;Submit&#x201D;, respectively </p><p>Fill in the: </p><p>&#x201C;Name&#x201D; field with &#x201C;Tomato Soup&#x201D; </p><p>&#x201C;Weight&#x201D; field with 1 </p><p>&#x201C;Quantity&#x201D; field with 5 </p><p>&#x201C;Expiration date&#x201D; with the date 30 days away </p><p>Click the &#x201C;Submit&#x201D; button </p><p>This will return to the main &#x201C;My Pantry&#x201D; screen with the added item shown below the &#x201C;Add Item&#x201D; button. The new item will include the item name, the given weight, the given quantity, the given expiration date, an &#x201C;Update&#x201D; button, and a &#x201C;Delete&#x201D; button </p><p>Click the &#x201C;Add Item&#x201D; button </p><p>This will open a child screen called &#x201C;Add Item&#x201D; with four text boxes and two buttons with &#x201C;Barcode Add&#x201D; and &#x201C;Submit&#x201D;, respectively </p><p>Fill in the: </p><p>&#x201C;Name&#x201D; field with &#x201C;Milk&#x201D; </p><p>&#x201C;Weight&#x201D; field with 1 </p><p>&#x201C;Quantity&#x201D; field with 1 </p><p>&#x201C;Expiration date&#x201D; with the date 2 days away </p><p>Click the &#x201C;Submit&#x201D; button </p><p>This will return to the main &#x201C;My Pantry&#x201D; screen with the added item shown below the &#x201C;Add Item&#x201D; button. The new item will include the item name, the given weight, the given quantity, the given expiration date, an &#x201C;Update&#x201D; button, and a &#x201C;Delete&#x201D; button </p><p>Click the &#x201C;Update&#x201D; button next to the item called &#x201C;Tomato Soup&#x201D; </p><p>Fill in the: </p><p>&#x201C;Quantity&#x201D; field with 1 </p><p>Click the &#x201C;Submit&#x201D; button </p><p>This will return to the &#x201C;My Pantry&#x201D; screen with the changed values shown for the updated item </p><p>Wait for 10 seconds </p><p>A notification will be sent within 10 seconds saying &#x201C;You have 1 item(s) expiring soon and 1 item(s) running low! Click here to view them.&#x201D; </p><p>Edge Test Cases </p><p>Create Account </p><p>On the &#x201C;Sign in to your account&#x201D; screen, click &#x201C;Sign Up&#x201D; </p><p>This will open a screen with &#x201C;Create a new account&#x201D; at the top, with four text fields. </p><p>Fill in the: </p><p>&#x201C;Username&#x201D; field with an invalid email address </p><p>&#x201C;Email&#x201D; field with an invalid email address </p><p>Click &#x201C;Sign Up&#x201D; </p><p>This will open an error saying the required fields need to be filled </p><p>Fill in the: </p><p>&#x201C;Username&#x201D; field with a valid email address </p><p>&#x201C;Password&#x201D; field with a password </p><p>&#x201C;Email&#x201D; field with a valid email address </p><p>&#x201C;Phone Number&#x201D; with a valid phone number </p><p>Click &#x201C;Sign Up&#x201D; </p><p>This will open a screen with &#x201C;Confirm Sign Up&#x201D; at the top, with two text fields. This will also send a confirmation code to the email address previously provided. </p><p>Fill in the: </p><p>&#x201C;Username&#x201D; field with the email address previously provided </p><p>&#x201C;Confirmation Code&#x201D; field with an invalid confirmation code </p><p>This will open an error saying the confirmation code was incorrect </p><p>Login </p><p>On the &#x201C;Sign in to your account&#x201D; screen with an account already created, fill in the fields: </p><p>&#x201C;Username&#x201D; with an existing username </p><p>&#x201C;Password&#x201D; with a mismatching password </p><p>An error message will pop up saying the username or password was incorrect </p><p>Fill in the fields: </p><p>&#x201C;Username&#x201D; with a nonexistent username </p><p>&#x201C;Password&#x201D; with a valid password </p><p>An error message will pop up saying the username or password was incorrect </p><p>Create Pantry </p><p>No characters provided and maximum characters for Pantry name </p><p>Input an exceptionally long string of characters for a Pantry Name </p><p>An error message displays, &#x201C;Your Pantry name must not exceed 20 characters&#x201D; </p><p>Input no characters for a Pantry Name </p><p>An error message displays, &#x201C;You must provide a name for your Pantry&#x201D; </p><p>Update/Barcode/Manual Item Add </p><p>Input invalid Expiration Date </p><p>Input a date before the current date </p><p>An error message is displayed, &#x201C;Invalid Expiration Date&#x201D; </p><p>Input invalid Quantity or Weight </p><p>Input a negative quantity or weight </p><p>An error message displays, &#x201C;(Quality/Weight) cannot be negative&#x201D; </p><p>Input a decimal quantity </p><p>An error message displays, &#x201C;A quantity must be a whole number&#x201D; </p><p>No characters provided and maximum characters for an Item name </p><p>Input an exceptionally long string of characters for an Item name </p><p>An error message should display, &#x201C;Item name must not exceed 20 characters&#x201D; </p><p>Input no characters for an Item name </p><p>An error message should display, &#x201C;You must provide an Item name&#x201D; </p><p>Input an Item that already exists in the Pantry </p><p>Input an Item that already exists in the Pantry </p><p>An error message displays, &#x201C;An Item with that name already exists&#x201D; </p><p>Notifications </p><p>Notification linked to deleted Item does not break application </p><p>Have an Item that is either close to expiring (~6 days from expiration date) or low (~25% of max weight or quantity), when a Notification is triggered. Delete the item first, then click the Notification. </p><p>Application navigates to the &#x2018;My Pantry&#x2019; page. Application does not break.  </p><p>Shopping List </p><p>No characters provided and maximum characters for Item name </p><p>Input an exceptionally long string of characters for an Item name </p><p>An error message should display, &#x201C;Item name must not exceed 20 characters&#x201D; </p><p>Input no characters for an Item name </p><p>An error message should display, &#x201C;You must provide an Item name&#x201D; </p><p>Settings </p><p>Invite self as a collaborator on your Pantry </p><p>Navigate to Settings &gt; Manage My Pantry &#x2013; Scroll to the bottom and invite yourself to join your Pantry as a collaborator </p><p>Error message should display, &#x201C;Cannot invite yourself as a Collaborator&#x201D;  </p></div>
+        <div data-ice="card"><h1>Documentation of Testing</h1><h3>Create Account / Login</h3><ol>
+<li>On the &#x201C;Sign in to your account&#x201D; screen, click &#x201C;Sign Up&#x201D;<ul>
+<li>This will open a screen with &#x201C;Create a new account&#x201D; at the top, with four text fields.</li>
+</ul>
+</li>
+<li><p>Fill in the:</p>
+<ul>
+<li>&#x201C;Username&#x201D; field with a valid email address</li>
+<li>&#x201C;Password&#x201D; field with a password</li>
+<li>&#x201C;Email&#x201D; field with a valid email address</li>
+<li>&#x201C;Phone Number&#x201D; with a valid phone number</li>
+</ul>
+</li>
+<li><p>Click &#x201C;Sign Up&#x201D;</p>
+<ul>
+<li>This will open a screen with &#x201C;Confirm Sign Up&#x201D; at the top, with two text fields. This will also send a confirmation code to the email address previously provided.</li>
+</ul>
+</li>
+<li>Fill in the:<ul>
+<li>&#x201C;Username&#x201D; field with the email address previously provided</li>
+<li>&#x201C;Confirmation Code&#x201D; field with the confirmation code received via email</li>
+</ul>
+</li>
+<li>Click &#x201C;Confirm&#x201D;</li>
+<li><p>This will open a screen with &#x201C;Sign in to your account&#x201D; at the top, with two text fields.</p>
+</li>
+<li><p>Fill in the:</p>
+<ul>
+<li>&#x201C;Username&#x201D; field with the email address previously provided</li>
+<li>&#x201C;Password&#x201D; field with the matching password to the email in the &#x201C;Username&#x201D; field</li>
+</ul>
+</li>
+<li><p>Click &#x201C;Sign In&#x201D;</p>
+<ul>
+<li>This will open a screen with &#x201C;Welcome&#x201D; at the top</li>
+</ul>
+</li>
+<li><p>Click the three horizontal lines in the top left corner of the screen</p>
+<ul>
+<li>A sidebar will open on the left of the screen with the following options:  Welcome, My Pantry, Shopping List, My Profile, Help, Settings
+-The username used to log in will show above the sidebar options</li>
+</ul>
+</li>
+</ol><h3>Create Pantry</h3><ol>
+<li>On the &#x201C;Welcome&#x201D; screen, click the three horizontal lines on the top left of the screen<ul>
+<li>A sidebar will open on the left of the screen with the following options:  Welcome, My Pantry, Shopping List, My Profile, Help, Settings</li>
+</ul>
+</li>
+</ol><ol>
+<li>Click the &#x201C;My Pantry&#x201D; option</li>
+<li><p>This will open a screen with &#x201C;My Pantry&#x201D; at the top, with one button in the middle of the screen with &#x201C;Create Pantry&#x201D; on it.</p>
+</li>
+<li><p>Click the &#x201C;Create Pantry button&#x201D;</p>
+<ul>
+<li>This will open a screen with &#x201C;Create Pantry&#x201D; at the top, underneath the parent screen &#x201C;My Pantry&#x201D;, with one text field in the middle of the screen and a button underneath with &#x201C;Submit&#x201D; on it.</li>
+</ul>
+</li>
+<li><p>Click the text field and enter a name for the pantry</p>
+</li>
+</ol><ol>
+<li>Click the &#x201C;Submit&#x201D; button<ul>
+<li>This will return to the &#x201C;My Pantry&#x201D; screen, but will have the provided name of the pantry in the middle of the screen, with a button underneath with &#x201C;Add Item&#x201D; on it</li>
+</ul>
+</li>
+</ol><h3>Manual Add Item / View Pantry</h3><ol>
+<li><p>On the &#x201C;My Pantry&#x201D; screen, after a pantry is created, click the &#x201C;Add Item&#x201D; button</p>
+<ul>
+<li>This will open a child screen called &#x201C;Add Item&#x201D; with four text boxes and two buttons with &#x201C;Barcode Add&#x201D; and &#x201C;Submit&quot;, respectively</li>
+</ul>
+</li>
+<li><p>Fill in the:</p>
+<ul>
+<li>&#x201C;Name&#x201D; field with &#x201C;Tomato Soup&#x201D;</li>
+<li>&#x201C;Weight&#x201D; field with 1</li>
+<li>&#x201C;Quantity&#x201D; field with 5</li>
+<li>&#x201C;Expiration date&#x201D; with the date 30 days away</li>
+</ul>
+</li>
+<li>Click the &#x201C;Submit&#x201D; button</li>
+<li>This will return to the main &#x201C;My Pantry&#x201D; screen with the added item shown below the &#x201C;Add Item&#x201D; button. The new item will include the item name, the given weight, the given quantity, the given expiration date, an &#x201C;Update&#x201D; button, and a &#x201C;Delete&#x201D; button</li>
+</ol><h3>Barcode Add Item</h3><ol>
+<li><p>On the &#x201C;My Pantry&#x201D; screen, after a pantry is created, click the &#x201C;Add Item&#x201D; button
+-This will open a child screen called &#x201C;Add Item&#x201D; with four text boxes and two buttons with &#x201C;Barcode Add&#x201D; and &#x201C;Submit&quot;, respectively</p>
+</li>
+<li><p>Click the &#x201C;Barcode Add&#x201D; button</p>
+<ul>
+<li>The phone&#x2019;s camera will open inside a child screen called &#x201C;Barcode Add&#x201D;</li>
+</ul>
+</li>
+<li><p>Point the camera at the barcode on the wanted item</p>
+</li>
+<li>This will open a screen with the name of the item above two text fields, a button called &#x201C;Submit&#x201D; and a button called &#x201C;Go Back&#x201D; underneath</li>
+<li>Clicking &#x201C;Go Back&#x201D; will return to the &#x201C;Add Item&#x201D; screen. If clicked, follow steps 1-3 to return to the screen with the &#x201C;Go Back&#x201D; button</li>
+</ol><ol>
+<li><p>Fill in the:</p>
+<ul>
+<li>&#x201C;Quantity&#x201D; as 1</li>
+</ul>
+</li>
+<li><p>Click the &#x201C;Submit&#x201D; button</p>
+<ul>
+<li>This will return to the &#x201C;Add Item&#x201D; screen</li>
+</ul>
+</li>
+<li><p>Click the arrow in the top left of the screen</p>
+<ul>
+<li>This will return to the &#x201C;My Pantry&#x201D; screen, and will refresh to include the added item</li>
+</ul>
+</li>
+</ol><h3>Update Item</h3><ol>
+<li>On the &#x201C;My Pantry&#x201D; screen, click the &#x201C;Update&#x201D; button next to an item with the values:<ul>
+<li>Name: Tomato Soup</li>
+<li>Weight: 1</li>
+<li>Quantity: 5</li>
+<li>This will open a screen with &#x201C;Edit your item&#x201D; at the top, with three text fields and two buttons called &#x201C;Submit&#x201D; and &#x201C;Go Back&#x201D;</li>
+</ul>
+</li>
+<li>Fill in the:<ul>
+<li>&#x201C;Name&#x201D; field with &#x201C;Soup&#x201D;</li>
+<li>&#x201C;Quantity&#x201D; field with 4</li>
+<li>Clicking &#x201C;Go Back&#x201D; will return to the &#x201C;My Pantry&#x201D; screen. If clicked, follow steps 1-2 to return to the &#x201C;Edit your item&#x201D; screen</li>
+</ul>
+</li>
+<li>Click the &#x201C;Submit&#x201D; button<ul>
+<li>This will return to the &#x201C;My Pantry&#x201D; screen with the changed values shown for the updated item</li>
+</ul>
+</li>
+</ol><h3>Remove Item</h3><ol>
+<li>On the &#x201C;My Pantry&#x201D; screen, click the &#x201C;Remove&#x201D; button next to an item with the values:<ul>
+<li>Name: Soup</li>
+<li>Weight: 1</li>
+<li>Quantity: 4</li>
+<li>This will open a pop-up called &#x201C;Delete Item&#x201D; asking for confirmation to delete</li>
+<li>Clicking &#x201C;No&#x201D; will return to the &#x201C;My Pantry&#x201D; screen. If clicked, follow step 1 to return to the pop-up</li>
+</ul>
+</li>
+<li>Click &#x201C;Yes&#x201D; </li>
+<li>This will open another pop-up called &#x201C;Shopping List&#x201D; asking if the item should be added to the shopping list</li>
+<li><p>Clicking &#x201C;No&#x201D; will return to the &#x201C;My Pantry&#x201D; screen and delete the item, but not add it to the shopping list. If clicked, follow steps 1-2 to return to the &#x201C;Shopping List&#x201D; pop-up</p>
+</li>
+<li><p>Click &#x201C;Yes&#x201D;</p>
+<ul>
+<li>This will return to the &#x201C;My Pantry&#x201D; screen with the removed item not shown</li>
+</ul>
+</li>
+<li><p>Click the three horizontal lines in the top left of the screen</p>
+<ul>
+<li>This will open a sidebar with the following options: Welcome, My Pantry, Shopping List, My Profile, Help, Settings, Create Pantry</li>
+</ul>
+</li>
+</ol><ol>
+<li>Click &#x201C;Shopping List&#x201D;<ul>
+<li>This will open the &#x201C;Shopping List&#x201D; screen with a button that says &#x201C;Add Item&#x201D; in the middle, and the item added to the shopping list with a button with &#x201C;Delete Item&#x201D; on it</li>
+</ul>
+</li>
+</ol><h3>Notifications</h3><ol>
+<li>Make sure the pantry is empty</li>
+</ol><ol>
+<li>On the &#x201C;My Pantry&#x201D; screen, click the three horizontal lines in the top left of the screen    </li>
+<li>This will open a sidebar with the following options: Welcome, My Pantry, Shopping List, My Profile, Help, Settings, Create Pantry</li>
+<li><p>Click the &#x201C;Settings&#x201D; option</p>
+<ul>
+<li>This will open the &#x201C;Settings&#x201D; screen, with the options: My Information, Manage My Pantry, Collaborator Pantry, Notifications, Help, About, Meet The App Developers, Sign Out</li>
+</ul>
+</li>
+<li><p>Click the &#x201C;Notifications&#x201D; option</p>
+<ul>
+<li>This will open the &#x201C;Notifications&#x201D; screen, with multiple bars with different time increments on them spanning the width of the screen</li>
+</ul>
+</li>
+<li><p>Click the &#x201C;10 SECONDS&#x201D; bar</p>
+<ul>
+<li>This will check to see if notifications need to be sent every 10 seconds</li>
+</ul>
+</li>
+<li><p>Click the three horizontal lines in the top left of the screen</p>
+<ul>
+<li>This will open a sidebar with the following options: Welcome, My Pantry, Shopping List, My Profile, Help, Settings, Create Pantry</li>
+</ul>
+</li>
+<li><p>Click the &#x201C;My Pantry&#x201D; option</p>
+</li>
+<li>This will open the &#x201C;My Pantry&#x201D; screen, showing all the items that are in the pantry</li>
+</ol><ol>
+<li><p>Click the &#x201C;Add Item&#x201D; button</p>
+<ul>
+<li>This will open a child screen called &#x201C;Add Item&#x201D; with four text boxes and two buttons with &#x201C;Barcode Add&#x201D; and &#x201C;Submit&#x201D;, respectively</li>
+</ul>
+</li>
+<li><p>Fill in the:</p>
+<ul>
+<li>&#x201C;Name&#x201D; field with &#x201C;Tomato Soup&#x201D;</li>
+<li>&#x201C;Weight&#x201D; field with 1</li>
+<li>&#x201C;Quantity&#x201D; field with 5</li>
+<li>&#x201C;Expiration date&#x201D; with the date 30 days away</li>
+</ul>
+</li>
+<li><p>Click the &#x201C;Submit&#x201D; button</p>
+<ul>
+<li>This will return to the main &#x201C;My Pantry&#x201D; screen with the added item shown below the &#x201C;Add Item&#x201D; button. The new item will include the item name, the given weight, the given quantity, the given expiration date, an &#x201C;Update&#x201D; button, and a &#x201C;Delete&#x201D; button</li>
+</ul>
+</li>
+<li><p>Click the &#x201C;Add Item&#x201D; button</p>
+<ul>
+<li>This will open a child screen called &#x201C;Add Item&#x201D; with four text boxes and two buttons with &#x201C;Barcode Add&#x201D; and &#x201C;Submit&#x201D;, respectively</li>
+</ul>
+</li>
+<li><p>Fill in the:</p>
+<ul>
+<li>&#x201C;Name&#x201D; field with &#x201C;Milk&#x201D;</li>
+</ul>
+</li>
+<li>&#x201C;Weight&#x201D; field with 1</li>
+<li>&#x201C;Quantity&#x201D;  field  with 1</li>
+<li><p>&#x201C;Expiration date&#x201D; with the date 2 days away</p>
+</li>
+<li><p>Click the &#x201C;Submit&#x201D; button</p>
+<ul>
+<li>This will return to the main &#x201C;My Pantry&#x201D; screen with the added item shown below the &#x201C;Add Item&#x201D; button. The new item will include the item name, the given weight, the given quantity, the given expiration date, an &#x201C;Update&#x201D; button, and a &#x201C;Delete&#x201D; button</li>
+</ul>
+</li>
+<li><p>Click the &#x201C;Update&#x201D; button next to the item called &#x201C;Tomato Soup&#x201D;</p>
+</li>
+</ol><ol>
+<li><p>Fill in the:</p>
+<ul>
+<li>&#x201C;Quantity&#x201D; field with 1</li>
+</ul>
+</li>
+<li><p>Click the &#x201C;Submit&#x201D; button</p>
+<ul>
+<li>This will return to the &#x201C;My Pantry&#x201D; screen with the changed values shown for the updated item</li>
+</ul>
+</li>
+<li><p>Wait for 10 seconds</p>
+<ul>
+<li>A notification will be sent within 10 seconds saying &#x201C;You have 1 item(s) expiring soon and 1 item(s) running low! Click here to view them.&#x201D;</li>
+</ul>
+</li>
+</ol><h3>Create Account Edge Cases</h3><ol>
+<li>On the &#x201C;Sign in to your account&#x201D; screen, click &#x201C;Sign Up&#x201D;<ul>
+<li>This will open a screen with &#x201C;Create a new account&#x201D; at the top, with four text fields.</li>
+</ul>
+</li>
+<li>Fill in the:<ul>
+<li>&#x201C;Username&#x201D; field with an invalid email address</li>
+<li>&#x201C;Email&#x201D; field with an invalid email address</li>
+</ul>
+</li>
+<li>Click &#x201C;Sign Up&#x201D;<ul>
+<li>This will open an error saying the required fields need to be filled</li>
+</ul>
+</li>
+<li>Fill in the:<ul>
+<li>&#x201C;Username&#x201D; field with a valid email address</li>
+<li>&#x201C;Password&#x201D; field with a password</li>
+<li>&#x201C;Email&#x201D; field with a valid email address</li>
+<li>&#x201C;Phone Number&#x201D; with a valid phone number</li>
+</ul>
+</li>
+<li>Click &#x201C;Sign Up&#x201D;<ul>
+<li>This will open a screen with &#x201C;Confirm Sign Up&#x201D; at the top, with two text fields. This will also send a confirmation code to the email address previously provided.</li>
+</ul>
+</li>
+<li>Fill in the:<ul>
+<li>&#x201C;Username&#x201D; field with the email address previously provided</li>
+<li>&#x201C;Confirmation Code&#x201D; field with an invalid confirmation code</li>
+<li>This will open an error saying the confirmation code was incorrect</li>
+</ul>
+</li>
+</ol><h3>Login Edge Cases</h3><ol>
+<li>On the &#x201C;Sign in to your account&#x201D; screen with an account already created, fill in the fields:<ul>
+<li>&#x201C;Username&#x201D; with an existing username</li>
+<li>&#x201C;Password&#x201D; with a mismatching password</li>
+<li>An error message will pop up saying the username or password was incorrect</li>
+</ul>
+</li>
+<li>Fill in the fields:<ul>
+<li>&#x201C;Username&#x201D; with a nonexistent username</li>
+<li>&#x201C;Password&#x201D; with a valid password</li>
+<li>An error message will pop up saying the username or password was incorrect</li>
+</ul>
+</li>
+</ol><h3>Create Pantry Edge Cases</h3><ol>
+<li>No characters provided and maximum characters for Pantry name<ul>
+<li>Input an exceptionally long string of characters for a Pantry Name: An error message displays, &#x201C;Your Pantry name must not exceed 20 characters&#x201D; </li>
+<li>Input no characters for a Pantry Name: An error message displays, &#x201C;You must provide a name for your Pantry&#x201D;</li>
+</ul>
+</li>
+</ol><h3>Update/Barcode/Manual Item Add Edge Cases</h3><ol>
+<li>Input invalid Expiration Date<ul>
+<li>Input a date before the current date: An error message is displayed, &#x201C;Invalid Expiration Date&#x201D;</li>
+</ul>
+</li>
+<li>Input invalid Quantity or Weight<ul>
+<li>Input a negative quantity or weight: An error message displays, &#x201C;(Quality/Weight) cannot be negative&#x201D;</li>
+<li>Input a decimal quantity: An error message displays, &#x201C;A quantity must be a whole number&#x201D;</li>
+</ul>
+</li>
+<li>No characters provided and maximum characters for an Item name<ul>
+<li>Input an exceptionally long string of characters for an Item name: An error message should display, &#x201C;Item name must not exceed 20 characters&#x201D;</li>
+<li>Input no characters for an Item name: An error message should display, &#x201C;You must provide an Item name&#x201D;</li>
+</ul>
+</li>
+<li>Input an Item that already exists in the Pantry<ul>
+<li>Input an Item that already exists in the Pantry: An error message displays, &#x201C;An Item with that name already exists&#x201D;</li>
+</ul>
+</li>
+</ol><h3>Notifications Edge Cases</h3><ol>
+<li>Notification linked to deleted Item does not break application<ul>
+<li>Have an Item that is either close to expiring (~6 days from expiration  date) or low (~25% of max weight or quantity), when a Notification is triggered. Delete the item first, then click the Notification: Application navigates to the &#x2018;My Pantry&#x2019; page. Application does not break.</li>
+</ul>
+</li>
+</ol><h3>Shopping List Edge Cases</h3><ol>
+<li>No characters provided and maximum characters for Item name<ul>
+<li>Input an exceptionally long string of characters for an Item name: An error message should display, &#x201C;Item name must not exceed 20 characters&#x201D;</li>
+<li>Input no characters for an Item name: An error message should display, &#x201C;You must provide an Item name&#x201D;</li>
+</ul>
+</li>
+</ol><h3>Settings Edge Cases</h3><ol>
+<li>Invite self as a collaborator on your Pantry<ul>
+<li>Navigate to Settings &gt; Manage My Pantry &#x2013; Scroll to the bottom and invite yourself to join your Pantry as a collaborator: Error message should display, &#x201C;Cannot invite yourself as a Collaborator&#x201D;</li>
+</ul>
+</li>
+</ol></div>
         <a data-ice="link" href="manual/testing.html"></a>
       </div>
     </div>

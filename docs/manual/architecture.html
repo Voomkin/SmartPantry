@@ -92,7 +92,9 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/architecture.html"><a href="manual/architecture.html" data-ice="link">Architecture Diagrams</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#development-environment" data-ice="link">Development Environment</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#database-design" data-ice="link">Database Design</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#hardware-diagrams" data-ice="link">Hardware Diagrams</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/architecture.html"><a href="manual/architecture.html#note-about-final-system-design-documentation" data-ice="link">Note About Final System Design Documentation</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -103,13 +105,40 @@
 <li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#create-pantry" data-ice="link">Create Pantry</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#manual-add-item---view-pantry" data-ice="link">Manual Add Item / View Pantry</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#barcode-add-item" data-ice="link">Barcode Add Item</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#update-item" data-ice="link">Update Item</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#remove-item" data-ice="link">Remove Item</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#notifications" data-ice="link">Notifications</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#create-account-edge-cases" data-ice="link">Create Account Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#login-edge-cases" data-ice="link">Login Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#create-pantry-edge-cases" data-ice="link">Create Pantry Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#update-barcode-manual-item-add-edge-cases" data-ice="link">Update/Barcode/Manual Item Add Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#notifications-edge-cases" data-ice="link">Notifications Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#shopping-list-edge-cases" data-ice="link">Shopping List Edge Cases</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/testing.html"><a href="manual/testing.html#settings-edge-cases" data-ice="link">Settings Edge Cases</a></li>
 </ul>
   </div>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="architecture-diagrams">Architecture Diagrams</h1><h3 id="development-environment">Development Environment</h3><p>The architecture used is based off of AWS Amplify. React Native is the JavaScript library used to develop for both Android and iOS devices, AWS S3 provides a storage solution, AWS Cognito provides authentication for the app, and AWS AppSync creates a GraphQL endpoint to interact with AWS DynamoDB as the backend database.</p>
+<p><img src="./manual/../manual/images/arch_diagram.png" height="300px" width="600px"></p>
+<h3 id="database-design">Database Design</h3><p>With the use of DynamoDB we created three tables to hold our data, with relationships shown between each table. One-to-One relationship between an Item and a Pantry and a one-to-one relationship between a ShoppingList and a Pantry. We used GraphQL in order to manipulate or extract data from our database. With the above relations, we were able to easily relate any individual entry in the database itself. Our intent with the design was to allow us to clearly relate Items to Pantrys, and ShoppingLists to Pantrys and thus Items. It made sense to have everything related to a Pantry as that acted as the central repository for all Items that were added by a User.  </p>
+<p><img src="./manual/../manual/images/database.png" height="300px" width="600px"></p>
 <h3 id="hardware-diagrams">Hardware Diagrams</h3><p>The circuit connects the Scale (shown by the small circuit to the left) with the Arduino Mega 2560, which sends data to the ESP32 DEVKIT V1 to send to the database through Wi-Fi. The Scale connects to the Arduino&#x2019;s 3.3 V, the D2 pin, the D4 pin, and GND. The ESP32&#x2019;connects to the Arduino through the ESP32&#x2019;s RX2 and TX2 pins, which connect to the board&#x2019;s RX0 and TX0 pins, respectively. The ESP32 also connects to the Arduino&#x2019;s GND. </p>
+<p><img src="./manual/../manual/images/arduino.png" height="300px" width="600px"></p>
+<h3 id="note-about-final-system-design-documentation">Note About Final System Design Documentation</h3><p>This documentation includes information about all functions in the project. This information can be found using the <strong>Reference</strong> and <strong>Source</strong> tabs at the top left of this web page. The functions in each file are listed out, and the full source code can be found as well.</p>
+<p><strong>NOTE</strong>: Several features used throughout the project were imported from various creators and changed for use in the app. Imported features include:</p>
+<ul>
+<li>Notifications, which are done through Expo</li>
+<li>The navigation drawer, which is imported from React</li>
+<li>The mutations.json and queries.json files used for accessing/mutating the database were autogenerated via Amplify from AppSync (AWS)</li>
+<li>Barcode scanning features were imported from React</li>
+<li>Recognizing barcodes was done using the Edamam API</li>
+<li>The database is stored on AWS DynamoDB</li>
+<li>Verifying credentials is done using AWS Cognito</li>
+<li>Development of the app was done using the Expo Go app</li>
+</ul>
+<p>The code for App.js and the JavaScript files in the screens folder was all coded by our group, although most of them include a few elements imported from React and React Native for support of app development, such as buttons, inputs, Screen stacks, etc. For full information, view the code as mentioned at the begining of this section. Imports for each file are stored at the top, and most of the imports come from React, Expo, and AWS Amplify.</p>
 </div>
 </div>
 
