@@ -15,9 +15,57 @@ Now that you have entered your new login information, you should receive a confi
 If you have followed all of the steps, your new account will be created and you will be redirected to the **Sign in** page.
 
 ### Login
+Once you have created an account, you are ready to log in and start to explore your Smart Pantry. If you have not logged in yet, you should be greeted by a sign in page once you log in that looks like the image below. Simply enter the username and password you used when you created your account, and click the **SIGN IN** button.
+
+<img src="./images/login1.jpg" height="500px" width="250px"></img>
+
+If your login was successful, you should be directed to a page that looks like this:
+
+<img src="./images/landing.jpg" height="500px" width="250px"></img>
+
+If you login was unsuccessful, consider resetting your password by selecting the **Forgot Password** button in the lower left of the first image in this section. You will be directed to a page that looks like the image below, and you will be prompted to enter your email. Check your email afterwards for a message about resetting your password.
+
+<img src="./images/login2.jpg" height="500px" width="250px"></img>
+
 ### Sign Out
+If at any point while using the app you wish to sign out, you can first click the icon in the top left of the screen to bring up a drawer:
+
+<img src="./images/signout1.jpg" height="500px" width="250px"></img>
+
+Once you have brought up the drawer, you can select the **Sign Out** option at the bottom:
+
+<img src="./images/signout2.jpg" height="500px" width="250px"></img>
+
+A pop-up menu should appear asking for your confirmation. Selecting yes will sign you out of your account, returning you to the **Sign In** screen.
+
+<img src="./images/signout3.jpg" height="500px" width="250px"></img>
+
 ### Navigating the App
+Navigating the app is done by using a drawer which is brought up by using an icon in the top left of the screen:
+
+<img src="./images/signout1.jpg" height="500px" width="250px"></img>
+
+Selecting this icon will bring up several options as shown in the next image. More info on each of these options will be explored later in this manual.
+
+<img src="./images/drawer.jpg" height="500px" width="250px"></img>
+
 ### Create Pantry
+When you first create an account, the first thing you will probably want to do is make a pantry. Making a pantry allows you to add items and keep track of them, but it also gives you access to other features, such as the **Shopping List** and **Notifications**. In order to create a pantry, first open up the drawer in the top left corner (see **Navigating the App**). Select the option which reads **My Pantry**:
+
+<img src="./images/create1.jpg" height="500px" width="250px"></img>
+
+This will bring you to a page that looks like the following image (if you haven't already created a pantry). Select the **Create Pantry** button to create your pantry.
+
+<img src="./images/create2.jpg" height="500px" width="250px"></img>
+
+Next, choose a name for your pantry an type it into the input field that appears. When you have selected a name you are satisfied with, click **Submit**.
+
+<img src="./images/create3.jpg" height="500px" width="250px"></img>
+
+If you see a page that looks like the following image, you have successfully created your pantry!
+
+<img src="./images/viewpantry.jpg" height="500px" width="250px"></img>
+
 ### Manual Add Item
 ### Barcode Add Item
 ### Update Item

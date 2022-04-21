@@ -28,7 +28,8 @@
             "./manual/user_interface.md",
             "./manual/setup_manual.md",
             "./manual/user_manual.md",
-            "./manual/architecture.md"
+            "./manual/architecture.md",
+            "./manual/testing.md"
           ]
         },
         "test": {

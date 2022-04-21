@@ -26,17 +26,19 @@ A CSEE 481 effort to assist elders in tracking their food pantry items and livin
 | 8                  | Remove Item             | Yes               | Yes                   | A user can remove an item from the pantry                                                                  |
 | 9                  | Notifications           | Yes               | Yes                   | A user has a notification displayed when a food item's quantity/weight is low or if it is expiring soon    |
 
-### Documentation of Testing
-
 ### Architecture Diagram
 
 The architecture used is based off of AWS Amplify. React Native is the JavaScript library used to develop for both Android and iOS devices, AWS S3 provides a storage solution, AWS Cognito provides authentication for the app, and AWS AppSync creates a GraphQL endpoint to interact with AWS DynamoDB as the backend database. 
 
 ![Architecture Diagram](../manual/images/arch_diagram.png)
 
-### Setup Manual
-### User Manual and Maintenance Manual
 ### Reflections and Intructions for Future Developers
+One unexpected obstacle for connecting the scale to the Smart Pantry Application was the lack of a Bluetooth API in Expo. When adding or updating an item in the database, the user has the option to weigh/reweigh the item, which we expected to work by having the scale connect to an Arduino, then to an ESP32, and then to the app. However, because Expo (the platform we used to make our app to be cross-platform) doesn’t have a Bluetooth API, this was a lot more complicated than expected.  
+
+Because of this, we decided to communicate with the database directly through Wi-Fi and autofill the “weight” field in the app from the added weight in the database. If Expo includes a Bluetooth API in the future, it would be a good idea to have the scale autofill the “weight” field from the ESP32 (or similar Bluetooth communicator), wait for user confirmation, and then add/update the weight. 
+
+If migrated from Wi-Fi to Bluetooth, significant change to the development environment would have to be made, which may conflict with other features (Notifications, etc.). 
+
 ### Directory of the Project Archive
 
 Group 3’s Smart Pantry Application is housed on GitHub at the following link:
