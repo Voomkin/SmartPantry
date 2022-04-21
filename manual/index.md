@@ -10,6 +10,10 @@ The Smart Pantry app was created by the following students in the LANE departmen
 
 To view the System Manual, select the "Source" tab at the top left of the screen.
 
+### Abstract
+Elderly populations face numerous challenges concerning their health and well-being, causing them to experience memory loss which creates simple tasks, like tracking food items, much more difficult. Elders who struggle to track their food items are probable to over purchasing food and increasing food waste. Our group proposes a Smart Pantry application which will track a user’s food items (name, quantity, weight) in a virtual pantry and notify the user when food item quantities are low, or dates are near expiring. The project vision statement is seen in the following section and the project goals are the following: (1) track food item quantities and weights for users; (2) aid elders in remembering their food items and living more independently; (3) reduce food waste and malnutrition among elders. 
+
+
 ### Vision Statement
 A CSEE 481 effort to assist elders in tracking their food pantry items and living more independently while decreasing food waste and malnutrition among elders.  
 
