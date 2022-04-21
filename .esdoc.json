@@ -15,8 +15,8 @@
         "typeInference": {"enable": true},
         "brand": {
           "logo": "./logo.png",
-          "title": "My Library",
-          "description": "this is awesome library",
+          "title": "Smart Pantry System Manual",
+          "description": "Group 3 Smart Pantry CSEE 481",
           "repository": "https://github.com/Voomkin/SmartPantry/tree/master",
           "image": "http://my-library.org/logo.png"
         },
