@@ -98,6 +98,7 @@ export const createItem = /* GraphQL */ `
       quantity
       origQuantity
       expDate
+      weight_flag
       createdAt
       updatedAt
       pantryItemsId
@@ -136,6 +137,7 @@ export const updateItem = /* GraphQL */ `
       quantity
       origQuantity
       expDate
+      weight_flag
       createdAt
       updatedAt
       pantryItemsId
@@ -174,6 +176,7 @@ export const deleteItem = /* GraphQL */ `
       quantity
       origQuantity
       expDate
+      weight_flag
       createdAt
       updatedAt
       pantryItemsId
@@ -221,6 +224,90 @@ export const deleteShoppingList = /* GraphQL */ `
       items {
         nextToken
       }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createWeightBuffer = /* GraphQL */ `
+  mutation CreateWeightBuffer(
+    $input: CreateWeightBufferInput!
+    $condition: ModelWeightBufferConditionInput
+  ) {
+    createWeightBuffer(input: $input, condition: $condition) {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateWeightBuffer = /* GraphQL */ `
+  mutation UpdateWeightBuffer(
+    $input: UpdateWeightBufferInput!
+    $condition: ModelWeightBufferConditionInput
+  ) {
+    updateWeightBuffer(input: $input, condition: $condition) {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteWeightBuffer = /* GraphQL */ `
+  mutation DeleteWeightBuffer(
+    $input: DeleteWeightBufferInput!
+    $condition: ModelWeightBufferConditionInput
+  ) {
+    deleteWeightBuffer(input: $input, condition: $condition) {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createNewWeight = /* GraphQL */ `
+  mutation CreateNewWeight(
+    $input: CreateNewWeightInput!
+    $condition: ModelNewWeightConditionInput
+  ) {
+    createNewWeight(input: $input, condition: $condition) {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateNewWeight = /* GraphQL */ `
+  mutation UpdateNewWeight(
+    $input: UpdateNewWeightInput!
+    $condition: ModelNewWeightConditionInput
+  ) {
+    updateNewWeight(input: $input, condition: $condition) {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteNewWeight = /* GraphQL */ `
+  mutation DeleteNewWeight(
+    $input: DeleteNewWeightInput!
+    $condition: ModelNewWeightConditionInput
+  ) {
+    deleteNewWeight(input: $input, condition: $condition) {
+      id
+      upload_time
+      weight_data
       createdAt
       updatedAt
     }

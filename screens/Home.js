@@ -8,7 +8,7 @@ import { getPantry } from "../queries";
 import CreatePantryScreen from "./CreatePantry";
 import AddItemScreen from "./AddItem";
 import ManualAddScreen from "./ManualAdd";
-import { listItems, getItem } from "../queries.js";
+import { listItems, getItem, getNewWeight, listNewWeights } from "../queries.js";
 import { createItem, deleteItem, updateItem, createShoppingList, updatePantry } from "../mutations";
 import BarcodeAddScreen from "./BarcodeAdd";
 import * as Notifications from 'expo-notifications';
@@ -179,10 +179,50 @@ const HomeScreen = ({ navigation }) => {
     }
   };
 
+  const getScaleWeight = async () => {
+    const weightsList = await API.graphql(graphqlOperation(listNewWeights));
+    
+  
+    const b = weightsList.data.listNewWeights.items;
+    // console.log(b);
+    if(b.length > 0) {
+      // console.log(b[0].id);
+      let most_recent = 0;
+  
+      const viewItems = b.map( async (item) => {
+        if(item.id > most_recent)
+          most_recent = item.id;
+  
+        const json_string = item.weight_data;
+        const item_weight = parseFloat(json_string.substring(json_string.indexOf("value") + "value\":".length, json_string.indexOf("}")));
+        console.log(item_weight);
+      });
+  
+      console.log("ITEM TO ADD: " + most_recent);
+  
+      const weightData = await API.graphql(
+        graphqlOperation(getNewWeight, { id: most_recent })
+      );
+  
+      let weight_to_add = weightData.data.getNewWeight.weight_data;
+      weight_to_add = parseFloat(weight_to_add.substring(weight_to_add.indexOf("value") + "value\":".length, weight_to_add.indexOf("}")));
+      console.log(weight_to_add);
+  
+      updatePantryItem(weight_to_add);
+    }
+    else {
+      console.log("Not in DB");
+    }
+  }
+
   // Update item
-  const updatePantryItem = async () => {
+  const updatePantryItem = async (scale_weight) => {
 
     const item = await API.graphql(graphqlOperation(getItem, {id: itemId}));
+
+    if(scale_weight == null) {
+
+    }
 
     // if item is updated to have 0 or less quantity, the item will automatically be deleted
     if (!(item.data.getItem.quantity == null) && parseInt(quantityText) <= 0) {
@@ -206,9 +246,7 @@ const HomeScreen = ({ navigation }) => {
         const update = {
           id: itemId,
           name: nameText ? nameText : item.name,
-          currWeight: weightText
-            ? parseFloat(weightText)
-            : item.data.getItem.weight,
+          currWeight: weightText && scale_weight == null ? parseFloat(weightText): (scale_weight ? scale_weight : item.data.getItem.currWeight),
           quantity: quantityText
             ? parseInt(quantityText)
             : item.data.getItem.quantity,
@@ -275,10 +313,18 @@ const HomeScreen = ({ navigation }) => {
           onChangeText={(value) => setQuantityText(value)}
         />
         <Button
+          buttonStyle={{ width: 200}}
+          title="Use Scale"
+          onPress={() => {
+            Alert.alert("Weigh Item", "Please place the item you would like to weigh on the scale and wait a few seconds");
+            setTimeout(getScaleWeight, 5000);
+          }}
+        ></Button>
+        <Button
           buttonStyle={{ width: 200, margin: 20}}
           title="Submit"
           onPress={() => {
-            updatePantryItem();
+            updatePantryItem(null);
           }}
         ></Button>
         <Button buttonStyle={{width: 200}} title="Go back" onPress={handleModal}></Button>

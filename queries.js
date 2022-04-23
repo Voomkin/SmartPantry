@@ -71,6 +71,7 @@ export const getItem = /* GraphQL */ `
       quantity
       origQuantity
       expDate
+      weight_flag
       createdAt
       updatedAt
       pantryItemsId
@@ -94,6 +95,7 @@ export const listItems = /* GraphQL */ `
         quantity
         origQuantity
         expDate
+        weight_flag
         createdAt
         updatedAt
         pantryItemsId
@@ -124,6 +126,64 @@ export const listShoppingLists = /* GraphQL */ `
     listShoppingLists(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getWeightBuffer = /* GraphQL */ `
+  query GetWeightBuffer($id: ID!) {
+    getWeightBuffer(id: $id) {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listWeightBuffers = /* GraphQL */ `
+  query ListWeightBuffers(
+    $filter: ModelWeightBufferFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listWeightBuffers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        upload_time
+        weight_data
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getNewWeight = /* GraphQL */ `
+  query GetNewWeight($id: ID!) {
+    getNewWeight(id: $id) {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listNewWeights = /* GraphQL */ `
+  query ListNewWeights(
+    $filter: ModelNewWeightFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listNewWeights(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        upload_time
+        weight_data
         createdAt
         updatedAt
       }

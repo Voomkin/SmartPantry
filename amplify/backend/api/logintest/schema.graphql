@@ -24,9 +24,22 @@ type Item @model @auth(rules: [{ allow: public }]) {
   quantity: Int
   origQuantity: Int
   expDate: String
+  weight_flag: Int
 }
 
 type ShoppingList @model @auth(rules: [{ allow: public }]) {
   id: ID!
   items: [Item] @hasMany
+}
+
+type WeightBuffer @model @auth(rules: [{ allow: public }]) {
+  id: String!
+  upload_time: String
+  weight_data: String
+}
+
+type newWeight @model @auth(rules: [{ allow: public }]) {
+  id: String!
+  upload_time: String
+  weight_data: AWSJSON
 }

@@ -86,6 +86,7 @@ export const onCreateItem = /* GraphQL */ `
       quantity
       origQuantity
       expDate
+      weight_flag
       createdAt
       updatedAt
       pantryItemsId
@@ -121,6 +122,7 @@ export const onUpdateItem = /* GraphQL */ `
       quantity
       origQuantity
       expDate
+      weight_flag
       createdAt
       updatedAt
       pantryItemsId
@@ -156,6 +158,7 @@ export const onDeleteItem = /* GraphQL */ `
       quantity
       origQuantity
       expDate
+      weight_flag
       createdAt
       updatedAt
       pantryItemsId
@@ -194,6 +197,72 @@ export const onDeleteShoppingList = /* GraphQL */ `
       items {
         nextToken
       }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateWeightBuffer = /* GraphQL */ `
+  subscription OnCreateWeightBuffer {
+    onCreateWeightBuffer {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateWeightBuffer = /* GraphQL */ `
+  subscription OnUpdateWeightBuffer {
+    onUpdateWeightBuffer {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteWeightBuffer = /* GraphQL */ `
+  subscription OnDeleteWeightBuffer {
+    onDeleteWeightBuffer {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateNewWeight = /* GraphQL */ `
+  subscription OnCreateNewWeight {
+    onCreateNewWeight {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateNewWeight = /* GraphQL */ `
+  subscription OnUpdateNewWeight {
+    onUpdateNewWeight {
+      id
+      upload_time
+      weight_data
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteNewWeight = /* GraphQL */ `
+  subscription OnDeleteNewWeight {
+    onDeleteNewWeight {
+      id
+      upload_time
+      weight_data
       createdAt
       updatedAt
     }
