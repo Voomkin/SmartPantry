@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import {Icon, Input} from 'react-native-elements';
 import { Button } from "react-native-elements";
-import { getPantry } from "../queries";
+import { getPantry, getShoppingList } from "../queries";
 import CreatePantryScreen from "./CreatePantry";
 import AddItemScreen from "./AddItem";
 import ManualAddScreen from "./ManualAdd";
@@ -584,25 +584,6 @@ async function schedulePushNotification() {
 
     const b = itemsList.data.listItems.items;
 
-    // add an item to the shopping list upon deleting it from the pantry, if the user wishes
-  const addToShoppingList = async (itemID, name) => {
-    console.log("SHOPPING")
-    try {
-      const user = await Auth.currentAuthenticatedUser();
-
-      const id = {
-        id: itemID,
-        name: name,
-        imagePath: "default_img",
-        shoppingListItemsId: user.username.toString()
-      }
-      const d = await API.graphql(graphqlOperation(createItem,{input: id} ));
-      console.log(d)
-    } catch (err) { 
-      console.log(err);
-    }
-  }
-
     const checkExpirations = b.map( async (item) => {
       //NOTE: For some reason, the JavaScipt Date function is outputting the wrong date for me. I can calibrate it to be accurate
       //      but I don't want to do that until closer to when we demo our project.
@@ -653,35 +634,87 @@ async function schedulePushNotification() {
       }
     });
 
-    let runningLow = 0;
+    let runningLow = 0;    
 
-    // console.log("CHECKING ITEMS");
-    
     const checkRunningLow = b.map( async (item) => {
-      // console.log("ITEM: " + item.name);
-      let alreadyCounted = false;
+      try {
+        const user = await Auth.currentAuthenticatedUser(); // returns cognito user JSON
+  
+        // Performs the getShoppingList query based on the id, which is the user's username
+        const shoppingListData = await API.graphql(
+          graphqlOperation(getShoppingList, { id: user.username.toString() })
+        );
+  
+        // if the getShoppingList query does not return a null value, sets shopping list exists to true
+        // otherwise sets it to false because they don't have a shopping list yet
+        if (shoppingListData.data.getShoppingList != null) {} else {}
+  
+        // Grabs the id field from the shopping list data
+        const shoppingListId = shoppingListData.data.getShoppingList.id;
+  
+        // Grabs the items that are related to the id of the shopping list
+        const itemsList = await API.graphql(
+          graphqlOperation(listItems, {
+            filter: {
+              shoppingListItemsId: {
+                eq: shoppingListId.toString(),
+              },
+            },
+          })
+        );
+  
+        // stores the value of the items returned
+       const b = itemsList.data.listItems.items;        
 
-      if(item.weight != null) {
-        if(item.currWeight < item.weight * 0.3) {
-          runningLow += 1;
-          alreadyCounted = true;
-         // console.log("WEIGHT RUNNING LOW");
+        let alreadyCounted = false;
+
+        if(item.weight != null) {
+          if(item.currWeight < item.weight * 0.3) {
+            runningLow += 1;
+            if (!b.some(e => e.name === item.name)) {
+              console.log("QUANTITY RUNNING LOW");
+              const user = await Auth.currentAuthenticatedUser();
+              const itemInput = {
+                name: item.name,
+                imagePath: "default_img",
+                shoppingListItemsId: user.username.toString(),
+              };
+              const inputItem = await API.graphql(
+                graphqlOperation(createItem, { input: itemInput })
+              );
+            }          
+            alreadyCounted = true;
+          }
+          else{console.log("Error checking weight")}
         }
-      }
-      if(item.quantity != null && !alreadyCounted) {
-        if(item.quantity <= 2 || item.quantity < item.origQuantity * 0.3) {
-          //console.log(item.quantity)
-          runningLow += 1;
-          console.log("QUANTITY RUNNING LOW");
-          const itemID = item.id;
-          const name = item.name;
-          addToShoppingList(itemID, name);
+        console.log("my item " + item.name);
+        if(item.quantity != null && !alreadyCounted) {   
+          console.log(item.quantity)         
+          if((item.quantity <= 2 || item.quantity < item.origQuantity * 0.3)) {
+            runningLow += 1;
+            if (!b.some(e => e.name === item.name)) {
+              const user = await Auth.currentAuthenticatedUser();
+              const itemInput = {
+                name: item.name,
+                imagePath: "default_img",
+                shoppingListItemsId: user.username.toString(),
+              };
+              const inputItem = await API.graphql(
+                graphqlOperation(createItem, { input: itemInput })
+              );
+            }          
+            alreadyCounted = true;
+          }
+          else{console.log("Error checking quantity")}
         }
+        console.log("low: " + runningLow)
+      } 
+      catch (err) {
+        console.log(err);
       }
+      
     });
     // add an item to the shopping list upon deleting it from the pantry, if the user wishes
-  
-
     // if(itemsExpiring > 0) {
     //   console.log("User has items expiring soon");
     // }
@@ -695,7 +728,7 @@ async function schedulePushNotification() {
     // else {
     //   console.log("User has no items running low");
     // }
-
+    console.log("RUNNING LOW: " + runningLow);
     if(!pantryData.data.getPantry.notifPending && (itemsExpiring > 0 || runningLow > 0)) {
       console.log("Scheduling notification");
 
