@@ -253,7 +253,7 @@ const AccountsScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={{backgroundColor: '#b5e48c'}}>
-        {!pantryExists && <Text style={[styles.body]}>You must create a pantry before you make a shopping list.</Text>}
+        {!pantryExists && <Text style={[styles.body]}>You must create a pantry before you can manage it.</Text>}
 
         {pantryExists && (
           <View

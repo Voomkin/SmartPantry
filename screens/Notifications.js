@@ -176,8 +176,8 @@ const NotificationsScreen = () => {
     //     //   { ...outer_y += 10 }
     //     />
     //   </View>
-    <SafeAreaView>
-      <Text>Please select how often you would like to receive notifications about your pantry:</Text>
+    <SafeAreaView  style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: '#b5e48c' }}>
+      <Text style={{textAlign: 'center', marginHorizontal: 15, fontSize: 17}}>{'\n'}Please select how often you would like to receive notifications about your pantry:{'\n'}</Text>
       <Button
         onPress={() => {
             updateFrequency(10);
@@ -271,8 +271,7 @@ const NotificationsScreen = () => {
             alert("You will receive a notification in a few seconds")
             await schedulePushNotification();
         }}
-        title="Click here to test notifications"
-        color="blue"
+        title="Click Here to Test Notifications"
         accessibilityLabel="Click here to test notifications"
       />
     </SafeAreaView>

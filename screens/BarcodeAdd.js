@@ -75,15 +75,15 @@ const BarcodeAddScreen = ({ navigation }) => {
   };
 
   if (hasPermission === null) {
-    return <Text>Requesting for camera permissions</Text>;
+    return <Text style={{textAlign: "center"}}>{'\n'}Requesting for camera permissions</Text>;
   }
 
   if (hasPermission === false) {
-    return <Text>No access to camera!</Text>;
+    return <Text style={{textAlign: "center"}}>{'\n'}No access to camera!</Text>;
   }
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center",backgroundColor: '#b5e48c' }}>
       <BarCodeScanner
         onBarCodeScanned={
           scanned
@@ -96,7 +96,7 @@ const BarcodeAddScreen = ({ navigation }) => {
         style={StyleSheet.absoluteFillObject}
       />
       <Modal visible={isModalVisible} animationType="slide">
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center",backgroundColor: '#b5e48c' }}>
           <Text style={{width: 250}}>{nameText}</Text>
           <Input
             placeholder="Weight (lbs.) (optional)"
@@ -109,18 +109,40 @@ const BarcodeAddScreen = ({ navigation }) => {
             onChangeText={(value) => setQuantityText(value)}
           />
           <Button
-            buttonStyle={{ width: 200 }}
+            buttonStyle={{ 
+              marginLeft:50,
+              marginRight:50,
+              backgroundColor:'#3D405B',
+              borderRadius:10,
+              borderWidth: 1,
+              width: 100,
+              borderColor: '#fff' }} 
             title="Submit"
             onPress={() => {
               addPantryItem();
             }}
           ></Button>
-          <Button buttonStyle={{width: 200, margin: 10}} title="Go Back" onPress={handleModal}></Button>
+          <Button buttonStyle={{ 
+            marginLeft:50,
+            marginRight:50,
+            marginTop: 10,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            width: 100,
+            borderColor: '#fff' }}  title="Go Back" onPress={handleModal}></Button>
         </View>
       </Modal>
       {scanned && (
         <Button
-          title={"Tap to Scan again"}
+          title={"Tap to Scan again"}buttonStyle={{ 
+            marginLeft:50,
+            marginRight:50,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            width: 200,
+            borderColor: '#fff' }} 
           onPress={() => setScanned(false)}
         ></Button>
       )}

@@ -56,7 +56,7 @@ const HelpScreen = ({ navigation }) => {
       <Text style={[styles.body, {fontStyle: 'italic'}]}> My Pantry</Text>
       <Text style={styles.body}>{'\n'}➁{'\n'}Click "Add Item" button</Text> 
       <Text style={styles.body}>{'\n'}➂{'\n'}Type the name of the food item</Text>
-      <Text style={styles.body}>{'\n'}➃{'\n'}Either weigh the food item or input its quantity</Text>
+      <Text style={styles.body}>{'\n'}➃{'\n'}Either weigh the food item ("Use Scale") or input its quantity</Text>
       <Text style={styles.body}>{'\n'}➄{'\n'}Click "Submit"</Text>      
     </Text>
 
@@ -97,7 +97,7 @@ const HelpScreen = ({ navigation }) => {
     <Text>
       <Text style={styles.body}>➀{'\n'}Navigate to</Text>
       <Text style={[styles.body, {fontStyle: 'italic'}]}> My Pantry</Text>
-      <Text style={styles.body}>{'\n'}➁{'\n'}Locate item and click "Remove Item"</Text> 
+      <Text style={styles.body}>{'\n'}➁{'\n'}Locate item and click "Delete"</Text> 
       <Text style={styles.body}>{'\n'}➂{'\n'}Click Submit</Text>
     </Text>
 
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   body:{
     fontSize: 18,
     textAlign: 'center',
-    margin: 10,
+    margin: 10
   }
 });
 

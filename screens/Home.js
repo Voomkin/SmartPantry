@@ -36,23 +36,23 @@ const HomeStackScreen = () => {
           component={HomeScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Create Pantry" }}
+          options={{ headerShown: true, title: "Create Pantry", headerStyle: {backgroundColor: '#b5e48c'}}}
           name="CreatePantry"
           component={CreatePantryScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Add Item", headerStyle: {backgroundColor: '#b5e48c'}
+          options={{ headerShown: true, title: "Add Item", headerStyle: {backgroundColor: '#b5e48c' }
         }}
           name="AddItem"
           component={AddItemScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Manual Add" }}
+          options={{ headerShown: true, title: "Manual Add", headerStyle: {backgroundColor: '#b5e48c'} }}
           name="ManualAdd" 
           component={ManualAddScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Barcode Add" }}
+          options={{ headerShown: true, title: "Barcode Add", headerStyle: {backgroundColor: '#b5e48c'} }}
           name="BarcodeAdd"
           component={BarcodeAddScreen}
         />
@@ -278,6 +278,7 @@ const HomeScreen = ({ navigation }) => {
 
   // add an item to the shopping list upon deleting it from the pantry, if the user wishes
   const addToShoppingList = async (itemID, name) => {
+    console.log("SHOPPING")
     try {
       const user = await Auth.currentAuthenticatedUser();
 
@@ -295,8 +296,8 @@ const HomeScreen = ({ navigation }) => {
 
   const modalScreen = (
     <Modal visible={isModalVisible} animationType="slide">
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text style={{fontSize: 25, fontWeight: "bold", margin: 10}}>Edit your item</Text>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: '#b5e48c' }}>
+        <Text style={{fontSize: 25, fontWeight: "bold", margin: 10}}>Edit Your Item</Text>
         <Input
           placeholder="Name"
           containerStyle={{ width: 250 }}
@@ -313,7 +314,15 @@ const HomeScreen = ({ navigation }) => {
           onChangeText={(value) => setQuantityText(value)}
         />
         <Button
-          buttonStyle={{ width: 200}}
+          buttonStyle={{ 
+            marginLeft:120,
+            marginRight:120,
+            marginTop: 10,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            width: 100,
+            borderColor: '#fff' }}  
           title="Use Scale"
           onPress={() => {
             Alert.alert("Weigh Item", "Please place the item you would like to weigh on the scale and wait a few seconds");
@@ -321,13 +330,29 @@ const HomeScreen = ({ navigation }) => {
           }}
         ></Button>
         <Button
-          buttonStyle={{ width: 200, margin: 20}}
+          buttonStyle={{ 
+            marginLeft:120,
+            marginRight:120,
+            marginTop: 10,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            width: 100,
+            borderColor: '#fff' }}  
           title="Submit"
           onPress={() => {
             updatePantryItem(null);
           }}
         ></Button>
-        <Button buttonStyle={{width: 200}} title="Go back" onPress={handleModal}></Button>
+        <Button buttonStyle={{ 
+            marginLeft:120,
+            marginRight:120,
+            marginTop: 10,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            width: 100,
+            borderColor: '#fff' }}   title="Go Back" onPress={handleModal}></Button>
       </View>
     </Modal>
   );
@@ -355,13 +380,13 @@ const HomeScreen = ({ navigation }) => {
             {item.weight && <Text style={{fontSize: 15, fontWeight: "bold"}}>Percentage left: {percentage + "%\n"}</Text>}
             {item.expDate && <Text style={{fontSize: 15, fontWeight: "bold"}}>Expiration date: {item.expDate.substring(item.expDate.length - 8, item.expDate.length - 6) + "/" + item.expDate.substring(item.expDate.length - 6, item.expDate.length - 4) + "/" + item.expDate.substring(item.expDate.length - 4, item.expDate.length)}</Text>}
           </Text>
-          <Button buttonStyle={{ backgroundColor: 'grey', width: 75, marginRight: 5 }} title="update" onPress={() => {
+          <Button buttonStyle={{ backgroundColor: 'grey', width: 80, marginRight: 5 }} title="Update" onPress={() => {
             setItemId(item.id);
             handleModal();
             schedulePushNotification();
           }}>
           </Button>
-          <Button  buttonStyle={{backgroundColor: 'red', width: 75, marginRight: 5}} title="delete" onPress={() => {
+          <Button  buttonStyle={{backgroundColor: 'red', width: 80, marginRight: 5}} title="Delete" onPress={() => {
              Alert.alert("Delete Item", "Are you sure you want to delete item?", [
                {
                  text: "Yes",
@@ -559,6 +584,25 @@ async function schedulePushNotification() {
 
     const b = itemsList.data.listItems.items;
 
+    // add an item to the shopping list upon deleting it from the pantry, if the user wishes
+  const addToShoppingList = async (itemID, name) => {
+    console.log("SHOPPING")
+    try {
+      const user = await Auth.currentAuthenticatedUser();
+
+      const id = {
+        id: itemID,
+        name: name,
+        imagePath: "default_img",
+        shoppingListItemsId: user.username.toString()
+      }
+      const d = await API.graphql(graphqlOperation(createItem,{input: id} ));
+      console.log(d)
+    } catch (err) { 
+      console.log(err);
+    }
+  }
+
     const checkExpirations = b.map( async (item) => {
       //NOTE: For some reason, the JavaScipt Date function is outputting the wrong date for me. I can calibrate it to be accurate
       //      but I don't want to do that until closer to when we demo our project.
@@ -612,6 +656,7 @@ async function schedulePushNotification() {
     let runningLow = 0;
 
     // console.log("CHECKING ITEMS");
+    
     const checkRunningLow = b.map( async (item) => {
       // console.log("ITEM: " + item.name);
       let alreadyCounted = false;
@@ -620,16 +665,22 @@ async function schedulePushNotification() {
         if(item.currWeight < item.weight * 0.3) {
           runningLow += 1;
           alreadyCounted = true;
-          // console.log("WEIGHT RUNNING LOW");
+         // console.log("WEIGHT RUNNING LOW");
         }
       }
       if(item.quantity != null && !alreadyCounted) {
         if(item.quantity <= 2 || item.quantity < item.origQuantity * 0.3) {
+          //console.log(item.quantity)
           runningLow += 1;
-          // console.log("QUANTITY RUNNING LOW");
+          console.log("QUANTITY RUNNING LOW");
+          const itemID = item.id;
+          const name = item.name;
+          addToShoppingList(itemID, name);
         }
       }
     });
+    // add an item to the shopping list upon deleting it from the pantry, if the user wishes
+  
 
     // if(itemsExpiring > 0) {
     //   console.log("User has items expiring soon");
@@ -676,6 +727,7 @@ async function schedulePushNotification() {
         // console.log(newestPantryData.data.getPantry.notifTime + ' ' + curr_time);
 
         if(itemsExpiring > 0 && runningLow <= 0) {
+          
           await Notifications.scheduleNotificationAsync({
             content: {
               title: "SMART PANTRY",

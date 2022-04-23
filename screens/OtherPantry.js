@@ -201,12 +201,13 @@ const OtherPantryScreen = ({ navigation }) => {
           flexGrow: 1,
           alignItems: "center",
           justifyContent: "center",
+          backgroundColor: '#b5e48c'
         }}
       >
-        {!pantryExists && <Text>You are not a collaborator for any pantries</Text>}
+        {!pantryExists && <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>You are not a collaborator for any pantry</Text>}
         {pantryExists && (
           <View
-            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+            style={{ flex: 1, alignItems: "center", justifyContent: "center",backgroundColor: '#b5e48c'}}
           >
             <Text style={{ fontSize: 25, marginBottom: 15 }}>{pantryName}</Text>
 
