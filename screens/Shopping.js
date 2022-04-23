@@ -194,12 +194,12 @@ const Shopping = ({navigation}) => {
             {item.name}
           </Text>
           <Button  buttonStyle={{ marginTop:10,
-                paddingTop:15,
-                paddingBottom:15,
+                paddingTop:5,
+                paddingBottom:10,
                 backgroundColor:'#ff686b',
                 borderRadius:10,
                 borderWidth: 1,
-                borderColor: '#fff' }} title="Delete Item" onPress={() => {
+                borderColor: '#fff' }} title="Delete" onPress={() => {
              Alert.alert("Delete Item", "Are you sure you want to delete item?", [
                {
                  text: "Yes",

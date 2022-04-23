@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import {Auth, API, graphqlOperation} from 'aws-amplify';
 import {Icon, Input} from 'react-native-elements';
 import { Button } from "react-native-elements";
-import { getPantry } from "../queries";
+import { getPantry, getShoppingList } from "../queries";
 import CreatePantryScreen from "./CreatePantry";
 import AddItemScreen from "./AddItem";
 import ManualAddScreen from "./ManualAdd";
@@ -36,23 +36,23 @@ const HomeStackScreen = () => {
           component={HomeScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Create Pantry" }}
+          options={{ headerShown: true, title: "Create Pantry", headerStyle: {backgroundColor: '#b5e48c'}}}
           name="CreatePantry"
           component={CreatePantryScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Add Item", headerStyle: {backgroundColor: '#b5e48c'}
+          options={{ headerShown: true, title: "Add Item", headerStyle: {backgroundColor: '#b5e48c' }
         }}
           name="AddItem"
           component={AddItemScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Manual Add" }}
+          options={{ headerShown: true, title: "Manual Add", headerStyle: {backgroundColor: '#b5e48c'} }}
           name="ManualAdd" 
           component={ManualAddScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Barcode Add" }}
+          options={{ headerShown: true, title: "Barcode Add", headerStyle: {backgroundColor: '#b5e48c'} }}
           name="BarcodeAdd"
           component={BarcodeAddScreen}
         />
@@ -243,6 +243,26 @@ const HomeScreen = ({ navigation }) => {
     }
       try {
         // Perform
+        if (item.data.getItem.quantity < 5){
+          schedulePushNotification();
+          Alert.alert("Shopping List", "Would you like to add the item to your shopping list?", [
+            {
+              text: "Yes",
+              onPress: () => {
+                const itemID = item.id;
+                const name = item.name;
+                Alert.alert("Shopping List", "Adding to shopping list: " + name);
+                deletePantryItem(item.id);
+                addToShoppingList(itemID, name);
+              }
+            },
+            {
+             text: "No",
+             onPress: () => {
+               deletePantryItem(item.id);
+             },
+            },
+        ] );        }
         const update = {
           id: itemId,
           name: nameText ? nameText : item.name,
@@ -260,27 +280,7 @@ const HomeScreen = ({ navigation }) => {
         setQuantityText("");
         fetchItems();
         handleModal();
-        console.log(item.data.getItem.quantity)
-        console.log(item.data.getItem.origQuantity)
-        if((update.quantity <= 2 ||update.quantity < item.data.getItem.origQuantity * 0.3)  || (update.currWeight < item.data.getItem.weight * 0.3) ){
-          schedulePushNotification();
-          Alert.alert("Shopping List", "Would you like to add the item to your shopping list?", [
-            {
-              text: "Yes",
-              onPress: () => {
-                const itemID = update.id;
-                const name = item.data.getItem.name;
-                Alert.alert("Shopping List", "Adding to shopping list: " + name);
-                addToShoppingList(itemID, name);
-              }
-            },
-            {
-             text: "No",
-             onPress: () => {
-               deletePantryItem(item.id);
-             },
-            },
-        ] );        }
+        
       } catch (err) {}
   }
 
@@ -299,12 +299,12 @@ const HomeScreen = ({ navigation }) => {
 
   // add an item to the shopping list upon deleting it from the pantry, if the user wishes
   const addToShoppingList = async (itemID, name) => {
+    console.log("SHOPPING")
     try {
-      console.log(itemID)
-      console.log(name)
       const user = await Auth.currentAuthenticatedUser();
 
       const id = {
+        id: itemID,
         name: name,
         imagePath: "default_img",
         shoppingListItemsId: user.username.toString()
@@ -317,8 +317,8 @@ const HomeScreen = ({ navigation }) => {
 
   const modalScreen = (
     <Modal visible={isModalVisible} animationType="slide">
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text style={{fontSize: 25, fontWeight: "bold", margin: 10}}>Edit your item</Text>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: '#b5e48c' }}>
+        <Text style={{fontSize: 25, fontWeight: "bold", margin: 10}}>Edit Your Item</Text>
         <Input
           placeholder="Name"
           containerStyle={{ width: 250 }}
@@ -335,7 +335,15 @@ const HomeScreen = ({ navigation }) => {
           onChangeText={(value) => setQuantityText(value)}
         />
         <Button
-          buttonStyle={{ width: 200}}
+          buttonStyle={{ 
+            marginLeft:120,
+            marginRight:120,
+            marginTop: 10,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            width: 100,
+            borderColor: '#fff' }}  
           title="Use Scale"
           onPress={() => {
             Alert.alert("Weigh Item", "Please place the item you would like to weigh on the scale and wait a few seconds");
@@ -343,13 +351,29 @@ const HomeScreen = ({ navigation }) => {
           }}
         ></Button>
         <Button
-          buttonStyle={{ width: 200, margin: 20}}
+          buttonStyle={{ 
+            marginLeft:120,
+            marginRight:120,
+            marginTop: 10,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            width: 100,
+            borderColor: '#fff' }}  
           title="Submit"
           onPress={() => {
             updatePantryItem(null);
           }}
         ></Button>
-        <Button buttonStyle={{width: 200}} title="Go back" onPress={handleModal}></Button>
+        <Button buttonStyle={{ 
+            marginLeft:120,
+            marginRight:120,
+            marginTop: 10,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            width: 100,
+            borderColor: '#fff' }}   title="Go Back" onPress={handleModal}></Button>
       </View>
     </Modal>
   );
@@ -377,26 +401,13 @@ const HomeScreen = ({ navigation }) => {
             {item.weight && <Text style={{fontSize: 15, fontWeight: "bold"}}>Percentage left: {percentage + "%\n"}</Text>}
             {item.expDate && <Text style={{fontSize: 15, fontWeight: "bold"}}>Expiration date: {item.expDate.substring(item.expDate.length - 8, item.expDate.length - 6) + "/" + item.expDate.substring(item.expDate.length - 6, item.expDate.length - 4) + "/" + item.expDate.substring(item.expDate.length - 4, item.expDate.length)}</Text>}
           </Text>
-          <Button buttonStyle={{ marginTop:10,
-                paddingTop:5,
-                paddingBottom:10,
-                backgroundColor:'#808080',
-                borderRadius:10,
-                borderWidth: 1,
-                marginRight: 5,
-                borderColor: '#fff' }} title="Update" onPress={() => {
+          <Button buttonStyle={{ backgroundColor: 'grey', width: 80, marginRight: 5 }} title="Update" onPress={() => {
             setItemId(item.id);
             handleModal();
             schedulePushNotification();
           }}>
           </Button>
-          <Button  buttonStyle={{ marginTop:10,
-                paddingTop:5,
-                paddingBottom:10,
-                backgroundColor:'#ff686b',
-                borderRadius:10,
-                borderWidth: 1,
-                borderColor: '#fff' }} title="Delete" onPress={() => {
+          <Button  buttonStyle={{backgroundColor: 'red', width: 80, marginRight: 5}} title="Delete" onPress={() => {
              Alert.alert("Delete Item", "Are you sure you want to delete item?", [
                {
                  text: "Yes",
@@ -489,8 +500,8 @@ const HomeScreen = ({ navigation }) => {
             <Text style={{ fontSize: 25, margin: 15 }}>{pantryName}</Text>
             <Button
               buttonStyle={{ marginTop:10,
-                paddingTop:12,
-                paddingBottom:12,
+                paddingTop:15,
+                paddingBottom:15,
                 marginLeft:30,
                 marginRight:30,
                 backgroundColor:'#3D405B',
@@ -644,28 +655,91 @@ async function schedulePushNotification() {
       }
     });
 
-    let runningLow = 0;
+    let runningLow = 0;    
 
-    // console.log("CHECKING ITEMS");
     const checkRunningLow = b.map( async (item) => {
-      // console.log("ITEM: " + item.name);
-      let alreadyCounted = false;
+      try {
+        const user = await Auth.currentAuthenticatedUser(); // returns cognito user JSON
+  
+        // Performs the getShoppingList query based on the id, which is the user's username
+        const shoppingListData = await API.graphql(
+          graphqlOperation(getShoppingList, { id: user.username.toString() })
+        );
+  
+        // if the getShoppingList query does not return a null value, sets shopping list exists to true
+        // otherwise sets it to false because they don't have a shopping list yet
+        if (shoppingListData.data.getShoppingList != null) {} else {}
+  
+        // Grabs the id field from the shopping list data
+        const shoppingListId = shoppingListData.data.getShoppingList.id;
+  
+        // Grabs the items that are related to the id of the shopping list
+        const itemsList = await API.graphql(
+          graphqlOperation(listItems, {
+            filter: {
+              shoppingListItemsId: {
+                eq: shoppingListId.toString(),
+              },
+            },
+          })
+        );
+  
+        // stores the value of the items returned
+       const b = itemsList.data.listItems.items;        
 
-      if(item.weight != null) {
-        if(item.currWeight < item.weight * 0.3) {
-          runningLow += 1;
-          alreadyCounted = true;
-          // console.log("WEIGHT RUNNING LOW");
+        let alreadyCounted = false;
+
+        if(item.weight != null) {
+          if(item.currWeight < item.weight * 0.3) {
+            runningLow += 1;
+            
+
+            
+            if (!b.some(e => e.name === item.name)) {
+              console.log("QUANTITY RUNNING LOW");
+              const user = await Auth.currentAuthenticatedUser();
+              const itemInput = {
+                name: item.name,
+                imagePath: "default_img",
+                shoppingListItemsId: user.username.toString(),
+              };
+              const inputItem = await API.graphql(
+                graphqlOperation(createItem, { input: itemInput })
+              );
+            }          
+            alreadyCounted = true;
+          }
+          else{console.log("Error checking weight")}
         }
-      }
-      if(item.quantity != null && !alreadyCounted) {
-        if(item.quantity <= 2 || item.quantity < item.origQuantity * 0.3) {
-          runningLow += 1;
-          // console.log("QUANTITY RUNNING LOW");
+        console.log("my item " + item.name);
+        if(item.quantity != null && !alreadyCounted) {   
+          console.log(item.quantity)         
+          if((item.quantity <= 2 || item.quantity < item.origQuantity * 0.3)) {
+            runningLow += 1;
+            if (!b.some(e => e.name === item.name)) {
+              const user = await Auth.currentAuthenticatedUser();
+              const itemInput = {
+                name: item.name,
+                imagePath: "default_img",
+                shoppingListItemsId: user.username.toString(),
+              };
+              const inputItem = await API.graphql(
+                graphqlOperation(createItem, { input: itemInput })
+              );
+            }          
+            alreadyCounted = true;
+          }
+          else{console.log("Error checking quantity")}
         }
-      }
+        console.log("low: " + runningLow)
+      } 
+      catch (err) {
+        console.log(err);
+      }      
     });
-    console.log("RL: " + runningLow)
+    
+    console.log("RUNNING LOW: " + runningLow);
+
     if(!pantryData.data.getPantry.notifPending && (itemsExpiring > 0 || runningLow > 0)) {
       console.log("Scheduling notification");
 
@@ -697,6 +771,7 @@ async function schedulePushNotification() {
         // console.log(newestPantryData.data.getPantry.notifTime + ' ' + curr_time);
 
         if(itemsExpiring > 0 && runningLow <= 0) {
+          
           await Notifications.scheduleNotificationAsync({
             content: {
               title: "SMART PANTRY",
