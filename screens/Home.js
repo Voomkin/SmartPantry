@@ -36,7 +36,7 @@ const HomeStackScreen = () => {
           component={HomeScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Create Pantry" }}
+          options={{ headerShown: true, title: "Create Pantry", headerStyle: {backgroundColor: '#b5e48c'}}}
           name="CreatePantry"
           component={CreatePantryScreen}
         />
@@ -47,12 +47,12 @@ const HomeStackScreen = () => {
           component={AddItemScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Manual Add" }}
+          options={{ headerShown: true, title: "Manual Add" , headerStyle: {backgroundColor: '#b5e48c'}}}
           name="ManualAdd" 
           component={ManualAddScreen}
         />
         <HomeStack.Screen
-          options={{ headerShown: true, title: "Barcode Add" }}
+          options={{ headerShown: true, title: "Barcode Add", headerStyle: {backgroundColor: '#b5e48c'} }}
           name="BarcodeAdd"
           component={BarcodeAddScreen}
         />
@@ -317,8 +317,8 @@ const HomeScreen = ({ navigation }) => {
 
   const modalScreen = (
     <Modal visible={isModalVisible} animationType="slide">
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text style={{fontSize: 25, fontWeight: "bold", margin: 10}}>Edit your item</Text>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: '#b5e48c'}}>
+        <Text style={{fontSize: 25, fontWeight: "bold", margin: 10}}>Edit Your Item</Text>
         <Input
           placeholder="Name"
           containerStyle={{ width: 250 }}
@@ -335,7 +335,13 @@ const HomeScreen = ({ navigation }) => {
           onChangeText={(value) => setQuantityText(value)}
         />
         <Button
-          buttonStyle={{ width: 200}}
+          buttonStyle={{ marginTop:10,
+            paddingTop:5,
+            paddingBottom:10,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            borderColor: '#fff' }}
           title="Use Scale"
           onPress={() => {
             Alert.alert("Weigh Item", "Please place the item you would like to weigh on the scale and wait a few seconds");
@@ -343,13 +349,26 @@ const HomeScreen = ({ navigation }) => {
           }}
         ></Button>
         <Button
-          buttonStyle={{ width: 200, margin: 20}}
+          buttonStyle={{ marginTop:10,
+            paddingTop:5,
+            paddingBottom:10,
+            backgroundColor:'#3D405B',
+            borderRadius:10,
+            borderWidth: 1,
+            borderColor: '#fff' }}
           title="Submit"
           onPress={() => {
             updatePantryItem(null);
           }}
         ></Button>
-        <Button buttonStyle={{width: 200}} title="Go back" onPress={handleModal}></Button>
+        <Button buttonStyle={{ marginTop:10,
+                paddingTop:5,
+                paddingBottom:10,
+                backgroundColor:'#3D405B',
+                borderRadius:10,
+                borderWidth: 1,
+                borderColor: '#fff' }}
+                title="Go back" onPress={handleModal}></Button>
       </View>
     </Modal>
   );
@@ -486,7 +505,7 @@ const HomeScreen = ({ navigation }) => {
           <View
             style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
           >
-            <Text style={{ fontSize: 25, margin: 15 }}>{pantryName}</Text>
+            <Text style={{ fontSize: 25, margin: 15, fontWeight: 'bold' }}>{pantryName}</Text>
             <Button
               buttonStyle={{ marginTop:10,
                 paddingTop:12,

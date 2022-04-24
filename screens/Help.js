@@ -32,7 +32,7 @@ const HelpScreen = ({ navigation }) => {
     <Text>
       <Text style={styles.body}>➀{'\n'}Navigate to</Text>
       <Text style={[styles.body, {fontStyle: 'italic'}]}> My Pantry</Text>
-      <Text style={styles.body}>{'\n'}➁{'\n'}Click "Create Pantry" button</Text> 
+      <Text style={styles.body}>{'\n'}➁{'\n'}Click "Create Pantry"</Text> 
       <Text style={styles.body}>{'\n'}➂{'\n'}Type the name of your pantry</Text>
       <Text style={styles.body}>{'\n'}➃{'\n'}Click "Submit"</Text>
     </Text>  
@@ -54,9 +54,9 @@ const HelpScreen = ({ navigation }) => {
     <Text>
       <Text style={styles.body}>➀{'\n'}Navigate to</Text>
       <Text style={[styles.body, {fontStyle: 'italic'}]}> My Pantry</Text>
-      <Text style={styles.body}>{'\n'}➁{'\n'}Click "Add Item" button</Text> 
+      <Text style={styles.body}>{'\n'}➁{'\n'}Click "Add Item"</Text> 
       <Text style={styles.body}>{'\n'}➂{'\n'}Type the name of the food item</Text>
-      <Text style={styles.body}>{'\n'}➃{'\n'}Either weigh the food item ("Use Scale") or input its quantity</Text>
+      <Text style={styles.body}>{'\n'}➃{'\n'}Weigh the food item ("Use Scale") or input its quantity</Text>
       <Text style={styles.body}>{'\n'}➄{'\n'}Click "Submit"</Text>      
     </Text>
 
@@ -70,22 +70,22 @@ const HelpScreen = ({ navigation }) => {
     <Text>
       <Text style={styles.body}>➀{'\n'}Navigate to</Text>
       <Text style={[styles.body, {fontStyle: 'italic'}]}> My Pantry</Text>
-      <Text style={styles.body}>{'\n'}➁{'\n'}Click "Add Item" button</Text> 
-      <Text style={styles.body}>{'\n'}➂{'\n'}Click "Barcode Add" button</Text>
+      <Text style={styles.body}>{'\n'}➁{'\n'}Click "Add Item"</Text> 
+      <Text style={styles.body}>{'\n'}➂{'\n'}Click "Barcode Add"</Text>
       <Text style={styles.body}>{'\n'}➃{'\n'}Scan item's barcode using device camera</Text>
       <Text style={styles.body}>{'\n'}➄{'\n'}Click "Submit"</Text>      
     </Text>
 
     <View style={{flexDirection: 'row', alignItems: 'center'}}>
       <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-      <View><Text style={styles.paddedHeading}>How To Update Pantry Items Quantities</Text></View>
+      <View><Text style={styles.paddedHeading}>How To Update Pantry Items' Quantities</Text></View>
       <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
     </View>
     <Text>
       <Text style={styles.body}>➀{'\n'}Navigate to</Text>
       <Text style={[styles.body, {fontStyle: 'italic'}]}> My Pantry</Text>
       <Text style={styles.body}>{'\n'}➁{'\n'}Locate item and click "Update Item"</Text> 
-      <Text style={styles.body}>{'\n'}➂{'\n'}Enter new item weight</Text>
+      <Text style={styles.body}>{'\n'}➂{'\n'}Enter new item weight or quantity</Text>
       <Text style={styles.body}>{'\n'}➃{'\n'}Click "Submit"</Text>
     </Text>
 
