@@ -1,7 +1,7 @@
 {
-  "coverage": "35.16%",
-  "expectCount": 91,
-  "actualCount": 32,
+  "coverage": "30.17%",
+  "expectCount": 116,
+  "actualCount": 35,
   "files": {
     "SmartPantry/App.js": {
       "expectCount": 5,
@@ -49,6 +49,16 @@
         5
       ]
     },
+    "SmartPantry/e2e/environment.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        7,
+        8,
+        12
+      ]
+    },
     "SmartPantry/metro.config.js": {
       "expectCount": 1,
       "actualCount": 0,
@@ -57,30 +67,40 @@
       ]
     },
     "SmartPantry/mutations.js": {
-      "expectCount": 9,
+      "expectCount": 15,
       "actualCount": 0,
       "undocumentLines": [
         4,
         26,
         48,
         70,
-        108,
-        146,
-        184,
-        199,
-        214
+        109,
+        148,
+        187,
+        202,
+        217,
+        232,
+        246,
+        260,
+        274,
+        288,
+        302
       ]
     },
     "SmartPantry/queries.js": {
-      "expectCount": 6,
+      "expectCount": 10,
       "actualCount": 0,
       "undocumentLines": [
         4,
         23,
         46,
-        81,
-        106,
-        118
+        82,
+        108,
+        120,
+        136,
+        147,
+        165,
+        176
       ]
     },
     "SmartPantry/screens/About.js": {
@@ -146,7 +166,15 @@
       "actualCount": 3,
       "undocumentLines": [
         19,
-        471
+        572
+      ]
+    },
+    "SmartPantry/screens/Home2.js": {
+      "expectCount": 5,
+      "actualCount": 3,
+      "undocumentLines": [
+        19,
+        563
       ]
     },
     "SmartPantry/screens/ManualAdd.js": {
@@ -165,7 +193,7 @@
       "expectCount": 5,
       "actualCount": 4,
       "undocumentLines": [
-        282
+        281
       ]
     },
     "SmartPantry/screens/OtherPantry.js": {
@@ -223,18 +251,24 @@
       ]
     },
     "SmartPantry/subscriptions.js": {
-      "expectCount": 9,
+      "expectCount": 15,
       "actualCount": 0,
       "undocumentLines": [
         4,
         23,
         42,
         61,
-        96,
-        131,
-        166,
-        178,
-        190
+        97,
+        133,
+        169,
+        181,
+        193,
+        205,
+        216,
+        227,
+        238,
+        249,
+        260
       ]
     }
   }
