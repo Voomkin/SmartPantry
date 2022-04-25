@@ -105,12 +105,15 @@ import { View, Text, StyleSheet, Alert, Modal} from &quot;react-native&quot;;
 import { Auth, API, graphqlOperation } from &quot;aws-amplify&quot;;
 import { createItem } from &quot;../mutations&quot;;
 import { BarCodeScanner } from &quot;expo-barcode-scanner&quot;;
+import { listNewWeights, getNewWeight } from &quot;../queries&quot;;
 
 /**
  * @author Ryan Mraz
  * @param navigation - Used to navigate on the Home stack. 
  * @returns Inputs and buttons for allowing the user to continue on to add the item into the database after scanning it.
  */
+ 
+
 const BarcodeAddScreen = ({ navigation }) =&gt; {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
@@ -122,17 +125,29 @@ const BarcodeAddScreen = ({ navigation }) =&gt; {
   const [weightText, setWeightText] = useState(&quot;&quot;);
   const [quantityText, setQuantityText] = useState(&quot;&quot;);
 
-  const addPantryItem = async () =&gt; {
+  const addPantryItem = async (scale_weight) =&gt; {
     if (nameText == &quot;&quot;) {
       return;
+    }
+
+    console.log(&quot;HERE!!!&quot;);
+
+    let add_weight = 0;
+
+    if(scale_weight != null || scale_weight == 0) {
+      console.log(&quot;READING: &quot; + scale_weight);
+      add_weight = scale_weight;
+    } 
+    else {
+      add_weight = parseFloat(weightText);
     }
 
     const user = await Auth.currentAuthenticatedUser();
     const itemInput = {
       name: nameText,
       imagePath: &quot;default_img&quot;,
-      weight: parseFloat(weightText),
-      currWeight: parseFloat(weightText),
+      weight: add_weight,
+      currWeight: add_weight,
       quantity: parseInt(quantityText),
       pantryItemsId: user.username.toString(),
     };
@@ -148,6 +163,43 @@ const BarcodeAddScreen = ({ navigation }) =&gt; {
       setHasPermission(status === &quot;granted&quot;);
     })();
   }, []);
+
+  const theWeightBuffer = async () =&gt; {
+    console.log(&quot;TEST THIS&quot;);
+    const weightsList = await API.graphql(graphqlOperation(listNewWeights));
+    
+  
+    const b = weightsList.data.listNewWeights.items;
+    // console.log(b);
+    if(b.length &gt; 0) {
+      // console.log(b[0].id);
+      let most_recent = 0;
+  
+      const viewItems = b.map( async (item) =&gt; {
+        if(item.id &gt; most_recent)
+          most_recent = item.id;
+  
+        const json_string = item.weight_data;
+        const item_weight = parseFloat(json_string.substring(json_string.indexOf(&quot;value&quot;) + &quot;value\&quot;:&quot;.length, json_string.indexOf(&quot;}&quot;)));
+        console.log(item_weight);
+      });
+  
+      console.log(&quot;ITEM TO ADD: &quot; + most_recent);
+  
+      const weightData = await API.graphql(
+        graphqlOperation(getNewWeight, { id: most_recent })
+      );
+  
+      let weight_to_add = weightData.data.getNewWeight.weight_data;
+      weight_to_add = parseFloat(weight_to_add.substring(weight_to_add.indexOf(&quot;value&quot;) + &quot;value\&quot;:&quot;.length, weight_to_add.indexOf(&quot;}&quot;)));
+      console.log(&quot;WRITING: &quot; + weight_to_add);
+  
+      addPantryItem(weight_to_add);
+    }
+    else {
+      console.log(&quot;Not in DB&quot;);
+    }
+  }
 
   // test api call with edamam
   const fetchApiCall = (upcCode) =&gt; {
@@ -218,9 +270,25 @@ const BarcodeAddScreen = ({ navigation }) =&gt; {
               borderWidth: 1,
               width: 100,
               borderColor: &apos;#fff&apos; }} 
+            title=&quot;Use Scale&quot;
+            onPress={() =&gt; {
+              Alert.alert(&quot;Weigh Item&quot;, &quot;Please place the item you would like to weigh on the scale and wait a few seconds&quot;);
+              setTimeout(theWeightBuffer, 5000);
+            }}
+          &gt;&lt;/Button&gt;
+          &lt;Button
+            buttonStyle={{ 
+              marginLeft:50,
+              marginRight:50,
+              marginTop:10,
+              backgroundColor:&apos;#3D405B&apos;,
+              borderRadius:10,
+              borderWidth: 1,
+              width: 100,
+              borderColor: &apos;#fff&apos; }} 
             title=&quot;Submit&quot;
             onPress={() =&gt; {
-              addPantryItem();
+              addPantryItem(null);
             }}
           &gt;&lt;/Button&gt;
           &lt;Button buttonStyle={{ 

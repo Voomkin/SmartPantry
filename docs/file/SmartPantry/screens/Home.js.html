@@ -347,7 +347,7 @@ const HomeScreen = ({ navigation }) =&gt; {
         const update = {
           id: itemId,
           name: nameText ? nameText : item.name,
-          currWeight: weightText &amp;&amp; scale_weight == null ? parseFloat(weightText): (scale_weight ? scale_weight : item.data.getItem.currWeight),
+          currWeight: weightText &amp;&amp; (scale_weight == null || scale_weight == 0) ? parseFloat(weightText): (scale_weight ? scale_weight : item.data.getItem.currWeight),
           quantity: quantityText
             ? parseInt(quantityText)
             : item.data.getItem.quantity,
@@ -494,6 +494,7 @@ const HomeScreen = ({ navigation }) =&gt; {
           &gt;
             {item.name + &apos;\n&apos;}
             {item.quantity &amp;&amp; &lt;Text style={{fontSize: 15, fontWeight: &apos;bold&apos;}}&gt;Quantity: {item.quantity + &quot;\n&quot;}&lt;/Text&gt;}
+            {item.weight &amp;&amp; &lt;Text style={{fontSize: 15, fontWeight: &apos;bold&apos;}}&gt;Weight: {item.currWeight + &quot; lbs\n&quot;}&lt;/Text&gt;}
             {item.weight &amp;&amp; &lt;Text style={{fontSize: 15, fontWeight: &quot;bold&quot;}}&gt;Percentage left: {percentage + &quot;%\n&quot;}&lt;/Text&gt;}
             {item.expDate &amp;&amp; &lt;Text style={{fontSize: 15, fontWeight: &quot;bold&quot;}}&gt;Expiration date: {item.expDate.substring(item.expDate.length - 8, item.expDate.length - 6) + &quot;/&quot; + item.expDate.substring(item.expDate.length - 6, item.expDate.length - 4) + &quot;/&quot; + item.expDate.substring(item.expDate.length - 4, item.expDate.length)}&lt;/Text&gt;}
           &lt;/Text&gt;

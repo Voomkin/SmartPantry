@@ -193,7 +193,7 @@ const addPantryItem = async (scale_weight) =&gt; {
   console.log(&quot;New Exp Date &quot; + input_date);
 
   let add_weight = 0;
-  if(scale_weight == null) {
+  if(scale_weight == null || scale_weight == 0) {
     add_weight = parseFloat(weightText);
     console.log(&quot;Normal add&quot;);
   }
