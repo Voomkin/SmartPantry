@@ -6,15 +6,14 @@
 
  1. On the “Sign in to your account” screen, click “Sign Up”
 - This will open a screen with “Create a new account” at the top, with four text fields.
+
+<img src="../docs/manual/images/CA_L_1.png" height="300px" width="150px"></img>
+
  2. Fill in the:
 - “Username” field with a valid email address
 - “Password” field with a password
 - “Email” field with a valid email address
 - “Phone Number” with a valid phone number
-
-
-<video src="https://www.youtube.com/watch?v=cdZZpaB2kDM" height="300px" width="600px"></video>
-
 
  3.  Click “Sign Up”
 - This will open a screen with “Confirm Sign Up” at the top, with two text fields. This will also send a confirmation code to the email address previously provided.
