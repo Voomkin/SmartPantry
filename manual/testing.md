@@ -4,7 +4,7 @@
 
 
 
- 1. TESTING On the “Sign in to your account” screen, click “Sign Up”
+ 1. On the “Sign in to your account” screen, click “Sign Up”
 - This will open a screen with “Create a new account” at the top, with four text fields.
  2. Fill in the:
 - “Username” field with a valid email address
@@ -13,7 +13,7 @@
 - “Phone Number” with a valid phone number
 
 
-<video src="https://user-images.githubusercontent.com/60010668/165080809-9a1a0dca-24a7-4dce-b708-0d1764756d34.mov" height="300px" width="600px"></video>
+<video src="https://www.youtube.com/watch?v=cdZZpaB2kDM" height="300px" width="600px"></video>
 
 
  3.  Click “Sign Up”
