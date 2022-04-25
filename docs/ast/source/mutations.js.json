@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 4456,
+  "end": 6187,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 229,
+      "line": 316,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 4456,
+    "end": 6187,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 229,
+        "line": 316,
         "column": 0
       }
     },
@@ -30,8 +30,8 @@
     "body": [
       {
         "type": "ExportNamedDeclaration",
-        "start": 85,
-        "end": 505,
+        "start": 82,
+        "end": 481,
         "loc": {
           "start": {
             "line": 4,
@@ -46,8 +46,8 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 92,
-          "end": 505,
+          "start": 89,
+          "end": 481,
           "loc": {
             "start": {
               "line": 4,
@@ -61,8 +61,8 @@
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 98,
-              "end": 504,
+              "start": 95,
+              "end": 480,
               "loc": {
                 "start": {
                   "line": 4,
@@ -75,8 +75,8 @@
               },
               "id": {
                 "type": "Identifier",
-                "start": 98,
-                "end": 110,
+                "start": 95,
+                "end": 107,
                 "loc": {
                   "start": {
                     "line": 4,
@@ -93,8 +93,8 @@
               },
               "init": {
                 "type": "TemplateLiteral",
-                "start": 127,
-                "end": 504,
+                "start": 124,
+                "end": 480,
                 "loc": {
                   "start": {
                     "line": 4,
@@ -109,8 +109,8 @@
                 "quasis": [
                   {
                     "type": "TemplateElement",
-                    "start": 128,
-                    "end": 503,
+                    "start": 125,
+                    "end": 479,
                     "loc": {
                       "start": {
                         "line": 4,
@@ -133,8 +133,8 @@
                   {
                     "type": "CommentBlock",
                     "value": " GraphQL ",
-                    "start": 113,
-                    "end": 126,
+                    "start": 110,
+                    "end": 123,
                     "loc": {
                       "start": {
                         "line": 4,
@@ -172,8 +172,8 @@
             {
               "type": "CommentLine",
               "value": " this is an auto generated file. This will be overwritten",
-              "start": 22,
-              "end": 81,
+              "start": 21,
+              "end": 80,
               "loc": {
                 "start": {
                   "line": 2,
@@ -208,8 +208,8 @@
           {
             "type": "CommentLine",
             "value": " this is an auto generated file. This will be overwritten",
-            "start": 22,
-            "end": 81,
+            "start": 21,
+            "end": 80,
             "loc": {
               "start": {
                 "line": 2,
@@ -225,8 +225,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 507,
-        "end": 927,
+        "start": 482,
+        "end": 881,
         "loc": {
           "start": {
             "line": 26,
@@ -241,8 +241,8 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 514,
-          "end": 927,
+          "start": 489,
+          "end": 881,
           "loc": {
             "start": {
               "line": 26,
@@ -256,8 +256,8 @@
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 520,
-              "end": 926,
+              "start": 495,
+              "end": 880,
               "loc": {
                 "start": {
                   "line": 26,
@@ -270,8 +270,8 @@
               },
               "id": {
                 "type": "Identifier",
-                "start": 520,
-                "end": 532,
+                "start": 495,
+                "end": 507,
                 "loc": {
                   "start": {
                     "line": 26,
@@ -287,8 +287,8 @@
               },
               "init": {
                 "type": "TemplateLiteral",
-                "start": 549,
-                "end": 926,
+                "start": 524,
+                "end": 880,
                 "loc": {
                   "start": {
                     "line": 26,
@@ -303,8 +303,8 @@
                 "quasis": [
                   {
                     "type": "TemplateElement",
-                    "start": 550,
-                    "end": 925,
+                    "start": 525,
+                    "end": 879,
                     "loc": {
                       "start": {
                         "line": 26,
@@ -327,8 +327,8 @@
                   {
                     "type": "CommentBlock",
                     "value": " GraphQL ",
-                    "start": 535,
-                    "end": 548,
+                    "start": 510,
+                    "end": 523,
                     "loc": {
                       "start": {
                         "line": 26,
@@ -351,8 +351,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 929,
-        "end": 1349,
+        "start": 882,
+        "end": 1281,
         "loc": {
           "start": {
             "line": 48,
@@ -367,8 +367,8 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 936,
-          "end": 1349,
+          "start": 889,
+          "end": 1281,
           "loc": {
             "start": {
               "line": 48,
@@ -382,8 +382,8 @@
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 942,
-              "end": 1348,
+              "start": 895,
+              "end": 1280,
               "loc": {
                 "start": {
                   "line": 48,
@@ -396,8 +396,8 @@
               },
               "id": {
                 "type": "Identifier",
-                "start": 942,
-                "end": 954,
+                "start": 895,
+                "end": 907,
                 "loc": {
                   "start": {
                     "line": 48,
@@ -413,8 +413,8 @@
               },
               "init": {
                 "type": "TemplateLiteral",
-                "start": 971,
-                "end": 1348,
+                "start": 924,
+                "end": 1280,
                 "loc": {
                   "start": {
                     "line": 48,
@@ -429,8 +429,8 @@
                 "quasis": [
                   {
                     "type": "TemplateElement",
-                    "start": 972,
-                    "end": 1347,
+                    "start": 925,
+                    "end": 1279,
                     "loc": {
                       "start": {
                         "line": 48,
@@ -453,8 +453,8 @@
                   {
                     "type": "CommentBlock",
                     "value": " GraphQL ",
-                    "start": 957,
-                    "end": 970,
+                    "start": 910,
+                    "end": 923,
                     "loc": {
                       "start": {
                         "line": 48,
@@ -477,15 +477,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 1351,
-        "end": 2040,
+        "start": 1282,
+        "end": 1952,
         "loc": {
           "start": {
             "line": 70,
             "column": 0
           },
           "end": {
-            "line": 107,
+            "line": 108,
             "column": 2
           }
         },
@@ -493,37 +493,37 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 1358,
-          "end": 2040,
+          "start": 1289,
+          "end": 1952,
           "loc": {
             "start": {
               "line": 70,
               "column": 7
             },
             "end": {
-              "line": 107,
+              "line": 108,
               "column": 2
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 1364,
-              "end": 2039,
+              "start": 1295,
+              "end": 1951,
               "loc": {
                 "start": {
                   "line": 70,
                   "column": 13
                 },
                 "end": {
-                  "line": 107,
+                  "line": 108,
                   "column": 1
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 1364,
-                "end": 1374,
+                "start": 1295,
+                "end": 1305,
                 "loc": {
                   "start": {
                     "line": 70,
@@ -539,15 +539,15 @@
               },
               "init": {
                 "type": "TemplateLiteral",
-                "start": 1391,
-                "end": 2039,
+                "start": 1322,
+                "end": 1951,
                 "loc": {
                   "start": {
                     "line": 70,
                     "column": 40
                   },
                   "end": {
-                    "line": 107,
+                    "line": 108,
                     "column": 1
                   }
                 },
@@ -555,21 +555,21 @@
                 "quasis": [
                   {
                     "type": "TemplateElement",
-                    "start": 1392,
-                    "end": 2038,
+                    "start": 1323,
+                    "end": 1950,
                     "loc": {
                       "start": {
                         "line": 70,
                         "column": 41
                       },
                       "end": {
-                        "line": 107,
+                        "line": 108,
                         "column": 0
                       }
                     },
                     "value": {
-                      "raw": "\n  mutation CreateItem(\n    $input: CreateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    createItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
-                      "cooked": "\n  mutation CreateItem(\n    $input: CreateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    createItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n"
+                      "raw": "\n  mutation CreateItem(\n    $input: CreateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    createItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      weight_flag\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
+                      "cooked": "\n  mutation CreateItem(\n    $input: CreateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    createItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      weight_flag\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n"
                     },
                     "tail": true,
                     "leadingComments": null
@@ -579,8 +579,8 @@
                   {
                     "type": "CommentBlock",
                     "value": " GraphQL ",
-                    "start": 1377,
-                    "end": 1390,
+                    "start": 1308,
+                    "end": 1321,
                     "loc": {
                       "start": {
                         "line": 70,
@@ -603,15 +603,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 2042,
-        "end": 2731,
+        "start": 1953,
+        "end": 2623,
         "loc": {
           "start": {
-            "line": 108,
+            "line": 109,
             "column": 0
           },
           "end": {
-            "line": 145,
+            "line": 147,
             "column": 2
           }
         },
@@ -619,44 +619,44 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 2049,
-          "end": 2731,
+          "start": 1960,
+          "end": 2623,
           "loc": {
             "start": {
-              "line": 108,
+              "line": 109,
               "column": 7
             },
             "end": {
-              "line": 145,
+              "line": 147,
               "column": 2
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 2055,
-              "end": 2730,
+              "start": 1966,
+              "end": 2622,
               "loc": {
                 "start": {
-                  "line": 108,
+                  "line": 109,
                   "column": 13
                 },
                 "end": {
-                  "line": 145,
+                  "line": 147,
                   "column": 1
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 2055,
-                "end": 2065,
+                "start": 1966,
+                "end": 1976,
                 "loc": {
                   "start": {
-                    "line": 108,
+                    "line": 109,
                     "column": 13
                   },
                   "end": {
-                    "line": 108,
+                    "line": 109,
                     "column": 23
                   },
                   "identifierName": "updateItem"
@@ -665,15 +665,15 @@
               },
               "init": {
                 "type": "TemplateLiteral",
-                "start": 2082,
-                "end": 2730,
+                "start": 1993,
+                "end": 2622,
                 "loc": {
                   "start": {
-                    "line": 108,
+                    "line": 109,
                     "column": 40
                   },
                   "end": {
-                    "line": 145,
+                    "line": 147,
                     "column": 1
                   }
                 },
@@ -681,21 +681,21 @@
                 "quasis": [
                   {
                     "type": "TemplateElement",
-                    "start": 2083,
-                    "end": 2729,
+                    "start": 1994,
+                    "end": 2621,
                     "loc": {
                       "start": {
-                        "line": 108,
+                        "line": 109,
                         "column": 41
                       },
                       "end": {
-                        "line": 145,
+                        "line": 147,
                         "column": 0
                       }
                     },
                     "value": {
-                      "raw": "\n  mutation UpdateItem(\n    $input: UpdateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    updateItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
-                      "cooked": "\n  mutation UpdateItem(\n    $input: UpdateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    updateItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n"
+                      "raw": "\n  mutation UpdateItem(\n    $input: UpdateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    updateItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      weight_flag\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
+                      "cooked": "\n  mutation UpdateItem(\n    $input: UpdateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    updateItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      weight_flag\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n"
                     },
                     "tail": true,
                     "leadingComments": null
@@ -705,15 +705,15 @@
                   {
                     "type": "CommentBlock",
                     "value": " GraphQL ",
-                    "start": 2068,
-                    "end": 2081,
+                    "start": 1979,
+                    "end": 1992,
                     "loc": {
                       "start": {
-                        "line": 108,
+                        "line": 109,
                         "column": 26
                       },
                       "end": {
-                        "line": 108,
+                        "line": 109,
                         "column": 39
                       }
                     }
@@ -729,15 +729,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 2733,
-        "end": 3422,
+        "start": 2624,
+        "end": 3294,
         "loc": {
           "start": {
-            "line": 146,
+            "line": 148,
             "column": 0
           },
           "end": {
-            "line": 183,
+            "line": 186,
             "column": 2
           }
         },
@@ -745,44 +745,44 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 2740,
-          "end": 3422,
+          "start": 2631,
+          "end": 3294,
           "loc": {
             "start": {
-              "line": 146,
+              "line": 148,
               "column": 7
             },
             "end": {
-              "line": 183,
+              "line": 186,
               "column": 2
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 2746,
-              "end": 3421,
+              "start": 2637,
+              "end": 3293,
               "loc": {
                 "start": {
-                  "line": 146,
+                  "line": 148,
                   "column": 13
                 },
                 "end": {
-                  "line": 183,
+                  "line": 186,
                   "column": 1
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 2746,
-                "end": 2756,
+                "start": 2637,
+                "end": 2647,
                 "loc": {
                   "start": {
-                    "line": 146,
+                    "line": 148,
                     "column": 13
                   },
                   "end": {
-                    "line": 146,
+                    "line": 148,
                     "column": 23
                   },
                   "identifierName": "deleteItem"
@@ -791,15 +791,15 @@
               },
               "init": {
                 "type": "TemplateLiteral",
-                "start": 2773,
-                "end": 3421,
+                "start": 2664,
+                "end": 3293,
                 "loc": {
                   "start": {
-                    "line": 146,
+                    "line": 148,
                     "column": 40
                   },
                   "end": {
-                    "line": 183,
+                    "line": 186,
                     "column": 1
                   }
                 },
@@ -807,21 +807,21 @@
                 "quasis": [
                   {
                     "type": "TemplateElement",
-                    "start": 2774,
-                    "end": 3420,
+                    "start": 2665,
+                    "end": 3292,
                     "loc": {
                       "start": {
-                        "line": 146,
+                        "line": 148,
                         "column": 41
                       },
                       "end": {
-                        "line": 183,
+                        "line": 186,
                         "column": 0
                       }
                     },
                     "value": {
-                      "raw": "\n  mutation DeleteItem(\n    $input: DeleteItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    deleteItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
-                      "cooked": "\n  mutation DeleteItem(\n    $input: DeleteItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    deleteItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n"
+                      "raw": "\n  mutation DeleteItem(\n    $input: DeleteItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    deleteItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      weight_flag\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
+                      "cooked": "\n  mutation DeleteItem(\n    $input: DeleteItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    deleteItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      weight_flag\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n"
                     },
                     "tail": true,
                     "leadingComments": null
@@ -831,15 +831,15 @@
                   {
                     "type": "CommentBlock",
                     "value": " GraphQL ",
-                    "start": 2759,
-                    "end": 2772,
+                    "start": 2650,
+                    "end": 2663,
                     "loc": {
                       "start": {
-                        "line": 146,
+                        "line": 148,
                         "column": 26
                       },
                       "end": {
-                        "line": 146,
+                        "line": 148,
                         "column": 39
                       }
                     }
@@ -855,15 +855,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 3424,
-        "end": 3766,
+        "start": 3295,
+        "end": 3623,
         "loc": {
           "start": {
-            "line": 184,
+            "line": 187,
             "column": 0
           },
           "end": {
-            "line": 198,
+            "line": 201,
             "column": 2
           }
         },
@@ -871,44 +871,44 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 3431,
-          "end": 3766,
+          "start": 3302,
+          "end": 3623,
           "loc": {
             "start": {
-              "line": 184,
+              "line": 187,
               "column": 7
             },
             "end": {
-              "line": 198,
+              "line": 201,
               "column": 2
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 3437,
-              "end": 3765,
+              "start": 3308,
+              "end": 3622,
               "loc": {
                 "start": {
-                  "line": 184,
+                  "line": 187,
                   "column": 13
                 },
                 "end": {
-                  "line": 198,
+                  "line": 201,
                   "column": 1
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 3437,
-                "end": 3455,
+                "start": 3308,
+                "end": 3326,
                 "loc": {
                   "start": {
-                    "line": 184,
+                    "line": 187,
                     "column": 13
                   },
                   "end": {
-                    "line": 184,
+                    "line": 187,
                     "column": 31
                   },
                   "identifierName": "createShoppingList"
@@ -917,15 +917,15 @@
               },
               "init": {
                 "type": "TemplateLiteral",
-                "start": 3472,
-                "end": 3765,
+                "start": 3343,
+                "end": 3622,
                 "loc": {
                   "start": {
-                    "line": 184,
+                    "line": 187,
                     "column": 48
                   },
                   "end": {
-                    "line": 198,
+                    "line": 201,
                     "column": 1
                   }
                 },
@@ -933,15 +933,15 @@
                 "quasis": [
                   {
                     "type": "TemplateElement",
-                    "start": 3473,
-                    "end": 3764,
+                    "start": 3344,
+                    "end": 3621,
                     "loc": {
                       "start": {
-                        "line": 184,
+                        "line": 187,
                         "column": 49
                       },
                       "end": {
-                        "line": 198,
+                        "line": 201,
                         "column": 0
                       }
                     },
@@ -957,15 +957,15 @@
                   {
                     "type": "CommentBlock",
                     "value": " GraphQL ",
-                    "start": 3458,
-                    "end": 3471,
+                    "start": 3329,
+                    "end": 3342,
                     "loc": {
                       "start": {
-                        "line": 184,
+                        "line": 187,
                         "column": 34
                       },
                       "end": {
-                        "line": 184,
+                        "line": 187,
                         "column": 47
                       }
                     }
@@ -981,15 +981,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 3768,
-        "end": 4110,
+        "start": 3624,
+        "end": 3952,
         "loc": {
           "start": {
-            "line": 199,
+            "line": 202,
             "column": 0
           },
           "end": {
-            "line": 213,
+            "line": 216,
             "column": 2
           }
         },
@@ -997,44 +997,44 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 3775,
-          "end": 4110,
+          "start": 3631,
+          "end": 3952,
           "loc": {
             "start": {
-              "line": 199,
+              "line": 202,
               "column": 7
             },
             "end": {
-              "line": 213,
+              "line": 216,
               "column": 2
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 3781,
-              "end": 4109,
+              "start": 3637,
+              "end": 3951,
               "loc": {
                 "start": {
-                  "line": 199,
+                  "line": 202,
                   "column": 13
                 },
                 "end": {
-                  "line": 213,
+                  "line": 216,
                   "column": 1
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 3781,
-                "end": 3799,
+                "start": 3637,
+                "end": 3655,
                 "loc": {
                   "start": {
-                    "line": 199,
+                    "line": 202,
                     "column": 13
                   },
                   "end": {
-                    "line": 199,
+                    "line": 202,
                     "column": 31
                   },
                   "identifierName": "updateShoppingList"
@@ -1043,15 +1043,15 @@
               },
               "init": {
                 "type": "TemplateLiteral",
-                "start": 3816,
-                "end": 4109,
+                "start": 3672,
+                "end": 3951,
                 "loc": {
                   "start": {
-                    "line": 199,
+                    "line": 202,
                     "column": 48
                   },
                   "end": {
-                    "line": 213,
+                    "line": 216,
                     "column": 1
                   }
                 },
@@ -1059,15 +1059,15 @@
                 "quasis": [
                   {
                     "type": "TemplateElement",
-                    "start": 3817,
-                    "end": 4108,
+                    "start": 3673,
+                    "end": 3950,
                     "loc": {
                       "start": {
-                        "line": 199,
+                        "line": 202,
                         "column": 49
                       },
                       "end": {
-                        "line": 213,
+                        "line": 216,
                         "column": 0
                       }
                     },
@@ -1083,15 +1083,15 @@
                   {
                     "type": "CommentBlock",
                     "value": " GraphQL ",
-                    "start": 3802,
-                    "end": 3815,
+                    "start": 3658,
+                    "end": 3671,
                     "loc": {
                       "start": {
-                        "line": 199,
+                        "line": 202,
                         "column": 34
                       },
                       "end": {
-                        "line": 199,
+                        "line": 202,
                         "column": 47
                       }
                     }
@@ -1107,15 +1107,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 4112,
-        "end": 4454,
+        "start": 3953,
+        "end": 4281,
         "loc": {
           "start": {
-            "line": 214,
+            "line": 217,
             "column": 0
           },
           "end": {
-            "line": 228,
+            "line": 231,
             "column": 2
           }
         },
@@ -1123,44 +1123,44 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 4119,
-          "end": 4454,
+          "start": 3960,
+          "end": 4281,
           "loc": {
             "start": {
-              "line": 214,
+              "line": 217,
               "column": 7
             },
             "end": {
-              "line": 228,
+              "line": 231,
               "column": 2
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 4125,
-              "end": 4453,
+              "start": 3966,
+              "end": 4280,
               "loc": {
                 "start": {
-                  "line": 214,
+                  "line": 217,
                   "column": 13
                 },
                 "end": {
-                  "line": 228,
+                  "line": 231,
                   "column": 1
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 4125,
-                "end": 4143,
+                "start": 3966,
+                "end": 3984,
                 "loc": {
                   "start": {
-                    "line": 214,
+                    "line": 217,
                     "column": 13
                   },
                   "end": {
-                    "line": 214,
+                    "line": 217,
                     "column": 31
                   },
                   "identifierName": "deleteShoppingList"
@@ -1169,15 +1169,15 @@
               },
               "init": {
                 "type": "TemplateLiteral",
-                "start": 4160,
-                "end": 4453,
+                "start": 4001,
+                "end": 4280,
                 "loc": {
                   "start": {
-                    "line": 214,
+                    "line": 217,
                     "column": 48
                   },
                   "end": {
-                    "line": 228,
+                    "line": 231,
                     "column": 1
                   }
                 },
@@ -1185,15 +1185,15 @@
                 "quasis": [
                   {
                     "type": "TemplateElement",
-                    "start": 4161,
-                    "end": 4452,
+                    "start": 4002,
+                    "end": 4279,
                     "loc": {
                       "start": {
-                        "line": 214,
+                        "line": 217,
                         "column": 49
                       },
                       "end": {
-                        "line": 228,
+                        "line": 231,
                         "column": 0
                       }
                     },
@@ -1209,16 +1209,772 @@
                   {
                     "type": "CommentBlock",
                     "value": " GraphQL ",
-                    "start": 4146,
-                    "end": 4159,
+                    "start": 3987,
+                    "end": 4000,
                     "loc": {
                       "start": {
-                        "line": 214,
+                        "line": 217,
                         "column": 34
                       },
                       "end": {
-                        "line": 214,
+                        "line": 217,
                         "column": 47
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 4282,
+        "end": 4606,
+        "loc": {
+          "start": {
+            "line": 232,
+            "column": 0
+          },
+          "end": {
+            "line": 245,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 4289,
+          "end": 4606,
+          "loc": {
+            "start": {
+              "line": 232,
+              "column": 7
+            },
+            "end": {
+              "line": 245,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 4295,
+              "end": 4605,
+              "loc": {
+                "start": {
+                  "line": 232,
+                  "column": 13
+                },
+                "end": {
+                  "line": 245,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 4295,
+                "end": 4313,
+                "loc": {
+                  "start": {
+                    "line": 232,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 232,
+                    "column": 31
+                  },
+                  "identifierName": "createWeightBuffer"
+                },
+                "name": "createWeightBuffer"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 4330,
+                "end": 4605,
+                "loc": {
+                  "start": {
+                    "line": 232,
+                    "column": 48
+                  },
+                  "end": {
+                    "line": 245,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 4331,
+                    "end": 4604,
+                    "loc": {
+                      "start": {
+                        "line": 232,
+                        "column": 49
+                      },
+                      "end": {
+                        "line": 245,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  mutation CreateWeightBuffer(\n    $input: CreateWeightBufferInput!\n    $condition: ModelWeightBufferConditionInput\n  ) {\n    createWeightBuffer(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+                      "cooked": "\n  mutation CreateWeightBuffer(\n    $input: CreateWeightBufferInput!\n    $condition: ModelWeightBufferConditionInput\n  ) {\n    createWeightBuffer(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 4316,
+                    "end": 4329,
+                    "loc": {
+                      "start": {
+                        "line": 232,
+                        "column": 34
+                      },
+                      "end": {
+                        "line": 232,
+                        "column": 47
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 4607,
+        "end": 4931,
+        "loc": {
+          "start": {
+            "line": 246,
+            "column": 0
+          },
+          "end": {
+            "line": 259,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 4614,
+          "end": 4931,
+          "loc": {
+            "start": {
+              "line": 246,
+              "column": 7
+            },
+            "end": {
+              "line": 259,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 4620,
+              "end": 4930,
+              "loc": {
+                "start": {
+                  "line": 246,
+                  "column": 13
+                },
+                "end": {
+                  "line": 259,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 4620,
+                "end": 4638,
+                "loc": {
+                  "start": {
+                    "line": 246,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 246,
+                    "column": 31
+                  },
+                  "identifierName": "updateWeightBuffer"
+                },
+                "name": "updateWeightBuffer"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 4655,
+                "end": 4930,
+                "loc": {
+                  "start": {
+                    "line": 246,
+                    "column": 48
+                  },
+                  "end": {
+                    "line": 259,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 4656,
+                    "end": 4929,
+                    "loc": {
+                      "start": {
+                        "line": 246,
+                        "column": 49
+                      },
+                      "end": {
+                        "line": 259,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  mutation UpdateWeightBuffer(\n    $input: UpdateWeightBufferInput!\n    $condition: ModelWeightBufferConditionInput\n  ) {\n    updateWeightBuffer(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+                      "cooked": "\n  mutation UpdateWeightBuffer(\n    $input: UpdateWeightBufferInput!\n    $condition: ModelWeightBufferConditionInput\n  ) {\n    updateWeightBuffer(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 4641,
+                    "end": 4654,
+                    "loc": {
+                      "start": {
+                        "line": 246,
+                        "column": 34
+                      },
+                      "end": {
+                        "line": 246,
+                        "column": 47
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 4932,
+        "end": 5256,
+        "loc": {
+          "start": {
+            "line": 260,
+            "column": 0
+          },
+          "end": {
+            "line": 273,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 4939,
+          "end": 5256,
+          "loc": {
+            "start": {
+              "line": 260,
+              "column": 7
+            },
+            "end": {
+              "line": 273,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 4945,
+              "end": 5255,
+              "loc": {
+                "start": {
+                  "line": 260,
+                  "column": 13
+                },
+                "end": {
+                  "line": 273,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 4945,
+                "end": 4963,
+                "loc": {
+                  "start": {
+                    "line": 260,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 260,
+                    "column": 31
+                  },
+                  "identifierName": "deleteWeightBuffer"
+                },
+                "name": "deleteWeightBuffer"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 4980,
+                "end": 5255,
+                "loc": {
+                  "start": {
+                    "line": 260,
+                    "column": 48
+                  },
+                  "end": {
+                    "line": 273,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 4981,
+                    "end": 5254,
+                    "loc": {
+                      "start": {
+                        "line": 260,
+                        "column": 49
+                      },
+                      "end": {
+                        "line": 273,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  mutation DeleteWeightBuffer(\n    $input: DeleteWeightBufferInput!\n    $condition: ModelWeightBufferConditionInput\n  ) {\n    deleteWeightBuffer(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+                      "cooked": "\n  mutation DeleteWeightBuffer(\n    $input: DeleteWeightBufferInput!\n    $condition: ModelWeightBufferConditionInput\n  ) {\n    deleteWeightBuffer(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 4966,
+                    "end": 4979,
+                    "loc": {
+                      "start": {
+                        "line": 260,
+                        "column": 34
+                      },
+                      "end": {
+                        "line": 260,
+                        "column": 47
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 5257,
+        "end": 5566,
+        "loc": {
+          "start": {
+            "line": 274,
+            "column": 0
+          },
+          "end": {
+            "line": 287,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 5264,
+          "end": 5566,
+          "loc": {
+            "start": {
+              "line": 274,
+              "column": 7
+            },
+            "end": {
+              "line": 287,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 5270,
+              "end": 5565,
+              "loc": {
+                "start": {
+                  "line": 274,
+                  "column": 13
+                },
+                "end": {
+                  "line": 287,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 5270,
+                "end": 5285,
+                "loc": {
+                  "start": {
+                    "line": 274,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 274,
+                    "column": 28
+                  },
+                  "identifierName": "createNewWeight"
+                },
+                "name": "createNewWeight"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 5302,
+                "end": 5565,
+                "loc": {
+                  "start": {
+                    "line": 274,
+                    "column": 45
+                  },
+                  "end": {
+                    "line": 287,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 5303,
+                    "end": 5564,
+                    "loc": {
+                      "start": {
+                        "line": 274,
+                        "column": 46
+                      },
+                      "end": {
+                        "line": 287,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  mutation CreateNewWeight(\n    $input: CreateNewWeightInput!\n    $condition: ModelNewWeightConditionInput\n  ) {\n    createNewWeight(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+                      "cooked": "\n  mutation CreateNewWeight(\n    $input: CreateNewWeightInput!\n    $condition: ModelNewWeightConditionInput\n  ) {\n    createNewWeight(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 5288,
+                    "end": 5301,
+                    "loc": {
+                      "start": {
+                        "line": 274,
+                        "column": 31
+                      },
+                      "end": {
+                        "line": 274,
+                        "column": 44
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 5567,
+        "end": 5876,
+        "loc": {
+          "start": {
+            "line": 288,
+            "column": 0
+          },
+          "end": {
+            "line": 301,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 5574,
+          "end": 5876,
+          "loc": {
+            "start": {
+              "line": 288,
+              "column": 7
+            },
+            "end": {
+              "line": 301,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 5580,
+              "end": 5875,
+              "loc": {
+                "start": {
+                  "line": 288,
+                  "column": 13
+                },
+                "end": {
+                  "line": 301,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 5580,
+                "end": 5595,
+                "loc": {
+                  "start": {
+                    "line": 288,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 288,
+                    "column": 28
+                  },
+                  "identifierName": "updateNewWeight"
+                },
+                "name": "updateNewWeight"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 5612,
+                "end": 5875,
+                "loc": {
+                  "start": {
+                    "line": 288,
+                    "column": 45
+                  },
+                  "end": {
+                    "line": 301,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 5613,
+                    "end": 5874,
+                    "loc": {
+                      "start": {
+                        "line": 288,
+                        "column": 46
+                      },
+                      "end": {
+                        "line": 301,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  mutation UpdateNewWeight(\n    $input: UpdateNewWeightInput!\n    $condition: ModelNewWeightConditionInput\n  ) {\n    updateNewWeight(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+                      "cooked": "\n  mutation UpdateNewWeight(\n    $input: UpdateNewWeightInput!\n    $condition: ModelNewWeightConditionInput\n  ) {\n    updateNewWeight(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 5598,
+                    "end": 5611,
+                    "loc": {
+                      "start": {
+                        "line": 288,
+                        "column": 31
+                      },
+                      "end": {
+                        "line": 288,
+                        "column": 44
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 5877,
+        "end": 6186,
+        "loc": {
+          "start": {
+            "line": 302,
+            "column": 0
+          },
+          "end": {
+            "line": 315,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 5884,
+          "end": 6186,
+          "loc": {
+            "start": {
+              "line": 302,
+              "column": 7
+            },
+            "end": {
+              "line": 315,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 5890,
+              "end": 6185,
+              "loc": {
+                "start": {
+                  "line": 302,
+                  "column": 13
+                },
+                "end": {
+                  "line": 315,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 5890,
+                "end": 5905,
+                "loc": {
+                  "start": {
+                    "line": 302,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 302,
+                    "column": 28
+                  },
+                  "identifierName": "deleteNewWeight"
+                },
+                "name": "deleteNewWeight"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 5922,
+                "end": 6185,
+                "loc": {
+                  "start": {
+                    "line": 302,
+                    "column": 45
+                  },
+                  "end": {
+                    "line": 315,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 5923,
+                    "end": 6184,
+                    "loc": {
+                      "start": {
+                        "line": 302,
+                        "column": 46
+                      },
+                      "end": {
+                        "line": 315,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  mutation DeleteNewWeight(\n    $input: DeleteNewWeightInput!\n    $condition: ModelNewWeightConditionInput\n  ) {\n    deleteNewWeight(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+                      "cooked": "\n  mutation DeleteNewWeight(\n    $input: DeleteNewWeightInput!\n    $condition: ModelNewWeightConditionInput\n  ) {\n    deleteNewWeight(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 5908,
+                    "end": 5921,
+                    "loc": {
+                      "start": {
+                        "line": 302,
+                        "column": 31
+                      },
+                      "end": {
+                        "line": 302,
+                        "column": 44
                       }
                     }
                   }
@@ -1254,8 +2010,8 @@
     {
       "type": "CommentLine",
       "value": " this is an auto generated file. This will be overwritten",
-      "start": 22,
-      "end": 81,
+      "start": 21,
+      "end": 80,
       "loc": {
         "start": {
           "line": 2,
@@ -1270,8 +2026,8 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 113,
-      "end": 126,
+      "start": 110,
+      "end": 123,
       "loc": {
         "start": {
           "line": 4,
@@ -1286,8 +2042,8 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 535,
-      "end": 548,
+      "start": 510,
+      "end": 523,
       "loc": {
         "start": {
           "line": 26,
@@ -1302,8 +2058,8 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 957,
-      "end": 970,
+      "start": 910,
+      "end": 923,
       "loc": {
         "start": {
           "line": 48,
@@ -1318,8 +2074,8 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 1377,
-      "end": 1390,
+      "start": 1308,
+      "end": 1321,
       "loc": {
         "start": {
           "line": 70,
@@ -1334,15 +2090,15 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 2068,
-      "end": 2081,
+      "start": 1979,
+      "end": 1992,
       "loc": {
         "start": {
-          "line": 108,
+          "line": 109,
           "column": 26
         },
         "end": {
-          "line": 108,
+          "line": 109,
           "column": 39
         }
       }
@@ -1350,15 +2106,15 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 2759,
-      "end": 2772,
+      "start": 2650,
+      "end": 2663,
       "loc": {
         "start": {
-          "line": 146,
+          "line": 148,
           "column": 26
         },
         "end": {
-          "line": 146,
+          "line": 148,
           "column": 39
         }
       }
@@ -1366,15 +2122,15 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 3458,
-      "end": 3471,
+      "start": 3329,
+      "end": 3342,
       "loc": {
         "start": {
-          "line": 184,
+          "line": 187,
           "column": 34
         },
         "end": {
-          "line": 184,
+          "line": 187,
           "column": 47
         }
       }
@@ -1382,15 +2138,15 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 3802,
-      "end": 3815,
+      "start": 3658,
+      "end": 3671,
       "loc": {
         "start": {
-          "line": 199,
+          "line": 202,
           "column": 34
         },
         "end": {
-          "line": 199,
+          "line": 202,
           "column": 47
         }
       }
@@ -1398,16 +2154,112 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 4146,
-      "end": 4159,
+      "start": 3987,
+      "end": 4000,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 217,
           "column": 34
         },
         "end": {
-          "line": 214,
+          "line": 217,
           "column": 47
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 4316,
+      "end": 4329,
+      "loc": {
+        "start": {
+          "line": 232,
+          "column": 34
+        },
+        "end": {
+          "line": 232,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 4641,
+      "end": 4654,
+      "loc": {
+        "start": {
+          "line": 246,
+          "column": 34
+        },
+        "end": {
+          "line": 246,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 4966,
+      "end": 4979,
+      "loc": {
+        "start": {
+          "line": 260,
+          "column": 34
+        },
+        "end": {
+          "line": 260,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5288,
+      "end": 5301,
+      "loc": {
+        "start": {
+          "line": 274,
+          "column": 31
+        },
+        "end": {
+          "line": 274,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5598,
+      "end": 5611,
+      "loc": {
+        "start": {
+          "line": 288,
+          "column": 31
+        },
+        "end": {
+          "line": 288,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5908,
+      "end": 5921,
+      "loc": {
+        "start": {
+          "line": 302,
+          "column": 31
+        },
+        "end": {
+          "line": 302,
+          "column": 44
         }
       }
     }
@@ -1432,8 +2284,8 @@
     {
       "type": "CommentLine",
       "value": " this is an auto generated file. This will be overwritten",
-      "start": 22,
-      "end": 81,
+      "start": 21,
+      "end": 80,
       "loc": {
         "start": {
           "line": 2,
@@ -1460,8 +2312,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 85,
-      "end": 91,
+      "start": 82,
+      "end": 88,
       "loc": {
         "start": {
           "line": 4,
@@ -1488,8 +2340,8 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 92,
-      "end": 97,
+      "start": 89,
+      "end": 94,
       "loc": {
         "start": {
           "line": 4,
@@ -1514,8 +2366,8 @@
         "binop": null
       },
       "value": "createPantry",
-      "start": 98,
-      "end": 110,
+      "start": 95,
+      "end": 107,
       "loc": {
         "start": {
           "line": 4,
@@ -1541,8 +2393,8 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 111,
-      "end": 112,
+      "start": 108,
+      "end": 109,
       "loc": {
         "start": {
           "line": 4,
@@ -1557,8 +2409,8 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 113,
-      "end": 126,
+      "start": 110,
+      "end": 123,
       "loc": {
         "start": {
           "line": 4,
@@ -1582,8 +2434,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 127,
-      "end": 128,
+      "start": 124,
+      "end": 125,
       "loc": {
         "start": {
           "line": 4,
@@ -1609,8 +2461,8 @@
         "updateContext": null
       },
       "value": "\n  mutation CreatePantry(\n    $input: CreatePantryInput!\n    $condition: ModelPantryConditionInput\n  ) {\n    createPantry(input: $input, condition: $condition) {\n      id\n      name\n      owner\n      items {\n        nextToken\n      }\n      notiffreq\n      collabId\n      notifPending\n      notifTime\n      email\n      createdAt\n      updatedAt\n    }\n  }\n",
-      "start": 128,
-      "end": 503,
+      "start": 125,
+      "end": 479,
       "loc": {
         "start": {
           "line": 4,
@@ -1634,8 +2486,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 503,
-      "end": 504,
+      "start": 479,
+      "end": 480,
       "loc": {
         "start": {
           "line": 25,
@@ -1660,8 +2512,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 504,
-      "end": 505,
+      "start": 480,
+      "end": 481,
       "loc": {
         "start": {
           "line": 25,
@@ -1688,8 +2540,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 507,
-      "end": 513,
+      "start": 482,
+      "end": 488,
       "loc": {
         "start": {
           "line": 26,
@@ -1716,8 +2568,8 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 514,
-      "end": 519,
+      "start": 489,
+      "end": 494,
       "loc": {
         "start": {
           "line": 26,
@@ -1742,8 +2594,8 @@
         "binop": null
       },
       "value": "updatePantry",
-      "start": 520,
-      "end": 532,
+      "start": 495,
+      "end": 507,
       "loc": {
         "start": {
           "line": 26,
@@ -1769,8 +2621,8 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 533,
-      "end": 534,
+      "start": 508,
+      "end": 509,
       "loc": {
         "start": {
           "line": 26,
@@ -1785,8 +2637,8 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 535,
-      "end": 548,
+      "start": 510,
+      "end": 523,
       "loc": {
         "start": {
           "line": 26,
@@ -1810,8 +2662,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 549,
-      "end": 550,
+      "start": 524,
+      "end": 525,
       "loc": {
         "start": {
           "line": 26,
@@ -1837,8 +2689,8 @@
         "updateContext": null
       },
       "value": "\n  mutation UpdatePantry(\n    $input: UpdatePantryInput!\n    $condition: ModelPantryConditionInput\n  ) {\n    updatePantry(input: $input, condition: $condition) {\n      id\n      name\n      owner\n      items {\n        nextToken\n      }\n      notiffreq\n      collabId\n      notifPending\n      notifTime\n      email\n      createdAt\n      updatedAt\n    }\n  }\n",
-      "start": 550,
-      "end": 925,
+      "start": 525,
+      "end": 879,
       "loc": {
         "start": {
           "line": 26,
@@ -1862,8 +2714,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 925,
-      "end": 926,
+      "start": 879,
+      "end": 880,
       "loc": {
         "start": {
           "line": 47,
@@ -1888,8 +2740,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 926,
-      "end": 927,
+      "start": 880,
+      "end": 881,
       "loc": {
         "start": {
           "line": 47,
@@ -1916,8 +2768,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 929,
-      "end": 935,
+      "start": 882,
+      "end": 888,
       "loc": {
         "start": {
           "line": 48,
@@ -1944,8 +2796,8 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 936,
-      "end": 941,
+      "start": 889,
+      "end": 894,
       "loc": {
         "start": {
           "line": 48,
@@ -1970,8 +2822,8 @@
         "binop": null
       },
       "value": "deletePantry",
-      "start": 942,
-      "end": 954,
+      "start": 895,
+      "end": 907,
       "loc": {
         "start": {
           "line": 48,
@@ -1997,8 +2849,8 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 955,
-      "end": 956,
+      "start": 908,
+      "end": 909,
       "loc": {
         "start": {
           "line": 48,
@@ -2013,8 +2865,8 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 957,
-      "end": 970,
+      "start": 910,
+      "end": 923,
       "loc": {
         "start": {
           "line": 48,
@@ -2038,8 +2890,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 971,
-      "end": 972,
+      "start": 924,
+      "end": 925,
       "loc": {
         "start": {
           "line": 48,
@@ -2065,8 +2917,8 @@
         "updateContext": null
       },
       "value": "\n  mutation DeletePantry(\n    $input: DeletePantryInput!\n    $condition: ModelPantryConditionInput\n  ) {\n    deletePantry(input: $input, condition: $condition) {\n      id\n      name\n      owner\n      items {\n        nextToken\n      }\n      notiffreq\n      collabId\n      notifPending\n      notifTime\n      email\n      createdAt\n      updatedAt\n    }\n  }\n",
-      "start": 972,
-      "end": 1347,
+      "start": 925,
+      "end": 1279,
       "loc": {
         "start": {
           "line": 48,
@@ -2090,8 +2942,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1347,
-      "end": 1348,
+      "start": 1279,
+      "end": 1280,
       "loc": {
         "start": {
           "line": 69,
@@ -2116,8 +2968,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1348,
-      "end": 1349,
+      "start": 1280,
+      "end": 1281,
       "loc": {
         "start": {
           "line": 69,
@@ -2144,8 +2996,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 1351,
-      "end": 1357,
+      "start": 1282,
+      "end": 1288,
       "loc": {
         "start": {
           "line": 70,
@@ -2172,8 +3024,8 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 1358,
-      "end": 1363,
+      "start": 1289,
+      "end": 1294,
       "loc": {
         "start": {
           "line": 70,
@@ -2198,8 +3050,8 @@
         "binop": null
       },
       "value": "createItem",
-      "start": 1364,
-      "end": 1374,
+      "start": 1295,
+      "end": 1305,
       "loc": {
         "start": {
           "line": 70,
@@ -2225,8 +3077,8 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 1375,
-      "end": 1376,
+      "start": 1306,
+      "end": 1307,
       "loc": {
         "start": {
           "line": 70,
@@ -2241,8 +3093,8 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 1377,
-      "end": 1390,
+      "start": 1308,
+      "end": 1321,
       "loc": {
         "start": {
           "line": 70,
@@ -2266,8 +3118,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1391,
-      "end": 1392,
+      "start": 1322,
+      "end": 1323,
       "loc": {
         "start": {
           "line": 70,
@@ -2292,16 +3144,16 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "\n  mutation CreateItem(\n    $input: CreateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    createItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
-      "start": 1392,
-      "end": 2038,
+      "value": "\n  mutation CreateItem(\n    $input: CreateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    createItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      weight_flag\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
+      "start": 1323,
+      "end": 1950,
       "loc": {
         "start": {
           "line": 70,
           "column": 41
         },
         "end": {
-          "line": 107,
+          "line": 108,
           "column": 0
         }
       }
@@ -2318,15 +3170,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2038,
-      "end": 2039,
+      "start": 1950,
+      "end": 1951,
       "loc": {
         "start": {
-          "line": 107,
+          "line": 108,
           "column": 0
         },
         "end": {
-          "line": 107,
+          "line": 108,
           "column": 1
         }
       }
@@ -2344,15 +3196,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 2039,
-      "end": 2040,
+      "start": 1951,
+      "end": 1952,
       "loc": {
         "start": {
-          "line": 107,
+          "line": 108,
           "column": 1
         },
         "end": {
-          "line": 107,
+          "line": 108,
           "column": 2
         }
       }
@@ -2372,15 +3224,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 2042,
-      "end": 2048,
+      "start": 1953,
+      "end": 1959,
       "loc": {
         "start": {
-          "line": 108,
+          "line": 109,
           "column": 0
         },
         "end": {
-          "line": 108,
+          "line": 109,
           "column": 6
         }
       }
@@ -2400,15 +3252,15 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 2049,
-      "end": 2054,
+      "start": 1960,
+      "end": 1965,
       "loc": {
         "start": {
-          "line": 108,
+          "line": 109,
           "column": 7
         },
         "end": {
-          "line": 108,
+          "line": 109,
           "column": 12
         }
       }
@@ -2426,15 +3278,15 @@
         "binop": null
       },
       "value": "updateItem",
-      "start": 2055,
-      "end": 2065,
+      "start": 1966,
+      "end": 1976,
       "loc": {
         "start": {
-          "line": 108,
+          "line": 109,
           "column": 13
         },
         "end": {
-          "line": 108,
+          "line": 109,
           "column": 23
         }
       }
@@ -2453,15 +3305,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 2066,
-      "end": 2067,
+      "start": 1977,
+      "end": 1978,
       "loc": {
         "start": {
-          "line": 108,
+          "line": 109,
           "column": 24
         },
         "end": {
-          "line": 108,
+          "line": 109,
           "column": 25
         }
       }
@@ -2469,15 +3321,15 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 2068,
-      "end": 2081,
+      "start": 1979,
+      "end": 1992,
       "loc": {
         "start": {
-          "line": 108,
+          "line": 109,
           "column": 26
         },
         "end": {
-          "line": 108,
+          "line": 109,
           "column": 39
         }
       }
@@ -2494,15 +3346,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2082,
-      "end": 2083,
+      "start": 1993,
+      "end": 1994,
       "loc": {
         "start": {
-          "line": 108,
+          "line": 109,
           "column": 40
         },
         "end": {
-          "line": 108,
+          "line": 109,
           "column": 41
         }
       }
@@ -2520,16 +3372,16 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "\n  mutation UpdateItem(\n    $input: UpdateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    updateItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
-      "start": 2083,
-      "end": 2729,
+      "value": "\n  mutation UpdateItem(\n    $input: UpdateItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    updateItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      weight_flag\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
+      "start": 1994,
+      "end": 2621,
       "loc": {
         "start": {
-          "line": 108,
+          "line": 109,
           "column": 41
         },
         "end": {
-          "line": 145,
+          "line": 147,
           "column": 0
         }
       }
@@ -2546,15 +3398,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2729,
-      "end": 2730,
+      "start": 2621,
+      "end": 2622,
       "loc": {
         "start": {
-          "line": 145,
+          "line": 147,
           "column": 0
         },
         "end": {
-          "line": 145,
+          "line": 147,
           "column": 1
         }
       }
@@ -2572,15 +3424,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 2730,
-      "end": 2731,
+      "start": 2622,
+      "end": 2623,
       "loc": {
         "start": {
-          "line": 145,
+          "line": 147,
           "column": 1
         },
         "end": {
-          "line": 145,
+          "line": 147,
           "column": 2
         }
       }
@@ -2600,15 +3452,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 2733,
-      "end": 2739,
+      "start": 2624,
+      "end": 2630,
       "loc": {
         "start": {
-          "line": 146,
+          "line": 148,
           "column": 0
         },
         "end": {
-          "line": 146,
+          "line": 148,
           "column": 6
         }
       }
@@ -2628,15 +3480,15 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 2740,
-      "end": 2745,
+      "start": 2631,
+      "end": 2636,
       "loc": {
         "start": {
-          "line": 146,
+          "line": 148,
           "column": 7
         },
         "end": {
-          "line": 146,
+          "line": 148,
           "column": 12
         }
       }
@@ -2654,15 +3506,15 @@
         "binop": null
       },
       "value": "deleteItem",
-      "start": 2746,
-      "end": 2756,
+      "start": 2637,
+      "end": 2647,
       "loc": {
         "start": {
-          "line": 146,
+          "line": 148,
           "column": 13
         },
         "end": {
-          "line": 146,
+          "line": 148,
           "column": 23
         }
       }
@@ -2681,15 +3533,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 2757,
-      "end": 2758,
+      "start": 2648,
+      "end": 2649,
       "loc": {
         "start": {
-          "line": 146,
+          "line": 148,
           "column": 24
         },
         "end": {
-          "line": 146,
+          "line": 148,
           "column": 25
         }
       }
@@ -2697,15 +3549,15 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 2759,
-      "end": 2772,
+      "start": 2650,
+      "end": 2663,
       "loc": {
         "start": {
-          "line": 146,
+          "line": 148,
           "column": 26
         },
         "end": {
-          "line": 146,
+          "line": 148,
           "column": 39
         }
       }
@@ -2722,15 +3574,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 2773,
-      "end": 2774,
+      "start": 2664,
+      "end": 2665,
       "loc": {
         "start": {
-          "line": 146,
+          "line": 148,
           "column": 40
         },
         "end": {
-          "line": 146,
+          "line": 148,
           "column": 41
         }
       }
@@ -2748,16 +3600,16 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "\n  mutation DeleteItem(\n    $input: DeleteItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    deleteItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
-      "start": 2774,
-      "end": 3420,
+      "value": "\n  mutation DeleteItem(\n    $input: DeleteItemInput!\n    $condition: ModelItemConditionInput\n  ) {\n    deleteItem(input: $input, condition: $condition) {\n      id\n      name\n      pantry {\n        id\n        name\n        owner\n        notiffreq\n        collabId\n        notifPending\n        notifTime\n        email\n        createdAt\n        updatedAt\n      }\n      list {\n        id\n        createdAt\n        updatedAt\n      }\n      imagePath\n      weight\n      currWeight\n      quantity\n      origQuantity\n      expDate\n      weight_flag\n      createdAt\n      updatedAt\n      pantryItemsId\n      shoppingListItemsId\n    }\n  }\n",
+      "start": 2665,
+      "end": 3292,
       "loc": {
         "start": {
-          "line": 146,
+          "line": 148,
           "column": 41
         },
         "end": {
-          "line": 183,
+          "line": 186,
           "column": 0
         }
       }
@@ -2774,15 +3626,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3420,
-      "end": 3421,
+      "start": 3292,
+      "end": 3293,
       "loc": {
         "start": {
-          "line": 183,
+          "line": 186,
           "column": 0
         },
         "end": {
-          "line": 183,
+          "line": 186,
           "column": 1
         }
       }
@@ -2800,15 +3652,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3421,
-      "end": 3422,
+      "start": 3293,
+      "end": 3294,
       "loc": {
         "start": {
-          "line": 183,
+          "line": 186,
           "column": 1
         },
         "end": {
-          "line": 183,
+          "line": 186,
           "column": 2
         }
       }
@@ -2828,15 +3680,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 3424,
-      "end": 3430,
+      "start": 3295,
+      "end": 3301,
       "loc": {
         "start": {
-          "line": 184,
+          "line": 187,
           "column": 0
         },
         "end": {
-          "line": 184,
+          "line": 187,
           "column": 6
         }
       }
@@ -2856,15 +3708,15 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 3431,
-      "end": 3436,
+      "start": 3302,
+      "end": 3307,
       "loc": {
         "start": {
-          "line": 184,
+          "line": 187,
           "column": 7
         },
         "end": {
-          "line": 184,
+          "line": 187,
           "column": 12
         }
       }
@@ -2882,15 +3734,15 @@
         "binop": null
       },
       "value": "createShoppingList",
-      "start": 3437,
-      "end": 3455,
+      "start": 3308,
+      "end": 3326,
       "loc": {
         "start": {
-          "line": 184,
+          "line": 187,
           "column": 13
         },
         "end": {
-          "line": 184,
+          "line": 187,
           "column": 31
         }
       }
@@ -2909,15 +3761,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 3456,
-      "end": 3457,
+      "start": 3327,
+      "end": 3328,
       "loc": {
         "start": {
-          "line": 184,
+          "line": 187,
           "column": 32
         },
         "end": {
-          "line": 184,
+          "line": 187,
           "column": 33
         }
       }
@@ -2925,15 +3777,15 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 3458,
-      "end": 3471,
+      "start": 3329,
+      "end": 3342,
       "loc": {
         "start": {
-          "line": 184,
+          "line": 187,
           "column": 34
         },
         "end": {
-          "line": 184,
+          "line": 187,
           "column": 47
         }
       }
@@ -2950,15 +3802,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3472,
-      "end": 3473,
+      "start": 3343,
+      "end": 3344,
       "loc": {
         "start": {
-          "line": 184,
+          "line": 187,
           "column": 48
         },
         "end": {
-          "line": 184,
+          "line": 187,
           "column": 49
         }
       }
@@ -2977,15 +3829,15 @@
         "updateContext": null
       },
       "value": "\n  mutation CreateShoppingList(\n    $input: CreateShoppingListInput!\n    $condition: ModelShoppingListConditionInput\n  ) {\n    createShoppingList(input: $input, condition: $condition) {\n      id\n      items {\n        nextToken\n      }\n      createdAt\n      updatedAt\n    }\n  }\n",
-      "start": 3473,
-      "end": 3764,
+      "start": 3344,
+      "end": 3621,
       "loc": {
         "start": {
-          "line": 184,
+          "line": 187,
           "column": 49
         },
         "end": {
-          "line": 198,
+          "line": 201,
           "column": 0
         }
       }
@@ -3002,15 +3854,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3764,
-      "end": 3765,
+      "start": 3621,
+      "end": 3622,
       "loc": {
         "start": {
-          "line": 198,
+          "line": 201,
           "column": 0
         },
         "end": {
-          "line": 198,
+          "line": 201,
           "column": 1
         }
       }
@@ -3028,15 +3880,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3765,
-      "end": 3766,
+      "start": 3622,
+      "end": 3623,
       "loc": {
         "start": {
-          "line": 198,
+          "line": 201,
           "column": 1
         },
         "end": {
-          "line": 198,
+          "line": 201,
           "column": 2
         }
       }
@@ -3056,15 +3908,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 3768,
-      "end": 3774,
+      "start": 3624,
+      "end": 3630,
       "loc": {
         "start": {
-          "line": 199,
+          "line": 202,
           "column": 0
         },
         "end": {
-          "line": 199,
+          "line": 202,
           "column": 6
         }
       }
@@ -3084,15 +3936,15 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 3775,
-      "end": 3780,
+      "start": 3631,
+      "end": 3636,
       "loc": {
         "start": {
-          "line": 199,
+          "line": 202,
           "column": 7
         },
         "end": {
-          "line": 199,
+          "line": 202,
           "column": 12
         }
       }
@@ -3110,15 +3962,15 @@
         "binop": null
       },
       "value": "updateShoppingList",
-      "start": 3781,
-      "end": 3799,
+      "start": 3637,
+      "end": 3655,
       "loc": {
         "start": {
-          "line": 199,
+          "line": 202,
           "column": 13
         },
         "end": {
-          "line": 199,
+          "line": 202,
           "column": 31
         }
       }
@@ -3137,15 +3989,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 3800,
-      "end": 3801,
+      "start": 3656,
+      "end": 3657,
       "loc": {
         "start": {
-          "line": 199,
+          "line": 202,
           "column": 32
         },
         "end": {
-          "line": 199,
+          "line": 202,
           "column": 33
         }
       }
@@ -3153,15 +4005,15 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 3802,
-      "end": 3815,
+      "start": 3658,
+      "end": 3671,
       "loc": {
         "start": {
-          "line": 199,
+          "line": 202,
           "column": 34
         },
         "end": {
-          "line": 199,
+          "line": 202,
           "column": 47
         }
       }
@@ -3178,15 +4030,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 3816,
-      "end": 3817,
+      "start": 3672,
+      "end": 3673,
       "loc": {
         "start": {
-          "line": 199,
+          "line": 202,
           "column": 48
         },
         "end": {
-          "line": 199,
+          "line": 202,
           "column": 49
         }
       }
@@ -3205,15 +4057,15 @@
         "updateContext": null
       },
       "value": "\n  mutation UpdateShoppingList(\n    $input: UpdateShoppingListInput!\n    $condition: ModelShoppingListConditionInput\n  ) {\n    updateShoppingList(input: $input, condition: $condition) {\n      id\n      items {\n        nextToken\n      }\n      createdAt\n      updatedAt\n    }\n  }\n",
-      "start": 3817,
-      "end": 4108,
+      "start": 3673,
+      "end": 3950,
       "loc": {
         "start": {
-          "line": 199,
+          "line": 202,
           "column": 49
         },
         "end": {
-          "line": 213,
+          "line": 216,
           "column": 0
         }
       }
@@ -3230,15 +4082,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 4108,
-      "end": 4109,
+      "start": 3950,
+      "end": 3951,
       "loc": {
         "start": {
-          "line": 213,
+          "line": 216,
           "column": 0
         },
         "end": {
-          "line": 213,
+          "line": 216,
           "column": 1
         }
       }
@@ -3256,15 +4108,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 4109,
-      "end": 4110,
+      "start": 3951,
+      "end": 3952,
       "loc": {
         "start": {
-          "line": 213,
+          "line": 216,
           "column": 1
         },
         "end": {
-          "line": 213,
+          "line": 216,
           "column": 2
         }
       }
@@ -3284,15 +4136,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 4112,
-      "end": 4118,
+      "start": 3953,
+      "end": 3959,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 217,
           "column": 0
         },
         "end": {
-          "line": 214,
+          "line": 217,
           "column": 6
         }
       }
@@ -3312,15 +4164,15 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 4119,
-      "end": 4124,
+      "start": 3960,
+      "end": 3965,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 217,
           "column": 7
         },
         "end": {
-          "line": 214,
+          "line": 217,
           "column": 12
         }
       }
@@ -3338,15 +4190,15 @@
         "binop": null
       },
       "value": "deleteShoppingList",
-      "start": 4125,
-      "end": 4143,
+      "start": 3966,
+      "end": 3984,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 217,
           "column": 13
         },
         "end": {
-          "line": 214,
+          "line": 217,
           "column": 31
         }
       }
@@ -3365,15 +4217,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 4144,
-      "end": 4145,
+      "start": 3985,
+      "end": 3986,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 217,
           "column": 32
         },
         "end": {
-          "line": 214,
+          "line": 217,
           "column": 33
         }
       }
@@ -3381,15 +4233,15 @@
     {
       "type": "CommentBlock",
       "value": " GraphQL ",
-      "start": 4146,
-      "end": 4159,
+      "start": 3987,
+      "end": 4000,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 217,
           "column": 34
         },
         "end": {
-          "line": 214,
+          "line": 217,
           "column": 47
         }
       }
@@ -3406,15 +4258,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 4160,
-      "end": 4161,
+      "start": 4001,
+      "end": 4002,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 217,
           "column": 48
         },
         "end": {
-          "line": 214,
+          "line": 217,
           "column": 49
         }
       }
@@ -3433,15 +4285,15 @@
         "updateContext": null
       },
       "value": "\n  mutation DeleteShoppingList(\n    $input: DeleteShoppingListInput!\n    $condition: ModelShoppingListConditionInput\n  ) {\n    deleteShoppingList(input: $input, condition: $condition) {\n      id\n      items {\n        nextToken\n      }\n      createdAt\n      updatedAt\n    }\n  }\n",
-      "start": 4161,
-      "end": 4452,
+      "start": 4002,
+      "end": 4279,
       "loc": {
         "start": {
-          "line": 214,
+          "line": 217,
           "column": 49
         },
         "end": {
-          "line": 228,
+          "line": 231,
           "column": 0
         }
       }
@@ -3458,15 +4310,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 4452,
-      "end": 4453,
+      "start": 4279,
+      "end": 4280,
       "loc": {
         "start": {
-          "line": 228,
+          "line": 231,
           "column": 0
         },
         "end": {
-          "line": 228,
+          "line": 231,
           "column": 1
         }
       }
@@ -3484,15 +4336,1383 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 4453,
-      "end": 4454,
+      "start": 4280,
+      "end": 4281,
       "loc": {
         "start": {
-          "line": 228,
+          "line": 231,
           "column": 1
         },
         "end": {
-          "line": 228,
+          "line": 231,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 4282,
+      "end": 4288,
+      "loc": {
+        "start": {
+          "line": 232,
+          "column": 0
+        },
+        "end": {
+          "line": 232,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 4289,
+      "end": 4294,
+      "loc": {
+        "start": {
+          "line": 232,
+          "column": 7
+        },
+        "end": {
+          "line": 232,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "createWeightBuffer",
+      "start": 4295,
+      "end": 4313,
+      "loc": {
+        "start": {
+          "line": 232,
+          "column": 13
+        },
+        "end": {
+          "line": 232,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 4314,
+      "end": 4315,
+      "loc": {
+        "start": {
+          "line": 232,
+          "column": 32
+        },
+        "end": {
+          "line": 232,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 4316,
+      "end": 4329,
+      "loc": {
+        "start": {
+          "line": 232,
+          "column": 34
+        },
+        "end": {
+          "line": 232,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 4330,
+      "end": 4331,
+      "loc": {
+        "start": {
+          "line": 232,
+          "column": 48
+        },
+        "end": {
+          "line": 232,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  mutation CreateWeightBuffer(\n    $input: CreateWeightBufferInput!\n    $condition: ModelWeightBufferConditionInput\n  ) {\n    createWeightBuffer(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+      "start": 4331,
+      "end": 4604,
+      "loc": {
+        "start": {
+          "line": 232,
+          "column": 49
+        },
+        "end": {
+          "line": 245,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 4604,
+      "end": 4605,
+      "loc": {
+        "start": {
+          "line": 245,
+          "column": 0
+        },
+        "end": {
+          "line": 245,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4605,
+      "end": 4606,
+      "loc": {
+        "start": {
+          "line": 245,
+          "column": 1
+        },
+        "end": {
+          "line": 245,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 4607,
+      "end": 4613,
+      "loc": {
+        "start": {
+          "line": 246,
+          "column": 0
+        },
+        "end": {
+          "line": 246,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 4614,
+      "end": 4619,
+      "loc": {
+        "start": {
+          "line": 246,
+          "column": 7
+        },
+        "end": {
+          "line": 246,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "updateWeightBuffer",
+      "start": 4620,
+      "end": 4638,
+      "loc": {
+        "start": {
+          "line": 246,
+          "column": 13
+        },
+        "end": {
+          "line": 246,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 4639,
+      "end": 4640,
+      "loc": {
+        "start": {
+          "line": 246,
+          "column": 32
+        },
+        "end": {
+          "line": 246,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 4641,
+      "end": 4654,
+      "loc": {
+        "start": {
+          "line": 246,
+          "column": 34
+        },
+        "end": {
+          "line": 246,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 4655,
+      "end": 4656,
+      "loc": {
+        "start": {
+          "line": 246,
+          "column": 48
+        },
+        "end": {
+          "line": 246,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  mutation UpdateWeightBuffer(\n    $input: UpdateWeightBufferInput!\n    $condition: ModelWeightBufferConditionInput\n  ) {\n    updateWeightBuffer(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+      "start": 4656,
+      "end": 4929,
+      "loc": {
+        "start": {
+          "line": 246,
+          "column": 49
+        },
+        "end": {
+          "line": 259,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 4929,
+      "end": 4930,
+      "loc": {
+        "start": {
+          "line": 259,
+          "column": 0
+        },
+        "end": {
+          "line": 259,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4930,
+      "end": 4931,
+      "loc": {
+        "start": {
+          "line": 259,
+          "column": 1
+        },
+        "end": {
+          "line": 259,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 4932,
+      "end": 4938,
+      "loc": {
+        "start": {
+          "line": 260,
+          "column": 0
+        },
+        "end": {
+          "line": 260,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 4939,
+      "end": 4944,
+      "loc": {
+        "start": {
+          "line": 260,
+          "column": 7
+        },
+        "end": {
+          "line": 260,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "deleteWeightBuffer",
+      "start": 4945,
+      "end": 4963,
+      "loc": {
+        "start": {
+          "line": 260,
+          "column": 13
+        },
+        "end": {
+          "line": 260,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 4964,
+      "end": 4965,
+      "loc": {
+        "start": {
+          "line": 260,
+          "column": 32
+        },
+        "end": {
+          "line": 260,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 4966,
+      "end": 4979,
+      "loc": {
+        "start": {
+          "line": 260,
+          "column": 34
+        },
+        "end": {
+          "line": 260,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 4980,
+      "end": 4981,
+      "loc": {
+        "start": {
+          "line": 260,
+          "column": 48
+        },
+        "end": {
+          "line": 260,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  mutation DeleteWeightBuffer(\n    $input: DeleteWeightBufferInput!\n    $condition: ModelWeightBufferConditionInput\n  ) {\n    deleteWeightBuffer(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+      "start": 4981,
+      "end": 5254,
+      "loc": {
+        "start": {
+          "line": 260,
+          "column": 49
+        },
+        "end": {
+          "line": 273,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5254,
+      "end": 5255,
+      "loc": {
+        "start": {
+          "line": 273,
+          "column": 0
+        },
+        "end": {
+          "line": 273,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5255,
+      "end": 5256,
+      "loc": {
+        "start": {
+          "line": 273,
+          "column": 1
+        },
+        "end": {
+          "line": 273,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 5257,
+      "end": 5263,
+      "loc": {
+        "start": {
+          "line": 274,
+          "column": 0
+        },
+        "end": {
+          "line": 274,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 5264,
+      "end": 5269,
+      "loc": {
+        "start": {
+          "line": 274,
+          "column": 7
+        },
+        "end": {
+          "line": 274,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "createNewWeight",
+      "start": 5270,
+      "end": 5285,
+      "loc": {
+        "start": {
+          "line": 274,
+          "column": 13
+        },
+        "end": {
+          "line": 274,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 5286,
+      "end": 5287,
+      "loc": {
+        "start": {
+          "line": 274,
+          "column": 29
+        },
+        "end": {
+          "line": 274,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5288,
+      "end": 5301,
+      "loc": {
+        "start": {
+          "line": 274,
+          "column": 31
+        },
+        "end": {
+          "line": 274,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5302,
+      "end": 5303,
+      "loc": {
+        "start": {
+          "line": 274,
+          "column": 45
+        },
+        "end": {
+          "line": 274,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  mutation CreateNewWeight(\n    $input: CreateNewWeightInput!\n    $condition: ModelNewWeightConditionInput\n  ) {\n    createNewWeight(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+      "start": 5303,
+      "end": 5564,
+      "loc": {
+        "start": {
+          "line": 274,
+          "column": 46
+        },
+        "end": {
+          "line": 287,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5564,
+      "end": 5565,
+      "loc": {
+        "start": {
+          "line": 287,
+          "column": 0
+        },
+        "end": {
+          "line": 287,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5565,
+      "end": 5566,
+      "loc": {
+        "start": {
+          "line": 287,
+          "column": 1
+        },
+        "end": {
+          "line": 287,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 5567,
+      "end": 5573,
+      "loc": {
+        "start": {
+          "line": 288,
+          "column": 0
+        },
+        "end": {
+          "line": 288,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 5574,
+      "end": 5579,
+      "loc": {
+        "start": {
+          "line": 288,
+          "column": 7
+        },
+        "end": {
+          "line": 288,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "updateNewWeight",
+      "start": 5580,
+      "end": 5595,
+      "loc": {
+        "start": {
+          "line": 288,
+          "column": 13
+        },
+        "end": {
+          "line": 288,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 5596,
+      "end": 5597,
+      "loc": {
+        "start": {
+          "line": 288,
+          "column": 29
+        },
+        "end": {
+          "line": 288,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5598,
+      "end": 5611,
+      "loc": {
+        "start": {
+          "line": 288,
+          "column": 31
+        },
+        "end": {
+          "line": 288,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5612,
+      "end": 5613,
+      "loc": {
+        "start": {
+          "line": 288,
+          "column": 45
+        },
+        "end": {
+          "line": 288,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  mutation UpdateNewWeight(\n    $input: UpdateNewWeightInput!\n    $condition: ModelNewWeightConditionInput\n  ) {\n    updateNewWeight(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+      "start": 5613,
+      "end": 5874,
+      "loc": {
+        "start": {
+          "line": 288,
+          "column": 46
+        },
+        "end": {
+          "line": 301,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5874,
+      "end": 5875,
+      "loc": {
+        "start": {
+          "line": 301,
+          "column": 0
+        },
+        "end": {
+          "line": 301,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5875,
+      "end": 5876,
+      "loc": {
+        "start": {
+          "line": 301,
+          "column": 1
+        },
+        "end": {
+          "line": 301,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 5877,
+      "end": 5883,
+      "loc": {
+        "start": {
+          "line": 302,
+          "column": 0
+        },
+        "end": {
+          "line": 302,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 5884,
+      "end": 5889,
+      "loc": {
+        "start": {
+          "line": 302,
+          "column": 7
+        },
+        "end": {
+          "line": 302,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "deleteNewWeight",
+      "start": 5890,
+      "end": 5905,
+      "loc": {
+        "start": {
+          "line": 302,
+          "column": 13
+        },
+        "end": {
+          "line": 302,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 5906,
+      "end": 5907,
+      "loc": {
+        "start": {
+          "line": 302,
+          "column": 29
+        },
+        "end": {
+          "line": 302,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5908,
+      "end": 5921,
+      "loc": {
+        "start": {
+          "line": 302,
+          "column": 31
+        },
+        "end": {
+          "line": 302,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5922,
+      "end": 5923,
+      "loc": {
+        "start": {
+          "line": 302,
+          "column": 45
+        },
+        "end": {
+          "line": 302,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  mutation DeleteNewWeight(\n    $input: DeleteNewWeightInput!\n    $condition: ModelNewWeightConditionInput\n  ) {\n    deleteNewWeight(input: $input, condition: $condition) {\n      id\n      upload_time\n      weight_data\n      createdAt\n      updatedAt\n    }\n  }\n",
+      "start": 5923,
+      "end": 6184,
+      "loc": {
+        "start": {
+          "line": 302,
+          "column": 46
+        },
+        "end": {
+          "line": 315,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 6184,
+      "end": 6185,
+      "loc": {
+        "start": {
+          "line": 315,
+          "column": 0
+        },
+        "end": {
+          "line": 315,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 6185,
+      "end": 6186,
+      "loc": {
+        "start": {
+          "line": 315,
+          "column": 1
+        },
+        "end": {
+          "line": 315,
           "column": 2
         }
       }
@@ -3510,15 +5730,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 4456,
-      "end": 4456,
+      "start": 6187,
+      "end": 6187,
       "loc": {
         "start": {
-          "line": 229,
+          "line": 316,
           "column": 0
         },
         "end": {
-          "line": 229,
+          "line": 316,
           "column": 0
         }
       }

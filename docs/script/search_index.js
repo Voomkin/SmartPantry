@@ -84,6 +84,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "smartpantry/smartpantry/screens/home2.js~homestackscreen",
+    "function/index.html#static-function-HomeStackScreen",
+    "<span>HomeStackScreen</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/screens/Home2.js</span>",
+    "function"
+  ],
+  [
     "smartpantry/smartpantry/screens/manualadd.js~manualaddscreen",
     "function/index.html#static-function-ManualAddScreen",
     "<span>ManualAddScreen</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/screens/ManualAdd.js</span>",
@@ -138,6 +144,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "smartpantry/smartpantry/mutations.js~createnewweight",
+    "variable/index.html#static-variable-createNewWeight",
+    "<span>createNewWeight</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
+    "variable"
+  ],
+  [
     "smartpantry/smartpantry/mutations.js~createpantry",
     "variable/index.html#static-variable-createPantry",
     "<span>createPantry</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
@@ -147,6 +159,12 @@ window.esdocSearchIndex = [
     "smartpantry/smartpantry/mutations.js~createshoppinglist",
     "variable/index.html#static-variable-createShoppingList",
     "<span>createShoppingList</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
+    "variable"
+  ],
+  [
+    "smartpantry/smartpantry/mutations.js~createweightbuffer",
+    "variable/index.html#static-variable-createWeightBuffer",
+    "<span>createWeightBuffer</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
     "variable"
   ],
   [
@@ -162,6 +180,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "smartpantry/smartpantry/mutations.js~deletenewweight",
+    "variable/index.html#static-variable-deleteNewWeight",
+    "<span>deleteNewWeight</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
+    "variable"
+  ],
+  [
     "smartpantry/smartpantry/mutations.js~deletepantry",
     "variable/index.html#static-variable-deletePantry",
     "<span>deletePantry</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
@@ -174,9 +198,21 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "smartpantry/smartpantry/mutations.js~deleteweightbuffer",
+    "variable/index.html#static-variable-deleteWeightBuffer",
+    "<span>deleteWeightBuffer</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
+    "variable"
+  ],
+  [
     "smartpantry/smartpantry/queries.js~getitem",
     "variable/index.html#static-variable-getItem",
     "<span>getItem</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/queries.js</span>",
+    "variable"
+  ],
+  [
+    "smartpantry/smartpantry/queries.js~getnewweight",
+    "variable/index.html#static-variable-getNewWeight",
+    "<span>getNewWeight</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/queries.js</span>",
     "variable"
   ],
   [
@@ -192,9 +228,21 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "smartpantry/smartpantry/queries.js~getweightbuffer",
+    "variable/index.html#static-variable-getWeightBuffer",
+    "<span>getWeightBuffer</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/queries.js</span>",
+    "variable"
+  ],
+  [
     "smartpantry/smartpantry/queries.js~listitems",
     "variable/index.html#static-variable-listItems",
     "<span>listItems</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/queries.js</span>",
+    "variable"
+  ],
+  [
+    "smartpantry/smartpantry/queries.js~listnewweights",
+    "variable/index.html#static-variable-listNewWeights",
+    "<span>listNewWeights</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/queries.js</span>",
     "variable"
   ],
   [
@@ -210,9 +258,21 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "smartpantry/smartpantry/queries.js~listweightbuffers",
+    "variable/index.html#static-variable-listWeightBuffers",
+    "<span>listWeightBuffers</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/queries.js</span>",
+    "variable"
+  ],
+  [
     "smartpantry/smartpantry/subscriptions.js~oncreateitem",
     "variable/index.html#static-variable-onCreateItem",
     "<span>onCreateItem</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/subscriptions.js</span>",
+    "variable"
+  ],
+  [
+    "smartpantry/smartpantry/subscriptions.js~oncreatenewweight",
+    "variable/index.html#static-variable-onCreateNewWeight",
+    "<span>onCreateNewWeight</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/subscriptions.js</span>",
     "variable"
   ],
   [
@@ -228,9 +288,21 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "smartpantry/smartpantry/subscriptions.js~oncreateweightbuffer",
+    "variable/index.html#static-variable-onCreateWeightBuffer",
+    "<span>onCreateWeightBuffer</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/subscriptions.js</span>",
+    "variable"
+  ],
+  [
     "smartpantry/smartpantry/subscriptions.js~ondeleteitem",
     "variable/index.html#static-variable-onDeleteItem",
     "<span>onDeleteItem</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/subscriptions.js</span>",
+    "variable"
+  ],
+  [
+    "smartpantry/smartpantry/subscriptions.js~ondeletenewweight",
+    "variable/index.html#static-variable-onDeleteNewWeight",
+    "<span>onDeleteNewWeight</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/subscriptions.js</span>",
     "variable"
   ],
   [
@@ -246,9 +318,21 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "smartpantry/smartpantry/subscriptions.js~ondeleteweightbuffer",
+    "variable/index.html#static-variable-onDeleteWeightBuffer",
+    "<span>onDeleteWeightBuffer</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/subscriptions.js</span>",
+    "variable"
+  ],
+  [
     "smartpantry/smartpantry/subscriptions.js~onupdateitem",
     "variable/index.html#static-variable-onUpdateItem",
     "<span>onUpdateItem</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/subscriptions.js</span>",
+    "variable"
+  ],
+  [
+    "smartpantry/smartpantry/subscriptions.js~onupdatenewweight",
+    "variable/index.html#static-variable-onUpdateNewWeight",
+    "<span>onUpdateNewWeight</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/subscriptions.js</span>",
     "variable"
   ],
   [
@@ -264,6 +348,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "smartpantry/smartpantry/subscriptions.js~onupdateweightbuffer",
+    "variable/index.html#static-variable-onUpdateWeightBuffer",
+    "<span>onUpdateWeightBuffer</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/subscriptions.js</span>",
+    "variable"
+  ],
+  [
     "smartpantry/smartpantry/screens/accounts.js~sendemail",
     "function/index.html#static-function-sendEmail",
     "<span>sendEmail</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/screens/Accounts.js</span>",
@@ -276,6 +366,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "smartpantry/smartpantry/mutations.js~updatenewweight",
+    "variable/index.html#static-variable-updateNewWeight",
+    "<span>updateNewWeight</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
+    "variable"
+  ],
+  [
     "smartpantry/smartpantry/mutations.js~updatepantry",
     "variable/index.html#static-variable-updatePantry",
     "<span>updatePantry</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
@@ -285,6 +381,12 @@ window.esdocSearchIndex = [
     "smartpantry/smartpantry/mutations.js~updateshoppinglist",
     "variable/index.html#static-variable-updateShoppingList",
     "<span>updateShoppingList</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
+    "variable"
+  ],
+  [
+    "smartpantry/smartpantry/mutations.js~updateweightbuffer",
+    "variable/index.html#static-variable-updateWeightBuffer",
+    "<span>updateWeightBuffer</span> <span class=\"search-result-import-path\">smartpantry/SmartPantry/mutations.js</span>",
     "variable"
   ],
   [
@@ -606,6 +708,18 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "smartpantry/e2e/environment.js",
+    "file/SmartPantry/e2e/environment.js.html",
+    "SmartPantry/e2e/environment.js",
+    "file"
+  ],
+  [
+    "smartpantry/e2e/firsttest.e2e.js",
+    "file/SmartPantry/e2e/firstTest.e2e.js.html",
+    "SmartPantry/e2e/firstTest.e2e.js",
+    "file"
+  ],
+  [
     "smartpantry/metro.config.js",
     "file/SmartPantry/metro.config.js.html",
     "SmartPantry/metro.config.js",
@@ -687,6 +801,12 @@ window.esdocSearchIndex = [
     "smartpantry/screens/home.js",
     "file/SmartPantry/screens/Home.js.html",
     "SmartPantry/screens/Home.js",
+    "file"
+  ],
+  [
+    "smartpantry/screens/home2.js",
+    "file/SmartPantry/screens/Home2.js.html",
+    "SmartPantry/screens/Home2.js",
     "file"
   ],
   [
