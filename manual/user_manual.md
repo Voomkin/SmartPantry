@@ -114,7 +114,7 @@ When you are satisfied with the changes you have made, click **Submit**. This wi
 <img src="./images/update2.jpg" height="500px" width="250px"></img>
 
 ### Using the Scale
-Implementation of this feature is nearing completion. This section will be updated when this feature is finished.
+You can add an item using the Smart Pantry scale when manually adding an item, barcode adding an item, or updating an item. To do so, first place the item you wish to weigh on the scale, then click the "Use Scale" button. The weight from the scale will be automatically matched to the item you are attempting to add. NOTE: This should be the last action you take before submitting your created item.
 
 ### Delete Item
 Next to the **update** button for each item in the pantry is a **delete** button. To delete an item from your pantry, click the **delete** button which is next to the item you would like to delete. In this example, we want to delete the "Bananas" item from our pantry.

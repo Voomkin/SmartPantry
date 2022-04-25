@@ -194,7 +194,8 @@ const HomeScreen = ({ navigation }) => {
           most_recent = item.id;
   
         const json_string = item.weight_data;
-        const item_weight = parseFloat(json_string.substring(json_string.indexOf("value") + "value\":".length, json_string.indexOf("}")));
+        let item_weight = parseFloat(json_string.substring(json_string.indexOf("value") + "value\":".length, json_string.indexOf("}")));
+        item_weight = Number((item_weight).toFixed(2));
         console.log(item_weight);
       });
   

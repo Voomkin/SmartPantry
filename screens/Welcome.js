@@ -27,8 +27,8 @@ const WelcomeScreen = ({ navigation }) => {
       </View>
       <Text style={{fontSize: 17, textAlign: 'center'}}>Version 1{'\n'}</Text>
       <Text style={{fontSize: 17, textAlign: 'center', marginHorizontal: 15}}>This Smart Pantry application will help you track the food items stored in your pantry.{'\n'}Click on the three lines above to browse the app.{'\n'}</Text>
-      <ImageBackground source={require('../assets/images/food.png')} style={{width: '100%', height: '150%', position: 'absolute', bottom: -525}}></ImageBackground>   
-      <ImageBackground source={require('../assets/images/wvu.png')} style={{width: '70%', height: '110%', position: 'absolute', bottom:-250, right: 20}}></ImageBackground>   
+      <ImageBackground source={require('../assets/images/food.png')} style={{width: '100%', height: '170%', position: 'absolute', bottom: -700}}></ImageBackground>   
+      <ImageBackground source={require('../assets/images/wvu.png')} style={{width: '70%', height: '155%', position: 'absolute', bottom:-285, right: 35}}></ImageBackground>   
 
     </ScrollView>
   );
