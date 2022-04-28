@@ -377,6 +377,7 @@ const HomeScreen = ({ navigation }) => {
   // list of items from pantry
   const listOfItems = items.map((item) => {
     let percentage = (parseFloat(item.currWeight) / parseFloat(item.weight) * 100).toFixed(2);
+    console.log("QUANTITY: " + item.name + " " + item.quantity);
     return (
       <View key={item.id}>
         <View
@@ -392,6 +393,7 @@ const HomeScreen = ({ navigation }) => {
           <Text
             style={{paddingLeft: 15, width: "50%", flexDirection: "column", fontSize: 18 }}
           >
+            
             {item.name + '\n'}
             {item.quantity && <Text style={{fontSize: 15, fontWeight: 'bold'}}>Quantity: {item.quantity + "\n"}</Text>}
             {item.weight && <Text style={{fontSize: 15, fontWeight: 'bold'}}>Weight: {item.currWeight + " lbs\n"}</Text>}
