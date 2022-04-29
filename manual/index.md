@@ -32,11 +32,19 @@ A CSEE 481 effort to assist elders in tracking their food pantry items and livin
 
 
 ### Reflections and Intructions for Future Developers
+This project uses Expo as its environment, and it supports the development of mobile applications with React Native. This environment was chosen over other alternatives because it allows developed mobile applications to run the same on both Android and IOS devices. It allowed development of the app to work seamlessly with a simply scan of a QR code.
+
 One unexpected obstacle for connecting the scale to the Smart Pantry Application was the lack of a Bluetooth API in Expo. When adding or updating an item in the database, the user has the option to weigh/reweigh the item, which we expected to work by having the scale connect to an Arduino, then to an ESP32, and then to the app. However, because Expo (the platform we used to make our app to be cross-platform) doesn’t have a Bluetooth API, this was a lot more complicated than expected.  
 
 Because of this, we decided to communicate with the database directly through Wi-Fi and autofill the “weight” field in the app from the added weight in the database. If Expo includes a Bluetooth API in the future, it would be a good idea to have the scale autofill the “weight” field from the ESP32 (or similar Bluetooth communicator), wait for user confirmation, and then add/update the weight. 
 
 If migrated from Wi-Fi to Bluetooth, significant change to the development environment would have to be made, which may conflict with other features (Notifications, etc.). 
+
+Additionally, it would be a good idea to add some sort of visual or auditory indication on the physical scale itself that would show the user that the weight value has been successfully read, just to make the scale easier to use and understand.
+
+Another project for future developers to take on would be adding nutrition-tracking capabilities to the app. That is, tracking the specific types of foods users are adding to their pantry, and using the tracked foods to make determinations about the user's eating habits. For example, it might be a good idea to have a check for if a user is adding too much junk food (ice cream, soda, chips, etc) or too many alcoholic beverages, and to notify a collaborator about these eating habits as well. Likewise, it would also be good to make sure that users are adding a sufficient amount of nutritious foods like fruits and vegetables to their pantry. Furthermore, the statistics of types of foods users are adding to their pantry could be tracked, and the user could be shown a detailed portfolio with a breakdown of their eating habits over a period of time.
+
+Voice recognition would be another great addition to this project in the future, either added manually, or (preferably) through the Amazon Alexa service. This would go a long way to make the app even easier to use.
 
 ### Directory of the Project Archive
 
