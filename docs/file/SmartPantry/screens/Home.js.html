@@ -295,7 +295,8 @@ const HomeScreen = ({ navigation }) =&gt; {
           most_recent = item.id;
   
         const json_string = item.weight_data;
-        const item_weight = parseFloat(json_string.substring(json_string.indexOf(&quot;value&quot;) + &quot;value\&quot;:&quot;.length, json_string.indexOf(&quot;}&quot;)));
+        let item_weight = parseFloat(json_string.substring(json_string.indexOf(&quot;value&quot;) + &quot;value\&quot;:&quot;.length, json_string.indexOf(&quot;}&quot;)));
+        item_weight = Number((item_weight).toFixed(2));
         console.log(item_weight);
       });
   
@@ -477,6 +478,7 @@ const HomeScreen = ({ navigation }) =&gt; {
   // list of items from pantry
   const listOfItems = items.map((item) =&gt; {
     let percentage = (parseFloat(item.currWeight) / parseFloat(item.weight) * 100).toFixed(2);
+    console.log(&quot;QUANTITY: &quot; + item.name + &quot; &quot; + item.quantity);
     return (
       &lt;View key={item.id}&gt;
         &lt;View
@@ -492,6 +494,7 @@ const HomeScreen = ({ navigation }) =&gt; {
           &lt;Text
             style={{paddingLeft: 15, width: &quot;50%&quot;, flexDirection: &quot;column&quot;, fontSize: 18 }}
           &gt;
+            
             {item.name + &apos;\n&apos;}
             {item.quantity &amp;&amp; &lt;Text style={{fontSize: 15, fontWeight: &apos;bold&apos;}}&gt;Quantity: {item.quantity + &quot;\n&quot;}&lt;/Text&gt;}
             {item.weight &amp;&amp; &lt;Text style={{fontSize: 15, fontWeight: &apos;bold&apos;}}&gt;Weight: {item.currWeight + &quot; lbs\n&quot;}&lt;/Text&gt;}
